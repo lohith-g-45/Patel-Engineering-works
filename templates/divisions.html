@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore our Marine Engineering divisions - Marine Engineering, Ship Building, and Ship Repair.">
+  <title>Divisions - Marine Engineering & Shipbuilding</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260316-site-structured-5">
+</head>
+<body>
+  <!-- ================================================================
+       NAVIGATION BAR
+       ================================================================ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="nav-dropdown">
+          <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
+            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('partners') }}">Partners</a></li>
+        <li><a href="{{ url_for('careers') }}">Careers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       PAGE HEADER
+       ================================================================ -->
+  <section class="hero page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1>Our Divisions</h1>
+      <p>Comprehensive Marine Engineering Solutions</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BREADCRUMB
+       ================================================================ -->
+  <section class="section breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="{{ url_for('home') }}">Home</a>
+        <span class="separator">/</span>
+        <span>Divisions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       MARINE ENGINEERING DIVISION
+       ================================================================ -->
+  <section class="section" id="marine" data-division-section="marine">
+    <div class="container">
+      <div class="page-shell">
+        <div class="section-title">
+          <h2>Marine Engineering Division</h2>
+        </div>
+        <div class="grid grid-2 split-shell">
+          <div class="content-panel">
+            <h3>Complete Design & Engineering Solutions</h3>
+            <p>Our Marine Engineering Division provides comprehensive design and engineering services for vessels, offshore structures, and maritime systems. With a team of experienced naval architects and marine engineers, we transform your vision into reality.</p>
+            <h4>Our Expertise</h4>
+            <ul class="structured-list">
+            <li>Vessel design and hydrodynamics</li>
+            <li>Structural analysis and optimization</li>
+            <li>HVAC and systems design</li>
+            <li>Advanced CAD/CAM modeling</li>
+            <li>Marine propulsion systems</li>
+            <li>Stability and seaworthiness analysis</li>
+            <li>Environmental compliance design</li>
+            <li>Offshore platform engineering</li>
+            </ul>
+
+            <a href="{{ url_for('contact') }}" class="btn btn-primary" style="margin-top: var(--spacing-2xl);">Inquire About Services</a>
+          </div>
+          <div class="media-panel">
+            <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Marine Engineering" class="feature-image">
+            <div class="partner-note">
+              <h4>Precision at Design Stage</h4>
+              <p>From hydrodynamics to compliance, every design decision is mapped to performance, safety, and lifecycle value.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       MARINE ENGINEERING - CASE STUDIES
+       ================================================================ -->
+  <section class="section section-light" data-division-section="marine">
+    <div class="container">
+      <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Featured Marine Engineering Projects</h3>
+      <div class="grid grid-3 division-project-grid info-grid">
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">Advanced Container Vessel Design</h4>
+            <p class="card-text">Hydrodynamic optimization of 20,000 TEU container vessel with reduced fuel consumption and emissions</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Capacity:</strong> 20,000 TEU</li>
+              <li><strong>Length:</strong> 400 meters</li>
+              <li><strong>Speed:</strong> 22 knots</li>
+              <li><strong>Year:</strong> 2023</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">Chemical Tanker Systems</h4>
+            <p class="card-text">Complete engineering design for specialized chemical carrier with advanced cargo systems</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Capacity:</strong> 30,000 DWT</li>
+              <li><strong>Length:</strong> 180 meters</li>
+              <li><strong>Tanks:</strong> 13 segregated</li>
+              <li><strong>Year:</strong> 2023</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">Offshore Support Vessel</h4>
+            <p class="card-text">Deep-sea exploration support vessel with advanced positioning systems and equipment</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Type:</strong> Multi-purpose OSV</li>
+              <li><strong>Capacity:</strong> 5,000 DWT</li>
+              <li><strong>Technology:</strong> DP3 System</li>
+              <li><strong>Year:</strong> 2022</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SHIP BUILDING DIVISION
+       ================================================================ -->
+  <section class="section" id="shipbuilding" data-division-section="shipbuilding">
+    <div class="container">
+      <div class="page-shell">
+        <div class="section-title">
+          <h2>Ship Building Division</h2>
+        </div>
+        <div class="grid grid-2 split-shell">
+          <div class="content-panel" style="order: 2;">
+            <h3>State-of-the-Art Vessel Construction</h3>
+            <p>Our Ship Building Division utilizes cutting-edge facilities and skilled workforce to construct high-quality vessels for commercial and naval clients. From concept to launch, we ensure excellence at every stage.</p>
+            <h4>Construction Capabilities</h4>
+            <ul class="structured-list">
+            <li>Container ships and bulk carriers</li>
+            <li>Tankers and specialized vessels</li>
+            <li>Offshore support vessels</li>
+            <li>Naval vessels and patrol boats</li>
+            <li>Fishing vessels</li>
+            <li>Tugs and workboats</li>
+            <li>Advanced alloy fabrication</li>
+            <li>Modular construction techniques</li>
+            </ul>
+
+            <a href="{{ url_for('contact') }}" class="btn btn-primary" style="margin-top: var(--spacing-2xl);">Request Shipbuilding Quote</a>
+          </div>
+          <div class="media-panel" style="order: 1;">
+            <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Ship Building" class="feature-image">
+            <div class="partner-note">
+              <h4>Built for Delivery</h4>
+              <p>Our shipbuilding workflow connects modular fabrication, schedule control, and launch-readiness under one operation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SHIPBUILDING - CASE STUDIES
+       ================================================================ -->
+  <section class="section section-light" data-division-section="shipbuilding">
+    <div class="container">
+      <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Recent Vessel Construction Projects</h3>
+      <div class="grid grid-3 division-project-grid info-grid">
+        <div class="card feature-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Container Vessel" class="card-image">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">MV Ocean Express</h4>
+            <p class="card-text">Modern 20,000 TEU container vessel with eco-friendly design and energy-efficient systems</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Delivered:</strong> March 2023</li>
+              <li><strong>Build Time:</strong> 18 months</li>
+              <li><strong>Hull:</strong> 72,500 tons</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card feature-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Tanker Vessel" class="card-image">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">MV Chem Star</h4>
+            <p class="card-text">Specialized chemical tanker with advanced cargo handling and safety systems</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Delivered:</strong> January 2023</li>
+              <li><strong>Build Time:</strong> 16 months</li>
+              <li><strong>Hull:</strong> 32,800 tons</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card feature-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Offshore Support Vessel" class="card-image">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">MV Deep Explorer</h4>
+            <p class="card-text">Advanced multi-purpose offshore support vessel for deep-sea operations</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Delivered:</strong> November 2022</li>
+              <li><strong>Build Time:</strong> 20 months</li>
+              <li><strong>Hull:</strong> 19,200 tons</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SHIP REPAIR & MODERNIZATION DIVISION
+       ================================================================ -->
+  <section class="section" id="repair" data-division-section="repair">
+    <div class="container">
+      <div class="page-shell">
+        <div class="section-title">
+          <h2>Ship Repair & Modernization Division</h2>
+        </div>
+        <div class="grid grid-2 split-shell">
+          <div class="content-panel">
+            <h3>Expert Repair, Maintenance & Upgrade Services</h3>
+            <p>Our Ship Repair & Modernization Division provides comprehensive services to extend vessel lifecycle, improve performance, and enhance compliance with modern standards. Our expert technicians ensure minimal downtime and maximum efficiency.</p>
+            <h4>Services Offered</h4>
+            <ul class="structured-list">
+            <li>Dry dock operations and hull maintenance</li>
+            <li>Engine overhaul and propulsion upgrades</li>
+            <li>Electrical systems modernization</li>
+            <li>Navigation equipment upgrades</li>
+            <li>Environmental compliance retrofits</li>
+            <li>Safety systems enhancement</li>
+            <li>Interior refurbishment</li>
+            <li>Emergency repairs and assistance</li>
+            </ul>
+
+            <a href="{{ url_for('contact') }}" class="btn btn-primary" style="margin-top: var(--spacing-2xl);">Schedule Repair Service</a>
+          </div>
+          <div class="media-panel">
+            <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Ship Repair" class="feature-image">
+            <div class="partner-note">
+              <h4>Focused on Lifecycle Value</h4>
+              <p>Repair and retrofit programs are structured to reduce downtime while extending vessel performance and regulatory readiness.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       REPAIR - CASE STUDIES
+       ================================================================ -->
+  <section class="section section-light" data-division-section="repair">
+    <div class="container">
+      <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Successful Repair & Modernization Projects</h3>
+      <div class="grid grid-3 division-project-grid info-grid">
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">Bulk Carrier Engine Overhaul</h4>
+            <p class="card-text">Complete engine overhaul and propulsion system modernization for 15-year-old vessel</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Duration:</strong> 45 days</li>
+              <li><strong>Engine:</strong> 25MW rebuild</li>
+              <li><strong>Cost Savings:</strong> 35% fuel efficiency</li>
+              <li><strong>Year:</strong> 2023</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">Container Ship Modernization</h4>
+            <p class="card-text">Complete hull inspection, structural repairs, and navigation system upgrade</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Duration:</strong> 60 days</li>
+              <li><strong>Scope:</strong> Hull, steering, electronics</li>
+              <li><strong>Life Extension:</strong> 10+ years</li>
+              <li><strong>Year:</strong> 2023</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy);">Environmental Compliance Retrofit</h4>
+            <p class="card-text">Meeting new IMO regulations with scrubber system and ballast water treatment installation</p>
+            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
+              <li><strong>Duration:</strong> 30 days</li>
+              <li><strong>Systems:</strong> 2 major installations</li>
+              <li><strong>Compliance:</strong> MARPOL, BWMC</li>
+              <li><strong>Year:</strong> 2023</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       DIVISION COMPARISON
+       ================================================================ -->
+  <section class="section" data-division-section="overview">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Partner With Our Divisions?</h2>
+      </div>
+      <div class="grid grid-3 info-grid">
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">⭐ Expertise</h4>
+            <p style="text-align: center;">20+ years of industry experience with a team of certified professionals</p>
+          </div>
+        </div>
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">🛠️ Technology</h4>
+            <p style="text-align: center;">State-of-the-art facilities and advanced digital solutions</p>
+          </div>
+        </div>
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">✓ Quality</h4>
+            <p style="text-align: center;">ISO certified processes ensuring consistent quality delivery</p>
+          </div>
+        </div>
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">💰 Value</h4>
+            <p style="text-align: center;">Competitive pricing without compromising quality or schedule</p>
+          </div>
+        </div>
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">🌍 Global</h4>
+            <p style="text-align: center;">Experience serving clients across 50+ countries worldwide</p>
+          </div>
+        </div>
+        <div class="card feature-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">📚 Support</h4>
+            <p style="text-align: center;">Dedicated support team providing technical documentation and training</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CALL TO ACTION
+       ================================================================ -->
+  <section class="section section-dark">
+    <div class="container text-center">
+      <h2>Ready to Collaborate?</h2>
+      <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); color: var(--neutral-light-grey);">
+        Contact our specialists to discuss your marine engineering project
+      </p>
+      <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-large">Contact Us Today</a>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer footer-compact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Marine Engineering</h4>
+        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#">Ship Design</a>
+        <a href="#">Vessel Construction</a>
+        <a href="#">Ship Repair</a>
+        <a href="#">Modernization</a>
+        <a href="#">Offshore Solutions</a>
+        <a href="#">Consulting</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p><strong>Email:</strong><br>
+        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
+        <p><strong>Phone:</strong><br>
+        <a href="tel:+911234567890">+91 123 456 7890</a></p>
+        <p><strong>Headquarters:</strong><br>
+        Mumbai, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const division = params.get('division');
+      const allowed = ['marine', 'shipbuilding', 'repair'];
+      if (!division || !allowed.includes(division)) return;
+
+      const sectionMap = {
+        marine: 'Marine Engineering Division',
+        shipbuilding: 'Ship Building Division',
+        repair: 'Ship Repair & Modernization Division'
+      };
+
+      document.querySelectorAll('[data-division-section]').forEach(section => {
+        section.style.display = section.getAttribute('data-division-section') === division ? '' : 'none';
+      });
+
+      const heroHeading = document.querySelector('.page-hero-content h1');
+      if (heroHeading) {
+        heroHeading.textContent = sectionMap[division];
+      }
+
+      const breadcrumbCurrent = document.querySelector('.breadcrumb span:last-child');
+      if (breadcrumbCurrent) {
+        breadcrumbCurrent.textContent = sectionMap[division];
+      }
+    })();
+  </script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+
+
+
+

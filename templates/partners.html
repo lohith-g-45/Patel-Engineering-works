@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Strategic partnerships and collaborations with leading marine engineering companies.">
+  <title>Partners - Marine Engineering & Shipbuilding</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260316-site-structured-5">
+</head>
+<body>
+  <!-- ================================================================
+       NAVIGATION BAR
+       ================================================================ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="nav-dropdown">
+          <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
+            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('partners') }}">Partners</a></li>
+        <li><a href="{{ url_for('careers') }}">Careers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       PAGE HEADER
+       ================================================================ -->
+  <section class="hero page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1>Strategic Partnerships</h1>
+      <p>Collaborating for Excellence in Marine Engineering</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BREADCRUMB
+       ================================================================ -->
+  <section class="section breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="{{ url_for('home') }}">Home</a>
+        <span class="separator">/</span>
+        <span>Partners</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       INTRODUCTION
+       ================================================================ -->
+  <section class="section">
+    <div class="container text-center" style="max-width: 800px; margin: 0 auto; margin-bottom: var(--spacing-3xl);">
+      <div class="page-shell section-intro">
+        <span class="section-kicker">Collaboration</span>
+        <h2>Our Strategic Partners</h2>
+        <p class="section-subtitle">
+          We believe in the power of collaboration. Our strategic partnerships with leading global companies enable us
+          to deliver world-class marine engineering and shipbuilding solutions. Together, we drive innovation, sustainability,
+          and excellence in the maritime industry.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       RACMET PARTNERSHIP (FEATURED)
+       ================================================================ -->
+  <section class="section section-light" id="racmet-partnership">
+    <div class="container">
+      <div class="page-shell">
+        <div class="section-title">
+          <span class="section-kicker">Featured Alliance</span>
+          <h2>RacMet Partnership</h2>
+        </div>
+        <div class="grid grid-2 split-shell">
+          <div class="content-panel">
+            <h3>Strategic Alliance with RacMet</h3>
+            <p>
+              Marine Engineering & Shipbuilding is proud to announce our strategic partnership with RacMet,
+              a globally recognized leader in advanced marine materials and metallurgical solutions. This partnership
+              represents a significant milestone in our commitment to providing cutting-edge shipbuilding capabilities.
+            </p>
+
+            <h4>Partnership Benefits</h4>
+            <ul class="structured-list">
+            <li><strong>Advanced Materials:</strong> Access to RacMet's premium marine-grade alloys and composites</li>
+            <li><strong>Quality Assurance:</strong> Rigorous testing and certification processes for all materials</li>
+            <li><strong>Sustainability:</strong> Eco-friendly materials aligned with modern environmental standards</li>
+            <li><strong>Cost Efficiency:</strong> Optimized material sourcing reducing overall project costs</li>
+            <li><strong>Technical Support:</strong> Expert consultation on material selection and application</li>
+            <li><strong>Innovation:</strong> Joint R&D initiatives for next-generation marine materials</li>
+            </ul>
+
+            <h4>About RacMet</h4>
+            <p style="font-size: var(--font-size-sm); margin-bottom: var(--spacing-md);">
+              RacMet is a leading international supplier of specialized metals and metallurgical services.
+              With facilities across Europe and Asia, they serve the most demanding applications in aerospace,
+              marine, and industrial sectors.
+            </p>
+            <a href="#contact-partner" class="btn btn-primary">Learn More About Collaboration</a>
+          </div>
+          <div class="media-panel">
+            <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="RacMet Partnership" class="feature-image">
+            <div class="card feature-card partner-note">
+              <div class="card-content">
+                <h4 style="text-align: center; margin-bottom: var(--spacing-lg);">Partnership Since 2020</h4>
+                <p style="text-align: center; margin-bottom: 0; color: var(--text-light);">10+ successful joint projects delivering premium marine vessels worldwide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       RACMET EMBEDDED VIDEO
+       ================================================================ -->
+  <section class="section" style="background: #f5f6fa;">
+    <div class="container" style="max-width: 900px;">
+      <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">RacMet Technology Showcase</h3>
+      <div style="position: relative; width: 100%; padding-bottom: 56.25%;">
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="RacMet Technology Showcase"
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       KEY PARTNERS GRID
+       ================================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Key Partners</h2>
+      </div>
+      <div class="grid grid-3 partner-grid info-grid">
+        <!-- Classification Society Partners -->
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">ABS</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              American Bureau of Shipping - Classification and certification of our vessels
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2005</p>
+          </div>
+        </div>
+
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">DNV GL</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Det Norske Veritas - Advanced certification and compliance verification
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2008</p>
+          </div>
+        </div>
+
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Lloyd's Register</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Class A Certification - Technical and safety standards verification
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2010</p>
+          </div>
+        </div>
+
+        <!-- Technology Partners -->
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Dassault Systèmes</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              CATIA 3D Design Software - Advanced vessel design and modeling
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2009</p>
+          </div>
+        </div>
+
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Wärtsilä</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Marine Propulsion Systems - Advanced engine solutions for vessels
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2012</p>
+          </div>
+        </div>
+
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">ABB Marine</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Electrical & Automation Systems - Smart ship solutions
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2014</p>
+          </div>
+        </div>
+
+        <!-- Supply Chain Partners -->
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">RacMet</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Advanced Marine Materials - Premium alloys and metallurgical solutions
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2020</p>
+          </div>
+        </div>
+
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Rolls-Royce Marine</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Advanced Naval Technology - Integrated navigation and automation systems
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2015</p>
+          </div>
+        </div>
+
+        <div class="card feature-card partner-card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Kongsberg Maritime</h4>
+            <p style="margin-bottom: var(--spacing-lg); font-size: var(--font-size-sm);">
+              Digital Solutions - Autonomous and remote-operated vessel systems
+            </p>
+            <p style="color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold); margin-bottom: 0;">Since 2018</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PARTNERSHIP PROGRAMS
+       ================================================================ -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-title">
+        <h2>Partnership Programs</h2>
+      </div>
+      <div class="grid grid-3 program-grid info-grid">
+        <div class="card feature-card program-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">Supplier Partnership</h4>
+            <p style="text-align: center; margin-bottom: var(--spacing-lg);">
+              Join our network of preferred suppliers providing quality materials and components for shipbuilding projects
+            </p>
+            <div style="text-align: center;">
+              <a href="#contact-partner" class="btn btn-secondary-colored btn-small">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card feature-card program-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">Technology Alliance</h4>
+            <p style="text-align: center; margin-bottom: var(--spacing-lg);">
+              Collaborate with us on innovative marine technologies and sustainable engineering solutions
+            </p>
+            <div style="text-align: center;">
+              <a href="#contact-partner" class="btn btn-secondary-colored btn-small">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card feature-card program-card">
+          <div class="card-content">
+            <h4 style="text-align: center; color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">Joint Ventures</h4>
+            <p style="text-align: center; margin-bottom: var(--spacing-lg);">
+              Explore opportunities for joint projects and long-term strategic collaborations
+            </p>
+            <div style="text-align: center;">
+              <a href="#contact-partner" class="btn btn-secondary-colored btn-small">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PARTNER INQUIRY FORM
+       ================================================================ -->
+  <section class="section" id="contact-partner">
+    <div class="container" style="max-width: 700px;">
+      <div class="form-shell">
+        <div class="text-center" style="margin-bottom: var(--spacing-2xl);">
+          <h2>Interested in Partnership?</h2>
+          <p>Let's explore how we can collaborate to drive innovation in marine engineering</p>
+        </div>
+
+        <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Company Name *</label>
+            <input type="text" class="form-input" placeholder="Your company name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contact Person *</label>
+            <input type="text" class="form-input" placeholder="Your name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Partnership Type *</label>
+          <select class="form-select" required>
+            <option value="">Select partnership type</option>
+            <option value="supplier">Supplier Partnership</option>
+            <option value="technology">Technology Alliance</option>
+            <option value="joint-venture">Joint Venture</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message *</label>
+          <textarea class="form-textarea" placeholder="Tell us about your partnership interests..." required></textarea>
+        </div>
+
+          <button type="submit" class="btn btn-primary btn-large btn-block">Submit Partnership Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CALL TO ACTION
+       ================================================================ -->
+  <section class="section section-dark">
+    <div class="container text-center">
+      <h2>Ready to Partner With Us?</h2>
+      <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); color: var(--neutral-light-grey);">
+        Contact our partnerships team to discuss opportunities
+      </p>
+      <a href="{{ url_for('contact') }}#partnership" class="btn btn-secondary btn-large">Contact Partnership Team</a>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer footer-compact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Marine Engineering</h4>
+        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#">Ship Design</a>
+        <a href="#">Vessel Construction</a>
+        <a href="#">Ship Repair</a>
+        <a href="#">Modernization</a>
+        <a href="#">Offshore Solutions</a>
+        <a href="#">Consulting</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p><strong>Email:</strong><br>
+        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
+        <p><strong>Phone:</strong><br>
+        <a href="tel:+911234567890">+91 123 456 7890</a></p>
+        <p><strong>Headquarters:</strong><br>
+        Mumbai, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+
+
+
+

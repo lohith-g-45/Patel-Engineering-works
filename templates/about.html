@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Marine Engineering company history, mission, and leadership team.">
+  <title>About Us - Marine Engineering & Shipbuilding</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260316-about-accordion-2">
+</head>
+<body>
+  <!-- ================================================================
+       NAVIGATION BAR
+       ================================================================ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="nav-dropdown">
+          <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
+            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('partners') }}">Partners</a></li>
+        <li><a href="{{ url_for('careers') }}">Careers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       PAGE HEADER
+       ================================================================ -->
+  <section class="hero page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1>About Our Company</h1>
+      <p>Pioneering Excellence in Marine Engineering Since 2003</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BREADCRUMB
+       ================================================================ -->
+  <section class="section breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="{{ url_for('home') }}">Home</a>
+        <span class="separator">/</span>
+        <span>About Us</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       COMPANY HISTORY (PRIMARY ABOUT PAGE CONTENT)
+       ================================================================ -->
+  <section class="section" id="company-history">
+    <div class="container">
+      <div class="section-title">
+        <span class="section-kicker">About Us</span>
+        <h2>Company History</h2>
+        <p class="section-subtitle">A timeline of how we grew from a small team into a trusted marine engineering and shipbuilding partner.</p>
+      </div>
+
+      <div class="grid grid-2 split-shell">
+        <div class="content-panel">
+          <h3>From Vision to Reality</h3>
+          <p>Founded in 2003, Marine Engineering & Shipbuilding was established with a singular vision: to become a world-class provider of innovative marine engineering and shipbuilding solutions. What started as a small design firm has grown into a comprehensive marine services company serving clients across the globe.</p>
+          <h4>Our Journey</h4>
+          <ul class="structured-list">
+            <li><strong>2003:</strong> Company founded with 25 employees</li>
+            <li><strong>2008:</strong> Opened first shipyard facility with 200+ workforce</li>
+            <li><strong>2012:</strong> Achieved ISO 9001 certification</li>
+            <li><strong>2015:</strong> Expanded to three locations across India</li>
+            <li><strong>2018:</strong> Completed 100th ship project milestone</li>
+            <li><strong>2020:</strong> Established International division</li>
+            <li><strong>2023:</strong> Launched green technology initiative</li>
+            <li><strong>2024:</strong> New state-of-the-art facilities opened</li>
+          </ul>
+        </div>
+        <div class="media-panel">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Company history" class="feature-image">
+          <div class="partner-note">
+            <h4>Built on Reliability</h4>
+            <p>Every phase of our growth has focused on quality, long-term partnerships, and engineering discipline.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CALL TO ACTION
+       ================================================================ -->
+  <section class="section" id="cta">
+    <div class="container text-center">
+      <h2>Interested in Working Together?</h2>
+      <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Contact us to discuss your marine engineering and shipbuilding needs
+      </p>
+      <a href="{{ url_for('contact') }}" class="btn btn-primary btn-large">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer footer-compact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Marine Engineering</h4>
+        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#">Ship Design</a>
+        <a href="#">Vessel Construction</a>
+        <a href="#">Ship Repair</a>
+        <a href="#">Modernization</a>
+        <a href="#">Offshore Solutions</a>
+        <a href="#">Consulting</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p><strong>Email:</strong><br>
+        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
+        <p><strong>Phone:</strong><br>
+        <a href="tel:+911234567890">+91 123 456 7890</a></p>
+        <p><strong>Headquarters:</strong><br>
+        Mumbai, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+
+
+
+

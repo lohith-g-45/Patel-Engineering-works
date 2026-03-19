@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Marine Engineering & Shipbuilding. Get in touch with our offices across India.">
+  <title>Contact Us - Marine Engineering & Shipbuilding</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260316-site-structured-5">
+</head>
+<body>
+  <!-- ================================================================
+       NAVIGATION BAR
+       ================================================================ -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="nav-dropdown">
+          <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
+            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('partners') }}">Partners</a></li>
+        <li><a href="{{ url_for('careers') }}">Careers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       PAGE HEADER
+       ================================================================ -->
+  <section class="hero" style="min-height: 400px;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(10, 31, 68, 0.78) 0%, rgba(176, 28, 46, 0.55) 100%); z-index: 1;"></div>
+    <div class="hero-content">
+      <h1>Contact Us</h1>
+      <p>Get in Touch With Our Team</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       BREADCRUMB
+       ================================================================ -->
+  <section class="section" style="padding: 2rem 0;">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="{{ url_for('home') }}">Home</a>
+        <span class="separator">/</span>
+        <span>Contact Us</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CONTACT INFORMATION
+       ================================================================ -->
+  <section class="section" id="contact-info">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Information</h2>
+      </div>
+      <div class="grid grid-3">
+        <!-- Email -->
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">📧 Email</h4>
+            <p style="margin-bottom: var(--spacing-md);">Send us your inquiries</p>
+            <a href="mailto:info@marineengineering.com" style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-sm);">info@marineengineering.com</a>
+            <a href="mailto:projects@marineengineering.com" style="font-weight: var(--font-weight-semibold); display: block;">projects@marineengineering.com</a>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">📞 Phone</h4>
+            <p style="margin-bottom: var(--spacing-md);">Speak with our team</p>
+            <a href="tel:+911234567890" style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-sm);">+91 (123) 456-7890</a>
+            <a href="tel:+919876543210" style="font-weight: var(--font-weight-semibold); display: block;">+91 (987) 654-3210</a>
+          </div>
+        </div>
+
+        <!-- Office Hours -->
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">🕐 Office Hours</h4>
+            <p style="margin-bottom: var(--spacing-sm);"><strong>Monday - Friday</strong><br>9:00 AM - 6:00 PM IST</p>
+            <p style="margin-bottom: 0;"><strong>Saturday</strong><br>9:00 AM - 2:00 PM IST</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       OFFICE LOCATIONS
+       ================================================================ -->
+  <section class="section section-light" id="office-locations">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Locations</h2>
+      </div>
+      <div class="grid grid-2">
+        <!-- Mumbai Headquarters -->
+        <div class="card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Mumbai Headquarters</h4>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Address:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">Marine Engineering & Shipbuilding Ltd.<br>
+                Plot No. 45, Industrial Estate<br>
+                Thane, Mumbai 400603<br>
+                Maharashtra, India</p>
+            </div>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Contact:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">
+                <strong>Phone:</strong> <a href="tel:+912234567890">+91 (223) 456-7890</a><br>
+                <strong>Fax:</strong> +91 (223) 456-7891
+              </p>
+            </div>
+            <p style="font-size: var(--font-size-sm); color: var(--text-light); margin-bottom: 0;">Headquarters • Shipyard • Main Office</p>
+          </div>
+        </div>
+
+        <!-- Kolkata Facility -->
+        <div class="card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Kolkata Facility</h4>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Address:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">Marine Engineering & Shipbuilding Ltd.<br>
+                Block A, Howrah Industrial Complex<br>
+                Howrah 711104<br>
+                West Bengal, India</p>
+            </div>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Contact:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">
+                <strong>Phone:</strong> <a href="tel:+913334567890">+91 (333) 456-7890</a><br>
+                <strong>Fax:</strong> +91 (333) 456-7891
+              </p>
+            </div>
+            <p style="font-size: var(--font-size-sm); color: var(--text-light); margin-bottom: 0;">Ship Repair Division • Regional Office</p>
+          </div>
+        </div>
+
+        <!-- Cochin Division -->
+        <div class="card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Cochin Division</h4>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Address:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">Marine Engineering & Shipbuilding Ltd.<br>
+                Port Trust Zone, Willingdon Island<br>
+                Cochin 682003<br>
+                Kerala, India</p>
+            </div>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Contact:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">
+                <strong>Phone:</strong> <a href="tel:+914844567890">+91 (484) 456-7890</a><br>
+                <strong>Fax:</strong> +91 (484) 456-7891
+              </p>
+            </div>
+            <p style="font-size: var(--font-size-sm); color: var(--text-light); margin-bottom: 0;">Ship Building • Regional Office</p>
+          </div>
+        </div>
+
+        <!-- Delhi Office -->
+        <div class="card">
+          <div class="card-content">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Delhi Office</h4>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Address:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">Marine Engineering & Shipbuilding Ltd.<br>
+                Business Park, Building 7, Level 4<br>
+                New Delhi 110016<br>
+                Delhi, India</p>
+            </div>
+            <div style="margin-bottom: var(--spacing-lg);">
+              <p style="margin-bottom: var(--spacing-sm); color: var(--primary-ocean-blue); font-weight: var(--font-weight-semibold);">Contact:</p>
+              <p style="margin-bottom: 0; color: var(--text-light);">
+                <strong>Phone:</strong> <a href="tel:+911134567890">+91 (11) 3456-7890</a><br>
+                <strong>Fax:</strong> +91 (11) 3456-7891
+              </p>
+            </div>
+            <p style="font-size: var(--font-size-sm); color: var(--text-light); margin-bottom: 0;">Corporate Sales • Regional Office</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       EMBEDDED MAP
+       ================================================================ -->
+  <section class="section" id="map-section">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">Find Us On Map</h2>
+      <div style="width: 100%; height: 500px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg);">
+        <iframe width="100%" height="100%" frameborder="0" style="border:0;" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.7449029629587!2d72.97833!3d19.27612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8c8c8c8c8c9%3A0x9c9c9c9c9c9c9c9c!2sThane%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000" 
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       INQUIRY CONTACT FORM
+       ================================================================ -->
+  <section class="section section-light" id="contact-form">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-title">
+        <h2>Send Us a Message</h2>
+      </div>
+      
+      <div class="grid grid-2" style="gap: var(--spacing-3xl);">
+        <div>
+          <h3 style="margin-bottom: var(--spacing-lg);">How Can We Help?</h3>
+          <p style="margin-bottom: var(--spacing-lg);">
+            Have questions about our services? Need a quote? Want to discuss a project? 
+            Fill out the form and our team will get back to you promptly.
+          </p>
+          <div style="margin-bottom: var(--spacing-lg);">
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-md);">Quick Response</h4>
+            <p style="margin-bottom: var(--spacing-sm); color: var(--text-light);">
+              We aim to respond to all inquiries within 24 business hours.
+            </p>
+          </div>
+          <div style="margin-bottom: var(--spacing-lg);">
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-md);">Expert Team</h4>
+            <p style="margin-bottom: var(--spacing-sm); color: var(--text-light);">
+              Our experienced team is ready to assist with any marine engineering questions.
+            </p>
+          </div>
+          <div>
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-md);">24/7 Support</h4>
+            <p style="margin-bottom: 0; color: var(--text-light);">
+              Emergency support available for critical issues and urgent requirements.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <form action="/api/submit-inquiry" method="POST">
+            <!-- Name -->
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="name" class="form-input" placeholder="John Smith" required>
+            </div>
+
+            <!-- Email & Phone -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" name="email" class="form-input" placeholder="john@company.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone *</label>
+                <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+            </div>
+
+            <!-- Company -->
+            <div class="form-group">
+              <label class="form-label">Company Name</label>
+              <input type="text" name="company" class="form-input" placeholder="Your company">
+            </div>
+
+            <!-- Inquiry Type -->
+            <div class="form-group">
+              <label class="form-label">Inquiry Type *</label>
+              <select name="inquiryType" class="form-select" required>
+                <option value="">Select inquiry type</option>
+                <option value="general">General Inquiry</option>
+                <option value="project">Project Discussion</option>
+                <option value="quote">Request a Quote</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="complaint">Customer Complaint</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label class="form-label">Message *</label>
+              <textarea name="message" class="form-textarea" placeholder="Please describe your inquiry..." required></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-large btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       DEPARTMENTS
+       ================================================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Department Directory</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Sales & Quotes</h4>
+            <p style="margin-bottom: var(--spacing-md); color: var(--text-light); font-size: var(--font-size-sm);">
+              Get quotes and pricing information
+            </p>
+            <a href="mailto:sales@marineengineering.com" style="font-weight: var(--font-weight-semibold); color: var(--primary-ocean-blue);">sales@marineengineering.com</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Technical Support</h4>
+            <p style="margin-bottom: var(--spacing-md); color: var(--text-light); font-size: var(--font-size-sm);">
+              Technical questions and support
+            </p>
+            <a href="mailto:support@marineengineering.com" style="font-weight: var(--font-weight-semibold); color: var(--primary-ocean-blue);">support@marineengineering.com</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Careers & HR</h4>
+            <p style="margin-bottom: var(--spacing-md); color: var(--text-light); font-size: var(--font-size-sm);">
+              Job inquiries and applications
+            </p>
+            <a href="mailto:careers@marineengineering.com" style="font-weight: var(--font-weight-semibold); color: var(--primary-ocean-blue);">careers@marineengineering.com</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content text-center">
+            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Partnerships</h4>
+            <p style="margin-bottom: var(--spacing-md); color: var(--text-light); font-size: var(--font-size-sm);">
+              Partnership and vendor inquiries
+            </p>
+            <a href="mailto:partnerships@marineengineering.com" style="font-weight: var(--font-weight-semibold); color: var(--primary-ocean-blue);">partnerships@marineengineering.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CALL TO ACTION
+       ================================================================ -->
+  <section class="section section-dark">
+    <div class="container text-center">
+      <h2>Let's Get Started</h2>
+      <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); color: var(--neutral-light-grey);">
+        Choose your preferred method of contact and reach out today
+      </p>
+      <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+        <a href="mailto:info@marineengineering.com" class="btn btn-secondary">Send Email</a>
+        <a href="tel:+911234567890" class="btn btn-secondary">Call Us</a>
+        <a href="#contact-form" class="btn btn-secondary">Message Form</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer footer-compact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Marine Engineering</h4>
+        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Twitter">𝕏</a>
+          <a href="#" title="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#">Ship Design</a>
+        <a href="#">Vessel Construction</a>
+        <a href="#">Ship Repair</a>
+        <a href="#">Modernization</a>
+        <a href="#">Offshore Solutions</a>
+        <a href="#">Consulting</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Info</h4>
+        <p><strong>Email:</strong><br>
+        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
+        <p><strong>Phone:</strong><br>
+        <a href="tel:+911234567890">+91 123 456 7890</a></p>
+        <p><strong>Headquarters:</strong><br>
+        Mumbai, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+
+
+
+

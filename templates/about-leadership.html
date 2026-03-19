@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marine Engineering leadership team.">
+  <title>Leadership Team - Marine Engineering & Shipbuilding</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260317-about-dropdown-1">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="nav-dropdown">
+          <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
+          </ul>
+        </li>
+                <li class="nav-dropdown">
+          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
+            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('partners') }}">Partners</a></li>
+        <li><a href="{{ url_for('careers') }}">Careers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero page-hero">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1>Leadership Team</h1>
+      <p>Experienced leaders shaping marine innovation and reliable delivery.</p>
+    </div>
+  </section>
+
+  <section class="section breadcrumb-section">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="{{ url_for('home') }}">Home</a>
+        <span class="separator">/</span>
+        <a href="{{ url_for('about') }}">About Us</a>
+        <span class="separator">/</span>
+        <span>Leadership Team</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3 team-grid">
+        <div class="card feature-card team-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Captain Rajesh Kumar" class="leader-card-image">
+          <div class="card-content text-center">
+            <h4>Captain Rajesh Kumar</h4>
+            <div class="designation">Chief Executive Officer</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">30+ years of experience in maritime industry. Visionary leader driving company growth and innovation in shipbuilding sector.</p>
+          </div>
+        </div>
+        <div class="card feature-card team-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Dr. Priya Sharma" class="leader-card-image">
+          <div class="card-content text-center">
+            <h4>Dr. Priya Sharma</h4>
+            <div class="designation">Chief Operating Officer</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">PhD in Naval Architecture. Expert in operational excellence and process optimization.</p>
+          </div>
+        </div>
+        <div class="card feature-card team-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Vikram Desai" class="leader-card-image">
+          <div class="card-content text-center">
+            <h4>Vikram Desai</h4>
+            <div class="designation">Chief Technology Officer</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">25+ years in marine engineering design. Pioneer of sustainable shipping technologies.</p>
+          </div>
+        </div>
+        <div class="card feature-card team-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Anjali Patel" class="leader-card-image">
+          <div class="card-content text-center">
+            <h4>Anjali Patel</h4>
+            <div class="designation">Chief Financial Officer</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">20+ years of financial management. Expertise in international maritime finance.</p>
+          </div>
+        </div>
+        <div class="card feature-card team-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Arun Menon" class="leader-card-image">
+          <div class="card-content text-center">
+            <h4>Arun Menon</h4>
+            <div class="designation">VP Engineering &amp; Design</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">18+ years specializing in advanced vessel design and 3D modeling technologies.</p>
+          </div>
+        </div>
+        <div class="card feature-card team-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Meera Singh" class="leader-card-image">
+          <div class="card-content text-center">
+            <h4>Meera Singh</h4>
+            <div class="designation">VP Operations &amp; Safety</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">22+ years in shipyard operations. Champion of safety-first culture and quality management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+
+
+
