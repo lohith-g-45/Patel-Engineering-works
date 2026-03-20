@@ -12,11 +12,14 @@ from models import db, AdminUser, Article, ContentHistory
 
 def create_app() -> Flask:
     app = Flask(__name__)
+
+    database_url = os.getenv("DATABASE_URL", "sqlite:///pew_vizag.db")
+    # Render/Heroku-style URLs can be "postgres://"; SQLAlchemy expects "postgresql://".
+    if database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
     
     # Configuration
-    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
-        "DATABASE_URL", "sqlite:///pew_vizag.db"
-    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "dev-secret-key-change-in-production")
     app.config["JWT_ALGORITHM"] = "HS256"
@@ -418,4 +421,8 @@ app = create_app()
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", "5000")),
+        debug=os.getenv("FLASK_DEBUG", "false").lower() == "true",
+    )

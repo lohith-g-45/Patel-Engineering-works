@@ -117,3 +117,34 @@ Usually means interpreter mismatch. In VS Code, select the interpreter from `.ve
 - App routes verified
 - Template/static links normalized
 - Project structure standardized and documented in `structure.md`
+
+## Render Deployment
+
+This project now includes a Render blueprint at `render.yaml`.
+
+### What Gets Provisioned
+
+- One Python web service (Gunicorn)
+- One managed PostgreSQL database
+- One persistent disk mounted at `/opt/render/project/src/static/uploads`
+
+### Deploy Steps
+
+1. Push this repository to GitHub.
+2. In Render, choose **New +** -> **Blueprint**.
+3. Select the repository and deploy.
+4. Render will read `render.yaml` and create the web service + database.
+
+### Environment Variables
+
+The blueprint configures these automatically:
+
+- `DATABASE_URL` (from Render Postgres)
+- `JWT_SECRET_KEY` (generated value)
+- `PYTHON_VERSION` (3.11.11)
+
+### Notes
+
+- The app normalizes `postgres://` to `postgresql://` automatically in `app.py`.
+- Uploaded media files are stored under `static/uploads` and persist on Render via the attached disk.
+- For larger scale and CDN delivery, migrate media storage from local disk to object storage (S3/R2/Cloudinary).

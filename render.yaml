@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: patel-engineering-works
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120
+    disk:
+      name: media-uploads
+      mountPath: /opt/render/project/src/static/uploads
+      sizeGB: 5
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: patel-engineering-works-db
+          property: connectionString
+
+databases:
+  - name: patel-engineering-works-db
+    plan: starter
