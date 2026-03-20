@@ -59,13 +59,18 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge">PEW Vizag &mdash; Marine Engineering</div>
-      <h1>Engineering the Future of Maritime Excellence</h1>
-      <p>Pioneering marine engineering and shipbuilding solutions for over two decades</p>
+      <div class="hero-badge">PEW Vizag</div>
+      <h1>Engineering Excellence at Sea</h1>
+      <p>Patel Engineering Works (Vizag) is a trusted partner to India's leading naval and commercial shipyards, delivering integrated solutions with quality, speed, and class compliance.</p>
       <div class="hero-buttons">
-        <a href="{{ url_for('about') }}" class="btn btn-primary btn-large">Learn More</a>
-        <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-large">Get In Touch</a>
+        <a href="{{ url_for('about') }}" class="btn btn-primary btn-large">Know more</a>
+        <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-large">Contact us</a>
       </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
+      </svg>
     </div>
     <div class="hero-scroll-indicator">
       <div class="scroll-arrow-bounce">
@@ -82,14 +87,16 @@
   <section class="section" id="about-us">
     <div class="container">
       <div class="about-shell">
-        <div class="section-title">
+        <div class="section-title align-left">
           <span class="section-kicker">Who We Are</span>
           <h2>About PEW Vizag</h2>
           <p class="section-subtitle">A legacy of maritime excellence built over two decades of dedicated service</p>
         </div>
         <div class="grid grid-2 about-grid">
           <article class="about-mission about-panel">
-            <span class="about-icon">&#9875;</span>
+            <span class="icon-badge about-icon">
+              <img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt="">
+            </span>
             <h3>Our Mission</h3>
             <p>We are committed to delivering world-class marine engineering and shipbuilding solutions that exceed industry standards. Our expertise spans vessel design, construction, repair, and modernization for commercial and naval clients globally.</p>
             <p>With state-of-the-art facilities and a team of experienced engineers, we transform maritime vision into reality &mdash; crafting vessels that stand the test of time on every ocean.</p>
@@ -100,35 +107,35 @@
             <p class="about-panel-note">Proven capabilities trusted by commercial and naval clients.</p>
             <ul class="about-list">
               <li class="about-list-item">
-                <span class="about-list-icon">&#127942;</span>
+                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/shield-checkered.svg') }}" alt=""></span>
                 <div>
                   <strong>Expertise</strong>
                   <p>20+ years in marine engineering and shipbuilding</p>
                 </div>
               </li>
               <li class="about-list-item">
-                <span class="about-list-icon">&#9881;&#65039;</span>
+                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></span>
                 <div>
                   <strong>Innovation</strong>
                   <p>Advanced technologies and sustainable solutions</p>
                 </div>
               </li>
               <li class="about-list-item">
-                <span class="about-list-icon">&#10003;</span>
+                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/briefcase.svg') }}" alt=""></span>
                 <div>
                   <strong>Quality</strong>
                   <p>ISO certified processes and international standards</p>
                 </div>
               </li>
               <li class="about-list-item">
-                <span class="about-list-icon">&#128674;</span>
+                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/user.svg') }}" alt=""></span>
                 <div>
                   <strong>Reliability</strong>
                   <p>On-time delivery and industry-leading customer satisfaction</p>
                 </div>
               </li>
               <li class="about-list-item">
-                <span class="about-list-icon">&#127807;</span>
+                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/collaboration.svg') }}" alt=""></span>
                 <div>
                   <strong>Sustainability</strong>
                   <p>Eco-friendly practices and green marine technologies</p>

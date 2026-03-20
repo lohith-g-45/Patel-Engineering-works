@@ -51,11 +51,16 @@
   <!-- ================================================================
        PAGE HEADER
        ================================================================ -->
-  <section class="hero" style="min-height: 400px;">
-    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(10, 31, 68, 0.78) 0%, rgba(176, 28, 46, 0.55) 100%); z-index: 1;"></div>
-    <div class="hero-content">
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/a1327f7924044f44a6fa1d1613df7a63.png') }}');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
       <h1>Contact Us</h1>
       <p>Get in Touch With Our Team</p>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
+      </svg>
     </div>
   </section>
 
@@ -84,7 +89,8 @@
         <!-- Email -->
         <div class="card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">📧 Email</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/mail-opened.svg') }}" alt=""></div>
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-md);">Email</h4>
             <p style="margin-bottom: var(--spacing-md);">Send us your inquiries</p>
             <a href="mailto:info@marineengineering.com" style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-sm);">info@marineengineering.com</a>
             <a href="mailto:projects@marineengineering.com" style="font-weight: var(--font-weight-semibold); display: block;">projects@marineengineering.com</a>
@@ -94,7 +100,8 @@
         <!-- Phone -->
         <div class="card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">📞 Phone</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/phone.svg') }}" alt=""></div>
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-md);">Phone</h4>
             <p style="margin-bottom: var(--spacing-md);">Speak with our team</p>
             <a href="tel:+911234567890" style="font-weight: var(--font-weight-semibold); display: block; margin-bottom: var(--spacing-sm);">+91 (123) 456-7890</a>
             <a href="tel:+919876543210" style="font-weight: var(--font-weight-semibold); display: block;">+91 (987) 654-3210</a>
@@ -104,7 +111,8 @@
         <!-- Office Hours -->
         <div class="card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-lg);">🕐 Office Hours</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt=""></div>
+            <h4 style="color: var(--primary-ocean-blue); margin-bottom: var(--spacing-md);">Office Hours</h4>
             <p style="margin-bottom: var(--spacing-sm);"><strong>Monday - Friday</strong><br>9:00 AM - 6:00 PM IST</p>
             <p style="margin-bottom: 0;"><strong>Saturday</strong><br>9:00 AM - 2:00 PM IST</p>
           </div>

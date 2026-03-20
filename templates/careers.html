@@ -51,11 +51,16 @@
   <!-- ================================================================
        PAGE HEADER
        ================================================================ -->
-  <section class="hero page-hero">
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1>Join Our Team</h1>
       <p>Build Your Career in Marine Engineering</p>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
+      </svg>
     </div>
   </section>
 
@@ -83,28 +88,28 @@
       <div class="grid grid-4 info-grid">
         <div class="card feature-card career-highlight-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">💡</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></div>
             <h4>Innovation & Growth</h4>
             <p>Work on cutting-edge maritime projects and develop your skills with industry leaders</p>
           </div>
         </div>
         <div class="card feature-card career-highlight-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">💰</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/briefcase.svg') }}" alt=""></div>
             <h4>Competitive Benefits</h4>
             <p>Excellent compensation packages with health insurance and retirement benefits</p>
           </div>
         </div>
         <div class="card feature-card career-highlight-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🤝</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/collaboration.svg') }}" alt=""></div>
             <h4>Team Culture</h4>
             <p>Diverse, collaborative environment fostering creativity and professional development</p>
           </div>
         </div>
         <div class="card feature-card career-highlight-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🌍</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt=""></div>
             <h4>Global Impact</h4>
             <p>Make a difference in global maritime industry and sustainable shipping solutions</p>
           </div>

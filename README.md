@@ -7,6 +7,12 @@ Flask-based marine engineering website with:
 Note: The project is currently in temporary static mode.
 Admin and media CMS/database features have been intentionally removed and will be rebuilt later.
 
+## UI Refresh (2026)
+
+- Unified design language across all pages (nav, hero, cards, CTAs).
+- Shared hero banner uses a wave motif and supports per-page background imagery via CSS variable `--hero-image`.
+- Icons and badges pull from `static/icons/` and shared image assets in `static/images/` and `static/uploads/`.
+
 ## Project Structure
 
 - `app.py`: Flask app entry point and routes

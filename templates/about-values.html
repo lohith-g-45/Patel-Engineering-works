@@ -45,11 +45,16 @@
     </div>
   </nav>
 
-  <section class="hero page-hero">
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1>Our Core Values</h1>
       <p>The principles that guide every project, partnership, and decision.</p>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
+      </svg>
     </div>
   </section>
 
@@ -70,28 +75,28 @@
       <div class="grid grid-4 info-grid">
         <div class="card feature-card value-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">⚓</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt=""></div>
             <h4>Excellence</h4>
             <p>We pursue excellence in every aspect of our work, from design to delivery.</p>
           </div>
         </div>
         <div class="card feature-card value-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🔬</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></div>
             <h4>Innovation</h4>
             <p>Continuous innovation drives us to develop practical, cutting-edge solutions.</p>
           </div>
         </div>
         <div class="card feature-card value-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🤝</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/collaboration.svg') }}" alt=""></div>
             <h4>Integrity</h4>
             <p>Honesty and transparency shape all business relationships and commitments.</p>
           </div>
         </div>
         <div class="card feature-card value-card">
           <div class="card-content text-center">
-            <h4 style="color: var(--primary-ocean-blue); font-size: 2.5rem; margin-bottom: var(--spacing-md);">🌍</h4>
+            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/shield-checkered.svg') }}" alt=""></div>
             <h4>Sustainability</h4>
             <p>Environmental responsibility and sustainable practices guide our operations.</p>
           </div>

@@ -12,23 +12,89 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(180deg, rgba(9, 28, 66, 0.66) 0%, rgba(22, 61, 112, 0.62) 55%, rgba(11, 24, 52, 0.78) 100%),
+        url("{{ url_for('static', filename='assets/wave.jpg') }}") center bottom / cover no-repeat;
+    }
+
+    .admin-login-container::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 120px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(9, 28, 66, 0.5) 100%),
+        url("{{ url_for('static', filename='assets/wave.jpg') }}") center bottom / cover no-repeat;
+      opacity: 0.5;
+      pointer-events: none;
     }
     
     .login-card {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2.75rem 2.5rem 2.5rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 30px 70px rgba(5, 14, 34, 0.4);
+      backdrop-filter: blur(18px);
       width: 100%;
       max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    .login-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .login-logo {
+      display: block;
+      width: 150px;
+      margin: 0 auto 1rem;
+    }
+
+    .login-brand img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .login-brand .brand-mark {
+      width: 34px;
+      height: 34px;
     }
     
     .login-card h1 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.35rem;
       color: #333;
-      font-size: 1.8rem;
+      font-size: 1.75rem;
+    }
+
+    .login-company {
+      text-align: center;
+      font-weight: 600;
+      color: rgba(22, 38, 69, 0.85);
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.75rem;
+    }
+
+    .login-subtitle {
+      text-align: center;
+      color: rgba(22, 38, 69, 0.7);
+      font-size: 0.95rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .login-footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(22, 38, 69, 0.6);
     }
     
     .form-group {
@@ -45,25 +111,59 @@
     .form-group input {
       width: 100%;
       padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      border: 1px solid rgba(22, 38, 69, 0.16);
+      border-radius: 10px;
       font-size: 1rem;
       transition: border-color 0.3s;
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .password-field {
+      position: relative;
+    }
+
+    .password-field input {
+      padding-right: 4.5rem;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      color: #2a5bd7;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0.25rem 0.4rem;
+    }
+
+    .toggle-password img {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .toggle-password:focus-visible {
+      outline: 2px solid rgba(42, 91, 215, 0.35);
+      border-radius: 6px;
     }
     
     .form-group input:focus {
       outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      border-color: #1f4bb8;
+      box-shadow: 0 0 0 3px rgba(31, 75, 184, 0.12);
     }
     
     .btn-login {
       width: 100%;
       padding: 0.75rem;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #2a5bd7 0%, #6aa2ff 100%);
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 999px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
@@ -72,7 +172,7 @@
     
     .btn-login:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 12px 28px rgba(42, 91, 215, 0.35);
     }
     
     .btn-login:active {
@@ -101,7 +201,7 @@
     }
     
     .back-link a {
-      color: #667eea;
+      color: #2a5bd7;
       text-decoration: none;
       font-size: 0.875rem;
     }
@@ -137,12 +237,23 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
+    @media (max-width: 520px) {
+      .login-card {
+        margin: 0 1rem;
+        padding: 2.2rem 1.8rem 2rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="admin-login-container">
     <div class="login-card">
+      <img class="login-logo" src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="Patel Engineering Works logo">
+      <div class="login-brand">
+        <img class="brand-mark" src="{{ url_for('static', filename='assets/compass.svg') }}" alt="">
+      </div>
       <h1>Admin Login</h1>
+      <div class="login-company">Patel Engineering Works</div>
       <form id="loginForm">
         <div class="form-group">
           <label for="username">Username</label>
@@ -158,14 +269,19 @@
         
         <div class="form-group">
           <label for="password">Password</label>
-          <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            required 
-            placeholder="Enter your password"
-            autocomplete="current-password"
-          >
+          <div class="password-field">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              required 
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            >
+            <button type="button" class="toggle-password" id="togglePassword" aria-pressed="false" aria-label="Show password">
+              <img src="{{ url_for('static', filename='icons/eye-dotted.svg') }}" alt="">
+            </button>
+          </div>
           <div class="error-message" id="errorMessage"></div>
         </div>
         
@@ -178,6 +294,7 @@
       <div class="back-link">
         <a href="{{ url_for('home') }}">← Back to Website</a>
       </div>
+      <div class="login-footer">© 2026 Patel Engineering Works</div>
     </div>
   </div>
 
@@ -185,6 +302,24 @@
     const form = document.getElementById('loginForm');
     const errorMessage = document.getElementById('errorMessage');
     const submitBtn = document.getElementById('submitBtn');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    if (togglePassword && passwordInput) {
+      const toggleIcon = togglePassword.querySelector('img');
+      const iconShow = "{{ url_for('static', filename='icons/eye-dotted.svg') }}";
+      const iconHide = "{{ url_for('static', filename='icons/eye-closed.svg') }}";
+
+      togglePassword.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        togglePassword.setAttribute('aria-pressed', String(isPassword));
+        togglePassword.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+        if (toggleIcon) {
+          toggleIcon.src = isPassword ? iconHide : iconShow;
+        }
+      });
+    }
     
     form.addEventListener('submit', async (e) => {
       e.preventDefault();

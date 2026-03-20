@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -24,8 +25,20 @@ class Article(db.Model):
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(300), nullable=True)
+    image_urls = db.Column(db.Text, nullable=True)
     category = db.Column(db.String(20), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def get_image_urls(self) -> list[str]:
+        if not self.image_urls:
+            return []
+        try:
+            parsed = json.loads(self.image_urls)
+        except json.JSONDecodeError:
+            return []
+        if isinstance(parsed, list):
+            return [value for value in parsed if isinstance(value, str)]
+        return []
 
     def to_dict(self) -> dict:
         return {
@@ -33,6 +46,7 @@ class Article(db.Model):
             "title": self.title,
             "content": self.content,
             "image_url": self.image_url,
+            "image_urls": self.get_image_urls(),
             "category": self.category,
             "created_at": self.created_at.isoformat(),
         }
@@ -69,6 +83,7 @@ class ContentHistory(db.Model):
     action = db.Column(db.String(30), nullable=False)
     entity_type = db.Column(db.String(30), nullable=False)
     entity_id = db.Column(db.Integer, nullable=True)
+    category = db.Column(db.String(30), nullable=True)
     details = db.Column(db.String(500), nullable=False)
     admin_username = db.Column(db.String(80), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -79,6 +94,7 @@ class ContentHistory(db.Model):
             "action": self.action,
             "entity_type": self.entity_type,
             "entity_id": self.entity_id,
+            "category": self.category,
             "details": self.details,
             "admin_username": self.admin_username,
             "created_at": self.created_at.isoformat(),

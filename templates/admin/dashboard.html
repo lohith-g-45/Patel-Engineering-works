@@ -7,26 +7,45 @@
   <title>Admin Dashboard - PEW Vizag</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260319-admin-dashboard">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  </style>
+  <style>
     body {
-      background: #f5f7fa;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.96) 0%, rgba(243, 246, 251, 0.96) 45%, rgba(231, 238, 249, 0.9) 100%);
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     .admin-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 1.5rem 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.82);
+      color: #16213b;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(23, 43, 82, 0.12);
+      box-shadow: 0 12px 30px rgba(12, 26, 61, 0.1);
+      backdrop-filter: blur(16px);
     }
 
     .admin-header .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1.5rem;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .admin-brand img {
+      width: 140px;
     }
 
     .admin-title {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #16213b;
     }
 
     .admin-user-info {
@@ -35,20 +54,57 @@
       gap: 1rem;
     }
 
+    .admin-user {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 600;
+      color: #1c2a4a;
+    }
+
+    .admin-user img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .dashboard-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6a7a98;
+      margin-bottom: 1.25rem;
+    }
+
+    .dashboard-kicker img {
+      width: 18px;
+      height: 18px;
+    }
+
     .btn-logout {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(42, 91, 215, 0.1);
+      color: #2a5bd7;
+      border: 1px solid rgba(42, 91, 215, 0.25);
       padding: 0.5rem 1rem;
-      border-radius: 4px;
+      border-radius: 999px;
       cursor: pointer;
       font-size: 0.875rem;
       font-weight: 500;
       transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-logout img {
+      width: 16px;
+      height: 16px;
     }
 
     .btn-logout:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(42, 91, 215, 0.2);
     }
 
     .dashboard-container {
@@ -63,15 +119,45 @@
     }
 
     .stat-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.6rem;
+      border-radius: 16px;
+      border: 1px solid rgba(23, 43, 82, 0.12);
+      box-shadow: 0 14px 30px rgba(12, 26, 61, 0.12);
+      backdrop-filter: blur(12px);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(42, 91, 215, 0.12), rgba(42, 91, 215, 0));
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 0.75rem;
+      border-radius: 12px;
+      background: rgba(42, 91, 215, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-icon img {
+      width: 20px;
+      height: 20px;
     }
 
     .stat-card h3 {
-      color: #999;
+      color: #6a7a98;
       font-size: 0.875rem;
       font-weight: 500;
       margin: 0 0 0.5rem 0;
@@ -82,7 +168,7 @@
     .stat-card .number {
       font-size: 2.5rem;
       font-weight: bold;
-      color: #667eea;
+      color: #2a5bd7;
       margin: 0;
     }
 
@@ -94,11 +180,11 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #2a5bd7 0%, #6aa2ff 100%);
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
-      border-radius: 4px;
+      border-radius: 999px;
       cursor: pointer;
       font-weight: 500;
       transition: all 0.3s;
@@ -106,22 +192,22 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 12px 28px rgba(42, 91, 215, 0.35);
     }
 
     .btn-secondary {
-      background: #f0f0f0;
-      color: #333;
-      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      color: #1c2a4a;
+      border: 1px solid rgba(23, 43, 82, 0.12);
       padding: 0.75rem 1.5rem;
-      border-radius: 4px;
+      border-radius: 999px;
       cursor: pointer;
       font-weight: 500;
       transition: all 0.3s;
     }
 
     .btn-secondary:hover {
-      background: #ddd;
+      background: rgba(42, 91, 215, 0.08);
     }
 
     .section-title {
@@ -132,10 +218,50 @@
     }
 
     .history-section {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(23, 43, 82, 0.12);
+      box-shadow: 0 14px 30px rgba(12, 26, 61, 0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .history-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .history-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-clear {
+      background: rgba(225, 86, 90, 0.12);
+      color: #c8484c;
+      border: 1px solid rgba(225, 86, 90, 0.35);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.3s;
+    }
+
+    .btn-clear img {
+      width: 14px;
+      height: 14px;
+    }
+
+    .btn-clear:hover {
+      background: rgba(225, 86, 90, 0.2);
     }
 
     .history-table {
@@ -145,21 +271,21 @@
     }
 
     .history-table thead {
-      background: #f9f9f9;
+      background: rgba(42, 91, 215, 0.06);
     }
 
     .history-table th {
       padding: 1rem;
       text-align: left;
       font-weight: 600;
-      color: #555;
-      border-bottom: 2px solid #eee;
+      color: #41506d;
+      border-bottom: 1px solid rgba(23, 43, 82, 0.12);
     }
 
     .history-table td {
       padding: 1rem;
-      border-bottom: 1px solid #eee;
-      color: #666;
+      border-bottom: 1px solid rgba(23, 43, 82, 0.08);
+      color: #51607d;
     }
 
     .action-badge {
@@ -189,7 +315,7 @@
     .empty-state {
       text-align: center;
       padding: 2rem;
-      color: #999;
+      color: #8090ab;
     }
 
     .empty-state p {
@@ -201,6 +327,10 @@
       .admin-header .container {
         flex-direction: column;
         gap: 1rem;
+      }
+
+      .admin-brand {
+        flex-direction: column;
       }
 
       .btn-group {
@@ -224,26 +354,48 @@
 <body>
   <div class="admin-header">
     <div class="container">
-      <h1 class="admin-title">📊 Admin Dashboard</h1>
+      <div class="admin-brand">
+        <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="Patel Engineering Works logo">
+        <h1 class="admin-title">Admin Dashboard</h1>
+      </div>
       <div class="admin-user-info">
-        <span id="adminUsername">Admin</span>
-        <button class="btn-logout" id="logoutBtn">Logout</button>
+        <span class="admin-user">
+          <img src="{{ url_for('static', filename='icons/user.svg') }}" alt="">
+          <span id="adminUsername"></span>
+        </span>
+        <button class="btn-logout" id="logoutBtn">
+          <img src="{{ url_for('static', filename='icons/logout-2.svg') }}" alt="">
+          Logout
+        </button>
       </div>
     </div>
   </div>
 
   <section class="dashboard-container">
     <div class="container">
+      <div class="dashboard-kicker">
+        <img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt="">
+        Dashboard Overview
+      </div>
       <div class="dashboard-grid">
         <div class="stat-card">
+          <div class="stat-icon">
+            <img src="{{ url_for('static', filename='icons/edit.svg') }}" alt="">
+          </div>
           <h3>Total Articles</h3>
           <p class="number" id="totalArticles">0</p>
         </div>
         <div class="stat-card">
+          <div class="stat-icon">
+            <img src="{{ url_for('static', filename='icons/upload.svg') }}" alt="">
+          </div>
           <h3>Actions Today</h3>
           <p class="number" id="actionsToday">0</p>
         </div>
         <div class="stat-card">
+          <div class="stat-icon">
+            <img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt="">
+          </div>
           <h3>Total Actions</h3>
           <p class="number" id="totalActions">0</p>
         </div>
@@ -258,13 +410,22 @@
 
   <section class="dashboard-container">
     <div class="container">
-      <h2 class="section-title">Recent Activity</h2>
+      <div class="history-header">
+        <h2 class="section-title">Recent Activity</h2>
+        <div class="history-actions">
+          <button class="btn-clear" id="clearHistoryBtn">
+            <img src="{{ url_for('static', filename='icons/trash-x.svg') }}" alt="">
+            Clear History
+          </button>
+        </div>
+      </div>
       <div class="history-section">
         <table class="history-table">
           <thead>
             <tr>
               <th>Action</th>
               <th>Type</th>
+              <th>Category</th>
               <th>Details</th>
               <th>Admin</th>
               <th>Date</th>
@@ -272,7 +433,7 @@
           </thead>
           <tbody id="historyTableBody">
             <tr>
-              <td colspan="5" class="empty-state">
+              <td colspan="6" class="empty-state">
                 <p>Loading history...</p>
               </td>
             </tr>
@@ -349,7 +510,7 @@
         if (historyData.history.length === 0) {
           tbody.innerHTML = `
             <tr>
-              <td colspan="5" class="empty-state">
+              <td colspan="6" class="empty-state">
                 <p>No activity yet</p>
               </td>
             </tr>
@@ -361,6 +522,7 @@
           <tr>
             <td><span class="action-badge ${h.action.toLowerCase()}">${h.action}</span></td>
             <td>${h.entity_type}</td>
+            <td>${h.category || '-'}</td>
             <td>${h.details}</td>
             <td>${h.admin_username}</td>
             <td>${new Date(h.created_at).toLocaleDateString()} ${new Date(h.created_at).toLocaleTimeString()}</td>
@@ -369,6 +531,35 @@
       } catch (error) {
         console.error('Error loading stats:', error);
       }
+    }
+
+    // Clear history
+    const clearButton = document.getElementById('clearHistoryBtn');
+    if (clearButton) {
+      clearButton.addEventListener('click', async () => {
+        const token = localStorage.getItem('admin_token');
+        if (!token) return;
+
+        const confirmed = window.confirm('Clear all history? This cannot be undone.');
+        if (!confirmed) return;
+
+        try {
+          const response = await fetch('/api/admin/history', {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to clear history');
+          }
+
+          await loadStats();
+        } catch (error) {
+          console.error('Error clearing history:', error);
+        }
+      });
     }
 
     // Initialize

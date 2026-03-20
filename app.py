@@ -1,8 +1,10 @@
 import os
 import uuid
+import json
 from functools import wraps
 from datetime import datetime, timedelta, timezone
 from flask import Flask, redirect, render_template, request, jsonify, current_app
+from sqlalchemy import inspect, text
 import jwt
 from werkzeug.utils import secure_filename
 from models import db, AdminUser, Article, ContentHistory
@@ -28,6 +30,17 @@ def create_app() -> Flask:
     
     with app.app_context():
         db.create_all()
+        inspector = inspect(db.engine)
+        if "article" in inspector.get_table_names():
+            columns = {column["name"] for column in inspector.get_columns("article")}
+            if "image_urls" not in columns:
+                db.session.execute(text("ALTER TABLE article ADD COLUMN image_urls TEXT"))
+                db.session.commit()
+        if "content_history" in inspector.get_table_names():
+            history_columns = {column["name"] for column in inspector.get_columns("content_history")}
+            if "category" not in history_columns:
+                db.session.execute(text("ALTER TABLE content_history ADD COLUMN category VARCHAR(30)"))
+                db.session.commit()
         # Create initial admin if doesn't exist
         if not AdminUser.query.filter_by(username="admin").first():
             admin = AdminUser(username="admin")
@@ -91,6 +104,11 @@ def _save_uploaded_image(image_file, app: Flask) -> str:
     save_path = os.path.join(app.config["UPLOAD_FOLDER"], unique_name)
     image_file.save(save_path)
     return f"/static/uploads/articles/{unique_name}"
+
+
+def _normalize_image_urls(image_urls: list[str]) -> list[str]:
+    normalized = [url.strip() for url in image_urls if isinstance(url, str) and url.strip()]
+    return normalized[:3]
 
 
 def register_routes(app: Flask) -> None:
@@ -218,6 +236,17 @@ def register_routes(app: Flask) -> None:
             "history": [h.to_dict() for h in history]
         }), 200
 
+    @app.delete("/api/admin/history")
+    @token_required
+    def clear_history():
+        """Clear all action history"""
+        deleted_count = ContentHistory.query.delete()
+        db.session.commit()
+        return jsonify({
+            "message": "History cleared",
+            "deleted": deleted_count
+        }), 200
+
     # ==================== ADMIN API ROUTES - ARTICLES ====================
     @app.get("/api/articles")
     def get_articles():
@@ -233,25 +262,41 @@ def register_routes(app: Flask) -> None:
         """Create new article"""
         if request.content_type and request.content_type.startswith("multipart/form-data"):
             data = request.form.to_dict()
+            image_urls = request.form.getlist("image_urls")
         else:
             data = request.get_json()
+            image_urls = data.get("image_urls", []) if data else []
         
         if not data or not all(k in data for k in ["title", "content", "category"]):
             return jsonify({"error": "Missing required fields"}), 400
 
         image_url = data.get("image_url")
-        image_file = request.files.get("image_file")
-        if image_file and image_file.filename:
-            try:
-                image_url = _save_uploaded_image(image_file, app)
-            except ValueError as exc:
-                return jsonify({"error": str(exc)}), 400
+        if image_url:
+            image_urls.append(image_url)
+
+        image_files = request.files.getlist("image_files")
+        if not image_files:
+            image_file = request.files.get("image_file")
+            if image_file and image_file.filename:
+                image_files = [image_file]
+
+        saved_urls = []
+        for image_file in image_files[:3]:
+            if image_file and image_file.filename:
+                try:
+                    saved_urls.append(_save_uploaded_image(image_file, app))
+                except ValueError as exc:
+                    return jsonify({"error": str(exc)}), 400
+
+        combined_urls = _normalize_image_urls([*saved_urls, *image_urls])
+        primary_url = combined_urls[0] if combined_urls else None
         
         article = Article(
             title=data["title"],
             content=data["content"],
             category=data["category"],
-            image_url=image_url
+            image_url=primary_url,
+            image_urls=json.dumps(combined_urls) if combined_urls else None
         )
         db.session.add(article)
         db.session.flush()  # Get the ID before commit
@@ -261,6 +306,7 @@ def register_routes(app: Flask) -> None:
             action="CREATE",
             entity_type="Article",
             entity_id=article.id,
+            category=article.category,
             details=f"Created article: {article.title}",
             admin_username=request.admin_username
         )
@@ -285,8 +331,10 @@ def register_routes(app: Flask) -> None:
         article = Article.query.get_or_404(article_id)
         if request.content_type and request.content_type.startswith("multipart/form-data"):
             data = request.form.to_dict()
+            image_urls = request.form.getlist("image_urls")
         else:
             data = request.get_json()
+            image_urls = data.get("image_urls", []) if data else []
 
         if not data:
             return jsonify({"error": "Missing update payload"}), 400
@@ -297,15 +345,30 @@ def register_routes(app: Flask) -> None:
             article.content = data["content"]
         if "category" in data:
             article.category = data["category"]
-        if "image_url" in data:
-            article.image_url = data["image_url"]
+        image_url = data.get("image_url")
+        if image_url:
+            image_urls.append(image_url)
 
-        image_file = request.files.get("image_file")
-        if image_file and image_file.filename:
-            try:
-                article.image_url = _save_uploaded_image(image_file, app)
-            except ValueError as exc:
-                return jsonify({"error": str(exc)}), 400
+        image_files = request.files.getlist("image_files")
+        if not image_files:
+            image_file = request.files.get("image_file")
+            if image_file and image_file.filename:
+                image_files = [image_file]
+
+        saved_urls = []
+        for image_file in image_files[:3]:
+            if image_file and image_file.filename:
+                try:
+                    saved_urls.append(_save_uploaded_image(image_file, app))
+                except ValueError as exc:
+                    return jsonify({"error": str(exc)}), 400
+
+        normalized_urls = _normalize_image_urls(image_urls)
+        input_provided = bool(saved_urls) or bool(normalized_urls) or bool(image_url)
+        if input_provided:
+            combined_urls = _normalize_image_urls([*saved_urls, *normalized_urls])
+            article.image_url = combined_urls[0] if combined_urls else None
+            article.image_urls = json.dumps(combined_urls) if combined_urls else None
         
         db.session.commit()
         
@@ -314,6 +377,7 @@ def register_routes(app: Flask) -> None:
             action="UPDATE",
             entity_type="Article",
             entity_id=article.id,
+            category=article.category,
             details=f"Updated article: {article.title}",
             admin_username=request.admin_username
         )
@@ -340,6 +404,7 @@ def register_routes(app: Flask) -> None:
             action="DELETE",
             entity_type="Article",
             entity_id=article_id,
+            category=article.category,
             details=f"Deleted article: {title}",
             admin_username=request.admin_username
         )

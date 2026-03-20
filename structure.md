@@ -18,8 +18,21 @@ WEBAPP/
 │   ├── js/
 │   │   └── main.js
 │   ├── images/
+│   │   ├── logo.png
 │   │   ├── media-placeholder.svg
 │   │   └── pew-vizag-logo.svg
+│   ├── icons/
+│   │   ├── anchor.svg
+│   │   ├── briefcase.svg
+│   │   ├── collaboration.svg
+│   │   ├── edit.svg
+│   │   ├── layout-dashboard.svg
+│   │   ├── mail-opened.svg
+│   │   ├── phone.svg
+│   │   ├── shield-checkered.svg
+│   │   ├── trash-x.svg
+│   │   ├── upload.svg
+│   │   └── user.svg
 │   ├── videos/
 │   │   └── media-hero.mp4
 │   └── uploads/
@@ -45,6 +58,7 @@ WEBAPP/
 - `models.py`: Data model definitions retained for future CMS rebuild.
 - `requirements.txt`: Python dependency list for reproducible environments.
 - `static/`: Frontend assets served by Flask.
+- `static/icons/`: Shared UI iconography used across templates.
 - `templates/`: Jinja/HTML views rendered by Flask routes.
 - `instance/`: Runtime app data (typically SQLite DB or environment-specific files).
 - `venv/`: Local virtual environment (not production source code).
@@ -80,3 +94,4 @@ WEBAPP/
   - `main.js`: shared site behaviors
 - Keep routes clean and avoid hardcoded file paths in templates.
 - Prefer `url_for(...)` for all internal links and static references.
+- Hero banners can be customized per page using the `--hero-image` CSS variable on `.page-hero`.
