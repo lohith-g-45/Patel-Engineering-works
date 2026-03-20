@@ -6,6 +6,187 @@
   <meta name="description" content="Media center with featured stories, gallery, and videos.">
   <title>Media - Marine Engineering & Shipbuilding</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260319-media-static-1">
+  <style>
+    /* Admin Controls Styles */
+    .admin-controls {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+
+    .admin-controls.visible {
+      display: flex;
+    }
+
+    .feature-card {
+      position: relative;
+    }
+
+    .feature-card.clickable {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-card.clickable:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .admin-btn {
+      background: white;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .admin-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .admin-btn.edit {
+      color: #667eea;
+    }
+
+    .admin-btn.delete {
+      color: #e74c3c;
+    }
+
+    .admin-link-navbar {
+      display: none;
+    }
+
+    .admin-link-navbar.visible {
+      display: block;
+    }
+
+    .admin-link-navbar a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .admin-links-container {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .admin-links-container .logout-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .admin-links-container .logout-btn:hover {
+      background: #c0392b;
+    }
+
+    /* Modal for delete confirmation */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    .modal.show {
+      display: block;
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .modal-content p {
+      color: #666;
+      margin: 1rem 0;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .modal-actions .confirm {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .modal-actions .confirm:hover {
+      background: #c0392b;
+    }
+
+    .modal-actions .cancel {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .modal-actions .cancel:hover {
+      background: #ddd;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .admin-controls {
+        top: 5px;
+        right: 5px;
+      }
+
+      .admin-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
@@ -49,7 +230,7 @@
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1>News &amp; Media Center</h1>
-      <p>Static showcase page while dynamic media tooling is being rebuilt.</p>
+      <p>Latest news, blogs, and updates from Patel Engineering Works</p>
     </div>
   </section>
 
@@ -69,34 +250,14 @@
         <span class="section-kicker">Featured</span>
         <h2>Latest Stories</h2>
       </div>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <button class="admin-btn-add" id="addArticleBtn" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 4px; cursor: pointer; font-weight: 500; transition: all 0.3s;">
+          + Add New Article
+        </button>
+      </div>
 
-      <div class="grid grid-3">
-        <article class="card feature-card">
-          <img class="card-image" src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Story visual">
-          <div class="card-content">
-            <span class="badge badge-warning">News</span>
-            <h4 class="card-title">Harbor Retrofit Program Completed</h4>
-            <p class="card-text">Our drydock modernization project has successfully increased turnaround efficiency.</p>
-          </div>
-        </article>
-
-        <article class="card feature-card">
-          <img class="card-image" src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Story visual">
-          <div class="card-content">
-            <span class="badge badge-success">Blog</span>
-            <h4 class="card-title">Inside Marine Systems Integration</h4>
-            <p class="card-text">A closer look at multidisciplinary coordination in modern vessel engineering.</p>
-          </div>
-        </article>
-
-        <article class="card feature-card">
-          <img class="card-image" src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Story visual">
-          <div class="card-content">
-            <span class="badge badge-warning">News</span>
-            <h4 class="card-title">Safety Excellence Recognition 2026</h4>
-            <p class="card-text">The operations team received a regional award for zero-incident performance.</p>
-          </div>
-        </article>
+      <div class="grid grid-3" id="articlesContainer">
+        <!-- Articles will be loaded here -->
       </div>
     </div>
   </section>
@@ -158,6 +319,163 @@
     </div>
   </footer>
 
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" id="deleteModal">
+    <div class="modal-content">
+      <h3>Delete Article</h3>
+      <p>Are you sure you want to delete this article? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="confirm" id="confirmDeleteBtn">Delete</button>
+        <button class="cancel" onclick="document.getElementById('deleteModal').classList.remove('show')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    let isAdmin = false;
+    let deleteArticleId = null;
+
+    // Check if user is admin
+    function checkAdminStatus() {
+      const token = localStorage.getItem('admin_token');
+      isAdmin = !!token;
+      
+      if (isAdmin) {
+        const navMenu = document.querySelector('.navbar-menu');
+        
+        // Inject Admin link
+        const adminLi = document.createElement('li');
+        adminLi.innerHTML = '<a href="/admin/dashboard">🔐 Admin</a>';
+        navMenu.appendChild(adminLi);
+        
+        // Inject Logout button
+        const logoutLi = document.createElement('li');
+        logoutLi.id = 'logoutContainer';
+        logoutLi.innerHTML = '<button class="logout-btn" id="logoutBtn">Logout</button>';
+        navMenu.appendChild(logoutLi);
+        
+        // Re-attach logout event listener
+        document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+        document.getElementById('addArticleBtn').style.display = 'inline-block';
+      }
+    }
+
+    // Logout handler
+    async function handleLogout() {
+      const token = localStorage.getItem('admin_token');
+      
+      try {
+        await fetch('/api/auth/logout', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+      } catch (error) {
+        console.error('Logout error:', error);
+      }
+      
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('admin_username');
+      window.location.reload();
+    }
+
+    // Load articles
+    async function loadArticles() {
+      try {
+        const response = await fetch('/api/articles');
+        const data = await response.json();
+        
+        const container = document.getElementById('articlesContainer');
+        
+        if (!data.articles || data.articles.length === 0) {
+          container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #999;">
+              <p>No articles yet. ${isAdmin ? '<a href="/admin/add">Create one now!</a>' : ''}</p>
+            </div>
+          `;
+          return;
+        }
+        
+        container.innerHTML = data.articles.map(article => `
+          <article class="card feature-card clickable" onclick="openArticle(${article.id})" role="link" tabindex="0" onkeydown="handleArticleKey(event, ${article.id})">
+            ${article.image_url ? `<img class="card-image" src="${article.image_url}" alt="${article.title}">` : `<img class="card-image" src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Article image">`}
+            <div class="admin-controls ${isAdmin ? 'visible' : ''}">
+              <button class="admin-btn edit" onclick="editArticle(event, ${article.id})" title="Edit article">✏️</button>
+              <button class="admin-btn delete" onclick="openDeleteModal(event, ${article.id})" title="Delete article">🗑️</button>
+            </div>
+            <div class="card-content">
+              <span class="badge ${article.category === 'News' ? 'badge-warning' : 'badge-success'}">${article.category}</span>
+              <h4 class="card-title">${article.title}</h4>
+              <p class="card-text">${article.content.substring(0, 150)}${article.content.length > 150 ? '...' : ''}</p>
+              <small style="color: #999;">${new Date(article.created_at).toLocaleDateString()}</small>
+            </div>
+          </article>
+        `).join('');
+      } catch (error) {
+        console.error('Error loading articles:', error);
+      }
+    }
+
+    function openArticle(articleId) {
+      window.location.href = `/media/article/${articleId}`;
+    }
+
+    function handleArticleKey(event, articleId) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openArticle(articleId);
+      }
+    }
+
+    // Edit article
+    function editArticle(event, articleId) {
+      event.stopPropagation();
+      window.location.href = `/admin/edit/${articleId}`;
+    }
+
+    // Delete modal
+    function openDeleteModal(event, articleId) {
+      event.stopPropagation();
+      deleteArticleId = articleId;
+      document.getElementById('deleteModal').classList.add('show');
+    }
+
+    // Confirm delete
+    document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
+      if (!deleteArticleId) return;
+      
+      const token = localStorage.getItem('admin_token');
+      
+      try {
+        const response = await fetch(`/api/articles/${deleteArticleId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        
+        if (response.ok) {
+          document.getElementById('deleteModal').classList.remove('show');
+          loadArticles(); // Reload articles
+        } else {
+          alert('Failed to delete article');
+        }
+      } catch (error) {
+        console.error('Delete error:', error);
+        alert('Error deleting article');
+      }
+    });
+
+    // Add article button
+    document.getElementById('addArticleBtn').addEventListener('click', () => {
+      window.location.href = '/admin/add';
+    });
+
+    // Initialize
+    checkAdminStatus();
+    loadArticles();
+  </script>
 </body>
 </html>

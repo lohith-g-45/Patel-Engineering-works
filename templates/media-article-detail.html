@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ article.title }} - Media">
+  <title>{{ article.title }} - Media</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260320-article-detail-1">
+  <style>
+    .article-wrap {
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+      padding: 0 1rem;
+    }
+
+    .article-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .article-image {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      background: #f2f2f2;
+    }
+
+    .article-body {
+      padding: 1.5rem;
+    }
+
+    .article-title {
+      margin: 0.5rem 0 1rem;
+      line-height: 1.25;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .article-content {
+      color: #222;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .article-back {
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .article-image {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="article-wrap">
+    <div class="article-back">
+      <a href="{{ url_for('media_page') }}">&larr; Back to Media</a>
+    </div>
+
+    <article class="article-card">
+      {% if article.image_url %}
+      <img class="article-image" src="{{ article.image_url }}" alt="{{ article.title }}">
+      {% endif %}
+
+      <div class="article-body">
+        <span class="badge {{ 'badge-warning' if article.category == 'News' else 'badge-success' }}">{{ article.category }}</span>
+        <h1 class="article-title">{{ article.title }}</h1>
+
+        <div class="article-meta">
+          <span>Published: {{ article.created_at.strftime('%d %b %Y') }}</span>
+        </div>
+
+        <div class="article-content">{{ article.content }}</div>
+      </div>
+    </article>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
