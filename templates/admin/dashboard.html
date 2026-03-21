@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Admin Dashboard - Patel Engineering Works">
   <title>Admin Dashboard - PEW Vizag</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260319-admin-dashboard">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260322-admin-sync">
   <style>
     body {
       background: radial-gradient(circle at top, rgba(255, 255, 255, 0.96) 0%, rgba(243, 246, 251, 0.96) 45%, rgba(231, 238, 249, 0.9) 100%);
-      font-family: 'Space Grotesk', sans-serif;
     }
 
     .admin-header {
       background: rgba(255, 255, 255, 0.82);
       color: #16213b;
-      padding: 0.9rem 0;
+      padding: 0;
       border-bottom: 1px solid rgba(23, 43, 82, 0.12);
       box-shadow: 0 12px 30px rgba(12, 26, 61, 0.1);
       backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 1100;
     }
 
-    .admin-header .container {
+    .admin-header .navbar-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 1.5rem;
+      min-height: 74px;
     }
 
     .admin-brand {
@@ -324,9 +324,11 @@
     }
 
     @media (max-width: 768px) {
-      .admin-header .container {
+      .admin-header .navbar-container {
         flex-direction: column;
         gap: 1rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
       }
 
       .admin-brand {
@@ -351,11 +353,13 @@
     }
   </style>
 </head>
-<body>
-  <div class="admin-header">
-    <div class="container">
-      <div class="admin-brand">
-        <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="Patel Engineering Works logo">
+<body class="admin-page">
+  <div class="admin-header navbar scrolled">
+    <div class="navbar-container">
+      <div class="admin-brand navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="Patel Engineering Works logo">
+        </a>
         <h1 class="admin-title">Admin Dashboard</h1>
       </div>
       <div class="admin-user-info">

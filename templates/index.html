@@ -59,9 +59,8 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge">PEW Vizag</div>
-      <h1>Engineering Excellence at Sea</h1>
-      <p>Patel Engineering Works (Vizag) is a trusted partner to India's leading naval and commercial shipyards, delivering integrated solutions with quality, speed, and class compliance.</p>
+      <h1 data-word-reveal data-word-reveal-start="120">Engineering Excellence at Sea</h1>
+      <p data-word-reveal data-word-reveal-start="500">Patel Engineering Works (Vizag) is a trusted partner to India's leading naval and commercial shipyards, delivering integrated solutions with quality, speed, and class compliance.</p>
       <div class="hero-buttons">
         <a href="{{ url_for('about') }}" class="btn btn-primary btn-large">Know more</a>
         <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-large">Contact us</a>
@@ -89,78 +88,46 @@
       <div class="about-shell">
         <div class="section-title align-left">
           <span class="section-kicker">Who We Are</span>
-          <h2>About PEW Vizag</h2>
-          <p class="section-subtitle">A legacy of maritime excellence built over two decades of dedicated service</p>
+          <h1>About PEW Vizag</h1>
+          <p class="section-subtitle">Specialized shipbuilding and ship repair solutions with proven delivery across defense and commercial maritime sectors</p>
         </div>
-        <div class="grid grid-2 about-grid">
-          <article class="about-mission about-panel">
-            <span class="icon-badge about-icon">
-              <img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt="">
-            </span>
-            <h3>Our Mission</h3>
-            <p>We are committed to delivering world-class marine engineering and shipbuilding solutions that exceed industry standards. Our expertise spans vessel design, construction, repair, and modernization for commercial and naval clients globally.</p>
-            <p>With state-of-the-art facilities and a team of experienced engineers, we transform maritime vision into reality &mdash; crafting vessels that stand the test of time on every ocean.</p>
+        <div class="about-single-layout">
+          <article class="about-panel about-panel-single">
+            <div class="about-content-layout">
+              <div class="about-copy">
+                <p>Patel Engineering Works (Vizag) is a leading provider of specialized shipbuilding and ship repair services, supporting the Indian Navy, Coast Guard, public-sector shipyards, and select international clients. With over two decades of proven execution and a skilled workforce deployed across India, we bring unmatched technical depth and project reliability to every engagement.</p>
+                <p>Our shipbuilding division delivers high-integrity fabrication, outfitting, and equipment installation services for complex defense and auxiliary vessels, working in close alignment with classification societies and OEMs.</p>
+                <p class="about-panel-note">Parallelly, our ship repair services division undertakes turnkey refits, emergency repairs, and precision overhauls for a wide range of onboard systems, ensuring operational readiness with minimal downtime.</p>
+                <p>Known for our rigorous quality systems, certified personnel, and timely project completion, we are committed to delivering consistent results across both new construction and lifecycle support. Whether executing at yard, onboard, or within our dedicated workshops, we bring the same focus: technical excellence, safety, and dependable service.</p>
+              </div>
+              <div class="about-sidecards">
+                <ul class="about-list about-list-stack">
+                  <li class="about-list-item">
+                    <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/shield-checkered.svg') }}" alt=""></span>
+                    <div>
+                      <strong>Quality &amp; Compliance</strong>
+                      <p>Class-aligned execution with certified teams and controlled processes</p>
+                    </div>
+                  </li>
+                  <li class="about-list-item">
+                    <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></span>
+                    <div>
+                      <strong>Shipbuilding &amp; Repair</strong>
+                      <p>Strong capabilities across new-build support, refits, and lifecycle services</p>
+                    </div>
+                  </li>
+                  <li class="about-list-item">
+                    <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/briefcase.svg') }}" alt=""></span>
+                    <div>
+                      <strong>Dependable Delivery</strong>
+                      <p>On-time completion with safety-first execution across yard and onboard work</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <a href="{{ url_for('about') }}" class="btn-primary-colored">Discover Our Story &rarr;</a>
           </article>
-          <article class="about-panel">
-            <h3>Why Choose Us?</h3>
-            <p class="about-panel-note">Proven capabilities trusted by commercial and naval clients.</p>
-            <ul class="about-list">
-              <li class="about-list-item">
-                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/shield-checkered.svg') }}" alt=""></span>
-                <div>
-                  <strong>Expertise</strong>
-                  <p>20+ years in marine engineering and shipbuilding</p>
-                </div>
-              </li>
-              <li class="about-list-item">
-                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></span>
-                <div>
-                  <strong>Innovation</strong>
-                  <p>Advanced technologies and sustainable solutions</p>
-                </div>
-              </li>
-              <li class="about-list-item">
-                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/briefcase.svg') }}" alt=""></span>
-                <div>
-                  <strong>Quality</strong>
-                  <p>ISO certified processes and international standards</p>
-                </div>
-              </li>
-              <li class="about-list-item">
-                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/user.svg') }}" alt=""></span>
-                <div>
-                  <strong>Reliability</strong>
-                  <p>On-time delivery and industry-leading customer satisfaction</p>
-                </div>
-              </li>
-              <li class="about-list-item">
-                <span class="about-list-icon"><img src="{{ url_for('static', filename='icons/collaboration.svg') }}" alt=""></span>
-                <div>
-                  <strong>Sustainability</strong>
-                  <p>Eco-friendly practices and green marine technologies</p>
-                </div>
-              </li>
-            </ul>
-          </article>
-        </div>
-        <div class="stats-strip">
-          <div class="stat-item">
-            <span class="stat-number">20+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">150+</span>
-            <span class="stat-label">Vessels Built</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">50+</span>
-            <span class="stat-label">Global Clients</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">500+</span>
-            <span class="stat-label">Expert Engineers</span>
-          </div>
         </div>
       </div>
     </div>
@@ -191,18 +158,16 @@
         <a href="#">Offshore Solutions</a>
         <a href="#">Consulting</a>
       </div>
-      <div class="footer-section">
+      <div class="footer-section footer-contact">
         <h4>Contact Info</h4>
-        <p><strong>Email:</strong><br>
-        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
-        <p><strong>Phone:</strong><br>
-        <a href="tel:+911234567890">+91 123 456 7890</a></p>
-        <p><strong>Headquarters:</strong><br>
-        Mumbai, India</p>
+        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567346</a></span></p>
+        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a></span></p>
+        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">9820321082</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelengv.com">info@patelengv.com</a></span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+      <p>&copy; 2026 Marine Engineering & Shipbuilding. All rights reserved. | 
         <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
         <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
       </p>

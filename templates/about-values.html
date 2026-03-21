@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Learn about Marine Engineering core values.">
   <title>Core Values - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260317-about-dropdown-1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260321-about-nav-font-1">
 </head>
 <body>
   <nav class="navbar">
@@ -45,11 +45,11 @@
     </div>
   </nav>
 
-  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='images/corevalues.png') }}');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
-      <h1>Our Core Values</h1>
-      <p>The principles that guide every project, partnership, and decision.</p>
+      <h1 data-word-reveal data-word-reveal-start="120">Our Core Values</h1>
+      <p data-word-reveal data-word-reveal-start="500">The principles that guide every project, partnership, and decision.</p>
     </div>
     <div class="hero-wave" aria-hidden="true">
       <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,52 +58,78 @@
     </div>
   </section>
 
-  <section class="section breadcrumb-section">
+
+  <section class="section values-section">
     <div class="container">
-      <div class="breadcrumb">
-        <a href="{{ url_for('home') }}">Home</a>
-        <span class="separator">/</span>
-        <a href="{{ url_for('about') }}">About Us</a>
-        <span class="separator">/</span>
-        <span>Core Values</span>
+      <div class="values-intro">
+        <span class="values-kicker">What We Stand For</span>
+      </div>
+
+      <div class="values-grid-modern">
+        <article class="value-insight-card">
+          <div class="value-topline"></div>
+          <h3>Trusted and Experienced</h3>
+          <p>With decades of field expertise and a disciplined supervisory team, we deliver dependable marine engineering outcomes with consistency and confidence.</p>
+        </article>
+
+        <article class="value-insight-card">
+          <div class="value-topline"></div>
+          <h3>Reliable and Fully Insured</h3>
+          <p>Patel Engineering Works (Vizag) executes fully insured shipbuilding, repair, and marine projects with strict adherence to safety, quality, and compliance standards.</p>
+        </article>
+
+        <article class="value-insight-card">
+          <div class="value-topline"></div>
+          <h3>Deliverability</h3>
+          <p>We plan and execute with precision to meet committed timelines, minimize delays, and ensure each project milestone is achieved with operational reliability.</p>
+        </article>
+
+        <article class="value-insight-card">
+          <div class="value-topline"></div>
+          <h3>Satisfaction Guaranteed</h3>
+          <p>Our team stands behind every engagement with responsive support and a quality-first approach focused on long-term client trust and satisfaction.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid grid-4 info-grid">
-        <div class="card feature-card value-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt=""></div>
-            <h4>Excellence</h4>
-            <p>We pursue excellence in every aspect of our work, from design to delivery.</p>
-          </div>
-        </div>
-        <div class="card feature-card value-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></div>
-            <h4>Innovation</h4>
-            <p>Continuous innovation drives us to develop practical, cutting-edge solutions.</p>
-          </div>
-        </div>
-        <div class="card feature-card value-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/collaboration.svg') }}" alt=""></div>
-            <h4>Integrity</h4>
-            <p>Honesty and transparency shape all business relationships and commitments.</p>
-          </div>
-        </div>
-        <div class="card feature-card value-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/shield-checkered.svg') }}" alt=""></div>
-            <h4>Sustainability</h4>
-            <p>Environmental responsibility and sustainable practices guide our operations.</p>
-          </div>
+  <footer class="footer footer-compact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About PEW Vizag</h4>
+        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
+        <div class="social-links">
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Twitter">X</a>
+          <a href="#" title="YouTube">></a>
         </div>
       </div>
+
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#">Ship Design</a>
+        <a href="#">Vessel Construction</a>
+        <a href="#">Ship Repair</a>
+        <a href="#">Modernization</a>
+        <a href="#">Offshore Solutions</a>
+        <a href="#">Consulting</a>
+      </div>
+      <div class="footer-section footer-contact">
+        <h4>Contact Info</h4>
+        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567346</a></span></p>
+        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a></span></p>
+        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">9820321082</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelengv.com">info@patelengv.com</a></span></p>
+      </div>
     </div>
-  </section>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Marine Engineering & Shipbuilding. All rights reserved. |
+        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> |
+        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
 
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

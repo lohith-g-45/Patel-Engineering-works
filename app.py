@@ -26,6 +26,9 @@ def create_app() -> Flask:
     app.config["JWT_EXPIRATION_HOURS"] = 24
     app.config["UPLOAD_FOLDER"] = os.path.join(app.static_folder, "uploads", "articles")
     app.config["ALLOWED_IMAGE_EXTENSIONS"] = {"png", "jpg", "jpeg", "gif", "webp"}
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
+    app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
+    app.jinja_env.auto_reload = True
     
     # Initialize database
     db.init_app(app)

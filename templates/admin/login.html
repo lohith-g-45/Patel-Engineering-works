@@ -5,28 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Admin login - Patel Engineering Works">
   <title>Admin Login - PEW Vizag</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260322-admin-sync">
   <style>
+    .admin-login-nav {
+      background: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(23, 43, 82, 0.12);
+      box-shadow: 0 12px 30px rgba(12, 26, 61, 0.1);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 1100;
+    }
+
+    .admin-login-nav .navbar-container {
+      min-height: 74px;
+    }
+
+    .admin-login-nav .navbar-logo img {
+      width: 140px;
+    }
+
     .admin-login-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      background: linear-gradient(180deg, rgba(9, 28, 66, 0.66) 0%, rgba(22, 61, 112, 0.62) 55%, rgba(11, 24, 52, 0.78) 100%),
-        url("{{ url_for('static', filename='assets/wave.jpg') }}") center bottom / cover no-repeat;
-    }
-
-    .admin-login-container::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 120px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(9, 28, 66, 0.5) 100%),
-        url("{{ url_for('static', filename='assets/wave.jpg') }}") center bottom / cover no-repeat;
-      opacity: 0.5;
-      pointer-events: none;
+      min-height: calc(100vh - 74px);
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.96) 0%, rgba(243, 246, 251, 0.96) 45%, rgba(231, 238, 249, 0.9) 100%);
     }
     
     .login-card {
@@ -245,7 +249,21 @@
     }
   </style>
 </head>
-<body>
+<body class="admin-page">
+  <nav class="navbar scrolled admin-login-nav">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <ul class="navbar-menu" style="position: static; width: auto; border: 0; box-shadow: none; background: transparent; transform: none; opacity: 1; visibility: visible; flex-direction: row; padding: 0; gap: 0.75rem;">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="/admin/dashboard">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="admin-login-container">
     <div class="login-card">
       <img class="login-logo" src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="Patel Engineering Works logo">

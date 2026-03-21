@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeFormValidation();
   initializeScrollAnimations();
   initializeParallax();
+  initializeWordReveal();
+  initializeProfessionalMotion();
 });
 
 /* ================================================================
@@ -579,6 +581,9 @@ function showErrorMessage(form, message) {
   7. SCROLL ANIMATIONS
    ================================================================ */
 function initializeScrollAnimations() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -594,7 +599,7 @@ function initializeScrollAnimations() {
   }, observerOptions);
 
   // Observe cards and sections for animation
-  document.querySelectorAll('.card, .section').forEach(el => {
+  document.querySelectorAll('.card:not(.motion-reveal), .section:not(.motion-reveal), .fade-on-scroll').forEach(el => {
     observer.observe(el);
   });
 }
@@ -617,7 +622,86 @@ function initializeParallax() {
 }
 
 /* ================================================================
-  9. UTILITY FUNCTIONS
+  9. HERO WORD REVEAL
+   ================================================================ */
+function initializeWordReveal() {
+  const targets = document.querySelectorAll('[data-word-reveal]');
+  if (!targets.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  targets.forEach(target => {
+    const originalText = target.textContent.trim();
+    if (!originalText) return;
+
+    if (prefersReducedMotion) {
+      target.textContent = originalText;
+      return;
+    }
+
+    const startDelay = Number.parseInt(target.getAttribute('data-word-reveal-start') || '0', 10);
+    const wordDelay = Number.parseInt(target.getAttribute('data-word-reveal-step') || '130', 10);
+    const words = originalText.split(/\s+/);
+
+    target.textContent = '';
+
+    words.forEach((word, index) => {
+      const span = document.createElement('span');
+      span.className = 'word-reveal-item';
+      span.style.animationDelay = `${startDelay + (index * wordDelay)}ms`;
+      span.textContent = word;
+      target.appendChild(span);
+
+      if (index < words.length - 1) {
+        target.appendChild(document.createTextNode(' '));
+      }
+    });
+  });
+}
+
+function initializeProfessionalMotion() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  document.body.classList.add('motion-ready');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.add('page-loaded');
+    });
+  });
+
+  const revealTargets = document.querySelectorAll(
+    '.section, .card, .about-panel, .stats-strip .stat-item, .division-card, .leader-card, .media-post-card'
+  );
+
+  if (!revealTargets.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    revealTargets.forEach(el => el.classList.add('motion-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('motion-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -80px 0px'
+  });
+
+  revealTargets.forEach((el, index) => {
+    el.classList.add('motion-reveal');
+    el.style.setProperty('--motion-delay', `${(index % 6) * 70}ms`);
+    observer.observe(el);
+  });
+}
+
+/* ================================================================
+  10. UTILITY FUNCTIONS
    ================================================================ */
 
 /**

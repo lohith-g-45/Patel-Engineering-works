@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore our Marine Engineering divisions - Marine Engineering, Ship Building, and Ship Repair.">
   <title>Divisions - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260316-site-structured-5">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260322-shipbuilding-hero-fix-3">
 </head>
-<body>
+<body class="divisions-page">
   <!-- ================================================================
        NAVIGATION BAR
        ================================================================ -->
@@ -51,7 +51,7 @@
   <!-- ================================================================
        PAGE HEADER
        ================================================================ -->
-  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='images/shipbuild.jpg') }}');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1>Our Divisions</h1>
@@ -168,36 +168,46 @@
   <!-- ================================================================
        SHIP BUILDING DIVISION
        ================================================================ -->
-  <section class="section" id="shipbuilding" data-division-section="shipbuilding">
+  <section class="section shipbuild-overview" id="shipbuilding" data-division-section="shipbuilding">
     <div class="container">
-      <div class="page-shell">
-        <div class="section-title">
+      <div class="page-shell shipbuild-shell">
+        <div class="section-title section-title-left">
           <h2>Ship Building Division</h2>
+          <p class="section-subtitle">Comprehensive Marine Engineering Solutions for naval, offshore, and commercial vessel programs.</p>
         </div>
-        <div class="grid grid-2 split-shell">
-          <div class="content-panel" style="order: 2;">
-            <h3>State-of-the-Art Vessel Construction</h3>
-            <p>Our Ship Building Division utilizes cutting-edge facilities and skilled workforce to construct high-quality vessels for commercial and naval clients. From concept to launch, we ensure excellence at every stage.</p>
-            <h4>Construction Capabilities</h4>
-            <ul class="structured-list">
-            <li>Container ships and bulk carriers</li>
-            <li>Tankers and specialized vessels</li>
-            <li>Offshore support vessels</li>
-            <li>Naval vessels and patrol boats</li>
-            <li>Fishing vessels</li>
-            <li>Tugs and workboats</li>
-            <li>Advanced alloy fabrication</li>
-            <li>Modular construction techniques</li>
-            </ul>
 
-            <a href="{{ url_for('contact') }}" class="btn btn-primary" style="margin-top: var(--spacing-2xl);">Request Shipbuilding Quote</a>
-          </div>
-          <div class="media-panel" style="order: 1;">
-            <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Ship Building" class="feature-image">
-            <div class="partner-note">
-              <h4>Built for Delivery</h4>
-              <p>Our shipbuilding workflow connects modular fabrication, schedule control, and launch-readiness under one operation.</p>
-            </div>
+        <div class="shipbuild-intro-layout">
+          <article class="shipbuild-intro-card">
+            <h3>Defense-Grade Shipbuilding Execution</h3>
+            <ul class="structured-list structured-list-tight">
+              <li>Program execution for defense and commercial fleets with class-ready documentation</li>
+              <li>Integrated fabrication, outfitting, and commissioning workflows under one command structure</li>
+              <li>Milestone-driven delivery with QA/QC checkpoints across each production stage</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="btn btn-primary">Request Shipbuilding Quote</a>
+          </article>
+
+          <div class="shipbuild-overview-grid">
+            <article class="shipbuild-feature-card">
+              <div class="shipbuild-icon-chip">HF</div>
+              <h4>Hull Fabrication</h4>
+              <p>Block assembly, structural welding, and dimensional control for robust hull integrity.</p>
+            </article>
+            <article class="shipbuild-feature-card">
+              <div class="shipbuild-icon-chip">EO</div>
+              <h4>Electrical Outfitting</h4>
+              <p>Power distribution, cable routing, and commissioning for mission-critical reliability.</p>
+            </article>
+            <article class="shipbuild-feature-card">
+              <div class="shipbuild-icon-chip">PS</div>
+              <h4>Piping Systems</h4>
+              <p>Fabrication and installation of marine process and utility lines to class specifications.</p>
+            </article>
+            <article class="shipbuild-feature-card">
+              <div class="shipbuild-icon-chip">EI</div>
+              <h4>Equipment Installation</h4>
+              <p>Precision placement and alignment of deck, engine, and auxiliary machinery packages.</p>
+            </article>
           </div>
         </div>
       </div>
@@ -205,50 +215,199 @@
   </section>
 
   <!-- ================================================================
-       SHIPBUILDING - CASE STUDIES
+       CORE CAPABILITIES
        ================================================================ -->
   <section class="section section-light" data-division-section="shipbuilding">
     <div class="container">
-      <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Recent Vessel Construction Projects</h3>
+      <div class="section-title">
+        <h3>Core Capabilities</h3>
+      </div>
+
+      <div class="shipbuild-capability-grid">
+        <article class="capability-panel">
+          <h4>A. Hull &amp; Superstructure Fabrication</h4>
+          <ul class="structured-list structured-list-tight">
+            <li>End-to-end vessel construction from block fabrication to final erection</li>
+            <li>Naval-grade execution for Navy and Coast Guard vessel requirements</li>
+            <li>Certified welders aligned to IRS, ABS, and DNV standards</li>
+          </ul>
+          <div class="tech-badges" aria-label="Welding techniques">
+            <span>FCAW</span><span>SMAW</span><span>GMAW</span><span>GTAW</span><span>SAW</span>
+          </div>
+          <p class="capability-footnote"><strong>Materials:</strong> IS 2062, AH36, DMR 249A, Aluminium H8053</p>
+        </article>
+
+        <article class="capability-panel">
+          <h4>B. Piping &amp; Plumbing Systems</h4>
+          <div class="system-grid">
+            <span>Fuel</span><span>Ballast</span><span>Fire-fighting</span>
+            <span>Sewage</span><span>Cooling</span><span>Exhaust</span>
+          </div>
+          <p class="capability-footnote"><strong>Materials:</strong> CS, SS, CuNi, Ti, Aluminium</p>
+          <ul class="structured-list structured-list-tight">
+            <li>Hydrotesting and pressure testing with traceable test records</li>
+            <li>Leak-proof assurance through staged QA acceptance gates</li>
+          </ul>
+        </article>
+
+        <article class="capability-panel">
+          <h4>C. Electrical Outfitting</h4>
+          <div class="electrical-grid">
+            <span>Power Systems</span>
+            <span>Navigation</span>
+            <span>Automation</span>
+            <span>Fire Detection</span>
+            <span>HVAC</span>
+          </div>
+          <ul class="structured-list structured-list-tight">
+            <li>Cable routing and termination to marine standards</li>
+            <li>Integrated testing and commissioning support</li>
+            <li>Weapon system integration readiness for defense platforms</li>
+          </ul>
+        </article>
+
+        <article class="capability-panel">
+          <h4>D. Machinery &amp; Equipment Installation</h4>
+          <div class="equipment-split">
+            <span>Deck Machinery</span>
+            <span>Engine Systems</span>
+            <span>Propulsion Systems</span>
+          </div>
+          <ul class="structured-list structured-list-tight">
+            <li>Laser alignment and precision installation protocols</li>
+            <li>Integrated mechanical checks before pre-sea validation</li>
+            <li>Sea trial support for performance tuning and acceptance</li>
+          </ul>
+        </article>
+
+        <article class="capability-panel">
+          <h4>E. In-Situ Machining</h4>
+          <ul class="structured-list structured-list-tight">
+            <li>On-site precision machining for critical marine assemblies</li>
+            <li>Alignment correction using portable machining toolsets</li>
+            <li>Rapid restoration workflows with reduced drydock impact</li>
+          </ul>
+          <div class="tech-badges" aria-label="In-situ use cases">
+            <span>Stern Gear</span><span>Thrusters</span><span>Radar Mounts</span>
+          </div>
+        </article>
+
+        <article class="capability-panel">
+          <h4>F. Accommodation &amp; Habitability</h4>
+          <p>Crew-ready spaces designed for long-duration operations, safety, and comfort.</p>
+          <div class="habitability-grid">
+            <span>Crew Cabins</span><span>Galleys</span><span>Medical Spaces</span>
+            <span>Marine Furniture</span><span>Fire-retardant Materials</span><span>Modular Interiors</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PROCESS / WORKFLOW
+       ================================================================ -->
+  <section class="section shipbuild-workflow" data-division-section="shipbuilding">
+    <div class="container">
+      <div class="section-title">
+        <h3>Execution Workflow</h3>
+      </div>
+      <ol class="workflow-timeline" aria-label="Shipbuilding process timeline">
+        <li><span>01</span><strong>Design</strong></li>
+        <li><span>02</span><strong>Fabrication</strong></li>
+        <li><span>03</span><strong>Installation</strong></li>
+        <li><span>04</span><strong>Testing</strong></li>
+        <li><span>05</span><strong>Sea Trials</strong></li>
+        <li><span>06</span><strong>Delivery</strong></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PROJECT SHOWCASE
+       ================================================================ -->
+  <section class="section section-light" data-division-section="shipbuilding">
+    <div class="container">
+      <h3 style="text-align: center; margin-bottom: var(--spacing-2xl);">Project Showcase</h3>
       <div class="grid grid-3 division-project-grid info-grid">
-        <div class="card feature-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Container Vessel" class="card-image">
+        <article class="card feature-card ship-project-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Container vessel project" class="card-image">
           <div class="card-content">
-            <h4 style="color: var(--primary-navy);">MV Ocean Express</h4>
-            <p class="card-text">Modern 20,000 TEU container vessel with eco-friendly design and energy-efficient systems</p>
-            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
-              <li><strong>Delivered:</strong> March 2023</li>
+            <div class="project-title-wrap">
+              <span class="project-vessel-icon">CV</span>
+              <h4>MV Ocean Express</h4>
+            </div>
+            <p class="card-text">High-capacity container vessel with optimized structural design for commercial routes.</p>
+            <ul class="project-spec-list">
+              <li><strong>Capacity:</strong> 20,000 TEU</li>
+              <li><strong>Hull Tonnage:</strong> 72,500 tons</li>
               <li><strong>Build Time:</strong> 18 months</li>
-              <li><strong>Hull:</strong> 72,500 tons</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="card feature-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Tanker Vessel" class="card-image">
+        <article class="card feature-card ship-project-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Chemical tanker project" class="card-image">
           <div class="card-content">
-            <h4 style="color: var(--primary-navy);">MV Chem Star</h4>
-            <p class="card-text">Specialized chemical tanker with advanced cargo handling and safety systems</p>
-            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
-              <li><strong>Delivered:</strong> January 2023</li>
+            <div class="project-title-wrap">
+              <span class="project-vessel-icon">TK</span>
+              <h4>MV Chem Star</h4>
+            </div>
+            <p class="card-text">Specialized chemical tanker with reinforced piping architecture and safety systems.</p>
+            <ul class="project-spec-list">
+              <li><strong>Capacity:</strong> 30,000 DWT</li>
+              <li><strong>Hull Tonnage:</strong> 32,800 tons</li>
               <li><strong>Build Time:</strong> 16 months</li>
-              <li><strong>Hull:</strong> 32,800 tons</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="card feature-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Offshore Support Vessel" class="card-image">
+        <article class="card feature-card ship-project-card">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Offshore support vessel project" class="card-image">
           <div class="card-content">
-            <h4 style="color: var(--primary-navy);">MV Deep Explorer</h4>
-            <p class="card-text">Advanced multi-purpose offshore support vessel for deep-sea operations</p>
-            <ul style="font-size: var(--font-size-sm); margin-bottom: 0;">
-              <li><strong>Delivered:</strong> November 2022</li>
+            <div class="project-title-wrap">
+              <span class="project-vessel-icon">OS</span>
+              <h4>MV Deep Explorer</h4>
+            </div>
+            <p class="card-text">Multi-role offshore support vessel configured for deep-sea and mission-critical operations.</p>
+            <ul class="project-spec-list">
+              <li><strong>Capacity:</strong> 5,000 DWT</li>
+              <li><strong>Hull Tonnage:</strong> 19,200 tons</li>
               <li><strong>Build Time:</strong> 20 months</li>
-              <li><strong>Hull:</strong> 19,200 tons</li>
             </ul>
           </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       QUALITY & CERTIFICATION STRIP
+       ================================================================ -->
+  <section class="section shipbuild-quality-strip" data-division-section="shipbuilding">
+    <div class="container">
+      <div class="quality-strip-inner">
+        <div class="quality-badges">
+          <span>IRS</span>
+          <span>ABS</span>
+          <span>DNV</span>
         </div>
+        <div class="quality-highlights">
+          <p><strong>NDT Level II Certified Inspection</strong></p>
+          <p><strong>Strict QA/QC Compliance</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SHIPBUILDING CTA
+       ================================================================ -->
+  <section class="section" data-division-section="shipbuilding">
+    <div class="container">
+      <div class="shipbuild-cta-banner">
+        <h3>Build Your Next Vessel With Confidence</h3>
+        <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-large">Request Shipbuilding Quote</a>
       </div>
     </div>
   </section>
@@ -409,7 +568,7 @@
   <footer class="footer footer-compact">
     <div class="footer-content">
       <div class="footer-section">
-        <h4>About Marine Engineering</h4>
+        <h4>About PEW Vizag</h4>
         <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
         <div class="social-links">
           <a href="#" title="LinkedIn">in</a>
@@ -418,6 +577,7 @@
           <a href="#" title="YouTube">▶</a>
         </div>
       </div>
+
       <div class="footer-section">
         <h4>Services</h4>
         <a href="#">Ship Design</a>
@@ -427,18 +587,16 @@
         <a href="#">Offshore Solutions</a>
         <a href="#">Consulting</a>
       </div>
-      <div class="footer-section">
+      <div class="footer-section footer-contact">
         <h4>Contact Info</h4>
-        <p><strong>Email:</strong><br>
-        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
-        <p><strong>Phone:</strong><br>
-        <a href="tel:+911234567890">+91 123 456 7890</a></p>
-        <p><strong>Headquarters:</strong><br>
-        Mumbai, India</p>
+        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567346</a></span></p>
+        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a></span></p>
+        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">9820321082</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelengv.com">info@patelengv.com</a></span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+      <p>&copy; 2026 Marine Engineering & Shipbuilding. All rights reserved. | 
         <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
         <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
       </p>
@@ -451,7 +609,7 @@
       const params = new URLSearchParams(window.location.search);
       const division = params.get('division');
       const allowed = ['marine', 'shipbuilding', 'repair'];
-      if (!division || !allowed.includes(division)) return;
+      const activeDivision = allowed.includes(division) ? division : 'shipbuilding';
 
       const sectionMap = {
         marine: 'Marine Engineering Division',
@@ -459,18 +617,50 @@
         repair: 'Ship Repair & Modernization Division'
       };
 
+      const subtitleMap = {
+        marine: 'Design-led marine engineering and lifecycle support services',
+        shipbuilding: 'Comprehensive Marine Engineering Solutions',
+        repair: 'Lifecycle upgrades, modernization, and high-availability repair execution'
+      };
+
+      const heroImageMap = {
+        marine: "url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}')",
+        shipbuilding: "url('{{ url_for('static', filename='images/shipbuild.jpg') }}')",
+        repair: "url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}')"
+      };
+
+      if (!division || !allowed.includes(division)) {
+        const heroSection = document.querySelector('.page-hero');
+        if (heroSection && heroImageMap[activeDivision]) {
+          heroSection.style.setProperty('--hero-image', heroImageMap[activeDivision]);
+        }
+        return;
+      }
+
       document.querySelectorAll('[data-division-section]').forEach(section => {
         section.style.display = section.getAttribute('data-division-section') === division ? '' : 'none';
       });
 
       const heroHeading = document.querySelector('.page-hero-content h1');
       if (heroHeading) {
-        heroHeading.textContent = sectionMap[division];
+        heroHeading.textContent = sectionMap[activeDivision];
       }
+
+      const heroSubtitle = document.querySelector('.page-hero-content p');
+      if (heroSubtitle) {
+        heroSubtitle.textContent = subtitleMap[activeDivision];
+      }
+
+      const heroSection = document.querySelector('.page-hero');
+      if (heroSection && heroImageMap[activeDivision]) {
+        heroSection.style.setProperty('--hero-image', heroImageMap[activeDivision]);
+      }
+
+      document.body.classList.add(`division-focus-${activeDivision}`);
 
       const breadcrumbCurrent = document.querySelector('.breadcrumb span:last-child');
       if (breadcrumbCurrent) {
-        breadcrumbCurrent.textContent = sectionMap[division];
+        breadcrumbCurrent.textContent = sectionMap[activeDivision];
       }
     })();
   </script>

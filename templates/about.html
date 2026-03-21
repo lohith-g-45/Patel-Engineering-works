@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Learn about Marine Engineering company history, mission, and leadership team.">
   <title>About Us - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260316-about-accordion-2">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260321-about-nav-font-1">
 </head>
 <body>
   <!-- ================================================================
@@ -51,11 +51,11 @@
   <!-- ================================================================
        PAGE HEADER
        ================================================================ -->
-  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='images/companyhistory.png') }}');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
-      <h1>About Our Company</h1>
-      <p>Pioneering Excellence in Marine Engineering Since 2003</p>
+      <h1 data-word-reveal data-word-reveal-start="120">About Our Company</h1>
+        <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A trusted technical partner to naval and commercial shipyards for shipbuilding, repair, and lifecycle support.</p>
     </div>
     <div class="hero-wave" aria-hidden="true">
       <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,53 +64,42 @@
     </div>
   </section>
 
-  <!-- ================================================================
-       BREADCRUMB
-       ================================================================ -->
-  <section class="section breadcrumb-section">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="{{ url_for('home') }}">Home</a>
-        <span class="separator">/</span>
-        <span>About Us</span>
-      </div>
-    </div>
-  </section>
+ 
 
   <!-- ================================================================
        COMPANY HISTORY (PRIMARY ABOUT PAGE CONTENT)
        ================================================================ -->
   <section class="section" id="company-history">
     <div class="container">
-      <div class="section-title">
-        <span class="section-kicker">About Us</span>
-        <h2>Company History</h2>
-        <p class="section-subtitle">A timeline of how we grew from a small team into a trusted marine engineering and shipbuilding partner.</p>
-      </div>
+  
+      <div class="about-history-layout">
+        <div class="about-history-cards">
+          <article class="history-card history-card-intro">
+            <p>Founded in 2001, Patel Engineering Works (Vizag) is headed by Mr. Rashesh Sanghvi and Mr. Chirag Sanghvi, with Mr. Kiran Sanghvi serving as the current CEO. We boast a robust legacy with an executive and supervisory team that brings many decades of collective experience in ship repairs and shipbuilding.</p>
+          </article>
 
-      <div class="grid grid-2 split-shell">
-        <div class="content-panel">
-          <h3>From Vision to Reality</h3>
-          <p>Founded in 2003, Marine Engineering & Shipbuilding was established with a singular vision: to become a world-class provider of innovative marine engineering and shipbuilding solutions. What started as a small design firm has grown into a comprehensive marine services company serving clients across the globe.</p>
-          <h4>Our Journey</h4>
-          <ul class="structured-list">
-            <li><strong>2003:</strong> Company founded with 25 employees</li>
-            <li><strong>2008:</strong> Opened first shipyard facility with 200+ workforce</li>
-            <li><strong>2012:</strong> Achieved ISO 9001 certification</li>
-            <li><strong>2015:</strong> Expanded to three locations across India</li>
-            <li><strong>2018:</strong> Completed 100th ship project milestone</li>
-            <li><strong>2020:</strong> Established International division</li>
-            <li><strong>2023:</strong> Launched green technology initiative</li>
-            <li><strong>2024:</strong> New state-of-the-art facilities opened</li>
-          </ul>
+          <article class="history-card">
+            <p>Our operations are primarily focused on serving as a trusted partner to leading shipyards and ship repair yards to deliver comprehensive technical services and project management for the construction of new vessels and the repair and refit of existing ships.</p>
+          </article>
+
+          <article class="history-card">
+            <p>With a dedicated workforce of over 860 skilled professionals across India, including engineers, qualified supervisors, and technical staff, we specialize in major ship repair, shipbuilding, and maintenance activities at key Indian ports such as Mumbai, Visakhapatnam, Goa, Cochin, Karwar, Kolkata, and Port Blair, as well as Colombo, Sri Lanka.</p>
+          </article>
+
+          <article class="history-card">
+            <p>We take pride in serving prestigious clients such as the Indian Navy, Indian Coast Guard, Hindustan Shipyard, Goa Shipyard, Cochin Shipyard, Garden Reach Shipbuilders and Engineers, Mazagon Dockyard, L&amp;T Shipbuilding Chennai, Naval Science and Technological Laboratory (NSTL), and select rig and ship owners.</p>
+          </article>
+
+          <article class="history-card">
+            <p>Our unwavering commitment to quality, safety, and efficiency has earned us the trust of naval defense and public sector undertakings.</p>
+            <p>With sustained growth over decades and a steadfast dedication to excellence, Patel Engineering Works (Vizag) is poised for continued success, ready to undertake large turnkey projects and contribute to the evolving naval defense and maritime landscape.</p>
+          </article>
+
         </div>
-        <div class="media-panel">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Company history" class="feature-image">
-          <div class="partner-note">
-            <h4>Built on Reliability</h4>
-            <p>Every phase of our growth has focused on quality, long-term partnerships, and engineering discipline.</p>
-          </div>
-        </div>
+
+        <aside class="about-history-visual" aria-hidden="true">
+          <img src="{{ url_for('static', filename='images/companyhistory1.png') }}" alt="Shipyard operations" class="about-history-image">
+        </aside>
       </div>
     </div>
   </section>
@@ -134,7 +123,7 @@
   <footer class="footer footer-compact">
     <div class="footer-content">
       <div class="footer-section">
-        <h4>About Marine Engineering</h4>
+        <h4>About PEW Vizag</h4>
         <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
         <div class="social-links">
           <a href="#" title="LinkedIn">in</a>
@@ -143,6 +132,7 @@
           <a href="#" title="YouTube">▶</a>
         </div>
       </div>
+
       <div class="footer-section">
         <h4>Services</h4>
         <a href="#">Ship Design</a>
@@ -152,18 +142,16 @@
         <a href="#">Offshore Solutions</a>
         <a href="#">Consulting</a>
       </div>
-      <div class="footer-section">
+      <div class="footer-section footer-contact">
         <h4>Contact Info</h4>
-        <p><strong>Email:</strong><br>
-        <a href="mailto:info@marineengineering.com">info@marineengineering.com</a></p>
-        <p><strong>Phone:</strong><br>
-        <a href="tel:+911234567890">+91 123 456 7890</a></p>
-        <p><strong>Headquarters:</strong><br>
-        Mumbai, India</p>
+        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567346</a></span></p>
+        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a></span></p>
+        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">9820321082</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelengv.com">info@patelengv.com</a></span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2024 Marine Engineering & Shipbuilding. All rights reserved. | 
+      <p>&copy; 2026 Marine Engineering & Shipbuilding. All rights reserved. | 
         <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
         <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
       </p>

@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Marine Engineering leadership team.">
   <title>Leadership Team - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260317-about-dropdown-1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260321-about-nav-font-1">
 </head>
-<body>
+<body class="leadership-page">
   <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-logo">
@@ -45,11 +45,11 @@
     </div>
   </nav>
 
-  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
+  <section class="hero page-hero" style="background-image: url('{{ url_for('static', filename='images/leadership.png') }}?v=20260321-03'); background-size: cover; background-position: center 12%;">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
-      <h1>Leadership Team</h1>
-      <p>Experienced leaders shaping marine innovation and reliable delivery.</p>
+      <h1 data-word-reveal data-word-reveal-start="120">Leadership Team</h1>
+      <p data-word-reveal data-word-reveal-start="500">At Patel Engineering Works (Vizag), our leadership is the cornerstone of our success. Our management team combines decades of hands-on industry experience with strong business acumen, driving the company toward excellence in ship repair and shipbuilding.</p>
     </div>
     <div class="hero-wave" aria-hidden="true">
       <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,69 +58,40 @@
     </div>
   </section>
 
-  <section class="section breadcrumb-section">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="{{ url_for('home') }}">Home</a>
-        <span class="separator">/</span>
-        <a href="{{ url_for('about') }}">About Us</a>
-        <span class="separator">/</span>
-        <span>Leadership Team</span>
-      </div>
-    </div>
-  </section>
 
   <section class="section">
     <div class="container">
+      
+
       <div class="grid grid-3 team-grid">
+      
         <div class="card feature-card team-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Captain Rajesh Kumar" class="leader-card-image">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Leader photo placeholder" class="leader-card-image">
           <div class="card-content text-center">
-            <h4>Captain Rajesh Kumar</h4>
-            <div class="designation">Chief Executive Officer</div>
-            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">30+ years of experience in maritime industry. Visionary leader driving company growth and innovation in shipbuilding sector.</p>
+            <h3>Our CEO - Mr. Kiran Sanghvi</h3>
+            <div class="designation">Founder and Chief Executive Officer</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">With a Diploma in Electrical Engineering and over 40 years of hands-on experience, Mr. Kiran Sanghvi serves as both mentor and strategist for the firm. His technical expertise and passion for innovation have been instrumental in the company’s growth and reputation for excellence.</p>
           </div>
         </div>
+
         <div class="card feature-card team-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Dr. Priya Sharma" class="leader-card-image">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Leader photo placeholder" class="leader-card-image">
           <div class="card-content text-center">
-            <h4>Dr. Priya Sharma</h4>
-            <div class="designation">Chief Operating Officer</div>
-            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">PhD in Naval Architecture. Expert in operational excellence and process optimization.</p>
+            <h3>Mr. Rashesh Sanghvi (B.Com)</h3>
+            <div class="designation">Partner - Strategy and Client Leadership</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">With over 25 years of experience, Mr. Rashesh Sanghvi has played a key role in shaping the company’s strategic direction. His strengths include client relationship management, project oversight, and resolving HR and logistical challenges for smooth project execution.</p>
           </div>
         </div>
+
         <div class="card feature-card team-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Vikram Desai" class="leader-card-image">
+          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Leader photo placeholder" class="leader-card-image">
           <div class="card-content text-center">
-            <h4>Vikram Desai</h4>
-            <div class="designation">Chief Technology Officer</div>
-            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">25+ years in marine engineering design. Pioneer of sustainable shipping technologies.</p>
+            <h3>Mr. Chirag Sanghvi (B.S. Industrial Engineering, MBA)</h3>
+            <div class="designation">Partner - Business Development and Projects</div>
+            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">Bringing 15 years of industry experience, Mr. Chirag Sanghvi leads business development, project management, and costing and bidding. His innovative approach has been pivotal in securing major contracts and expanding the firm’s presence in the marine sector.</p>
           </div>
         </div>
-        <div class="card feature-card team-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Anjali Patel" class="leader-card-image">
-          <div class="card-content text-center">
-            <h4>Anjali Patel</h4>
-            <div class="designation">Chief Financial Officer</div>
-            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">20+ years of financial management. Expertise in international maritime finance.</p>
-          </div>
-        </div>
-        <div class="card feature-card team-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Arun Menon" class="leader-card-image">
-          <div class="card-content text-center">
-            <h4>Arun Menon</h4>
-            <div class="designation">VP Engineering &amp; Design</div>
-            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">18+ years specializing in advanced vessel design and 3D modeling technologies.</p>
-          </div>
-        </div>
-        <div class="card feature-card team-card">
-          <img src="{{ url_for('static', filename='images/media-placeholder.svg') }}" alt="Meera Singh" class="leader-card-image">
-          <div class="card-content text-center">
-            <h4>Meera Singh</h4>
-            <div class="designation">VP Operations &amp; Safety</div>
-            <p class="card-text" style="color: var(--text-light); font-size: var(--font-size-sm);">22+ years in shipyard operations. Champion of safety-first culture and quality management.</p>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
