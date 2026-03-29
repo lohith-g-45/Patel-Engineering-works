@@ -27,18 +27,17 @@
                         <li class="nav-dropdown">
           <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about') }}">Company Overview</a></li>
             <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
-            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership</a></li>
             <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
           </ul>
         </li>
-                <li class="nav-dropdown">
-          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-link">Divisions</a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
-            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
-            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+            <li><a href="{{ url_for('divisions_shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions_repair') }}">Ship Repair &amp; Modernization</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('media_page') }}">Media</a></li>
@@ -137,7 +136,7 @@
        FOOTER
        ================================================================ -->
   <footer class="footer footer-compact">
-    <div class="footer-content">
+    <div class="footer-content container">
       <div class="footer-section">
         <h4>About PEW Vizag</h4>
         <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
@@ -160,16 +159,16 @@
       </div>
       <div class="footer-section footer-contact">
         <h4>Contact Info</h4>
-        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567346</a></span></p>
-        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a></span></p>
-        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">9820321082</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
-        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelengv.com">info@patelengv.com</a></span></p>
+        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567 346">2567 346</a></span></p>
+        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a></span></p>
+        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+9193931 02438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+9193931 04894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Marine Engineering & Shipbuilding. All rights reserved. | 
-        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
-        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+        <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+        <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
       </p>
     </div>
   </footer>

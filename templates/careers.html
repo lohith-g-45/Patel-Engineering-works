@@ -26,18 +26,17 @@
                         <li class="nav-dropdown">
           <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('about') }}">Company History</a></li>
+            <li><a href="{{ url_for('about') }}">Company Overview</a></li>
             <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
-            <li><a href="{{ url_for('about_leadership') }}">Leadership Team</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership</a></li>
             <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
           </ul>
         </li>
                 <li class="nav-dropdown">
-          <a href="{{ url_for('divisions') }}" class="nav-dropdown-link">Divisions</a>
+          <a href="#" class="nav-dropdown-link">Divisions</a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('divisions', division='marine') }}">Marine Engineering</a></li>
-            <li><a href="{{ url_for('divisions', division='shipbuilding') }}">Ship Building</a></li>
-            <li><a href="{{ url_for('divisions', division='repair') }}">Ship Repair &amp; Modernization</a></li>
+            <li><a href="{{ url_for('divisions_shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions_repair') }}">Ship Repair &amp; Modernization</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('media_page') }}">Media</a></li>
@@ -51,380 +50,684 @@
   <!-- ================================================================
        PAGE HEADER
        ================================================================ -->
-  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg') }}');">
-    <div class="page-hero-overlay"></div>
-    <div class="hero-content page-hero-content">
-      <h1>Join Our Team</h1>
-      <p>Build Your Career in Marine Engineering</p>
-    </div>
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       BREADCRUMB
-       ================================================================ -->
-  <section class="section breadcrumb-section">
-    <div class="container">
-      <div class="breadcrumb">
-        <a href="{{ url_for('home') }}">Home</a>
-        <span class="separator">/</span>
-        <span>Careers</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       CAREER HIGHLIGHTS
-       ================================================================ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>Why Work With Us?</h2>
-      </div>
-      <div class="grid grid-4 info-grid">
-        <div class="card feature-card career-highlight-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/layout-dashboard.svg') }}" alt=""></div>
-            <h4>Innovation & Growth</h4>
-            <p>Work on cutting-edge maritime projects and develop your skills with industry leaders</p>
-          </div>
-        </div>
-        <div class="card feature-card career-highlight-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/briefcase.svg') }}" alt=""></div>
-            <h4>Competitive Benefits</h4>
-            <p>Excellent compensation packages with health insurance and retirement benefits</p>
-          </div>
-        </div>
-        <div class="card feature-card career-highlight-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/collaboration.svg') }}" alt=""></div>
-            <h4>Team Culture</h4>
-            <p>Diverse, collaborative environment fostering creativity and professional development</p>
-          </div>
-        </div>
-        <div class="card feature-card career-highlight-card">
-          <div class="card-content text-center">
-            <div class="icon-badge"><img src="{{ url_for('static', filename='icons/anchor.svg') }}" alt=""></div>
-            <h4>Global Impact</h4>
-            <p>Make a difference in global maritime industry and sustainable shipping solutions</p>
-          </div>
-        </div>
-      </div>
+  <section class="career-hero">
+    <div class="hero-content">
+      <h1 style="color: #fff; font-size: 3.5rem; margin-bottom: 1rem;">Join Our Team</h1>
+      <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem;">Build Your Career in Marine Engineering</p>
     </div>
   </section>
 
   <!-- ================================================================
        CURRENT OPENINGS
        ================================================================ -->
-  <section class="section section-light" id="job-openings">
+  <section class="section section-light" id="job-openings" style="padding-top: 4rem;">
     <div class="container">
-      <div class="section-title">
-        <h2>Current Job Openings</h2>
+      
+      <div class="career-filter-row">
+        <select class="filter-select" id="filter-type">
+          <option value="all">All Job Type</option>
+          <option value="full-time">Full Time</option>
+          <option value="part-time">Part Time</option>
+        </select>
+        <select class="filter-select" id="filter-location">
+          <option value="all">All Job Location</option>
+          <option value="goa">Goa</option>
+          <option value="vishakhapatnam">Vishakhapatnam</option>
+          <option value="kolkata">Kolkata</option>
+        </select>
       </div>
 
-      <div class="job-grid">
-        <!-- Senior Naval Architect -->
-        <div class="card feature-card job-card">
-          <div class="card-content">
-            <div class="job-head">
-              <div>
-                <h4 class="card-title" style="margin-bottom: var(--spacing-sm);">Senior Naval Architect</h4>
-                <p class="card-text job-location">Mumbai, India</p>
-              </div>
-              <span class="badge">Experienced</span>
-            </div>
-            <p class="card-text">
-              Lead vessel design projects and mentor junior engineers. 10+ years experience required in naval architecture and CAD design.
-            </p>
-            <ul class="structured-list structured-list-tight">
-              <li>Salary: $80,000 - $120,000 per annum</li>
-              <li>Qualifications: BE/ME in Naval Architecture</li>
-              <li>Requirements: CAD expertise, leadership skills</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary btn-small" style="margin-bottom: 0;">Apply Now</a>
+      <div class="job-card-grid">
+        <!-- Job 1 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="kolkata vishakhapatnam">
+          <h3>Electrical Supervisor – Ship Repair (PEWV/SBH10)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Kolkata, Visakhapatnam</div>
           </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh10')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh10')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
         </div>
 
-        <!-- Shipyard Supervisor -->
-        <div class="card feature-card job-card">
-          <div class="card-content">
-            <div class="job-head">
-              <div>
-                <h4 class="card-title" style="margin-bottom: var(--spacing-sm);">Shipyard Supervisor</h4>
-                <p class="card-text job-location">Mumbai, India</p>
-              </div>
-              <span class="badge">Experienced</span>
-            </div>
-            <p class="card-text">
-              Oversee daily shipyard operations and ensure quality standards. 8+ years supervisory experience in shipbuilding.
-            </p>
-            <ul class="structured-list structured-list-tight">
-              <li>Salary: $50,000 - $75,000 per annum</li>
-              <li>Qualifications: Engineering diploma or BE</li>
-              <li>Requirements: ISO certified, safety expertise</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary btn-small" style="margin-bottom: 0;">Apply Now</a>
+        <!-- Job 2 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata vishakhapatnam">
+          <h3>Project Engineer/Manager – Electrical (PEWV/SBH05)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Goa, Kolkata, Visakhapatnam</div>
           </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh05')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh05')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
         </div>
 
-        <!-- Structural Engineer -->
-        <div class="card feature-card job-card">
-          <div class="card-content">
-            <div class="job-head">
-              <div>
-                <h4 class="card-title" style="margin-bottom: var(--spacing-sm);">Structural Engineer</h4>
-                <p class="card-text job-location">Mumbai, India</p>
-              </div>
-              <span class="badge">Entry-Level</span>
-            </div>
-            <p class="card-text">
-              Design and analyze ship structural systems. Fresh graduates or 2-3 years experience welcome. FEA and CATIA skills required.
-            </p>
-            <ul class="structured-list structured-list-tight">
-              <li>Salary: $25,000 - $40,000 per annum</li>
-              <li>Qualifications: BE in Civil/Mechanical Engineering</li>
-              <li>Requirements: FEA software knowledge, CATIA</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary btn-small" style="margin-bottom: 0;">Apply Now</a>
+        <!-- Job 3 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
+          <h3>Electrical Engineer – Ship Repair (PEWV/SBH08)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
           </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh08')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh08')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
         </div>
 
-        <!-- Project Manager -->
-        <div class="card feature-card job-card">
-          <div class="card-content">
-            <div class="job-head">
-              <div>
-                <h4 class="card-title" style="margin-bottom: var(--spacing-sm);">Project Manager</h4>
-                <p class="card-text job-location">Mumbai, India</p>
-              </div>
-              <span class="badge">Experienced</span>
-            </div>
-            <p class="card-text">
-              Manage large-scale shipbuilding projects from conception to delivery. 5+ years project management experience required.
-            </p>
-            <ul class="structured-list structured-list-tight">
-              <li>Salary: $60,000 - $90,000 per annum</li>
-              <li>Qualifications: MBA or PMP certification</li>
-              <li>Requirements: Marine industry experience</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary btn-small" style="margin-bottom: 0;">Apply Now</a>
+        <!-- Job 4 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
+          <h3>Electrician – Ship Repair (PEWV/SBH07)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
           </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh07')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh07')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
         </div>
 
-        <!-- Electrical Engineer -->
-        <div class="card feature-card job-card">
-          <div class="card-content">
-            <div class="job-head">
-              <div>
-                <h4 class="card-title" style="margin-bottom: var(--spacing-sm);">Marine Electrical Engineer</h4>
-                <p class="card-text job-location">Mumbai, India</p>
-              </div>
-              <span class="badge">Entry-Level</span>
-            </div>
-            <p class="card-text">
-              Design electrical systems for vessels including power distribution and automation. 0-3 years experience acceptable.
-            </p>
-            <ul class="structured-list structured-list-tight">
-              <li>Salary: $30,000 - $45,000 per annum</li>
-              <li>Qualifications: BE in Electrical Engineering</li>
-              <li>Requirements: EPLAN or similar software</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary btn-small" style="margin-bottom: 0;">Apply Now</a>
+        <!-- Job 5 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
+          <h3>Electrical Supervisor – Shipbuilding (Electrical Outfitting) (PEWV/SBH06)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
           </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh06')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh06')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
         </div>
 
-        <!-- Welding Technician -->
-        <div class="card feature-card job-card">
-          <div class="card-content">
-            <div class="job-head">
-              <div>
-                <h4 class="card-title" style="margin-bottom: var(--spacing-sm);">Welding Technician</h4>
-                <p class="card-text job-location">Mumbai, India</p>
-              </div>
-              <span class="badge">Experienced</span>
-            </div>
-            <p class="card-text">
-              Perform precision welding operations on ship hull components. AWS certification and 5+ years experience required.
-            </p>
-            <ul class="structured-list structured-list-tight">
-              <li>Salary: $35,000 - $55,000 per annum</li>
-              <li>Qualifications: ITI Welding or equivalent</li>
-              <li>Requirements: AWS certification, safety record</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary btn-small" style="margin-bottom: 0;">Apply Now</a>
+        <!-- Job 6 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata vishakhapatnam">
+          <h3>Project Engineer/Manager (Ship Repair) (PEWV/SBH09)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Goa, Kolkata, Visakhapatnam</div>
           </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh09')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh09')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
+        </div>
+
+        <!-- Job 7 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
+          <h3>Senior Mechanical Fitter (Marine) (PEWV/SBH04)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
+          </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh04')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh04')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: December 2, 2024</div>
+        </div>
+
+        <!-- Job 8 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="kolkata vishakhapatnam">
+          <h3>Engineering Supervisor (PEWV/SBH03)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Kolkata, Visakhapatnam</div>
+          </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh03')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh03')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: November 29, 2024</div>
+        </div>
+
+        <!-- Job 9 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata">
+          <h3>Hull Fabrication – Senior Structural Assistant Manager/Manager (PEWV/SBH02)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Goa, Kolkata</div>
+          </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh02')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh02')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: November 29, 2024</div>
+        </div>
+
+        <!-- Job 10 -->
+        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata">
+          <h3>Hull Fabrication – Structural Supervisor (PEWV/SBH01)</h3>
+          <div class="job-meta-info">
+            <div class="job-meta-item"><span>💼</span> Full Time</div>
+            <div class="job-meta-item"><span>📍</span> Goa, Kolkata</div>
+          </div>
+          <a href="javascript:void(0)" onclick="openJobModal('sbh01')" class="job-details-link">More Details +</a>
+          <button onclick="openApplyModal('sbh01')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
+          <div class="job-posted-on">Posted on: November 28, 2024</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ================================================================
-       JOB APPLICATION FORM
+       JOB DETAILS MODAL
        ================================================================ -->
-  <section class="section" id="apply-form">
-    <div class="container" style="max-width: 800px;">
-      <div class="form-shell">
-        <div class="text-center" style="margin-bottom: var(--spacing-2xl);">
-          <h2>Apply Now</h2>
-          <p>Submit your application to join our talented team</p>
-        </div>
+  <div id="job-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 id="modal-title">Role Details</h2>
+        <button class="btn-close-modal" onclick="closeJobModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-content">
+        <!-- Content will be injected here -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-small" onclick="closeJobModal()">Close</button>
+        <button class="btn btn-primary btn-small" id="modal-apply-btn">Apply Now</button>
+      </div>
+    </div>
+  </div>
 
-        <form action="/api/submit-application" method="POST">
-        <!-- Full Name -->
-        <div class="form-group">
-          <label class="form-label">Full Name *</label>
-          <input type="text" name="fullName" class="form-input" placeholder="John Smith" required>
-        </div>
-
-        <!-- Email & Phone -->
-        <div class="form-row">
+  <!-- Application Popup Modal -->
+  <div id="apply-modal" class="modal-overlay">
+    <div class="modal-container modal-large modal-red">
+      <div class="modal-header">
+        <h2>Apply for Position</h2>
+        <button class="btn-close-modal" onclick="closeApplyModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="/api/submit-application" method="POST" id="career-apply-form">
           <div class="form-group">
-            <label class="form-label">Email Address *</label>
-            <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+            <label class="form-label">Full Name *</label>
+            <input type="text" name="fullName" class="form-input" placeholder="John Smith" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+            </div>
           </div>
           <div class="form-group">
-            <label class="form-label">Phone Number *</label>
-            <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+            <label class="form-label">Position Applying For *</label>
+            <select name="position" id="modal-job-select" class="form-select" required>
+              <option value="">Select a position</option>
+              <option value="sbh10">Electrical Supervisor – Ship Repair (PEWV/SBH10)</option>
+              <option value="sbh05">Project Engineer/Manager – Electrical (PEWV/SBH05)</option>
+              <option value="sbh08">Electrical Engineer – Ship Repair (PEWV/SBH08)</option>
+              <option value="sbh07">Electrician – Ship Repair (PEWV/SBH07)</option>
+              <option value="sbh06">Electrical Supervisor – Shipbuilding (Electrical Outfitting) (PEWV/SBH06)</option>
+              <option value="sbh09">Project Engineer/Manager (Ship Repair) (PEWV/SBH09)</option>
+              <option value="sbh04">Senior Mechanical Fitter (Marine) (PEWV/SBH04)</option>
+              <option value="sbh03">Engineering Supervisor (PEWV/SBH03)</option>
+              <option value="sbh02">Hull Fabrication – Senior Structural Assistant Manager/Manager (PEWV/SBH02)</option>
+              <option value="sbh01">Hull Fabrication – Structural Supervisor (PEWV/SBH01)</option>
+              <option value="other">Other</option>
+            </select>
           </div>
-        </div>
-
-        <!-- Position Applying For -->
-        <div class="form-group">
-          <label class="form-label">Position Applying For *</label>
-          <select name="position" class="form-select" required>
-            <option value="">Select a position</option>
-            <option value="senior-naval-architect">Senior Naval Architect</option>
-            <option value="shipyard-supervisor">Shipyard Supervisor</option>
-            <option value="structural-engineer">Structural Engineer</option>
-            <option value="project-manager">Project Manager</option>
-            <option value="marine-electrical-engineer">Marine Electrical Engineer</option>
-            <option value="welding-technician">Welding Technician</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <!-- Current Company & Designation -->
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Current Company</label>
-            <input type="text" name="currentCompany" class="form-input" placeholder="Your current employer">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Years of Experience *</label>
+              <select name="experience" class="form-select" required>
+                <option value="">Select experience level</option>
+                <option value="0-2">0-2 years</option>
+                <option value="2-5">2-5 years</option>
+                <option value="5-10">5-10 years</option>
+                <option value="15+">15+ years</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Qualification *</label>
+              <select name="qualification" class="form-select" required>
+                <option value="diploma">Diploma</option>
+                <option value="bachelor">Bachelor's</option>
+                <option value="master">Master's</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Current Designation</label>
-            <input type="text" name="currentDesignation" class="form-input" placeholder="Your current job title">
+          <div class="form-group text-left">
+            <label class="form-label">Upload Resume (PDF/DOC) *</label>
+            <input type="file" name="resume" class="form-input" required>
           </div>
-        </div>
-
-        <!-- Experience -->
-        <div class="form-group">
-          <label class="form-label">Years of Experience *</label>
-          <select name="experience" class="form-select" required>
-            <option value="">Select experience level</option>
-            <option value="0-2">0-2 years (Fresh graduate)</option>
-            <option value="2-5">2-5 years</option>
-            <option value="5-10">5-10 years</option>
-            <option value="10-15">10-15 years</option>
-            <option value="15+">15+ years</option>
-          </select>
-        </div>
-
-        <!-- Qualifications -->
-        <div class="form-group">
-          <label class="form-label">Educational Qualification *</label>
-          <select name="qualification" class="form-select" required>
-            <option value="">Select qualification</option>
-            <option value="diploma">Diploma</option>
-            <option value="bachelor">Bachelor's Degree (BE/BTech)</option>
-            <option value="master">Master's Degree (ME/MTech/MBA)</option>
-            <option value="phd">PhD</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-
-        <!-- Skills -->
-        <div class="form-group">
-          <label class="form-label">Relevant Skills/Certifications</label>
-          <textarea name="skills" class="form-textarea" placeholder="List your relevant skills and certifications (e.g., CAD, CATIA, AWS, ISO certifications, etc.)"></textarea>
-        </div>
-
-        <!-- Resume Upload -->
-        <div class="form-group">
-          <label class="form-label">Upload Resume/CV *</label>
-          <input type="file" name="resume" class="form-input" accept=".pdf,.doc,.docx" style="padding: var(--spacing-lg);" required>
-          <p style="font-size: var(--font-size-xs); color: var(--text-light); margin-top: var(--spacing-sm); margin-bottom: 0;">
-            Accepted formats: PDF, DOC, DOCX (Max 5MB)
-          </p>
-        </div>
-
-        <!-- Cover Letter -->
-        <div class="form-group">
-          <label class="form-label">Message / Cover Letter</label>
-          <textarea name="message" class="form-textarea" placeholder="Tell us why you're a great fit for this position and what motivates you to join us..."></textarea>
-        </div>
-
-        <!-- Terms & Conditions -->
-        <div class="form-group">
-          <label style="display: flex; align-items: start; gap: var(--spacing-md);">
-            <input type="checkbox" name="terms" style="margin-top: var(--spacing-sm);" required>
-            <span style="color: var(--text-dark);">I agree to the privacy policy and terms of the application process *</span>
-          </label>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary btn-large btn-block">Submit Application</button>
+          <div class="form-group text-left" style="margin-top: var(--spacing-md); display: flex; flex-direction: column; gap: 1rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
+              <input type="checkbox" name="terms_agree" style="margin-top: 0.35rem;" required>
+              <span style="font-size: var(--font-size-sm); color: var(--text-light); line-height: 1.4;">
+                I agree to the <a href="/terms" target="_blank" style="color: var(--accent-red); font-weight: 600; text-decoration: underline;">Terms & Conditions</a> of Patel Engineering Works.
+              </span>
+            </label>
+            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
+              <input type="checkbox" name="privacy_agree" style="margin-top: 0.35rem;" required>
+              <span style="font-size: var(--font-size-sm); color: var(--text-light); line-height: 1.4;">
+                I agree to the <a href="/privacy-policy" target="_blank" style="color: var(--accent-red); font-weight: 600; text-decoration: underline;">privacy policy</a> of Patel Engineering Works.
+              </span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
         </form>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ================================================================
-       INTERNSHIP PROGRAMS
-       ================================================================ -->
-  <section class="section section-light">
-    <div class="container">
-      <div class="section-title">
-        <h2>Internship & Graduate Programs</h2>
-      </div>
-      <div class="grid grid-2 info-grid">
-        <div class="card feature-card program-card">
-          <div class="card-content">
-            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Internship Program</h4>
-            <p class="card-text">
-              Gain practical experience in marine engineering during your studies. Our internship program offers mentorship, 
-              real-world projects, and potential permanent placement opportunities.
-            </p>
-            <ul class="structured-list structured-list-tight" style="margin-bottom: var(--spacing-lg);">
-              <li>Duration: 3-6 months</li>
-              <li>Stipend: ₹15,000 - ₹25,000 per month</li>
-              <li>Eligibility: 2nd/3rd year engineering students</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary">Apply for Internship</a>
-          </div>
-        </div>
-
-        <div class="card feature-card program-card">
-          <div class="card-content">
-            <h4 style="color: var(--primary-navy); margin-bottom: var(--spacing-lg);">Graduate Trainee Program</h4>
-            <p class="card-text">
-              Our structured graduate program develops fresh engineering graduates into competent marine engineering professionals 
-              with 12-18 months of intensive training and mentorship.
-            </p>
-            <ul class="structured-list structured-list-tight" style="margin-bottom: var(--spacing-lg);">
-              <li>Duration: 12-18 months</li>
-              <li>Salary: ₹25,000 - ₹35,000 per month</li>
-              <li>Eligibility: Recent engineering graduates</li>
-            </ul>
-            <a href="#apply-form" class="btn btn-primary">Apply for Graduate Program</a>
-          </div>
-        </div>
-      </div>
+  <!-- Hidden Job Content Data -->
+  <div id="job-data-sbh10" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Electrical Supervisor – Ship Repair (PEWV/SBH10)</h3>
+      <p><strong>Location:</strong> Kolkata & Visakhapatnam (Flexible to Travel during refits)</p>
+      <p><strong>Experience:</strong> Minimum 3–4 years</p>
+      <p><strong>Industry:</strong> Ship Repair</p>
+      
+      <h4>About the Role</h4>
+      <p>The Electrical Supervisor will lead ship repair and maintenance projects, managing electrical systems and coordinating with defense clients and multiple stakeholders. The ideal candidate will have extensive experience in marine electrical systems, repairs, and project coordination.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Supervise and manage the repair of motors, starters, generators, switchboards, and control systems of cranes, steering, CPPs, and other onboard equipment.</li>
+        <li>Read and interpret schematic, isometric, and SDL drawings to guide repairs.</li>
+        <li>Coordinate with OEMs, contractors, and teams for seamless execution of repairs onboard ships.</li>
+        <li>Prepare inspection reports, work-done certificates, and ensure necessary approvals from ship staff, Class, and QA.</li>
+        <li>Maintain strong communication with defence sector stakeholders (Navy/Coast Guard preferred).</li>
+        <li>Ensure quality control, adherence to timelines, and safety compliance during projects.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Diploma/B. Tech/BE in Electrical, Electronics, or Instrumentation Engineering.</li>
+        <li>Minimum 3–4 years of experience in ship repair or shipbuilding.</li>
+        <li>Retired professionals from the Indian Navy (SES/Electrical), Coast Guard, or Merchant Navy (equivalent roles) are encouraged to apply.</li>
+        <li>Strong knowledge of marine electrical systems and defence protocols.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong knowledge of shipboard electrical systems, including motors, control panels, and generators.</li>
+        <li>Ability to read and interpret technical drawings and schematics.</li>
+        <li>Excellent coordination and communication skills for managing multiple teams.</li>
+        <li>Proficiency in report preparation and documentation.</li>
+        <li>Problem-solving and leadership abilities.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Kolkata, Visakhapatnam</p>
     </div>
-  </section>
+  </div>
+
+  <div id="job-data-sbh05" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Project Engineer/Manager – Electrical (PEWV/SBH05)</h3>
+      <p><strong>Location:</strong> Multiple Ports Across India (Kolkata, Visakhapatnam, Goa, etc.)</p>
+      <p><strong>Experience:</strong> Minimum 3–4 years</p>
+      <p><strong>Industry:</strong> Ship Repair</p>
+      
+      <h4>About the Role</h4>
+      <p>We are seeking a skilled Project Engineer/Manager with expertise in electrical systems for ship repair and refit projects. The role involves managing turnkey projects, working with defence clients, and ensuring high-quality execution across multiple ports in India.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Plan and execute ship repair/refit projects, ensuring timely delivery and quality standards.</li>
+        <li>Manage and coordinate with defence clients, OEMs, subcontractors, and team members.</li>
+        <li>Oversee marine electrical systems, including alternators, motors, control panels, starters, navigation, and communication equipment.</li>
+        <li>Prepare project budgets, estimations, and maintain detailed progress updates.</li>
+        <li>Understand and manage tender processes, RFPs, RFQs, and related documentation.</li>
+        <li>Handle negotiations and define scopes of work for subcontractors and stakeholders.</li>
+        <li>Ensure proper resource allocation, vendor management, and streamlined operations.</li>
+        <li>Prepare reports, attend meetings, and provide status updates to customers and management.</li>
+        <li>Identify potential challenges, troubleshoot issues, and escalate concerns proactively.</li>
+        <li>Plan and manage spares, consumables, and logistics for efficient project execution.</li>
+        <li>Maintain strong relationships with clients, team members, and representatives.</li>
+        <li>Support management with tendering, cost estimation, and hiring processes as required.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Diploma/B. Tech/BE in Electrical, Electronics, or Instrumentation Engineering.</li>
+        <li>Minimum 3–4 years of experience in ship repair or shipbuilding.</li>
+        <li>Retired professionals from the Indian Navy (SES/Electrical), Coast Guard, or Merchant Navy (equivalent roles) are encouraged to apply.</li>
+        <li>Strong knowledge of marine electrical systems and defence protocols.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Proficiency in marine electrical systems and project management.</li>
+        <li>Strong leadership, team management, and coordination skills.</li>
+        <li>Knowledge of tendering processes and defence administrative procedures.</li>
+        <li>Excellent communication, problem-solving, and analytical abilities.</li>
+        <li>Attention to detail and commitment to quality and safety.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Goa, Kolkata, Visakhapatnam</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh08" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Electrical Engineer – Ship Repair (PEWV/SBH08)</h3>
+      <p><strong>Experience:</strong> Minimum 10 years</p>
+      <p><strong>Industry:</strong> Shipbuilding</p>
+      
+      <h4>About the Role</h4>
+      <p>The Electrical Engineer will lead electrical repair and maintenance activities in the ship repair industry. The ideal candidate will have expertise in power electrical and control systems, and troubleshooting shipboard equipment. This leadership role requires strong technical and coordination skills.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Diagnose and troubleshoot electrical issues in switchboards, control panels, and control systems.</li>
+        <li>Repair and maintain motors, starters, generators, steering systems, CPPs, cranes, and other onboard equipment.</li>
+        <li>Read and interpret panel/equipment electrical drawings to identify and resolve faults.</li>
+        <li>Coordinate with electricians, OEMs, and ship staff to ensure smooth execution of repair tasks.</li>
+        <li>Prepare inspection reports, repair documentation, and provide regular job status updates.</li>
+        <li>Supervise and guide repair teams, ensuring adherence to timelines and quality standards.</li>
+        <li>Handle repairs of VFDs and soft starters (preferred).</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>B.Tech in Electrical Engineering.</li>
+        <li>Minimum 10 years of experience in ship repair with expertise in power electrical and control systems.</li>
+        <li>Proven track record of managing and troubleshooting shipboard electrical systems.</li>
+        <li>Ability to draft detailed inspection reports and manage repair documentation.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong technical knowledge of shipboard electrical systems and control systems.</li>
+        <li>Proficiency in troubleshooting electrical equipment, including motors, switchboards, and control panels.</li>
+        <li>Leadership and team coordination abilities.</li>
+        <li>Excellent written and verbal communication skills for report preparation and stakeholder coordination.</li>
+        <li>Familiarity with VFDs and soft starters is an added advantage.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Vishakhapatnam</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh07" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Electrician – Ship Repair (PEWV/SBH07)</h3>
+      <p><strong>Experience:</strong> Minimum 6 years</p>
+      <p><strong>Industry:</strong> Shipbuilding</p>
+      
+      <h4>About the Role</h4>
+      <p>The Electrician will be responsible for troubleshooting and repairing electrical systems in the ship repair and marine industry. The ideal candidate will have hands-on experience working with motors, control panels, generators, and switchboards, and a strong ability to interpret electrical drawings.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Diagnose and repair electrical issues in control panels, starters, and switchboards.</li>
+        <li>Read and interpret electrical panel/equipment drawings for troubleshooting.</li>
+        <li>Work on motors, starters, generators, and switchboards in ship repair or industrial environments.</li>
+        <li>Assist in repairing and maintaining VFDs and soft starters (preferred but not mandatory).</li>
+        <li>Ensure compliance with safety and quality standards during electrical repair activities.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Minimum 6 years of experience in shipbuilding, ship repair, marine, or industrial plants.</li>
+        <li>ITI certification or equivalent educational qualification in Electrical.</li>
+        <li>Proficiency in troubleshooting electrical systems and components.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong knowledge of control panels, motors, and electrical systems.</li>
+        <li>Ability to read and understand electrical schematics and technical drawings.</li>
+        <li>Experience in VFDs and soft starters is an advantage.</li>
+        <li>Problem-solving and analytical abilities.</li>
+        <li>Attention to detail and adherence to safety standards.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Vishakhapatnam</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh06" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Electrical Supervisor – Shipbuilding (Electrical Outfitting) (PEWV/SBH06)</h3>
+      <p><strong>Experience:</strong> Minimum 4 years</p>
+      <p><strong>Industry:</strong> Shipbuilding</p>
+      
+      <h4>About the Role</h4>
+      <p>The Electrical Supervisor will oversee electrical outfitting activities, including cable laying, equipment installation, and monitorization in the shipbuilding and marine industry. The candidate must be skilled in interpreting technical drawings and supervising electrical installations.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Supervise and manage electrical outfitting works (cable laying, equipment installation, connections).</li>
+        <li>Interpret and work with schematic, isometric, and SDL drawings.</li>
+        <li>Coordinate with design and production teams to address technical challenges.</li>
+        <li>Ensure high-quality execution of electrical installations while meeting project timelines.</li>
+        <li>Monitor worksite safety and compliance with industry standards.</li>
+        <li>Provide guidance and training to junior staff and team members.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Minimum 4 years of experience in shipbuilding, ship repair, or the marine field.</li>
+        <li>Diploma or higher in Electrical Engineering or related disciplines.</li>
+        <li>Strong understanding of marine electrical systems and processes.</li>
+        <li>Proficiency in reading and interpreting technical drawings.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Hands-on expertise in cable laying, equipment outfitting, and Connections.</li>
+        <li>Strong leadership and team management abilities.</li>
+        <li>Problem-solving and analytical skills.</li>
+        <li>Attention to detail with a commitment to quality and safety.</li>
+        <li>Effective communication and coordination skills.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Vishakhapatnam</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh09" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Project Engineer/Manager (Ship Repair) (PEWV/SBH09)</h3>
+      <p><strong>Location:</strong> Multiple Ports Across India (Kolkata, Visakhapatnam, Goa, etc.)</p>
+      <p><strong>Experience:</strong> Minimum 3–5 years</p>
+      <p><strong>Industry:</strong> Ship Repair</p>
+      
+      <h4>About the Role</h4>
+      <p>The Project Engineer/Manager will lead ship repair and refit projects at various ports in India, overseeing marine engineering systems, project execution, and stakeholder coordination.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Plan and execute turnkey ship repair and refit projects at ports and shipyards.</li>
+        <li>Collaborate with defence clients to ensure quality standards are met.</li>
+        <li>Oversee project requirements, vendor management, and subcontractor coordination.</li>
+        <li>Prepare budgets, estimates, and manage costing with OEMs and subcontractors.</li>
+        <li>Supervise marine engineering systems (engines, gearboxes, HVAC, pipelines).</li>
+        <li>Handle tender processes, documentation (RFPs, RFQs, SOWs, etc.), and defense protocols.</li>
+        <li>Negotiate scopes of work and ensure seamless communication among stakeholders.</li>
+        <li>Monitor project progress, update reports, and resolve challenges efficiently.</li>
+        <li>Plan materials, spares, manpower, and logistics to meet project requirements.</li>
+        <li>Lead and motivate the project team while maintaining strong client relationships.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Diploma/B.Tech/BE in Mechanical, Industrial, or Marine Engineering.</li>
+        <li>3–5 years of experience in ship repair, shipbuilding, or similar roles.</li>
+        <li>Retired professionals from Indian Navy (ERA ranks), Coast Guard, or equivalent Merchant Navy positions are welcome.</li>
+        <li>Proficiency in marine engineering systems, tendering processes, and defense protocols.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong leadership and team management abilities.</li>
+        <li>Excellent problem-solving and analytical skills.</li>
+        <li>Proficiency in project planning, budgeting, and execution.</li>
+        <li>Effective communication and stakeholder coordination.</li>
+        <li>Attention to detail with a commitment to quality and safety.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Goa, Kolkata, Visakhapatnam</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh04" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Senior Mechanical Fitter (Marine) (PEWV/SBH04)</h3>
+      <p><strong>Experience:</strong> 8 years +</p>
+      <p><strong>Industry:</strong> Ship Repair</p>
+      
+      <h4>About the Role</h4>
+      <p>Seeking an experienced Senior Mechanical Fitter with extensive hands on experience in overhauling and repairing marine machinery. The role involves guiding junior fitters and applying engineering principles to resolve mechanical issues.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Perform repairs and overhauls of marine machinery such as main engines, pumps, compressors, etc.</li>
+        <li>Ensure adherence to marine engineering practices and safety standards.</li>
+        <li>Apply engineering principles to troubleshoot and resolve mechanical issues.</li>
+        <li>Assess material quality, perform accurate measurements, and ensure work meets required tolerances.</li>
+        <li>Interpret engineering manuals and drawings to execute tasks correctly and provide guidance to junior fitters.</li>
+        <li>Supervise and mentor junior mechanical fitters, ensuring smooth collaboration and high-quality workmanship.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>ITI certification in a relevant mechanical field.</li>
+        <li>Minimum of 8 years of hands-on experience in marine machinery repairs and overhauls.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong organizational and multitasking abilities.</li>
+        <li>Ability to manage and coordinate with diverse stakeholders in challenging environments.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh03" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Engineering Supervisor (PEWV/SBH03)</h3>
+      <p><strong>Location:</strong> Kolkata & Visakhapatnam (Flexible to Travel during refits)</p>
+      <p><strong>Experience:</strong> 10 years</p>
+      <p><strong>Industry:</strong> Ship Repair</p>
+      
+      <h4>About the Role</h4>
+      <p>Highly skilled Engineering Supervisor to oversee the overhaul of critical shipboard engineering equipment, utilizing hands-on tools, and strong communication skills.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Supervise overhaul of engineering equipment (engines, gearboxes, propulsion systems, steering systems, compressors, pumps).</li>
+        <li>Review and interpret engineering drawings and use precision tools (vernier callipers, dial gauge, micrometre) to measure tolerances and ensure accuracy.</li>
+        <li>Collaborate with defence personnel, leveraging experience with Navy or Coast Guard for smooth operations.</li>
+        <li>Manage and coordinate tasks with OEMs, contractors, and onboard teams during refits.</li>
+        <li>Prepare detailed inspection reports, work completion certificates, and secure approvals/signatures from ship staff, Class surveyors, and QA teams.</li>
+        <li>Flexible to travel to various locations during refits as needed.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>ITI Mechanical, Diploma holder, or higher (B .Tech preferred but not mandatory).</li>
+        <li>Minimum 10 years of experience, with preference for candidates with Defence sector (Navy/Coast Guard) experience.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong organizational and multitasking abilities.</li>
+        <li>Ability to manage and coordinate with diverse stakeholders in challenging environments.</li>
+        <li>Attention to detail in inspections and documentation.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Kolkata, Visakhapatnam</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh02" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Hull Fabrication – Senior Structural Assistant Manager/Manager (PEWV/SBH02)</h3>
+      <p><strong>Location:</strong> Kolkata & Goa</p>
+      <p><strong>Experience:</strong> 10 – 15 years</p>
+      <p><strong>Industry:</strong> Shipbuilding</p>
+      
+      <h4>About the Role</h4>
+      <p>Experienced professional to oversee the fabrication and erection of hull blocks, guide production processes, and manage client relationships for timely project delivery.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Supervise fabrication and erection of multiple hull blocks simultaneously for timely project delivery.</li>
+        <li>Review and interpret structural drawings to guide and manage production.</li>
+        <li>Represent the company in client production meetings, maintaining professional relationships and safeguarding company interests.</li>
+        <li>Lead and coordinate production teams to streamline operations and ensure quality standards.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Minimum 10-15 years of experience in shipbuilding and structural fabrication.</li>
+        <li>Naval Architects or Engineers with relevant production experience are encouraged to apply.</li>
+        <li>Proficiency in reading and understanding structural drawings.</li>
+        <li>Basic understanding of various welding techniques and QA/QC procedures specific to shipbuilding.</li>
+        <li>Educational Qualification (Preferred): Diploma holder or higher.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong leadership and team management abilities.</li>
+        <li>Communication and interpersonal skills for client engagement.</li>
+        <li>Organizational skills to manage multiple projects simultaneously.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Goa, Kolkata</p>
+    </div>
+  </div>
+
+  <div id="job-data-sbh01" style="display: none;">
+    <div class="job-detail-view">
+      <h3>Hull Fabrication – Structural Supervisor (PEWV/SBH01)</h3>
+      <p><strong>Location:</strong> Kolkata & Goa</p>
+      <p><strong>Experience:</strong> Minimum 4 years</p>
+      <p><strong>Industry:</strong> Shipbuilding</p>
+      
+      <h4>About the Role</h4>
+      <p>Experienced Structural Fabrication Supervisor to oversee shipbuilding and heavy fabrication, with expertise in structural drawings and fabrication processes.</p>
+      
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Supervise and manage fabrication activities, ensuring compliance with design specifications and timelines.</li>
+        <li>Review and interpret structural drawings accurately.</li>
+        <li>Coordinate with design and production teams to resolve technical challenges.</li>
+        <li>Monitor welding processes, ensuring adherence to welding techniques and quality standards.</li>
+        <li>Implement QA/QC procedures to maintain high-quality production.</li>
+      </ul>
+      
+      <h4>Qualifications & Experience</h4>
+      <ul>
+        <li>Minimum 4 years of experience in shipbuilding or heavy fabrication.</li>
+        <li>Proficiency in reading and understanding structural drawings.</li>
+        <li>Basic understanding of various welding techniques and QA/QC procedures.</li>
+        <li>Educational Qualification (Preferred): Diploma holder or higher.</li>
+        <li>Naval Architects or Engineers with relevant production experience are encouraged to apply.</li>
+      </ul>
+      
+      <h4>Skills Required</h4>
+      <ul>
+        <li>Strong leadership and team management abilities.</li>
+        <li>Excellent problem-solving and analytical skills.</li>
+        <li>Attention to detail with a commitment to quality and safety.</li>
+        <li>Effective communication and coordination skills.</li>
+      </ul>
+      
+      <p><strong>Employment type:</strong> Permanent</p>
+      <p><strong>Job Type:</strong> Full Time</p>
+      <p><strong>Job Location:</strong> Goa, Kolkata</p>
+    </div>
+  </div>
+
+
 
   <!-- ================================================================
        CALL TO ACTION
@@ -435,7 +738,7 @@
       <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); color: var(--neutral-light-grey);">
         Join us and make an impact in the marine engineering industry
       </p>
-      <a href="#apply-form" class="btn btn-secondary btn-large">Start Your Application</a>
+      <button onclick="openApplyModal('all')" class="btn btn-secondary btn-large">Start Your Application</button>
     </div>
   </section>
 
@@ -443,7 +746,7 @@
        FOOTER
        ================================================================ -->
   <footer class="footer footer-compact">
-    <div class="footer-content">
+    <div class="footer-content container">
       <div class="footer-section">
         <h4>About PEW Vizag</h4>
         <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
@@ -466,16 +769,16 @@
       </div>
       <div class="footer-section footer-contact">
         <h4>Contact Info</h4>
-        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567346</a></span></p>
-        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891-2705624</a></span></p>
-        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">9820321082</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
-        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelengv.com">info@patelengv.com</a></span></p>
+        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567 346">2567 346</a></span></p>
+        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a></span></p>
+        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+9193931 02438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+9193931 04894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Marine Engineering & Shipbuilding. All rights reserved. | 
-        <a href="#" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
-        <a href="#" style="color: var(--neutral-light-grey);">Terms of Service</a>
+      <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+        <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+        <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
       </p>
     </div>
   </footer>

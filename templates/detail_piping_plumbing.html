@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piping & Plumbing Systems - Ship Building Division</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="divisions-page">
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+          <img src="{{ url_for('static', filename='images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+        </a>
+      </div>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="navbar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li class="nav-dropdown">
+          <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('about') }}">Company Overview</a></li>
+            <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+            <li><a href="{{ url_for('about_leadership') }}">Leadership</a></li>
+            <li><a href="{{ url_for('about_certifications') }}">Certifications</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-link">Divisions</a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('divisions_shipbuilding') }}">Ship Building</a></li>
+            <li><a href="{{ url_for('divisions_repair') }}">Ship Repair &amp; Modernization</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('media_page') }}">Media</a></li>
+        <li><a href="{{ url_for('partners') }}">Partners</a></li>
+        <li><a href="{{ url_for('careers') }}">Careers</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='images/shipbuild.jpg') }}');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1>Ship Building Division</h1>
+      <p class="section-subtitle">Comprehensive Marine Engineering Solutions for naval, offshore, and commercial vessel programs.</p>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
+      </svg>
+    </div>
+  </section>
+
+  <section class="section shipbuild-overview">
+    <div class="container">
+      <div class="page-shell shipbuild-shell">
+        <div class="section-title section-title-left">
+          <h2>Piping & Plumbing Systems</h2>
+        </div>
+        <div class="shipbuild-intro-grid">
+          <div style="display: flex; flex-direction: column; justify-content: flex-start; background: none; border: none; padding: 0;">
+            <h3>Fabrication & Installation of Plumbing/Pipeline Systems</h3>
+            <p><strong>Precision and Reliability at Every Stage</strong></p>
+            <p>Our expertise in piping and plumbing fabrication and erection is a critical element in enabling our shipyard clients to deliver fully integrated, seaworthy vessels that meet the exacting standards of naval and commercial marine operations.</p>
+            <p>We undertake end-to-end fabrication and installation of marine piping systems, covering all essential utilities—compressed air, fuel, bilge, ballast, fire-fighting, seawater, fresh water, sewage, chilled water, exhaust, and other shipboard services. Whether outfitting complex warships or high-performance commercial craft, our teams deliver systems engineered to perform reliably under extreme operational conditions.</p>
+            <p>All fabrication is carried out in compliance with the standards of leading classification societies such as IRS, ABS, DNV, among others. We adhere strictly to approved Quality Assurance Plans (QAPs), which include weld inspection, pressure testing, and hydrotesting—both at the workshop level and post-erection onboard.</p>
+            <p>Our processes are underpinned by detailed isometric drawing reviews and Bill of Materials (BoM) verification, supported by a robust QA/QC framework. Our in-house QC professionals ensure all installations are leak-proof, vibration-resistant, and compliant with all technical specifications.</p>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: flex-end; background: none; border: none; padding: 0; height: 100%;">
+            <img src="{{ url_for('static', filename='images/Piping & Plumbing Systems.jpeg') }}" alt="Piping & Plumbing Systems" style="width: 100%; max-width: 440px; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: none; display: block; margin-top: 0;">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 4rem; align-items: start;">
+          <div>
+            <h4>Advanced Piping Solutions</h4>
+            <p>In addition to welded systems, we fabricate pipelines using a range of mechanically attached fittings, such as Ermeto and press-fit solutions, based on project needs.</p>
+            <p>Complementing our piping services, we also offer both cold and hot insulation, along with cladding for thermal protection and acoustic performance.</p>
+            <p>From engine rooms to accommodation areas, our piping and plumbing solutions are built on quality, precision, and a proven track record of on-time delivery—backed by decades of shipbuilding expertise.</p>
+            <img src="{{ url_for('static', filename='images/Piping & Plumbing Systems 1.jpeg') }}" alt="Piping & Plumbing Systems installation" style="width: 100%; max-width: 440px; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: none; display: block; margin-top: 2.5rem;">
+          </div>
+          
+          <div>
+            <h4>Material & Joint Configurations</h4>
+            <p>Our pipefitters and welders are fully trained and qualified to work with a wide range of materials and joint configurations, including:</p>
+            <div class="welding-techniques-list" style="margin-top: 1.5rem;">
+              <div class="welding-technique-box scroll-reveal" style="--delay: 0ms">
+                <span class="arrow">&#8594;</span>
+                <span>CS (Carbon Steel)</span>
+              </div>
+              <div class="welding-technique-box scroll-reveal" style="--delay: 200ms">
+                <span class="arrow">&#8594;</span>
+                <span>SS (Stainless Steel)</span>
+              </div>
+              <div class="welding-technique-box scroll-reveal" style="--delay: 400ms">
+                <span class="arrow">&#8594;</span>
+                <span>CuNi (Copper Nickel)</span>
+              </div>
+              <div class="welding-technique-box scroll-reveal" style="--delay: 600ms">
+                <span class="arrow">&#8594;</span>
+                <span>Cu (Copper)</span>
+              </div>
+              <div class="welding-technique-box scroll-reveal" style="--delay: 800ms">
+                <span class="arrow">&#8594;</span>
+                <span>Ti (Titanium)</span>
+              </div>
+              <div class="welding-technique-box scroll-reveal" style="--delay: 1000ms">
+                <span class="arrow">&#8594;</span>
+                <span>Aluminium (Al)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeParallax();
   initializeWordReveal();
   initializeProfessionalMotion();
+  initializeScrollReveal();
+  initializeAccordions();
+  initializeJobFilters();
 });
 
 /* ================================================================
@@ -835,8 +838,75 @@ if (document.readyState === 'loading') {
 }
 
 /* ================================================================
-  10. EXPORT FOR USE IN OTHER MODULES
+  11. SCROLL REVEAL ANIMATIONS
    ================================================================ */
+function initializeScrollReveal() {
+  const revealElements = document.querySelectorAll('.scroll-reveal');
+  if (!revealElements.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    revealElements.forEach(el => el.classList.add('show'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delayStr = entry.target.style.getPropertyValue('--delay');
+        const delay = delayStr ? parseInt(delayStr, 10) : 0;
+        
+        const timeoutId = setTimeout(() => {
+          entry.target.classList.add('show');
+        }, delay);
+        entry.target.dataset.timeoutId = timeoutId;
+      } else {
+        // Cancel pending timeout if it scrolls out too quickly
+        if (entry.target.dataset.timeoutId) {
+          clearTimeout(parseInt(entry.target.dataset.timeoutId, 10));
+        }
+        // Remove class to play animation again next time it scrolls in
+        entry.target.classList.remove('show');
+      }
+    });
+  }, {
+    threshold: 0,
+    rootMargin: '-15% 0px -15% 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+/* ================================================================
+   11. ACCORDION FUNCTIONALITY
+   ================================================================ */
+function initializeAccordions() {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      const item = this.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Close all other accordion items in the same container
+      const container = item.closest('.accordion-container');
+      if (container) {
+        container.querySelectorAll('.accordion-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+      }
+      
+      // Toggle current item
+      item.classList.toggle('active');
+    });
+  });
+}
+
+/* ================================================================
+  12. EXPORT FOR USE IN OTHER MODULES
+  ================================================================ */
 window.MarineEngineeringUI = {
   validateForm,
   submitForm,
@@ -846,3 +916,134 @@ window.MarineEngineeringUI = {
   throttle,
   isInViewport
 };
+/* ================================================================
+   JOB DETAILS MODAL
+   ================================================================ */
+function openJobModal(jobId) {
+  const modal = document.getElementById('job-modal');
+  const modalContent = document.getElementById('modal-content');
+  const jobData = document.getElementById('job-data-' + jobId);
+
+  if (modal && modalContent && jobData) {
+    modalContent.innerHTML = jobData.innerHTML;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeJobModal() {
+  const modal = document.getElementById('job-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Close on overlay click
+document.addEventListener('click', function(e) {
+  const jobModal = document.getElementById('job-modal');
+  const applyModal = document.getElementById('apply-modal');
+  if (e.target === jobModal) {
+    closeJobModal();
+  }
+  if (e.target === applyModal) {
+    closeApplyModal();
+  }
+});
+
+/* ================================================================
+   JOB DETAILS MODAL
+   ================================================================ */
+function openJobModal(jobId) {
+  const modal = document.getElementById('job-modal');
+  const modalContent = document.getElementById('modal-content');
+  const jobData = document.getElementById('job-data-' + jobId);
+  const applyBtn = document.getElementById('modal-apply-btn');
+
+  if (modal && modalContent && jobData) {
+    modalContent.innerHTML = jobData.innerHTML;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // Set up the Apply Now button inside the modal
+    if (applyBtn) {
+      applyBtn.onclick = function() {
+        closeJobModal();
+        openApplyModal(jobId);
+      };
+    }
+  }
+}
+
+function closeJobModal() {
+  const modal = document.getElementById('job-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+/* ================================================================
+   APPLICATION MODAL
+   ================================================================ */
+function openApplyModal(jobId) {
+  const modal = document.getElementById('apply-modal');
+  const jobSelect = document.getElementById('modal-job-select');
+
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    if (jobSelect && jobId && jobId !== 'all') {
+      jobSelect.value = jobId;
+    } else if (jobSelect && jobId === 'all') {
+      jobSelect.value = '';
+    }
+  }
+}
+
+function closeApplyModal() {
+  const modal = document.getElementById('apply-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+/* ================================================================
+   JOB FILTERING LOGIC
+   ================================================================ */
+function initializeJobFilters() {
+  const filterType = document.getElementById('filter-type');
+  const filterLocation = document.getElementById('filter-location');
+
+  if (filterType && filterLocation) {
+    const filterJobs = () => {
+      const typeValue = filterType.value;
+      const locationValue = filterLocation.value.toLowerCase();
+      const jobCards = document.querySelectorAll('.pew-job-card');
+
+      jobCards.forEach(card => {
+        const cardType = card.getAttribute('data-job-type');
+        const cardLocation = card.getAttribute('data-location').toLowerCase();
+        
+        const typeMatch = (typeValue === 'all' || cardType === typeValue);
+        const locationMatch = (locationValue === 'all' || cardLocation.includes(locationValue));
+
+        if (typeMatch && locationMatch) {
+          card.style.display = 'flex';
+          card.style.opacity = '0';
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transition = 'opacity 0.3s ease';
+          }, 10);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    filterType.addEventListener('change', filterJobs);
+    filterLocation.addEventListener('change', filterJobs);
+  }
+}

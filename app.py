@@ -3,7 +3,7 @@ import uuid
 import json
 from functools import wraps
 from datetime import datetime, timedelta, timezone
-from flask import Flask, redirect, render_template, request, jsonify, current_app
+from flask import Flask, redirect, render_template, request, jsonify, current_app, url_for
 from sqlalchemy import inspect, text
 import jwt
 from werkzeug.utils import secure_filename
@@ -118,6 +118,30 @@ def _normalize_image_urls(image_urls: list[str]) -> list[str]:
 
 
 def register_routes(app: Flask) -> None:
+
+    @app.get("/detail/hull-superstructure", endpoint="detail_hull_superstructure")
+    def detail_hull_superstructure():
+        return render_template("detail_hull_superstructure.html")
+
+    @app.get("/detail/piping-plumbing", endpoint="detail_piping_plumbing")
+    def detail_piping_plumbing():
+        return render_template("detail_piping_plumbing.html")
+
+    @app.get("/detail/electrical-outfitting", endpoint="detail_electrical_outfitting")
+    def detail_electrical_outfitting():
+        return render_template("detail_electrical_outfitting.html")
+
+    @app.get("/detail/machinery-equipment", endpoint="detail_machinery_equipment")
+    def detail_machinery_equipment():
+        return render_template("detail_machinery_equipment.html")
+
+    @app.get("/detail/in-situ-machining", endpoint="detail_in_situ_machining")
+    def detail_in_situ_machining():
+        return render_template("detail_in_situ_machining.html")
+
+    @app.get("/detail/accommodation-habitability", endpoint="detail_accommodation_habitability")
+    def detail_accommodation_habitability():
+        return render_template("detail_accommodation_habitability.html")
     
     # ==================== PUBLIC ROUTES ====================
     @app.get("/")
@@ -152,9 +176,26 @@ def register_routes(app: Flask) -> None:
     def contact():
         return render_template("contact.html")
 
+    @app.get("/terms")
+    def terms():
+        return render_template("terms.html")
+
+    @app.get("/privacy-policy")
+    def privacy_policy():
+        return render_template("privacy-policy.html")
+
+    @app.get("/divisions/ship-building", endpoint="divisions_shipbuilding")
+    def divisions_shipbuilding():
+        return render_template("divisions-shipbuilding.html")
+
+    @app.get("/divisions/ship-repair", endpoint="divisions_repair")
+    def divisions_repair():
+        return render_template("divisions-repair.html")
+
     @app.get("/divisions")
     def divisions():
-        return render_template("divisions.html")
+        # Redirect to ship-building by default or a summary page
+        return redirect(url_for('divisions_shipbuilding'))
 
     @app.get("/partners")
     def partners():
