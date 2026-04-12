@@ -1082,7 +1082,7 @@ function initializeHeroRotator() {
     words.forEach((word, i) => {
       const span = document.createElement('span');
       span.className = 'hero-rotator-word';
-      span.style.animationDelay = ${i * wordDelayMs}ms;
+      span.style.animationDelay = `${i * wordDelayMs}ms`;
       span.textContent = word;
       display.appendChild(span);
       if (i < words.length - 1) {
