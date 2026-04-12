@@ -1098,7 +1098,7 @@ function initializeHeroRotator() {
 
   const runLoop = () => {
     const wordCount = renderSentence(lines[activeIndex]);
-    if (prefersReducedMotion || lines.length === 1) return;
+    if (lines.length === 1) return;
     const revealTimeMs  = Math.max(0, (wordCount - 1) * wordDelayMs) + wordRevealMs;
     const visibleTimeMs = revealTimeMs + sentenceHoldMs;
     clearTimer();
