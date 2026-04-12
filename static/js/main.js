@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeScrollAnimations();
   initializeParallax();
   initializeWordReveal();
+  initializeHeroRotator();
   initializeProfessionalMotion();
   initializeScrollReveal();
   initializeAccordions();
@@ -660,6 +661,89 @@ function initializeWordReveal() {
       }
     });
   });
+}
+
+/* ================================================================
+  9A. HERO ROTATING SUBTITLE
+   ================================================================ */
+function initializeHeroRotator() {
+  const rotator = document.querySelector('[data-hero-rotator]');
+  if (!rotator) return;
+
+  const display = rotator.querySelector('[data-hero-rotator-display]');
+  const lines = Array.from(rotator.querySelectorAll('.hero-rotator-line'))
+    .map(line => line.textContent.trim())
+    .filter(Boolean);
+
+  if (!display || !lines.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wordDelayMs = Number.parseInt(rotator.getAttribute('data-word-delay') || '240', 10);
+  const sentenceHoldMs = Number.parseInt(rotator.getAttribute('data-sentence-hold') || '1400', 10);
+  const fadeDurationMs = Number.parseInt(rotator.getAttribute('data-fade-duration') || '600', 10);
+  const wordRevealMs = 620;
+
+  let activeIndex = 0;
+  let timeoutId = null;
+
+  const clearTimer = () => {
+    if (timeoutId !== null) {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+  };
+
+  const renderSentence = (sentence) => {
+    display.classList.remove('is-visible', 'is-fading');
+    display.innerHTML = '';
+
+    const words = sentence.split(/\s+/);
+    words.forEach((word, wordIndex) => {
+      const wordElement = document.createElement('span');
+      wordElement.className = 'hero-rotator-word';
+      wordElement.style.animationDelay = `${wordIndex * wordDelayMs}ms`;
+      wordElement.textContent = word;
+      display.appendChild(wordElement);
+
+      if (wordIndex < words.length - 1) {
+        const space = document.createElement('span');
+        space.className = 'hero-rotator-word-space';
+        space.setAttribute('aria-hidden', 'true');
+        display.appendChild(space);
+      }
+    });
+
+    requestAnimationFrame(() => {
+      display.classList.add('is-visible');
+    });
+
+    return words.length;
+  };
+
+  const runLoop = () => {
+    const wordCount = renderSentence(lines[activeIndex]);
+
+    if (prefersReducedMotion || lines.length === 1) {
+      return;
+    }
+
+    const revealTimeMs = Math.max(0, (wordCount - 1) * wordDelayMs) + wordRevealMs;
+    const visibleTimeMs = revealTimeMs + sentenceHoldMs;
+
+    clearTimer();
+    timeoutId = window.setTimeout(() => {
+      display.classList.add('is-fading');
+
+      timeoutId = window.setTimeout(() => {
+        activeIndex = (activeIndex + 1) % lines.length;
+        runLoop();
+      }, fadeDurationMs);
+    }, visibleTimeMs);
+  };
+
+  runLoop();
+
+  window.addEventListener('beforeunload', clearTimer, { once: true });
 }
 
 function initializeProfessionalMotion() {

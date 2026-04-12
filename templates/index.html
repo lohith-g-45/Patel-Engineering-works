@@ -57,12 +57,15 @@
       <p>Your browser does not support the video tag.</p>
     </video>
     <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 data-word-reveal data-word-reveal-start="120">Engineering Excellence at Sea</h1>
-      <p data-word-reveal data-word-reveal-start="500">Patel Engineering Works (Vizag) is a trusted partner to India's leading naval and commercial shipyards, delivering integrated solutions with quality, speed, and class compliance.</p>
-      <div class="hero-buttons">
-        <a href="{{ url_for('about') }}" class="btn btn-primary btn-large">Know more</a>
-        <a href="{{ url_for('contact') }}" class="btn btn-secondary btn-large">Contact us</a>
+    <div class="hero-content hero-content-centered">
+      <h1 class="hero-static-heading">Patel Engineering Works (Vizag)</h1>
+      <div class="hero-rotator" data-hero-rotator data-word-delay="280" data-sentence-hold="1800" data-fade-duration="600" aria-live="polite">
+        <p class="hero-rotator-display" data-hero-rotator-display></p>
+        <div class="hero-rotator-source" aria-hidden="true">
+          <p class="hero-rotator-line">Forging Ship. Restoring Strength. Driving Marine Excellence</p>
+          <p class="hero-rotator-line">Your Trusted Partner in Ship Building and Marine Repair</p>
+          <p class="hero-rotator-line">Reviving Vessels. Reinforcing Performance</p>
+        </div>
       </div>
     </div>
     <div class="hero-wave" aria-hidden="true">
