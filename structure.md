@@ -1,97 +1,82 @@
 # Project Structure
 
-This project follows a Flask-first layout with clear separation of templates, static assets, and backend logic.
-Current mode is a temporary static public site (admin/media CMS removed for rebuild).
+Patel Engineering Works (Vizag) has been completely migrated to a pure static frontend architecture. All production-ready code resides strictly within the `public/` directory. Legacy Flask components have been deprecated or are pending cleanup.
 
 ## Folder Tree
 
 ```text
-WEBAPP/
-├── app.py
-├── models.py
-├── README.md
-├── requirements.txt
-├── structure.md
-├── static/
+Patel-Engineering-Works/
+├── public/                 # PRODUCTION SOURCE CODE (Static site)
+│   ├── index.html          # Main landing page
+│   ├── html/               # All subsidiary static pages
+│   │   ├── about.html
+│   │   ├── about-certifications.html
+│   │   ├── about-leadership.html
+│   │   ├── about-milestones.html
+│   │   ├── about-values.html
+│   │   ├── apply.html
+│   │   ├── careers.html
+│   │   ├── clients.html
+│   │   ├── contact.html
+│   │   ├── divisions-repair.html
+│   │   ├── divisions-shipbuilding.html
+│   │   ├── media.html
+│   │   ├── media-article-detail.html
+│   │   ├── partners.html
+│   │   ├── privacy-policy.html
+│   │   ├── repair-detail-*.html (x8) # Specific repair division detail pages
+│   │   └── terms.html
 │   ├── css/
-│   │   └── styles.css
+│   │   └── styles.css      # Core unified stylesheet (~4,600+ lines of global style logic)
 │   ├── js/
-│   │   └── main.js
-│   ├── images/
-│   │   ├── logo.png
-│   │   ├── media-placeholder.svg
-│   │   └── pew-vizag-logo.svg
-│   ├── icons/
-│   │   ├── anchor.svg
-│   │   ├── briefcase.svg
-│   │   ├── collaboration.svg
-│   │   ├── edit.svg
-│   │   ├── layout-dashboard.svg
-│   │   ├── mail-opened.svg
-│   │   ├── phone.svg
-│   │   ├── shield-checkered.svg
-│   │   ├── trash-x.svg
-│   │   ├── upload.svg
-│   │   └── user.svg
-│   ├── videos/
-│   │   └── media-hero.mp4
-│   └── uploads/
-├── templates/
-│   ├── index.html
-│   ├── about.html
-│   ├── about-values.html
-│   ├── about-leadership.html
-│   ├── about-certifications.html
-│   ├── about-milestones.html
-│   ├── divisions.html
-│   ├── media.html
-│   ├── partners.html
-│   ├── careers.html
-│   └── contact.html
-├── instance/
-└── venv/
+│   │   ├── main.js         # Core functionality (UI, Carousels, Scroll, Rotators)
+│   │   └── media-center.js # Media categorization logic
+│   └── assets/             # Media and iconography
+│       ├── icons/          # SVG UI icons
+│       ├── images/         # Static imagery, photographs, and logos
+│       └── videos/         # Hero background videos (e.g., media-hero.mp4)
+│
+├── docs/                   # Setup and operations documentation
+│   ├── ADMIN_SETUP.md      
+│   ├── RENDER_DEPLOYMENT.md# Guide for deploying `public/` to Render
+│   └── SMTP_SETUP.md       # Contact form integration guide
+│
+├── structure.md            # This topology document
+│
+└── Legacy Architecture (Pending Cleanup / Deprecated):
+    ├── app.py              # Old Flask backend router
+    ├── models.py           # Old database schemas
+    ├── instance/           # Old SQLite runtime data
+    └── .venv/              # Previous Python environment
 ```
 
-## Folder Purpose
+## Folder Purpose & Conventions
 
-- `app.py`: Flask application entry point with static page routes.
-- `models.py`: Data model definitions retained for future CMS rebuild.
-- `requirements.txt`: Python dependency list for reproducible environments.
-- `static/`: Frontend assets served by Flask.
-- `static/icons/`: Shared UI iconography used across templates.
-- `templates/`: Jinja/HTML views rendered by Flask routes.
-- `instance/`: Runtime app data (typically SQLite DB or environment-specific files).
-- `venv/`: Local virtual environment (not production source code).
+### `public/` (Production Root)
+The `public` folder acts as the root of the web server (e.g., configuring Render's Publish Directory).
+- **`index.html`**: The unified site entry point featuring the dynamic Hero Rotator.
+- **`html/`**: Contains all interior pages. These pages use relative pathing to reference global assets (e.g., `../css/styles.css`).
+- **`css/`**: The backbone of the specific premium aesthetic created for this site.
+- **`js/`**: Contains pure DOM-manipulation logic, free from any backend templating constraints.
+- **`assets/`**: Central storage for graphics, ensuring separation of design logic from binary assets.
+
+### `docs/`
+Guides and notes established to safely hand off deployment, form configuration, and administrative operations.
 
 ## Where to Add New Work
 
-- New page:
-  - Add HTML file under `templates/`.
-  - Add a matching route in `app.py` using `render_template("page-name.html")`.
-  - Use `url_for(...)` for all internal links.
+- **Adding a new section/page**:
+  1. Create a `your-page.html` file in the `public/html/` directory.
+  2. Copy the structure (Nav, Hero, Footer) from an existing modern file like `clients.html` or `divisions-shipbuilding.html`.
+  3. Ensure all links to the CSS/JS point *up* one level (`../css/styles.css`).
 
-- New image:
-  - Add under `static/images/`.
-  - Reference as `{{ url_for("static", filename="images/your-file.ext") }}`.
+- **Updating the design**:
+  - Modify `public/css/styles.css`. No further template complication exists; CSS classes directly reflect HTML elements site-wide.
 
-- New script:
-  - Add under `static/js/`.
-  - Include from templates using `{{ url_for("static", filename="js/your-file.js") }}`.
+- **Dynamic Interactive Content**:
+  - Place your JS logic in `public/js/main.js` and initialize it via `document.addEventListener('DOMContentLoaded', ...)`.
 
-- New styles:
-  - Add or split files under `static/css/`.
-  - Include from templates using `{{ url_for("static", filename="css/your-file.css") }}`.
-
-- Backend logic:
-  - Route/controller logic in `app.py`.
-  - Data schema updates in `models.py`.
-  - Admin/CMS APIs are intentionally removed for now and will be reintroduced later.
-
-## Naming and Structure Standards
-
-- Use kebab-case for HTML templates and static filenames.
-- Keep one responsibility per JS module when possible:
-  - `main.js`: shared site behaviors
-- Keep routes clean and avoid hardcoded file paths in templates.
-- Prefer `url_for(...)` for all internal links and static references.
-- Hero banners can be customized per page using the `--hero-image` CSS variable on `.page-hero`.
+## Architectural Notes
+- **Serverless Paradigm**: The site operates entirely independent of Python, Node, or database constraints. 
+- **Contact Routing**: Set to use static form handlers (like Formspree/EmailJS) rather than an intricate server mailer.
+- **Media Optimization**: Images and videos within `public/assets/` are direct resources without backend routing overhead.
