@@ -1,265 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore our Ship Repair &amp; Modernization division - Lifecycle upgrades and high-availability repair execution.">
-  <title>Ship Repair &amp; Modernization - Patel Engineering Works</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <style>
-    /* ── Accordion Layout Only (no font overrides) ─────────── */
-    .acc-wrap { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; }
-
-    .acc-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: box-shadow 0.2s; }
-    .acc-item.is-open { box-shadow: 0 4px 16px rgba(30,58,110,0.10); border-color: #c7d4ef; }
-
-    .acc-header { width: 100%; background: none; border: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; cursor: pointer; text-align: left; }
-    .acc-header h3 { margin: 0; font-weight: 700; color: #1e3a6e; line-height: 1.4; }
-    .acc-arrow { color: #1e3a6e; flex-shrink: 0; transition: transform 0.25s; }
-    .acc-item.is-open .acc-arrow { transform: rotate(180deg); }
-
-    .acc-body { display: none; padding: 0 1.5rem 1.4rem; }
-    .acc-item.is-open .acc-body { display: block; }
-
-    .acc-summary { color: var(--text-light); line-height: 1.7; margin: 0 0 0.9rem; }
-
-    .acc-read-more { color: #1e56bd; font-weight: 600; text-decoration: none; display: inline-block; }
-    .acc-read-more:hover { text-decoration: underline; }
-  </style>
-</head>
-<body class="divisions-page division-focus-repair">
-
-  <!-- NAVIGATION -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="../index.html" aria-label="PEW Vizag home">
-          <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
-        </a>
-      </div>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <span>☰</span>
-      </button>
-      <ul class="navbar-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-link">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Company Overview</a></li>
-            <li><a href="about-values.html">Core Values</a></li>
-            <li><a href="about-leadership.html">Leadership</a></li>
-            <li><a href="about-certifications.html">Certifications</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-link">Divisions</a>
-          <ul class="dropdown-menu">
-            <li><a href="divisions-shipbuilding.html">Ship Building</a></li>
-            <li><a href="divisions-repair.html" class="active">Ship Repair &amp; Modernization</a></li>
-          </ul>
-        </li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="clients.html">Clients</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Explore our Ship Repair &amp; Modernization division - Lifecycle upgrades and high-availability repair execution."> <title>Ship Repair &amp; Modernization - Patel Engineering Works</title> <link rel="stylesheet" href="../static/css/styles.css"> <style> /* Accordion Layout Only (no font overrides) */ .acc-wrap { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem; } .acc-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: box-shadow 0.2s; } .acc-item.is-open { box-shadow: 0 4px 16px rgba(30,58,110,0.10); border-color: #c7d4ef; } .acc-header { width: 100%; background: none; border: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; cursor: pointer; text-align: left; } .acc-header h3 { margin: 0; font-weight: 700; color: #1e3a6e; line-height: 1.4; } .acc-arrow { color: #1e3a6e; flex-shrink: 0; transition: transform 0.25s; } .acc-item.is-open .acc-arrow { transform: rotate(180deg); } .acc-body { display: none; padding: 0 1.5rem 1.4rem; } .acc-item.is-open .acc-body { display: block; } .acc-summary { color: var(--text-light); line-height: 1.7; margin: 0 0 0.9rem; } .acc-read-more { color: #1e56bd; font-weight: 600; text-decoration: none; display: inline-block; } .acc-read-more:hover { text-decoration: underline; } </style> </head> <body class="divisions-page division-focus-repair"> <!-- NAVIGATION --> <nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="../index.html" aria-label="PEW Vizag home">
+        <img src="../static/assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+      </a>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero page-hero" style="--hero-image: url('../assets/uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg');">
-    <div class="page-hero-overlay"></div>
-    <div class="hero-content page-hero-content">
-      <h1>Ship Repair &amp; Modernization Division</h1>
-      <p>Lifecycle upgrades, modernization, and high-availability repair execution for naval and commercial fleets.</p>
-    </div>
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
-      </svg>
-    </div>
-  </section>
-
-  <!-- MAIN CONTENT -->
-  <section class="section ship-repair-overview" id="repair">
-    <div class="container">
-      <div class="page-shell">
-        <div class="section-title section-title-left">
-          <h2>Marine Engineering: Ship Repair &amp; Modernization</h2>
-          <p class="section-subtitle">Technical restoration and mission-critical maintenance.</p>
-        </div>
-
-        <!-- Intro Card -->
-        <article class="repair-intro-card" style="background: var(--neutral-light-grey); border-left: 5px solid var(--accent-red); padding: 2.5rem; border-radius: var(--radius-lg); margin-bottom: var(--spacing-2xl); box-shadow: var(--shadow-sm);">
-          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
-            <div style="flex: 2; min-width: 300px;">
-              <h3 style="margin-bottom: 1rem; color: var(--primary-navy);">Mission-Critical Maintenance &amp; Refit</h3>
-              <p style="color: var(--text-light); margin-bottom: 1.5rem;">As a premier marine engineering contractor, we deliver systematic renewal and technical restoration for vessels of all classes. Our approach minimizes operational downtime while maximizing vessel longevity and classification compliance.</p>
-              <div class="repair-highlight-grid">
-                <div class="repair-highlight-item"><span class="check">✓</span> 24/7 Rapid Response Teams</div>
-                <div class="repair-highlight-item"><span class="check">✓</span> ABS/IRS Certified Execution</div>
-                <div class="repair-highlight-item"><span class="check">✓</span> NDT Level II Quality Gates</div>
-                <div class="repair-highlight-item"><span class="check">✓</span> On-Site Line Boring &amp; Machining</div>
-              </div>
-            </div>
-            <div style="flex: 1; text-align: center;">
-              <a href="contact.html" class="btn btn-primary" style="padding: 1rem 2rem;">Schedule Emergency Repair</a>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">Available for Afloat &amp; Drydock Support</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- ── ACCORDION ─────────────────────────────────── -->
-        <div class="acc-wrap">
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Steel Renewal and Structural Repairs</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) executes classification-compliant steel renewal and structural repairs for hull plating, bulkheads, tank structures, deck houses, and other critical watertight and load-bearing components using certified teams, approved welding procedures, and strict QA/QC control.</p>
-              <a href="repair-detail-steel-renewal.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Hydraulic Systems, Valves &amp; Cylinders, Piping &amp; Controls</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) provides comprehensive hydraulic-system overhaul and testing for steering gear, deck machinery, doors, lines, cylinders, valves, pumps, motors, and controls, backed by pressure testing, flushing, leak detection, precision restoration, and class-compliant QA/QC.</p>
-              <a href="repair-detail-hydraulics.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Propulsion, Shafting &amp; Rudder Works</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) executes propulsion and stern-gear maintenance, overhaul, alignment, machining, lifting, seal and gearbox repair, and propeller service under OEM and class-compliant QA/QC controls to ensure reliable vessel maneuverability and long-term performance.</p>
-              <a href="repair-detail-propulsion.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Piping, Valves, Pumps &amp; Compressions</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) restores vessel-critical piping, valves, pumps, and compressor systems through compliant overhaul, leak-focused testing, valve reconditioning, and OEM-tolerance rebuilding of auxiliary components for reliable day-to-day ship operation.</p>
-              <a href="repair-detail-piping.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Boilers &amp; Steam Turbine-Driven Equipment</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) delivers class-compliant repair and restoration for boilers, economizers, and steam turbine-driven machinery, including tube work, certified welding, hydrostatic testing, refractory renewal, auxiliary overhaul, and governor calibration for safe and efficient power generation.</p>
-              <a href="repair-detail-boilers.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Comprehensive HVAC &amp; Refrigeration Equipment Service</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) provides class-compliant HVAC and refrigeration repair, overhaul, and restoration from standalone ventilation units to integrated plants, covering key component servicing, controls calibration, leak detection, and final efficiency validation trials.</p>
-              <a href="repair-detail-hvac.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Surface Preparation Services</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Patel Engineering Works (Vizag) performs class-ready surface preparation using grit, vacuum, UHP hydro, and shot blasting methods, along with high-pressure hydro jetting, to achieve correct surface profiles and coating-ready cleanliness for long-term marine protection.</p>
-              <a href="repair-detail-surface-prep.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-header" aria-expanded="false">
-              <h3>Painting &amp; Coating Services</h3>
-              <span class="acc-arrow">▼</span>
-            </button>
-            <div class="acc-body">
-              <p class="acc-summary">Our certified teams apply marine-grade coating systems including epoxy, coal-tar epoxy, and non-skid finishes under NACE-supervised inspection, fully aligned with OEM paint specifications and class requirements for durable corrosion resistance.</p>
-              <a href="repair-detail-painting.html" class="acc-read-more">Read more</a>
-            </div>
-          </div>
-
-        </div><!-- End Accordion -->
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions</a>
+        <ul class="dropdown-menu">
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/detail/hull-superstructure">Hull & Superstructure</a></li>
+              <li><a href="/detail/piping-plumbing">Piping & Plumbing</a></li>
+              <li><a href="/detail/electrical-outfitting">Electrical Outfitting</a></li>
+              <li><a href="/detail/machinery-equipment">Machinery & Equipment</a></li>
+              <li><a href="/detail/in-situ-machining">In-Situ Machining</a></li>
+              <li><a href="/detail/accommodation-habitability">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/repair/steel-renewal">Steel Renewal & Structural</a></li>
+              <li><a href="/repair/hydraulics">Hydraulic Systems & Controls</a></li>
+              <li><a href="/repair/propulsion">Propulsion & Shafting</a></li>
+              <li><a href="/repair/piping">Piping, Valves & Pumps</a></li>
+              <li><a href="/repair/boilers">Boilers & Steam Turbines</a></li>
+              <li><a href="/repair/hvac">HVAC & Refrigeration</a></li>
+              <li><a href="/repair/surface-prep">Surface Preparation</a></li>
+              <li><a href="/repair/painting">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Partnership</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav> <!-- HERO --> <section class="hero page-hero" style="--hero-image: url('/static/assets/uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"> <h1 data-word-reveal data-word-reveal-start="120">Ship Repair &amp; Modernization Division</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">Lifecycle upgrades, modernization, and high-availability repair execution for Naval and Commercial fleets.</p> </div> <!-- wave removed to keep straight divider --> </section> <!-- MAIN CONTENT --> <section class="section ship-repair-overview" id="repair"> <div class="container"> <div class="page-shell"> <div class="section-title section-title-left"> <h2>Marine Engineering: Ship Repair &amp; Modernization</h2> <p class="section-subtitle">Technical restoration and mission-critical Maintenance.</p> </div> <!-- Intro Card --> <article class="repair-intro-card" style="background: var(--neutral-light-grey); border-left: 5px solid var(--accent-red); padding: 2.5rem; border-radius: var(--radius-lg); margin-bottom: var(--spacing-2xl); box-shadow: var(--shadow-sm);"> <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;"> <div style="flex: 2; min-width: 300px;"> <h3 style="margin-bottom: 1rem; color: var(--primary-navy);">Mission-Critical Maintenance &amp; Refit</h3> <p style="color: var(--text-light); margin-bottom: 1.5rem;">As a premier Marine Engineering contractor, we deliver systematic renewal and Technical restoration for Vessels of all classes. Our approach minimizes operational downtime while maximizing Vessel longevity and classification compliance.</p> <div class="repair-highlight-grid"> <div class="repair-highlight-item"><span class="check">✓</span> 24/7 Rapid Response Teams</div> <div class="repair-highlight-item"><span class="check">✓</span> ABS/IRS Certified Execution</div> <div class="repair-highlight-item"><span class="check">✓</span> NDT Level II Quality Gates</div> <div class="repair-highlight-item"><span class="check">✓</span> On-Site Line Boring &amp; Machining</div> </div> </div> <div style="flex: 1; text-align: center;"> <a href="contact.html" class="btn btn-primary" style="padding: 1rem 2rem;">Schedule Emergency Repair</a> <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">Available for Afloat &amp; Drydock Support</p> </div> </div> </article> <!-- ACCORDION --> <div class="acc-wrap"> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Steel Renewal and Structural Repairs</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) executes classification-compliant Steel Renewal and structural repairs for Hull plating, bulkheads, tank structures, deck houses, and other critical watertight and load-bearing components using certified teams, approved Welding procedures, and strict QA/QC control.</p> <a href="/repair/steel-renewal" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Hydraulic Systems, Valves &amp; Cylinders, Piping &amp; Controls</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) provides comprehensive hydraulic-system Overhaul and testing for steering gear, deck machinery, doors, lines, cylinders, valves, pumps, motors, and controls, backed by pressure testing, flushing, leak detection, precision restoration, and class-compliant QA/QC.</p> <a href="/repair/hydraulics" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Propulsion, Shafting &amp; Rudder Works</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) executes Propulsion and stern-gear Maintenance, Overhaul, alignment, Machining, lifting, seal and gearbox repair, and propeller service under OEM and class-compliant QA/QC controls to ensure reliable Vessel maneuverability and long-term performance.</p> <a href="/repair/propulsion" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Piping, Valves, Pumps &amp; Compressions</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) restores Vessel-critical Piping, valves, pumps, and compressor systems through compliant Overhaul, leak-focused testing, valve reconditioning, and OEM-tolerance rebuilding of Auxiliary components for reliable day-to-day ship operation.</p> <a href="/repair/piping" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Boilers &amp; Steam Turbine-Driven Equipment</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) delivers class-compliant repair and restoration for Boilers, economizers, and steam turbine-driven machinery, including tube work, certified Welding, hydrostatic testing, refractory renewal, Auxiliary Overhaul, and governor calibration for safe and efficient power generation.</p> <a href="/repair/boilers" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Comprehensive Hvac &amp; Refrigeration Equipment Service</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) provides class-compliant Hvac and refrigeration repair, Overhaul, and restoration from standalone ventilation units to integrated plants, covering key component servicing, controls calibration, leak detection, and final efficiency validation trials.</p> <a href="/repair/hvac" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Surface Preparation Services</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Patel Engineering Works (Vizag) performs class-ready Surface Preparation using grit, vacuum, UHP hydro, and shot blasting methods, along with high-pressure hydro jetting, to achieve correct surface profiles and coating-ready cleanliness for long-term Marine protection.</p> <a href="/repair/surface-prep" class="acc-read-more">Read more</a> </div> </div> <div class="acc-item"> <button class="acc-header" aria-expanded="false"> <h3>Painting &amp; Coating Services</h3> <span class="acc-arrow">–</span> </button> <div class="acc-body"> <p class="acc-summary">Our certified teams apply Marine-grade coating systems including epoxy, coal-tar epoxy, and non-skid finishes under NACE-supervised Inspection, fully aligned with OEM paint specifications and class requirements for durable corrosion resistance.</p> <a href="/repair/painting" class="acc-read-more">Read more</a> </div> </div> </div><!-- End Accordion --> </div> </div> </section> <!-- FOOTER --> <!-- Shared footer -->
+<footer class="footer footer-compact">
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h4>About PEW Vizag</h4>
+      <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p>
+      <div class="social-links">
+        <a href="#" title="LinkedIn">🔗</a>
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="X">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer footer-compact">
-    <div class="footer-content container">
-      <div class="footer-section">
-        <h4>About PEW Vizag</h4>
-        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
-        <div class="social-links">
-          <a href="#" title="LinkedIn">in</a>
-          <a href="#" title="Facebook">f</a>
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="YouTube">▶</a>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h4>Services</h4>
-        <a href="#">Ship Design</a>
-        <a href="#">Vessel Construction</a>
-        <a href="#">Ship Repair</a>
-        <a href="#">Modernization</a>
-        <a href="#">Offshore Solutions</a>
-        <a href="#">Consulting</a>
-      </div>
-      <div class="footer-section footer-contact">
-        <h4>Contact Info</h4>
-        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
-        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">+91 9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">+91 9820321082</a></span></p>
-        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelenggworks.com">info@patelenggworks.com</a></span></p>
-      </div>
+    <div class="footer-section">
+      <h4>Services</h4>
+      <a href="#">Ship Design</a>
+      <a href="#">Vessel Construction</a>
+      <a href="#">Ship Repair</a>
+      <a href="#">Modernization</a>
+      <a href="#">Offshore Solutions</a>
+      <a href="#">Consulting</a>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Patel Engineering Works. All rights reserved. |
-        <a href="privacy-policy.html" style="color: var(--neutral-light-grey);">Privacy Policy</a> |
-        <a href="terms.html" style="color: var(--neutral-light-grey);">Terms of Service</a>
-      </p>
+    <div class="footer-section footer-contact">
+      <h4>Contact Info</h4>
+      <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
+      <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a></span></p>
+      <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919393102438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+919393104894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+      <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
     </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
-  <script>
-    /* ── One-at-a-time accordion ──────────────────────────── */
-    document.querySelectorAll('.acc-header').forEach(function(header) {
-      header.addEventListener('click', function() {
-        var item   = this.closest('.acc-item');
-        var isOpen = item.classList.contains('is-open');
-        document.querySelectorAll('.acc-item').forEach(function(el) {
-          el.classList.remove('is-open');
-          el.querySelector('.acc-header').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          item.classList.add('is-open');
-          this.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+      <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+      <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+<!-- end shared footer --> <script src="../static/js/main.js"></script> <script> /* One-at-a-time accordion */ document.querySelectorAll('.acc-header').forEach(function(header) { header.addEventListener('click', function() { var item = this.closest('.acc-item'); var isOpen = item.classList.contains('is-open'); document.querySelectorAll('.acc-item').forEach(function(el) { el.classList.remove('is-open'); el.querySelector('.acc-header').setAttribute('aria-expanded', 'false'); }); if (!isOpen) { item.classList.add('is-open'); this.setAttribute('aria-expanded', 'true'); } }); }); </script> </body> </html> 

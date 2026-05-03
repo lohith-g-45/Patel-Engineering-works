@@ -1,4 +1,4 @@
-import os
+﻿import os
 import uuid
 import json
 from functools import wraps
@@ -53,7 +53,7 @@ def create_app() -> Flask:
             admin.set_password("admin123")  # Change this password!
             db.session.add(admin)
             db.session.commit()
-            print("✅ Initial admin created: username='admin', password='admin123'")
+            print("âœ… Initial admin created: username='admin', password='admin123'")
     
     register_routes(app)
     return app
@@ -513,5 +513,7 @@ if __name__ == "__main__":
     )
 
 
- 
- 
+
+
+
+

@@ -5,71 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Strategic Partnerships - Patel Engineering Works.">
   <title>Partnership - Patel Engineering Works</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-  <!-- NAVIGATION BAR (Static version) -->
   <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="../index.html" aria-label="PEW Vizag home">
-          <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
-        </a>
-      </div>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <span>☰</span>
-      </button>
-      <ul class="navbar-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-link">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Company Overview</a></li>
-            <li><a href="about-values.html">Core Values</a></li>
-            <li><a href="about-leadership.html">Leadership</a></li>
-            <li><a href="about-certifications.html">Certifications</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-link">Divisions</a>
-          <ul class="dropdown-menu">
-            <li class="nav-sub-dropdown">
-              <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
-              <ul class="sub-dropdown-menu">
-                <li><a href="detail_hull_superstructure.html">Hull & Superstructure</a></li>
-                <li><a href="detail_piping_plumbing.html">Piping & Plumbing</a></li>
-                <li><a href="detail_electrical_outfitting.html">Electrical Outfitting</a></li>
-                <li><a href="detail_machinery_equipment.html">Machinery & Equipment</a></li>
-                <li><a href="detail_in_situ_machining.html">In-Situ Machining</a></li>
-                <li><a href="detail_accommodation_habitability.html">Accommodation & Habitability</a></li>
-              </ul>
-            </li>
-            <li class="nav-sub-dropdown">
-              <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
-              <ul class="sub-dropdown-menu">
-                <li><a href="repair-detail-steel-renewal.html">Steel Renewal & Structural</a></li>
-                <li><a href="repair-detail-hydraulics.html">Hydraulic Systems & Controls</a></li>
-                <li><a href="repair-detail-propulsion.html">Propulsion & Shafting</a></li>
-                <li><a href="repair-detail-piping.html">Piping, Valves & Pumps</a></li>
-                <li><a href="repair-detail-boilers.html">Boilers & Steam Turbines</a></li>
-                <li><a href="repair-detail-hvac.html">HVAC & Refrigeration</a></li>
-                <li><a href="repair-detail-surface-prep.html">Surface Preparation</a></li>
-                <li><a href="repair-detail-painting.html">Painting & Coating</a></li>
-              </ul>
-            </li>
-            <li><a href="divisions_partnership.html" style="border-top: 1px solid rgba(0,0,0,0.05); font-weight: 600;">Partnership</a></li>
-          </ul>
-        </li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="clients.html">Clients</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="../index.html" aria-label="PEW Vizag home">
+        <img src="../static/assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+      </a>
     </div>
-  </nav>
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions</a>
+        <ul class="dropdown-menu">
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/detail/hull-superstructure">Hull & Superstructure</a></li>
+              <li><a href="/detail/piping-plumbing">Piping & Plumbing</a></li>
+              <li><a href="/detail/electrical-outfitting">Electrical Outfitting</a></li>
+              <li><a href="/detail/machinery-equipment">Machinery & Equipment</a></li>
+              <li><a href="/detail/in-situ-machining">In-Situ Machining</a></li>
+              <li><a href="/detail/accommodation-habitability">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/repair/steel-renewal">Steel Renewal & Structural</a></li>
+              <li><a href="/repair/hydraulics">Hydraulic Systems & Controls</a></li>
+              <li><a href="/repair/propulsion">Propulsion & Shafting</a></li>
+              <li><a href="/repair/piping">Piping, Valves & Pumps</a></li>
+              <li><a href="/repair/boilers">Boilers & Steam Turbines</a></li>
+              <li><a href="/repair/hvac">HVAC & Refrigeration</a></li>
+              <li><a href="/repair/surface-prep">Surface Preparation</a></li>
+              <li><a href="/repair/painting">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Partnership</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
 
   <!-- HERO -->
-  <section class="hero page-hero" style="--hero-image: url('../assets/images/home-bg.jpg');">
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/home-bg.jpg');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1 data-word-reveal data-word-reveal-start="120">Partnership</h1>
@@ -107,30 +111,57 @@
 
         <!-- RIGHT: VISUAL (Fully Covering Container) -->
         <aside class="about-history-visual" aria-hidden="true" style="min-height: auto; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(16, 36, 73, 0.15);">
-          <img src="../assets/images/partnership.jpg" alt="Partnership with Raccorderie Metalliche (RM)" class="about-history-image" style="height: 100%; width: 100%; object-fit: cover; transform: rotate(90deg) scale(2.5); transition: transform 0.3s ease;">
+          <img src="../static/assets/images/partnership.jpg" alt="Partnership with Raccorderie Metalliche (RM)" class="about-history-image" style="height: 100%; width: 100%; object-fit: cover; transform: rotate(90deg) scale(2.5); transition: transform 0.3s ease;">
         </aside>
       </div>
 
     </div>
   </section>
 
-  <!-- FOOTER (Static version) -->
-  <footer class="footer footer-compact">
-    <div class="footer-content container">
-      <div class="footer-section">
-        <h4>About PEW Vizag</h4>
-        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
-      </div>
-      <div class="footer-section footer-contact">
-        <h4>Contact Info</h4>
-        <p><strong>Email:</strong> <a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></p>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Patel Engineering Works. All rights reserved.</p>
+  </section>
+
+  <!-- Shared footer -->
+<footer class="footer footer-compact">
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h4>About PEW Vizag</h4>
+      <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p>
+      <div class="social-links">
+        <a href="#" title="LinkedIn">🔗</a>
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="X">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
+      </div>
     </div>
-  </footer>
+
+    <div class="footer-section">
+      <h4>Services</h4>
+      <a href="#">Ship Design</a>
+      <a href="#">Vessel Construction</a>
+      <a href="#">Ship Repair</a>
+      <a href="#">Modernization</a>
+      <a href="#">Offshore Solutions</a>
+      <a href="#">Consulting</a>
+    </div>
+    <div class="footer-section footer-contact">
+      <h4>Contact Info</h4>
+      <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
+      <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a></span></p>
+      <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919393102438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+919393104894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+      <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+      <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+      <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+<!-- end shared footer -->
   
-  <script src="../js/main.js"></script>
+  <script src="../static/js/main.js"></script>
 </body>
 </html>

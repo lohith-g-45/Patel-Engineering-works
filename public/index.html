@@ -1,211 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Leading marine engineering and shipbuilding company. Excellence in maritime innovation.">
-  <meta name="keywords" content="marine engineering, shipbuilding, maritime, naval construction">
-  <title>Marine Engineering & Shipbuilding - Excellence in Maritime Innovation</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <!-- ================================================================
-       NAVIGATION BAR
-       ================================================================ -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="index.html" aria-label="PEW Vizag home">
-          <img src="assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
-        </a>
-      </div>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <span>☰</span>
-      </button>
-      <ul class="navbar-menu">
-        <li><a href="index.html">Home</a></li>
-        <li class="nav-dropdown">
-          <a href="html/about.html" class="nav-dropdown-link">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="html/about.html">Company Overview</a></li>
-            <li><a href="html/about-values.html">Core Values</a></li>
-            <li><a href="html/about-leadership.html">Leadership</a></li>
-            <li><a href="html/about-certifications.html">Certifications</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-link">Divisions</a>
-          <ul class="dropdown-menu">
-            <li class="nav-sub-dropdown">
-              <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
-              <ul class="sub-dropdown-menu">
-                <li><a href="html/detail_hull_superstructure.html">Hull & Superstructure</a></li>
-                <li><a href="html/detail_piping_plumbing.html">Piping & Plumbing</a></li>
-                <li><a href="html/detail_electrical_outfitting.html">Electrical Outfitting</a></li>
-                <li><a href="html/detail_machinery_equipment.html">Machinery & Equipment</a></li>
-                <li><a href="html/detail_in_situ_machining.html">In-Situ Machining</a></li>
-                <li><a href="html/detail_accommodation_habitability.html">Accommodation & Habitability</a></li>
-              </ul>
-            </li>
-            <li class="nav-sub-dropdown">
-              <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
-              <ul class="sub-dropdown-menu">
-                <li><a href="html/repair-detail-steel-renewal.html">Steel Renewal & Structural</a></li>
-                <li><a href="html/repair-detail-hydraulics.html">Hydraulic Systems & Controls</a></li>
-                <li><a href="html/repair-detail-propulsion.html">Propulsion & Shafting</a></li>
-                <li><a href="html/repair-detail-piping.html">Piping, Valves & Pumps</a></li>
-                <li><a href="html/repair-detail-boilers.html">Boilers & Steam Turbines</a></li>
-                <li><a href="html/repair-detail-hvac.html">HVAC & Refrigeration</a></li>
-                <li><a href="html/repair-detail-surface-prep.html">Surface Preparation</a></li>
-                <li><a href="html/repair-detail-painting.html">Painting & Coating</a></li>
-              </ul>
-            </li>
-            <li><a href="html/divisions_partnership.html" style="border-top: 1px solid rgba(0,0,0,0.05); font-weight: 600;">Partnership</a></li>
-          </ul>
-        </li>
-        <li><a href="html/media.html">Media</a></li>
-        <li><a href="html/clients.html">Clients</a></li>
-        <li><a href="html/careers.html">Careers</a></li>
-        <li><a href="html/contact.html">Contact Us</a></li>
-      </ul>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Leading marine engineering and shipbuilding company. Excellence in maritime innovation."> <meta name="keywords" content="marine engineering, shipbuilding, maritime, naval construction"> <title>Marine Engineering & Shipbuilding - Excellence in Maritime Innovation</title> <link rel="stylesheet" href="static/css/styles.css?v=20260501-no-blue-bg-1"> </head> <body> <!-- ================================================================ NAVIGATION BAR ================================================================ --> <nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="/" aria-label="PEW Vizag home">
+        <img src="static/assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+      </a>
     </div>
-  </nav>
-
-  <!-- ================================================================
-       HERO SECTION
-       ================================================================ -->
-  <section class="hero hero-fullpage" id="home">
-    <video class="hero-background" autoplay muted loop playsinline preload="metadata">
-      <source src="assets/videos/media-hero.mp4" type="video/mp4">
-      <p>Your browser does not support the video tag.</p>
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content hero-content-centered">
-      <h1 class="hero-static-heading">Patel Engineering Works (Vizag)</h1>
-      <div class="hero-rotator" data-hero-rotator data-word-delay="400" data-sentence-hold="2500" data-fade-duration="600" aria-live="polite">
-        <p class="hero-rotator-display" data-hero-rotator-display></p>
-        <div class="hero-rotator-source" aria-hidden="true">
-          <p class="hero-rotator-line">Forging Ship. Restoring Strength. Driving Marine Excellence</p>
-          <p class="hero-rotator-line">Your Trusted Partner in Ship Building and Marine Repair</p>
-          <p class="hero-rotator-line">Reviving Vessels. Reinforcing Performance</p>
-        </div>
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="/">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="html/about.html" class="nav-dropdown-link">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="html/about.html">Company Overview</a></li>
+          <li><a href="html/about-values.html">Core Values</a></li>
+          <li><a href="html/about-leadership.html">Leadership</a></li>
+          <li><a href="html/about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions</a>
+        <ul class="dropdown-menu">
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/detail/hull-superstructure">Hull & Superstructure</a></li>
+              <li><a href="/detail/piping-plumbing">Piping & Plumbing</a></li>
+              <li><a href="/detail/electrical-outfitting">Electrical Outfitting</a></li>
+              <li><a href="/detail/machinery-equipment">Machinery & Equipment</a></li>
+              <li><a href="/detail/in-situ-machining">In-Situ Machining</a></li>
+              <li><a href="/detail/accommodation-habitability">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/repair/steel-renewal">Steel Renewal & Structural</a></li>
+              <li><a href="/repair/hydraulics">Hydraulic Systems & Controls</a></li>
+              <li><a href="/repair/propulsion">Propulsion & Shafting</a></li>
+              <li><a href="/repair/piping">Piping, Valves & Pumps</a></li>
+              <li><a href="/repair/boilers">Boilers & Steam Turbines</a></li>
+              <li><a href="/repair/hvac">HVAC & Refrigeration</a></li>
+              <li><a href="/repair/surface-prep">Surface Preparation</a></li>
+              <li><a href="/repair/painting">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="html/divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Partnership</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="html/media.html">Media</a></li>
+      <li><a href="html/clients.html">Clients</a></li>
+      <li><a href="html/careers.html">Careers</a></li>
+      <li><a href="html/contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav> <!-- ================================================================ HERO SECTION ================================================================ --> <section class="hero hero-fullpage" id="home"> <img class="hero-background" src="static/assets/images/shipbuild.jpg" alt="Ship building and repair background"> <div class="hero-overlay"></div> <div class="hero-content hero-content-centered"> <h1 class="hero-static-heading">Patel Engineering Works (Vizag)</h1> <div class="hero-rotator" data-hero-rotator data-word-delay="280" data-sentence-hold="1800" data-fade-duration="600" aria-live="polite"> <p class="hero-rotator-display" data-hero-rotator-display></p> <div class="hero-rotator-source" aria-hidden="true"> <p class="hero-rotator-line">Forging Ship. Restoring Strength. Driving Marine Excellence</p> <p class="hero-rotator-line">Your Trusted Partner in Ship Building and Marine Repair</p> <p class="hero-rotator-line">Reviving Vessels. Reinforcing Performance</p> </div> </div> </div> <!-- wave removed to keep straight divider --> <!-- hero scroll indicator removed per request --> </section> <!-- ================================================================ ABOUT US ================================================================ --> <section class="section" id="about-us"> <div class="container"> <div class="about-shell"> <div class="about-single-layout"> <article class="about-panel about-panel-single"> <div class="about-content-layout"> <div class="about-copy"> <p>Patel Engineering Works (Vizag) is a leading provider of specialized Shipbuilding and Ship Repair services, supporting the Indian Navy, Coast Guard, public-sector Shipyards, and select international clients. With over two decades of proven execution and a skilled workforce deployed across India, we bring unmatched Technical depth and project reliability to every engagement.</p> <p>Our Shipbuilding division delivers high-integrity Fabrication, Outfitting, and equipment installation services for complex Defense and Auxiliary Vessels, working in close alignment with classification societies and OEMs.</p> <p class="about-panel-note">Parallelly, our Ship Repair services division undertakes turnkey Refits, emergency repairs, and precision Overhauls for a wide range of Onboard systems, ensuring operational readiness with minimal downtime.</p> <p>Known for our rigorous Quality systems, certified personnel, and timely project completion, we are committed to delivering consistent results across both new construction and lifecycle support. Whether executing at yard, Onboard, or within our dedicated workshops, we bring the same focus: Technical excellence, Safety, and dependable service.</p> </div> <div class="about-sidecards"> <ul class="about-list about-list-stack"> <li class="about-list-item"> <span class="about-list-icon"></span> <div> <strong>Quality &amp; Compliance</strong> <p>Class-aligned execution with certified teams and controlled processes</p> </div> </li> <li class="about-list-item"> <span class="about-list-icon"></span> <div> <strong>Shipbuilding &amp; Repair</strong> <p>Strong capabilities across new-build support, Refits, and lifecycle services</p> </div> </li> <li class="about-list-item"> <span class="about-list-icon"></span> <div> <strong>Dependable Delivery</strong> <p>On-time completion with Safety-first execution across yard and Onboard work</p> </div> </li> </ul> </div> </div> </article> </div> </div> </div> </section> <!-- ================================================================ FOOTER ================================================================ --> <!-- Shared footer -->
+<footer class="footer footer-compact">
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h4>About PEW Vizag</h4>
+      <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p>
+      <div class="social-links">
+        <a href="#" title="LinkedIn">🔗</a>
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="X">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
       </div>
     </div>
 
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
-      </svg>
+    <div class="footer-section">
+      <h4>Services</h4>
+      <a href="#">Ship Design</a>
+      <a href="#">Vessel Construction</a>
+      <a href="#">Ship Repair</a>
+      <a href="#">Modernization</a>
+      <a href="#">Offshore Solutions</a>
+      <a href="#">Consulting</a>
     </div>
-    <div class="hero-scroll-indicator">
-      <div class="scroll-arrow-bounce">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 5v14M5 12l7 7 7-7" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+    <div class="footer-section footer-contact">
+      <h4>Contact Info</h4>
+      <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
+      <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a></span></p>
+      <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919393102438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+919393104894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+      <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
     </div>
-  </section>
-
-  <!-- ================================================================
-       ABOUT US
-       ================================================================ -->
-  <section class="section" id="about-us">
-    <div class="container">
-      <div class="about-shell">
-        <div class="section-title align-left">
-          <span class="section-kicker">Who We Are</span>
-          <h1>About PEW Vizag</h1>
-          <p class="section-subtitle">Specialized shipbuilding and ship repair solutions with proven delivery across defense and commercial maritime sectors</p>
-        </div>
-        <div class="about-single-layout">
-          <article class="about-panel about-panel-single">
-            <div class="about-content-layout">
-              <div class="about-copy">
-                <p>Patel Engineering Works (Vizag) is a leading provider of specialized shipbuilding and ship repair services, supporting the Indian Navy, Coast Guard, public-sector shipyards, and select international clients. With over two decades of proven execution and a skilled workforce deployed across India, we bring unmatched technical depth and project reliability to every engagement.</p>
-                <p>Our shipbuilding division delivers high-integrity fabrication, outfitting, and equipment installation services for complex defense and auxiliary vessels, working in close alignment with classification societies and OEMs.</p>
-                <p class="about-panel-note">Parallelly, our ship repair services division undertakes turnkey refits, emergency repairs, and precision overhauls for a wide range of onboard systems, ensuring operational readiness with minimal downtime.</p>
-                <p>Known for our rigorous quality systems, certified personnel, and timely project completion, we are committed to delivering consistent results across both new construction and lifecycle support. Whether executing at yard, onboard, or within our dedicated workshops, we bring the same focus: technical excellence, safety, and dependable service.</p>
-              </div>
-              <div class="about-sidecards">
-                <ul class="about-list about-list-stack">
-                  <li class="about-list-item">
-                    <span class="about-list-icon"><img src="assets/icons/shield-checkered.svg" alt=""></span>
-                    <div>
-                      <strong>Quality &amp; Compliance</strong>
-                      <p>Class-aligned execution with certified teams and controlled processes</p>
-                    </div>
-                  </li>
-                  <li class="about-list-item">
-                    <span class="about-list-icon"><img src="assets/icons/layout-dashboard.svg" alt=""></span>
-                    <div>
-                      <strong>Shipbuilding &amp; Repair</strong>
-                      <p>Strong capabilities across new-build support, refits, and lifecycle services</p>
-                    </div>
-                  </li>
-                  <li class="about-list-item">
-                    <span class="about-list-icon"><img src="assets/icons/briefcase.svg" alt=""></span>
-                    <div>
-                      <strong>Dependable Delivery</strong>
-                      <p>On-time completion with safety-first execution across yard and onboard work</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <a href="html/about.html" class="btn-primary-colored">Discover Our Story &rarr;</a>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       FOOTER
-       ================================================================ -->
-  <footer class="footer footer-compact">
-    <div class="footer-content container">
-      <div class="footer-section">
-        <h4>About PEW Vizag</h4>
-        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
-        <div class="social-links">
-          <a href="#" title="LinkedIn">in</a>
-          <a href="#" title="Facebook">f</a>
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="YouTube">▶</a>
-        </div>
-      </div>
-
-      <div class="footer-section">
-        <h4>Services</h4>
-        <a href="#">Ship Design</a>
-        <a href="#">Vessel Construction</a>
-        <a href="#">Ship Repair</a>
-        <a href="#">Modernization</a>
-        <a href="#">Offshore Solutions</a>
-        <a href="#">Consulting</a>
-      </div>
-      <div class="footer-section footer-contact">
-        <h4>Contact Info</h4>
-        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567 346">2567 346</a></span></p>
-        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a></span></p>
-        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+9193931 02438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+9193931 04894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
-        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
-        <a href="html/privacy-policy.html" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
-        <a href="html/terms.html" style="color: var(--neutral-light-grey);">Terms of Service</a>
-      </p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
-</body>
-</html>
-
-
-
-
-
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+      <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+      <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+<!-- end shared footer --> <!-- Scripts --> <script src="static/js/main.js"></script> </body> </html> 

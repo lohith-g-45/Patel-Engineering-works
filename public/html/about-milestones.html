@@ -1,91 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Marine Engineering key milestones by the numbers.">
-  <title>By The Numbers - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="../css/styles.css">
-</head>
-
-<body>
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="../index.html" aria-label="PEW Vizag home">
-          <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
-        </a>
-      </div>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <span>☰</span>
-      </button>
-      <ul class="navbar-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-link">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Company Overview</a></li>
-            <li><a href="about-values.html">Core Values</a></li>
-            <li><a href="about-leadership.html">Leadership</a></li>
-            <li><a href="about-certifications.html">Certifications</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-link">Divisions</a>
-          <ul class="dropdown-menu">
-            <li><a href="divisions-shipbuilding.html">Ship Building</a></li>
-            <li><a href="divisions-repair.html">Ship Repair &amp; Modernization</a></li>
-          </ul>
-        </li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="clients.html">Clients</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Marine Engineering key milestones by the numbers."> <title>By The Numbers - Marine Engineering & Shipbuilding</title> <link rel="stylesheet" href="../static/css/styles.css"> </head> <body> <nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="../index.html" aria-label="PEW Vizag home">
+        <img src="../static/assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+      </a>
     </div>
-  </nav>
-
-  <section class="hero page-hero"
-    style="--hero-image: url('../assets/images/shipbuild.jpg');">
-    <div class="page-hero-overlay"></div>
-    <div class="hero-content page-hero-content">
-      <h1>By The Numbers</h1>
-      <p>A quick snapshot of our experience, scale, and global reach.</p>
-    </div>
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
-      </svg>
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="container">
-      <div class="metric-grid">
-        <div class="metric-card">
-          <span class="metric-number">20+</span>
-          <span class="metric-label">Years of Experience</span>
-        </div>
-        <div class="metric-card">
-          <span class="metric-number">500+</span>
-          <span class="metric-label">Team Members</span>
-        </div>
-        <div class="metric-card">
-          <span class="metric-number">100+</span>
-          <span class="metric-label">Projects Completed</span>
-        </div>
-        <div class="metric-card">
-          <span class="metric-number">50+</span>
-          <span class="metric-label">Countries Served</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script src="../js/main.js"></script>
-</body>
-
-</html>
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions</a>
+        <ul class="dropdown-menu">
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/detail/hull-superstructure">Hull & Superstructure</a></li>
+              <li><a href="/detail/piping-plumbing">Piping & Plumbing</a></li>
+              <li><a href="/detail/electrical-outfitting">Electrical Outfitting</a></li>
+              <li><a href="/detail/machinery-equipment">Machinery & Equipment</a></li>
+              <li><a href="/detail/in-situ-machining">In-Situ Machining</a></li>
+              <li><a href="/detail/accommodation-habitability">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/repair/steel-renewal">Steel Renewal & Structural</a></li>
+              <li><a href="/repair/hydraulics">Hydraulic Systems & Controls</a></li>
+              <li><a href="/repair/propulsion">Propulsion & Shafting</a></li>
+              <li><a href="/repair/piping">Piping, Valves & Pumps</a></li>
+              <li><a href="/repair/boilers">Boilers & Steam Turbines</a></li>
+              <li><a href="/repair/hvac">HVAC & Refrigeration</a></li>
+              <li><a href="/repair/surface-prep">Surface Preparation</a></li>
+              <li><a href="/repair/painting">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Partnership</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav> <section class="hero page-hero" style="--hero-image: url('/static/assets/images/home-bg.jpg');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"> <h1 data-word-reveal data-word-reveal-start="120">By The Numbers</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A quick snapshot of our experience, scale, and global reach.</p> </div> <!-- wave removed to keep straight divider --> </section> <section class="section"> <div class="container"> <div class="metric-grid"> <div class="metric-card"> <span class="metric-number">20+</span> <span class="metric-label">Years of Experience</span> </div> <div class="metric-card"> <span class="metric-number">500+</span> <span class="metric-label">Team Members</span> </div> <div class="metric-card"> <span class="metric-number">100+</span> <span class="metric-label">Projects Completed</span> </div> <div class="metric-card"> <span class="metric-number">50+</span> <span class="metric-label">Countries Served</span> </div> </div> </div> </section> <script src="../static/js/main.js"></script> </body> </html>

@@ -3,121 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Our Clients - Patel Engineering Works (Vizag). Proudly serving the Indian Navy, Indian Coast Guard, and India's leading public and private shipyards since 2001.">
-  <title>Our Clients - Patel Engineering Works</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta name="description" content="Our Clients - Patel Engineering Works. Trusted sub-contractor to India's leading shipyards and defence organisations.">
+  <title>Our Clients | Patel Engineering Works</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link rel="icon" type="image/png" href="../static/assets/images/favicon.png">
+  <style>
+    /* ── Client cards (home-page "about" style) ── */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-top: 3rem;
+    }
+
+    .client-card {
+      background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
+      border-radius: 16px;
+      padding: 2rem 1.8rem 1.8rem;
+      box-shadow: 0 10px 30px rgba(16, 36, 73, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .client-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 44px rgba(16, 36, 73, 0.28);
+    }
+
+    .client-card h3 {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      line-height: 1.3;
+    }
+
+    .client-card p {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* Card 1 — Gold */
+    .client-card:nth-child(1) h3,
+    .client-card:nth-child(1) p { color: #f5c842; }
+
+    /* Card 2 — Mint green */
+    .client-card:nth-child(2) h3,
+    .client-card:nth-child(2) p { color: #3ddfb8; }
+
+    /* Card 3 — Magenta */
+    .client-card:nth-child(3) h3,
+    .client-card:nth-child(3) p { color: #e06aff; }
+
+    /* Card 4 — Sky blue */
+    .client-card:nth-child(4) h3,
+    .client-card:nth-child(4) p { color: #63b3ff; }
+
+    /* Card 5 — Coral orange */
+    .client-card:nth-child(5) h3,
+    .client-card:nth-child(5) p { color: #ff8a65; }
+
+    /* ── Circular stats (original track-record style) ── */
+    .clients-stats-section {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%);
+      padding: 4rem 0;
+      margin-top: 4rem;
+    }
+
+    .clients-stats-inner {
+      text-align: center;
+    }
+
+    .clients-stats-inner h3 {
+      font-size: 2rem;
+      color: #12254a;
+      margin-bottom: 2rem;
+    }
+
+    .stats-circles {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .stat-circle-item {
+      text-align: center;
+      width: 160px;
+    }
+
+    .stat-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--primary-navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 18px rgba(16, 36, 73, 0.22);
+    }
+
+    .stat-circle-label {
+      margin-top: 0.9rem;
+      font-weight: 500;
+      font-size: 0.97rem;
+      color: var(--primary-navy);
+    }
+
+    @media (max-width: 768px) {
+      .clients-grid { grid-template-columns: 1fr; }
+      .stats-circles { gap: 1.5rem; }
+    }
+  </style>
 </head>
 <body class="divisions-page">
-  <!-- NAVIGATION -->
+
   <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="../index.html" aria-label="PEW Vizag home">
-          <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
-        </a>
-      </div>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <span>☰</span>
-      </button>
-      <ul class="navbar-menu">
-        <li><a href="../index.html">Home</a></li>
-        <li class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-link">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Company Overview</a></li>
-            <li><a href="about-values.html">Core Values</a></li>
-            <li><a href="about-leadership.html">Leadership</a></li>
-            <li><a href="about-certifications.html">Certifications</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-link">Divisions</a>
-          <ul class="dropdown-menu">
-            <li><a href="divisions-shipbuilding.html">Ship Building</a></li>
-            <li><a href="divisions-repair.html">Ship Repair &amp; Modernization</a></li>
-          </ul>
-        </li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="clients.html" class="active">Clients</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="../index.html" aria-label="PEW Vizag home">
+        <img src="../static/assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+      </a>
     </div>
-  </nav>
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions</a>
+        <ul class="dropdown-menu">
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/detail/hull-superstructure">Hull & Superstructure</a></li>
+              <li><a href="/detail/piping-plumbing">Piping & Plumbing</a></li>
+              <li><a href="/detail/electrical-outfitting">Electrical Outfitting</a></li>
+              <li><a href="/detail/machinery-equipment">Machinery & Equipment</a></li>
+              <li><a href="/detail/in-situ-machining">In-Situ Machining</a></li>
+              <li><a href="/detail/accommodation-habitability">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/repair/steel-renewal">Steel Renewal & Structural</a></li>
+              <li><a href="/repair/hydraulics">Hydraulic Systems & Controls</a></li>
+              <li><a href="/repair/propulsion">Propulsion & Shafting</a></li>
+              <li><a href="/repair/piping">Piping, Valves & Pumps</a></li>
+              <li><a href="/repair/boilers">Boilers & Steam Turbines</a></li>
+              <li><a href="/repair/hvac">HVAC & Refrigeration</a></li>
+              <li><a href="/repair/surface-prep">Surface Preparation</a></li>
+              <li><a href="/repair/painting">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Partnership</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
 
   <!-- HERO -->
-  <section class="hero page-hero" style="--hero-image: url('../assets/images/shipbuild.jpg');">
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/hero_repair.jpg');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
-      <h1>Our Clients</h1>
-      <p>Trusted by India's leading naval forces, coast guard, and premier shipyards for over two decades of reliable, class-compliant execution.</p>
-    </div>
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
-      </svg>
+      <h1 data-word-reveal data-word-reveal-start="120">Our Clients</h1>
+      <p class="section-subtitle" data-word-reveal data-word-reveal-start="500">Trusted engineering partner to India's premier defence shipyards, public-sector yards, and international marine facilities.</p>
     </div>
   </section>
 
-  <!-- OVERVIEW -->
-  <section class="section shipbuild-overview" id="clients">
+  <!-- CLIENT CARDS -->
+  <section class="section shipbuild-overview">
     <div class="container">
       <div class="page-shell shipbuild-shell">
-        <div class="section-title section-title-left">
-          <h2>Our Valued Clients</h2>
-          <p class="section-subtitle">Serving India's most prestigious defence, government, and commercial maritime organisations since 2001.</p>
-        </div>
 
-        <article class="shipbuild-intro-card" style="margin-bottom: var(--spacing-2xl);">
-          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;">
-            <div style="flex: 1; min-width: 220px;">
-              <h3 style="margin-bottom: 0.75rem;">Registered Contractor to India's Premier Institutions</h3>
-              <div style="display: flex; flex-wrap: wrap; gap: 0.8rem 2rem;">
-                <span style="font-size: 0.95rem; color: #374151;"><span style="color: #1e3a6e; font-weight: 700;">&#10003;</span> Registered with Indian Navy &amp; Indian Coast Guard</span>
-                <span style="font-size: 0.95rem; color: #374151;"><span style="color: #1e3a6e; font-weight: 700;">&#10003;</span> Approved sub-contractor to all major public-sector shipyards</span>
-                <span style="font-size: 0.95rem; color: #374151;"><span style="color: #1e3a6e; font-weight: 700;">&#10003;</span> 860+ skilled professionals deployed across client sites</span>
-              </div>
-            </div>
-            <a href="contact.html" class="btn btn-primary" style="white-space: nowrap; flex-shrink: 0;">Work With Us</a>
-          </div>
-        </article>
+        <div class="clients-grid">
 
-        <!-- CLIENT CARDS GRID -->
-        <div class="shipbuild-overview-grid shipbuild-3col">
-
-          <!-- 1. Indian Navy | Indian Coast Guard -->
-          <article class="shipbuild-feature-card">
-            <div class="shipbuild-icon-chip">IN</div>
-            <h4>Indian Navy &amp; Indian Coast Guard</h4>
-            <p>Registered contractor for new-build support, outfitting, shiprepairs, and lifecycle maintenance on naval and coast guard vessels across multiple yards.</p>
+          <article class="client-card">
+            <h3>Indian Navy &amp; Indian Coast Guard</h3>
+            <p>Registered contractor for new-build support, outfitting, ship repairs, and lifecycle maintenance on naval and coast guard vessels across multiple yards.</p>
           </article>
 
-          <!-- 2. GRSE -->
-          <article class="shipbuild-feature-card">
-            <div class="shipbuild-icon-chip">GRSE</div>
-            <h4>Garden Reach Shipbuilders &amp; Engineers Ltd.</h4>
+          <article class="client-card">
+            <h3>Garden Reach Shipbuilders &amp; Engineers Ltd.</h3>
             <p>Partnering with GRSE Kolkata on frigate and fast patrol vessel programs with dedicated skilled manpower deployed at the Kolkata facility.</p>
           </article>
 
-          <!-- 3. HSL | GSL -->
-          <article class="shipbuild-feature-card">
-            <div class="shipbuild-icon-chip">HSL</div>
-            <h4>Hindustan Shipyard Ltd. &amp; Goa Shipyard Ltd.</h4>
+          <article class="client-card">
+            <h3>Hindustan Shipyard Ltd. &amp; Goa Shipyard Ltd.</h3>
             <p>Long-standing sub-contractor to HSL Vizag and GSL Goa for naval construction programs including frigates, OPVs, and fleet support vessels.</p>
           </article>
 
-          <!-- 4. CSL | MDL -->
-          <article class="shipbuild-feature-card">
-            <div class="shipbuild-icon-chip">CSL</div>
-            <h4>Cochin Shipyard Ltd. &amp; Mazagon Dock Shipbuilders Ltd.</h4>
+          <article class="client-card">
+            <h3>Cochin Shipyard Ltd. &amp; Mazagon Dock Shipbuilders Ltd.</h3>
             <p>Supporting CSL and MDL on defence and commercial vessel programs with piping systems, electrical outfitting, and precision in-situ machining services.</p>
           </article>
 
-          <!-- 5. Colombo Dockyard PLC -->
-          <article class="shipbuild-feature-card">
-            <div class="shipbuild-icon-chip">CDP</div>
-            <h4>Colombo Dockyard PLC</h4>
+          <article class="client-card">
+            <h3>Colombo Dockyard PLC</h3>
             <p>International client based in Sri Lanka — providing specialised manpower and marine engineering services at the Colombo Dockyard facility.</p>
           </article>
 
@@ -126,101 +231,74 @@
     </div>
   </section>
 
-  <!-- CLIENT STATS — mirrors the "Execution Workflow" numbered-steps section -->
-  <section class="section shipbuild-workflow" style="background: linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%); padding: 4rem 0;">
-    <div class="container text-center">
-      <div class="section-title">
-        <h3 style="font-size: 2rem; color: #12254a;">Our Track Record</h3>
-      </div>
-      <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;">
-        <div style="text-align: center; width: 160px;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-navy); color: #fff; line-height: 60px; margin: 0 auto; font-weight: 700; font-size: 1.1rem;">20+</div>
-          <p style="margin-top: 1rem; font-weight: 500;">Years of Service</p>
+  <!-- CIRCULAR STATS -->
+  <section class="clients-stats-section">
+    <div class="container clients-stats-inner">
+      <h3>Our Track Record</h3>
+      <div class="stats-circles">
+        <div class="stat-circle-item">
+          <div class="stat-circle">20+</div>
+          <p class="stat-circle-label">Years of Service</p>
         </div>
-        <div style="text-align: center; width: 160px;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-navy); color: #fff; line-height: 60px; margin: 0 auto; font-weight: 700; font-size: 1.1rem;">5+</div>
-          <p style="margin-top: 1rem; font-weight: 500;">Major Clients</p>
+        <div class="stat-circle-item">
+          <div class="stat-circle">5+</div>
+          <p class="stat-circle-label">Major Clients</p>
         </div>
-        <div style="text-align: center; width: 160px;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-navy); color: #fff; line-height: 60px; margin: 0 auto; font-weight: 700; font-size: 1.1rem;">860+</div>
-          <p style="margin-top: 1rem; font-weight: 500;">Skilled Personnel</p>
+        <div class="stat-circle-item">
+          <div class="stat-circle">860+</div>
+          <p class="stat-circle-label">Skilled Personnel</p>
         </div>
-        <div style="text-align: center; width: 160px;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-navy); color: #fff; line-height: 60px; margin: 0 auto; font-weight: 700; font-size: 1.1rem;">5+</div>
-          <p style="margin-top: 1rem; font-weight: 500;">Locations Served</p>
+        <div class="stat-circle-item">
+          <div class="stat-circle">5+</div>
+          <p class="stat-circle-label">Locations Served</p>
         </div>
-        <div style="text-align: center; width: 160px;">
-          <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-navy); color: #fff; line-height: 60px; margin: 0 auto; font-weight: 700; font-size: 1.1rem;">100%</div>
-          <p style="margin-top: 1rem; font-weight: 500;">On-Time Delivery</p>
+        <div class="stat-circle-item">
+          <div class="stat-circle">100%</div>
+          <p class="stat-circle-label">On-Time Delivery</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTOR SHOWCASE — mirrors "Project Showcase" section -->
-  <section class="section section-light">
-    <div class="container text-center">
-      <h3>Sectors We Serve</h3>
-      <div class="grid grid-3 info-grid" style="margin-top: 2rem;">
-        <div class="card feature-card">
-          <div class="card-content">
-            <h4>Defence &amp; Naval</h4>
-            <p>Indian Navy &amp; Indian Coast Guard — mission-critical vessel construction, outfitting, and lifecycle support with full class compliance.</p>
-          </div>
-        </div>
-        <div class="card feature-card">
-          <div class="card-content">
-            <h4>Public Sector Shipyards</h4>
-            <p>GRSE, HSL, GSL, CSL, MDL — approved sub-contractor delivering integrated manpower and technical services at all major Indian yards.</p>
-          </div>
-        </div>
-        <div class="card feature-card">
-          <div class="card-content">
-            <h4>International</h4>
-            <p>Colombo Dockyard PLC, Sri Lanka — extending our proven marine engineering capabilities to international clients beyond Indian shores.</p>
-          </div>
-        </div>
+  <!-- Shared footer -->
+<footer class="footer footer-compact">
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h4>About PEW Vizag</h4>
+      <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p>
+      <div class="social-links">
+        <a href="#" title="LinkedIn">🔗</a>
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="X">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer footer-compact">
-    <div class="footer-content container">
-      <div class="footer-section">
-        <h4>About PEW Vizag</h4>
-        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
-        <div class="social-links">
-          <a href="#" title="LinkedIn">in</a>
-          <a href="#" title="Facebook">f</a>
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="YouTube">▶</a>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h4>Services</h4>
-        <a href="#">Ship Design</a>
-        <a href="#">Vessel Construction</a>
-        <a href="#">Ship Repair</a>
-        <a href="#">Modernization</a>
-        <a href="#">Offshore Solutions</a>
-        <a href="#">Consulting</a>
-      </div>
-      <div class="footer-section footer-contact">
-        <h4>Contact Info</h4>
-        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
-        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919833770060">+91 9833770060</a><span class="contact-sep">/</span><a href="tel:+919820321082">+91 9820321082</a></span></p>
-        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:info@patelenggworks.com">info@patelenggworks.com</a></span></p>
-      </div>
+    <div class="footer-section">
+      <h4>Services</h4>
+      <a href="#">Ship Design</a>
+      <a href="#">Vessel Construction</a>
+      <a href="#">Ship Repair</a>
+      <a href="#">Modernization</a>
+      <a href="#">Offshore Solutions</a>
+      <a href="#">Consulting</a>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Patel Engineering Works. All rights reserved. |
-        <a href="privacy-policy.html" style="color: var(--neutral-light-grey);">Privacy Policy</a> |
-        <a href="terms.html" style="color: var(--neutral-light-grey);">Terms of Service</a>
-      </p>
+    <div class="footer-section footer-contact">
+      <h4>Contact Info</h4>
+      <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
+      <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a></span></p>
+      <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919393102438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+919393104894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+      <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
     </div>
-  </footer>
-
-  <script src="../js/main.js"></script>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+      <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+      <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+<!-- end shared footer -->
+  <script src="../static/js/main.js"></script>
 </body>
 </html>

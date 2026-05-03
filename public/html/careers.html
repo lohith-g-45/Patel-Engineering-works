@@ -3,883 +3,812 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join our team! Explore career opportunities at Marine Engineering & Shipbuilding.">
-  <title>Careers - Marine Engineering & Shipbuilding</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta name="description" content="Apply for a career at Patel Engineering Works — Marine Engineering and Shipbuilding.">
+  <title>Careers | Patel Engineering Works</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    /* ── Page layout ── */
+    .career-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    .career-form-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(16, 36, 73, 0.1);
+      padding: 2.8rem 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .career-form-card h2 {
+      font-size: 1.7rem;
+      color: var(--primary-navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .career-form-card .form-intro {
+      color: var(--text-light);
+      font-size: 0.97rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Form elements */
+    .cf-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .cf-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary-navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .cf-label span { color: var(--accent-red); }
+
+    .cf-input,
+    .cf-select,
+    .cf-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #d1d9ee;
+      border-radius: 10px;
+      font-size: 0.97rem;
+      font-family: var(--font-primary);
+      color: var(--text-dark);
+      background: #f8f9fe;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .cf-input:focus,
+    .cf-select:focus,
+    .cf-textarea:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(42, 91, 215, 0.1);
+      background: #fff;
+    }
+
+    .cf-textarea { resize: vertical; min-height: 90px; }
+
+    .cf-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      .cf-row { grid-template-columns: 1fr; }
+      .career-form-card { padding: 1.8rem 1.2rem; }
+    }
+
+    .cf-file-note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 0.3rem;
+    }
+
+    /* Submit button */
+    .cf-submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #162645 0%, #2a5bd7 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: var(--font-primary);
+    }
+
+    .cf-submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── Result panel ── */
+    #result-panel {
+      display: none;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(16, 36, 73, 0.1);
+      padding: 2.8rem 2.5rem;
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .result-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #162645, #2a5bd7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+
+    #result-panel h2 {
+      font-size: 1.6rem;
+      color: var(--primary-navy);
+      margin-bottom: 0.5rem;
+    }
+
+    #result-panel p {
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+
+    .result-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    .result-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: #f3f7ff;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary-navy);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text { font-size: 0.96rem; color: var(--text-dark); line-height: 1.5; }
+    .step-text strong { color: var(--primary-navy); }
+
+    /* Action buttons */
+    .result-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-pdf-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.95rem;
+      background: linear-gradient(135deg, #162645 0%, #1d3a75 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font-primary);
+      transition: opacity 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-pdf-download:hover { opacity: 0.88; color: #fff; }
+
+    .email-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 540px) { .email-btns { grid-template-columns: 1fr; } }
+
+    .btn-email {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      font-family: var(--font-primary);
+    }
+
+    .btn-email:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    .btn-email-1 {
+      background: linear-gradient(135deg, #c8363d 0%, #e1565a 100%);
+      color: #fff;
+    }
+
+    .btn-email-2 {
+      background: linear-gradient(135deg, #0d5a6e 0%, #1479a0 100%);
+      color: #fff;
+    }
+
+    .email-note {
+      font-size: 0.83rem;
+      color: var(--text-light);
+      margin-top: 0.8rem;
+    }
+
+    .btn-restart {
+      background: none;
+      border: 1.5px solid #d1d9ee;
+      border-radius: 10px;
+      padding: 0.7rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: var(--font-primary);
+      margin-top: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .btn-restart:hover { border-color: var(--primary-navy); color: var(--primary-navy); }
+  </style>
 </head>
 <body>
-  <!-- ================================================================
-       NAVIGATION BAR
-       ================================================================ -->
   <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-logo">
-        <a href="../index.html" aria-label="PEW Vizag home">
-          <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
-        </a>
-      </div>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <span>☰</span>
-      </button>
-      <ul class="navbar-menu">
-        <li><a href="../index.html">Home</a></li>
-                        <li class="nav-dropdown">
-          <a href="about.html" class="nav-dropdown-link">About Us</a>
-          <ul class="dropdown-menu">
-            <li><a href="about.html">Company Overview</a></li>
-            <li><a href="about-values.html">Core Values</a></li>
-            <li><a href="about-leadership.html">Leadership</a></li>
-            <li><a href="about-certifications.html">Certifications</a></li>
-          </ul>
-        </li>
-                <li class="nav-dropdown">
-          <a href="#" class="nav-dropdown-link">Divisions</a>
-          <ul class="dropdown-menu">
-            <li><a href="divisions-shipbuilding.html">Ship Building</a></li>
-            <li><a href="divisions-repair.html">Ship Repair &amp; Modernization</a></li>
-          </ul>
-        </li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="clients.html">Clients</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="../index.html" aria-label="PEW Vizag home">
+        <img src="../static/assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo">
+      </a>
     </div>
-  </nav>
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us</a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions</a>
+        <ul class="dropdown-menu">
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/detail/hull-superstructure">Hull & Superstructure</a></li>
+              <li><a href="/detail/piping-plumbing">Piping & Plumbing</a></li>
+              <li><a href="/detail/electrical-outfitting">Electrical Outfitting</a></li>
+              <li><a href="/detail/machinery-equipment">Machinery & Equipment</a></li>
+              <li><a href="/detail/in-situ-machining">In-Situ Machining</a></li>
+              <li><a href="/detail/accommodation-habitability">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="/repair/steel-renewal">Steel Renewal & Structural</a></li>
+              <li><a href="/repair/hydraulics">Hydraulic Systems & Controls</a></li>
+              <li><a href="/repair/propulsion">Propulsion & Shafting</a></li>
+              <li><a href="/repair/piping">Piping, Valves & Pumps</a></li>
+              <li><a href="/repair/boilers">Boilers & Steam Turbines</a></li>
+              <li><a href="/repair/hvac">HVAC & Refrigeration</a></li>
+              <li><a href="/repair/surface-prep">Surface Preparation</a></li>
+              <li><a href="/repair/painting">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Partnership</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="media.html">Media</a></li>
+      <li><a href="clients.html">Clients</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- ================================================================
-       PAGE HEADER
-       ================================================================ -->
   <!-- HERO -->
-  <section class="hero page-hero" style="--hero-image: url('../assets/uploads/articles/9c9c4563ff984a55983bccc1bf580f20.jpg');">
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/hero_repair.jpg');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
-      <h1>Join Our Team</h1>
-      <p>Build your career in marine engineering with Patel Engineering Works.</p>
-    </div>
-    <div class="hero-wave" aria-hidden="true">
-      <svg viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f6f8fc" d="M0,64 C240,140 480,160 720,144 C960,128 1200,80 1440,48 L1440,160 L0,160 Z" />
-      </svg>
+      <h1 data-word-reveal data-word-reveal-start="120">Join Our Team</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">Build your career in Marine Engineering with Patel Engineering Works.</p>
     </div>
   </section>
 
-  <!-- ================================================================
-       CURRENT OPENINGS
-       ================================================================ -->
-  <section class="section section-light" id="job-openings">
-    <div class="container">
-      <div class="section-title section-title-left" style="margin-bottom:2rem;">
-        <h2>Current Openings</h2>
-        <p class="section-subtitle">Explore opportunities across our Ship Repair &amp; Shipbuilding divisions.</p>
-      </div>
+  <!-- MAIN CONTENT -->
+  <section class="section" id="careers-section">
+    <div class="career-wrapper">
 
-      <div class="career-filter-row">
-        <select class="filter-select" id="filter-type">
-          <option value="all">All Job Type</option>
-          <option value="full-time">Full Time</option>
-          <option value="part-time">Part Time</option>
-        </select>
-        <select class="filter-select" id="filter-location">
-          <option value="all">All Job Location</option>
-          <option value="goa">Goa</option>
-          <option value="vishakhapatnam">Vishakhapatnam</option>
-          <option value="kolkata">Kolkata</option>
-        </select>
-      </div>
+      <!-- APPLICATION FORM -->
+      <div class="career-form-card" id="form-panel">
+        <h2>Job Application</h2>
+        <p class="form-intro">Fill in your details below. We'll generate a PDF application for you to email directly to our HR team — no sign-up required.</p>
 
-      <div class="job-card-grid">
-        <!-- Job 1 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="kolkata vishakhapatnam">
-          <h3>Electrical Supervisor – Ship Repair (PEWV/SBH10)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Kolkata, Visakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh10')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh10')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
+        <form id="career-form" novalidate>
 
-        <!-- Job 2 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata vishakhapatnam">
-          <h3>Project Engineer/Manager – Electrical (PEWV/SBH05)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Goa, Kolkata, Visakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh05')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh05')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
-
-        <!-- Job 3 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
-          <h3>Electrical Engineer – Ship Repair (PEWV/SBH08)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh08')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh08')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
-
-        <!-- Job 4 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
-          <h3>Electrician – Ship Repair (PEWV/SBH07)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh07')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh07')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
-
-        <!-- Job 5 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
-          <h3>Electrical Supervisor – Shipbuilding (Electrical Outfitting) (PEWV/SBH06)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh06')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh06')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
-
-        <!-- Job 6 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata vishakhapatnam">
-          <h3>Project Engineer/Manager (Ship Repair) (PEWV/SBH09)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Goa, Kolkata, Visakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh09')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh09')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
-
-        <!-- Job 7 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="vishakhapatnam">
-          <h3>Senior Mechanical Fitter (Marine) (PEWV/SBH04)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Vishakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh04')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh04')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: December 2, 2024</div>
-        </div>
-
-        <!-- Job 8 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="kolkata vishakhapatnam">
-          <h3>Engineering Supervisor (PEWV/SBH03)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Kolkata, Visakhapatnam</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh03')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh03')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: November 29, 2024</div>
-        </div>
-
-        <!-- Job 9 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata">
-          <h3>Hull Fabrication – Senior Structural Assistant Manager/Manager (PEWV/SBH02)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Goa, Kolkata</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh02')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh02')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: November 29, 2024</div>
-        </div>
-
-        <!-- Job 10 -->
-        <div class="pew-job-card" data-job-type="full-time" data-location="goa kolkata">
-          <h3>Hull Fabrication – Structural Supervisor (PEWV/SBH01)</h3>
-          <div class="job-meta-info">
-            <div class="job-meta-item"><span>💼</span> Full Time</div>
-            <div class="job-meta-item"><span>📍</span> Goa, Kolkata</div>
-          </div>
-          <a href="javascript:void(0)" onclick="openJobModal('sbh01')" class="job-details-link">More Details +</a>
-          <button onclick="openApplyModal('sbh01')" class="btn btn-primary btn-small" style="align-self: flex-start;">Apply Now</button>
-          <div class="job-posted-on">Posted on: November 28, 2024</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       JOB DETAILS MODAL
-       ================================================================ -->
-  <div id="job-modal" class="modal-overlay">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h2 id="modal-title">Role Details</h2>
-        <button class="btn-close-modal" onclick="closeJobModal()">&times;</button>
-      </div>
-      <div class="modal-body" id="modal-content">
-        <!-- Content will be injected here -->
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline btn-small" onclick="closeJobModal()">Close</button>
-        <button class="btn btn-primary btn-small" id="modal-apply-btn">Apply Now</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Application Popup Modal -->
-  <div id="apply-modal" class="modal-overlay">
-    <div class="modal-container modal-large modal-red">
-      <div class="modal-header">
-        <h2>Apply for Position</h2>
-        <button class="btn-close-modal" onclick="closeApplyModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form action="/api/submit-application" method="POST" id="career-apply-form">
-          <div class="form-group">
-            <label class="form-label">Full Name *</label>
-            <input type="text" name="fullName" class="form-input" placeholder="John Smith" required>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Email Address *</label>
-              <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+          <!-- Personal Details -->
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label" for="cf-name">Full Name <span>*</span></label>
+              <input class="cf-input" type="text" id="cf-name" placeholder="e.g. Rajesh Kumar" required>
             </div>
-            <div class="form-group">
-              <label class="form-label">Phone Number *</label>
-              <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required>
+            <div class="cf-group">
+              <label class="cf-label" for="cf-phone">Phone Number <span>*</span></label>
+              <input class="cf-input" type="tel" id="cf-phone" placeholder="+91 XXXXX XXXXX" required>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Position Applying For *</label>
-            <select name="position" id="modal-job-select" class="form-select" required>
+
+          <div class="cf-group">
+            <label class="cf-label" for="cf-email">Email Address <span>*</span></label>
+            <input class="cf-input" type="email" id="cf-email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label" for="cf-dob">Date of Birth</label>
+              <input class="cf-input" type="date" id="cf-dob">
+            </div>
+            <div class="cf-group">
+              <label class="cf-label" for="cf-gender">Gender</label>
+              <select class="cf-select" id="cf-gender">
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cf-group">
+            <label class="cf-label" for="cf-address">Current Address</label>
+            <textarea class="cf-textarea" id="cf-address" placeholder="City, State, Country" rows="2"></textarea>
+          </div>
+
+          <!-- Position Details -->
+          <div class="cf-group">
+            <label class="cf-label" for="cf-position">Position Applying For <span>*</span></label>
+            <select class="cf-select" id="cf-position" required>
               <option value="">Select a position</option>
-              <option value="sbh10">Electrical Supervisor – Ship Repair (PEWV/SBH10)</option>
-              <option value="sbh05">Project Engineer/Manager – Electrical (PEWV/SBH05)</option>
-              <option value="sbh08">Electrical Engineer – Ship Repair (PEWV/SBH08)</option>
-              <option value="sbh07">Electrician – Ship Repair (PEWV/SBH07)</option>
-              <option value="sbh06">Electrical Supervisor – Shipbuilding (Electrical Outfitting) (PEWV/SBH06)</option>
-              <option value="sbh09">Project Engineer/Manager (Ship Repair) (PEWV/SBH09)</option>
-              <option value="sbh04">Senior Mechanical Fitter (Marine) (PEWV/SBH04)</option>
-              <option value="sbh03">Engineering Supervisor (PEWV/SBH03)</option>
-              <option value="sbh02">Hull Fabrication – Senior Structural Assistant Manager/Manager (PEWV/SBH02)</option>
-              <option value="sbh01">Hull Fabrication – Structural Supervisor (PEWV/SBH01)</option>
-              <option value="other">Other</option>
+              <option>Electrical Supervisor – Ship Repair (PEWV/SBH10)</option>
+              <option>Project Engineer/Manager – Electrical (PEWV/SBH05)</option>
+              <option>Electrical Engineer – Ship Repair (PEWV/SBH08)</option>
+              <option>Electrician – Ship Repair (PEWV/SBH07)</option>
+              <option>Electrical Supervisor – Shipbuilding Outfitting (PEWV/SBH06)</option>
+              <option>Project Engineer/Manager – Ship Repair (PEWV/SBH09)</option>
+              <option>Senior Mechanical Fitter Marine (PEWV/SBH04)</option>
+              <option>Engineering Supervisor (PEWV/SBH03)</option>
+              <option>Hull Fabrication – Sr. Structural Asst. Manager (PEWV/SBH02)</option>
+              <option>Hull Fabrication – Structural Supervisor (PEWV/SBH01)</option>
+              <option>Other / General Application</option>
             </select>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Years of Experience *</label>
-              <select name="experience" class="form-select" required>
-                <option value="">Select experience level</option>
-                <option value="0-2">0-2 years</option>
-                <option value="2-5">2-5 years</option>
-                <option value="5-10">5-10 years</option>
-                <option value="15+">15+ years</option>
+
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label" for="cf-exp">Years of Experience <span>*</span></label>
+              <select class="cf-select" id="cf-exp" required>
+                <option value="">Select</option>
+                <option>0 – 2 years</option>
+                <option>2 – 5 years</option>
+                <option>5 – 10 years</option>
+                <option>10 – 15 years</option>
+                <option>15+ years</option>
               </select>
             </div>
-            <div class="form-group">
-              <label class="form-label">Qualification *</label>
-              <select name="qualification" class="form-select" required>
-                <option value="diploma">Diploma</option>
-                <option value="bachelor">Bachelor's</option>
-                <option value="master">Master's</option>
-                <option value="other">Other</option>
+            <div class="cf-group">
+              <label class="cf-label" for="cf-qual">Highest Qualification <span>*</span></label>
+              <select class="cf-select" id="cf-qual" required>
+                <option value="">Select</option>
+                <option>ITI</option>
+                <option>Diploma</option>
+                <option>B.Tech / B.E.</option>
+                <option>M.Tech / M.E.</option>
+                <option>Other</option>
               </select>
             </div>
           </div>
-          <div class="form-group text-left">
-            <label class="form-label">Upload Resume (PDF/DOC) *</label>
-            <input type="file" name="resume" class="form-input" required>
+
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label" for="cf-field">Field / Branch</label>
+              <input class="cf-input" type="text" id="cf-field" placeholder="e.g. Electrical, Mechanical">
+            </div>
+            <div class="cf-group">
+              <label class="cf-label" for="cf-location">Preferred Location</label>
+              <select class="cf-select" id="cf-location">
+                <option value="">Any</option>
+                <option>Vishakhapatnam</option>
+                <option>Kolkata</option>
+                <option>Goa</option>
+                <option>Open to all locations</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group text-left" style="margin-top: var(--spacing-md); display: flex; flex-direction: column; gap: 1rem;">
-            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
-              <input type="checkbox" name="terms_agree" style="margin-top: 0.35rem;" required>
-              <span style="font-size: var(--font-size-sm); color: var(--text-light); line-height: 1.4;">
-                I agree to the <a href="terms.html" target="_blank" style="color: var(--accent-red); font-weight: 600; text-decoration: underline;">Terms & Conditions</a> of Patel Engineering Works.
-              </span>
-            </label>
-            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
-              <input type="checkbox" name="privacy_agree" style="margin-top: 0.35rem;" required>
-              <span style="font-size: var(--font-size-sm); color: var(--text-light); line-height: 1.4;">
-                I agree to the <a href="privacy-policy.html" target="_blank" style="color: var(--accent-red); font-weight: 600; text-decoration: underline;">privacy policy</a> of Patel Engineering Works.
-              </span>
+
+          <div class="cf-group">
+            <label class="cf-label" for="cf-current-org">Current / Last Organisation</label>
+            <input class="cf-input" type="text" id="cf-current-org" placeholder="Company name">
+          </div>
+
+          <div class="cf-group">
+            <label class="cf-label" for="cf-skills">Key Skills &amp; Certifications</label>
+            <textarea class="cf-textarea" id="cf-skills" placeholder="e.g. Cable laying, Marine electrical systems, ISO 9001, etc." rows="3"></textarea>
+          </div>
+
+          <!-- Resume Upload -->
+          <div class="cf-group">
+            <label class="cf-label" for="cf-resume">Upload Resume <span>*</span></label>
+            <input class="cf-input" type="file" id="cf-resume" accept=".pdf,.doc,.docx" required>
+            <p class="cf-file-note">Accepted: PDF, DOC, DOCX — max 5 MB. Your resume will be included in the application PDF.</p>
+          </div>
+
+          <!-- Checkboxes -->
+          <div class="cf-group">
+            <label style="display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;font-size:0.88rem;color:var(--text-light);line-height:1.5;">
+              <input type="checkbox" id="cf-terms" required style="margin-top:0.25rem;flex-shrink:0;">
+              I agree to the <a href="/terms" target="_blank" style="color:var(--accent-red);font-weight:600;">Terms &amp; Conditions</a> and <a href="/privacy-policy" target="_blank" style="color:var(--accent-red);font-weight:600;">Privacy Policy</a> of Patel Engineering Works.
             </label>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+
+          <button type="button" class="cf-submit-btn" id="cf-submit-btn" onclick="handleGenerate()">
+            📄 Generate Application PDF
+          </button>
+
         </form>
       </div>
-    </div>
-  </div>
 
-  <!-- Hidden Job Content Data -->
-  <div id="job-data-sbh10" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Electrical Supervisor – Ship Repair (PEWV/SBH10)</h3>
-      <p><strong>Location:</strong> Kolkata & Visakhapatnam (Flexible to Travel during refits)</p>
-      <p><strong>Experience:</strong> Minimum 3–4 years</p>
-      <p><strong>Industry:</strong> Ship Repair</p>
-      
-      <h4>About the Role</h4>
-      <p>The Electrical Supervisor will lead ship repair and maintenance projects, managing electrical systems and coordinating with defense clients and multiple stakeholders. The ideal candidate will have extensive experience in marine electrical systems, repairs, and project coordination.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Supervise and manage the repair of motors, starters, generators, switchboards, and control systems of cranes, steering, CPPs, and other onboard equipment.</li>
-        <li>Read and interpret schematic, isometric, and SDL drawings to guide repairs.</li>
-        <li>Coordinate with OEMs, contractors, and teams for seamless execution of repairs onboard ships.</li>
-        <li>Prepare inspection reports, work-done certificates, and ensure necessary approvals from ship staff, Class, and QA.</li>
-        <li>Maintain strong communication with defence sector stakeholders (Navy/Coast Guard preferred).</li>
-        <li>Ensure quality control, adherence to timelines, and safety compliance during projects.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Diploma/B. Tech/BE in Electrical, Electronics, or Instrumentation Engineering.</li>
-        <li>Minimum 3–4 years of experience in ship repair or shipbuilding.</li>
-        <li>Retired professionals from the Indian Navy (SES/Electrical), Coast Guard, or Merchant Navy (equivalent roles) are encouraged to apply.</li>
-        <li>Strong knowledge of marine electrical systems and defence protocols.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong knowledge of shipboard electrical systems, including motors, control panels, and generators.</li>
-        <li>Ability to read and interpret technical drawings and schematics.</li>
-        <li>Excellent coordination and communication skills for managing multiple teams.</li>
-        <li>Proficiency in report preparation and documentation.</li>
-        <li>Problem-solving and leadership abilities.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Kolkata, Visakhapatnam</p>
-    </div>
-  </div>
+      <!-- RESULT PANEL (shown after PDF generated) -->
+      <div id="result-panel">
+        <div class="result-icon">📄</div>
+        <h2>Application Ready!</h2>
+        <p>Your PDF has been generated and downloaded. Follow the steps below to submit it.</p>
 
-  <div id="job-data-sbh05" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Project Engineer/Manager – Electrical (PEWV/SBH05)</h3>
-      <p><strong>Location:</strong> Multiple Ports Across India (Kolkata, Visakhapatnam, Goa, etc.)</p>
-      <p><strong>Experience:</strong> Minimum 3–4 years</p>
-      <p><strong>Industry:</strong> Ship Repair</p>
-      
-      <h4>About the Role</h4>
-      <p>We are seeking a skilled Project Engineer/Manager with expertise in electrical systems for ship repair and refit projects. The role involves managing turnkey projects, working with defence clients, and ensuring high-quality execution across multiple ports in India.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Plan and execute ship repair/refit projects, ensuring timely delivery and quality standards.</li>
-        <li>Manage and coordinate with defence clients, OEMs, subcontractors, and team members.</li>
-        <li>Oversee marine electrical systems, including alternators, motors, control panels, starters, navigation, and communication equipment.</li>
-        <li>Prepare project budgets, estimations, and maintain detailed progress updates.</li>
-        <li>Understand and manage tender processes, RFPs, RFQs, and related documentation.</li>
-        <li>Handle negotiations and define scopes of work for subcontractors and stakeholders.</li>
-        <li>Ensure proper resource allocation, vendor management, and streamlined operations.</li>
-        <li>Prepare reports, attend meetings, and provide status updates to customers and management.</li>
-        <li>Identify potential challenges, troubleshoot issues, and escalate concerns proactively.</li>
-        <li>Plan and manage spares, consumables, and logistics for efficient project execution.</li>
-        <li>Maintain strong relationships with clients, team members, and representatives.</li>
-        <li>Support management with tendering, cost estimation, and hiring processes as required.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Diploma/B. Tech/BE in Electrical, Electronics, or Instrumentation Engineering.</li>
-        <li>Minimum 3–4 years of experience in ship repair or shipbuilding.</li>
-        <li>Retired professionals from the Indian Navy (SES/Electrical), Coast Guard, or Merchant Navy (equivalent roles) are encouraged to apply.</li>
-        <li>Strong knowledge of marine electrical systems and defence protocols.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Proficiency in marine electrical systems and project management.</li>
-        <li>Strong leadership, team management, and coordination skills.</li>
-        <li>Knowledge of tendering processes and defence administrative procedures.</li>
-        <li>Excellent communication, problem-solving, and analytical abilities.</li>
-        <li>Attention to detail and commitment to quality and safety.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Goa, Kolkata, Visakhapatnam</p>
-    </div>
-  </div>
+        <div class="result-steps">
+          <div class="result-step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>PDF Downloaded</strong> — Your application PDF has been saved to your device's Downloads folder.</div>
+          </div>
+          <div class="result-step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Click an email button below</strong> — It will open your mail app with the subject and your details pre-filled.</div>
+          </div>
+          <div class="result-step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Attach the PDF</strong> — Attach the downloaded PDF to the email, then click <strong>Send</strong>.</div>
+          </div>
+        </div>
 
-  <div id="job-data-sbh08" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Electrical Engineer – Ship Repair (PEWV/SBH08)</h3>
-      <p><strong>Experience:</strong> Minimum 10 years</p>
-      <p><strong>Industry:</strong> Shipbuilding</p>
-      
-      <h4>About the Role</h4>
-      <p>The Electrical Engineer will lead electrical repair and maintenance activities in the ship repair industry. The ideal candidate will have expertise in power electrical and control systems, and troubleshooting shipboard equipment. This leadership role requires strong technical and coordination skills.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Diagnose and troubleshoot electrical issues in switchboards, control panels, and control systems.</li>
-        <li>Repair and maintain motors, starters, generators, steering systems, CPPs, cranes, and other onboard equipment.</li>
-        <li>Read and interpret panel/equipment electrical drawings to identify and resolve faults.</li>
-        <li>Coordinate with electricians, OEMs, and ship staff to ensure smooth execution of repair tasks.</li>
-        <li>Prepare inspection reports, repair documentation, and provide regular job status updates.</li>
-        <li>Supervise and guide repair teams, ensuring adherence to timelines and quality standards.</li>
-        <li>Handle repairs of VFDs and soft starters (preferred).</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>B.Tech in Electrical Engineering.</li>
-        <li>Minimum 10 years of experience in ship repair with expertise in power electrical and control systems.</li>
-        <li>Proven track record of managing and troubleshooting shipboard electrical systems.</li>
-        <li>Ability to draft detailed inspection reports and manage repair documentation.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong technical knowledge of shipboard electrical systems and control systems.</li>
-        <li>Proficiency in troubleshooting electrical equipment, including motors, switchboards, and control panels.</li>
-        <li>Leadership and team coordination abilities.</li>
-        <li>Excellent written and verbal communication skills for report preparation and stakeholder coordination.</li>
-        <li>Familiarity with VFDs and soft starters is an added advantage.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Vishakhapatnam</p>
-    </div>
-  </div>
+        <div class="result-actions">
+          <button class="btn-pdf-download" id="btn-redownload">
+            ⬇️ Download PDF Again
+          </button>
 
-  <div id="job-data-sbh07" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Electrician – Ship Repair (PEWV/SBH07)</h3>
-      <p><strong>Experience:</strong> Minimum 6 years</p>
-      <p><strong>Industry:</strong> Shipbuilding</p>
-      
-      <h4>About the Role</h4>
-      <p>The Electrician will be responsible for troubleshooting and repairing electrical systems in the ship repair and marine industry. The ideal candidate will have hands-on experience working with motors, control panels, generators, and switchboards, and a strong ability to interpret electrical drawings.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Diagnose and repair electrical issues in control panels, starters, and switchboards.</li>
-        <li>Read and interpret electrical panel/equipment drawings for troubleshooting.</li>
-        <li>Work on motors, starters, generators, and switchboards in ship repair or industrial environments.</li>
-        <li>Assist in repairing and maintaining VFDs and soft starters (preferred but not mandatory).</li>
-        <li>Ensure compliance with safety and quality standards during electrical repair activities.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Minimum 6 years of experience in shipbuilding, ship repair, marine, or industrial plants.</li>
-        <li>ITI certification or equivalent educational qualification in Electrical.</li>
-        <li>Proficiency in troubleshooting electrical systems and components.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong knowledge of control panels, motors, and electrical systems.</li>
-        <li>Ability to read and understand electrical schematics and technical drawings.</li>
-        <li>Experience in VFDs and soft starters is an advantage.</li>
-        <li>Problem-solving and analytical abilities.</li>
-        <li>Attention to detail and adherence to safety standards.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Vishakhapatnam</p>
-    </div>
-  </div>
+          <div class="email-btns">
+            <button onclick="openEmail('info@patelenggworks.com')" class="btn-email btn-email-1">
+              ✉️ Send to HR (info)
+            </button>
+            <button onclick="openEmail('careers@patelenggworks.com')" class="btn-email btn-email-2">
+              ✉️ Send to Careers
+            </button>
+          </div>
 
-  <div id="job-data-sbh06" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Electrical Supervisor – Shipbuilding (Electrical Outfitting) (PEWV/SBH06)</h3>
-      <p><strong>Experience:</strong> Minimum 4 years</p>
-      <p><strong>Industry:</strong> Shipbuilding</p>
-      
-      <h4>About the Role</h4>
-      <p>The Electrical Supervisor will oversee electrical outfitting activities, including cable laying, equipment installation, and monitorization in the shipbuilding and marine industry. The candidate must be skilled in interpreting technical drawings and supervising electrical installations.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Supervise and manage electrical outfitting works (cable laying, equipment installation, connections).</li>
-        <li>Interpret and work with schematic, isometric, and SDL drawings.</li>
-        <li>Coordinate with design and production teams to address technical challenges.</li>
-        <li>Ensure high-quality execution of electrical installations while meeting project timelines.</li>
-        <li>Monitor worksite safety and compliance with industry standards.</li>
-        <li>Provide guidance and training to junior staff and team members.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Minimum 4 years of experience in shipbuilding, ship repair, or the marine field.</li>
-        <li>Diploma or higher in Electrical Engineering or related disciplines.</li>
-        <li>Strong understanding of marine electrical systems and processes.</li>
-        <li>Proficiency in reading and interpreting technical drawings.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Hands-on expertise in cable laying, equipment outfitting, and Connections.</li>
-        <li>Strong leadership and team management abilities.</li>
-        <li>Problem-solving and analytical skills.</li>
-        <li>Attention to detail with a commitment to quality and safety.</li>
-        <li>Effective communication and coordination skills.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Vishakhapatnam</p>
-    </div>
-  </div>
+          <p class="email-note">💡 After clicking an email button, attach the downloaded PDF from your Downloads folder and hit <strong>Send</strong>.</p>
 
-  <div id="job-data-sbh09" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Project Engineer/Manager (Ship Repair) (PEWV/SBH09)</h3>
-      <p><strong>Location:</strong> Multiple Ports Across India (Kolkata, Visakhapatnam, Goa, etc.)</p>
-      <p><strong>Experience:</strong> Minimum 3–5 years</p>
-      <p><strong>Industry:</strong> Ship Repair</p>
-      
-      <h4>About the Role</h4>
-      <p>The Project Engineer/Manager will lead ship repair and refit projects at various ports in India, overseeing marine engineering systems, project execution, and stakeholder coordination.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Plan and execute turnkey ship repair and refit projects at ports and shipyards.</li>
-        <li>Collaborate with defence clients to ensure quality standards are met.</li>
-        <li>Oversee project requirements, vendor management, and subcontractor coordination.</li>
-        <li>Prepare budgets, estimates, and manage costing with OEMs and subcontractors.</li>
-        <li>Supervise marine engineering systems (engines, gearboxes, HVAC, pipelines).</li>
-        <li>Handle tender processes, documentation (RFPs, RFQs, SOWs, etc.), and defense protocols.</li>
-        <li>Negotiate scopes of work and ensure seamless communication among stakeholders.</li>
-        <li>Monitor project progress, update reports, and resolve challenges efficiently.</li>
-        <li>Plan materials, spares, manpower, and logistics to meet project requirements.</li>
-        <li>Lead and motivate the project team while maintaining strong client relationships.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Diploma/B.Tech/BE in Mechanical, Industrial, or Marine Engineering.</li>
-        <li>3–5 years of experience in ship repair, shipbuilding, or similar roles.</li>
-        <li>Retired professionals from Indian Navy (ERA ranks), Coast Guard, or equivalent Merchant Navy positions are welcome.</li>
-        <li>Proficiency in marine engineering systems, tendering processes, and defense protocols.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong leadership and team management abilities.</li>
-        <li>Excellent problem-solving and analytical skills.</li>
-        <li>Proficiency in project planning, budgeting, and execution.</li>
-        <li>Effective communication and stakeholder coordination.</li>
-        <li>Attention to detail with a commitment to quality and safety.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Goa, Kolkata, Visakhapatnam</p>
-    </div>
-  </div>
-
-  <div id="job-data-sbh04" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Senior Mechanical Fitter (Marine) (PEWV/SBH04)</h3>
-      <p><strong>Experience:</strong> 8 years +</p>
-      <p><strong>Industry:</strong> Ship Repair</p>
-      
-      <h4>About the Role</h4>
-      <p>Seeking an experienced Senior Mechanical Fitter with extensive hands on experience in overhauling and repairing marine machinery. The role involves guiding junior fitters and applying engineering principles to resolve mechanical issues.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Perform repairs and overhauls of marine machinery such as main engines, pumps, compressors, etc.</li>
-        <li>Ensure adherence to marine engineering practices and safety standards.</li>
-        <li>Apply engineering principles to troubleshoot and resolve mechanical issues.</li>
-        <li>Assess material quality, perform accurate measurements, and ensure work meets required tolerances.</li>
-        <li>Interpret engineering manuals and drawings to execute tasks correctly and provide guidance to junior fitters.</li>
-        <li>Supervise and mentor junior mechanical fitters, ensuring smooth collaboration and high-quality workmanship.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>ITI certification in a relevant mechanical field.</li>
-        <li>Minimum of 8 years of hands-on experience in marine machinery repairs and overhauls.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong organizational and multitasking abilities.</li>
-        <li>Ability to manage and coordinate with diverse stakeholders in challenging environments.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-    </div>
-  </div>
-
-  <div id="job-data-sbh03" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Engineering Supervisor (PEWV/SBH03)</h3>
-      <p><strong>Location:</strong> Kolkata & Visakhapatnam (Flexible to Travel during refits)</p>
-      <p><strong>Experience:</strong> 10 years</p>
-      <p><strong>Industry:</strong> Ship Repair</p>
-      
-      <h4>About the Role</h4>
-      <p>Highly skilled Engineering Supervisor to oversee the overhaul of critical shipboard engineering equipment, utilizing hands-on tools, and strong communication skills.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Supervise overhaul of engineering equipment (engines, gearboxes, propulsion systems, steering systems, compressors, pumps).</li>
-        <li>Review and interpret engineering drawings and use precision tools (vernier callipers, dial gauge, micrometre) to measure tolerances and ensure accuracy.</li>
-        <li>Collaborate with defence personnel, leveraging experience with Navy or Coast Guard for smooth operations.</li>
-        <li>Manage and coordinate tasks with OEMs, contractors, and onboard teams during refits.</li>
-        <li>Prepare detailed inspection reports, work completion certificates, and secure approvals/signatures from ship staff, Class surveyors, and QA teams.</li>
-        <li>Flexible to travel to various locations during refits as needed.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>ITI Mechanical, Diploma holder, or higher (B .Tech preferred but not mandatory).</li>
-        <li>Minimum 10 years of experience, with preference for candidates with Defence sector (Navy/Coast Guard) experience.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong organizational and multitasking abilities.</li>
-        <li>Ability to manage and coordinate with diverse stakeholders in challenging environments.</li>
-        <li>Attention to detail in inspections and documentation.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Kolkata, Visakhapatnam</p>
-    </div>
-  </div>
-
-  <div id="job-data-sbh02" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Hull Fabrication – Senior Structural Assistant Manager/Manager (PEWV/SBH02)</h3>
-      <p><strong>Location:</strong> Kolkata & Goa</p>
-      <p><strong>Experience:</strong> 10 – 15 years</p>
-      <p><strong>Industry:</strong> Shipbuilding</p>
-      
-      <h4>About the Role</h4>
-      <p>Experienced professional to oversee the fabrication and erection of hull blocks, guide production processes, and manage client relationships for timely project delivery.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Supervise fabrication and erection of multiple hull blocks simultaneously for timely project delivery.</li>
-        <li>Review and interpret structural drawings to guide and manage production.</li>
-        <li>Represent the company in client production meetings, maintaining professional relationships and safeguarding company interests.</li>
-        <li>Lead and coordinate production teams to streamline operations and ensure quality standards.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Minimum 10-15 years of experience in shipbuilding and structural fabrication.</li>
-        <li>Naval Architects or Engineers with relevant production experience are encouraged to apply.</li>
-        <li>Proficiency in reading and understanding structural drawings.</li>
-        <li>Basic understanding of various welding techniques and QA/QC procedures specific to shipbuilding.</li>
-        <li>Educational Qualification (Preferred): Diploma holder or higher.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong leadership and team management abilities.</li>
-        <li>Communication and interpersonal skills for client engagement.</li>
-        <li>Organizational skills to manage multiple projects simultaneously.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Goa, Kolkata</p>
-    </div>
-  </div>
-
-  <div id="job-data-sbh01" style="display: none;">
-    <div class="job-detail-view">
-      <h3>Hull Fabrication – Structural Supervisor (PEWV/SBH01)</h3>
-      <p><strong>Location:</strong> Kolkata & Goa</p>
-      <p><strong>Experience:</strong> Minimum 4 years</p>
-      <p><strong>Industry:</strong> Shipbuilding</p>
-      
-      <h4>About the Role</h4>
-      <p>Experienced Structural Fabrication Supervisor to oversee shipbuilding and heavy fabrication, with expertise in structural drawings and fabrication processes.</p>
-      
-      <h4>Key Responsibilities</h4>
-      <ul>
-        <li>Supervise and manage fabrication activities, ensuring compliance with design specifications and timelines.</li>
-        <li>Review and interpret structural drawings accurately.</li>
-        <li>Coordinate with design and production teams to resolve technical challenges.</li>
-        <li>Monitor welding processes, ensuring adherence to welding techniques and quality standards.</li>
-        <li>Implement QA/QC procedures to maintain high-quality production.</li>
-      </ul>
-      
-      <h4>Qualifications & Experience</h4>
-      <ul>
-        <li>Minimum 4 years of experience in shipbuilding or heavy fabrication.</li>
-        <li>Proficiency in reading and understanding structural drawings.</li>
-        <li>Basic understanding of various welding techniques and QA/QC procedures.</li>
-        <li>Educational Qualification (Preferred): Diploma holder or higher.</li>
-        <li>Naval Architects or Engineers with relevant production experience are encouraged to apply.</li>
-      </ul>
-      
-      <h4>Skills Required</h4>
-      <ul>
-        <li>Strong leadership and team management abilities.</li>
-        <li>Excellent problem-solving and analytical skills.</li>
-        <li>Attention to detail with a commitment to quality and safety.</li>
-        <li>Effective communication and coordination skills.</li>
-      </ul>
-      
-      <p><strong>Employment type:</strong> Permanent</p>
-      <p><strong>Job Type:</strong> Full Time</p>
-      <p><strong>Job Location:</strong> Goa, Kolkata</p>
-    </div>
-  </div>
-
-
-
-  <!-- ================================================================
-       CALL TO ACTION
-       ================================================================ -->
-  <section class="section section-dark">
-    <div class="container text-center">
-      <h2>Building Careers, Building Ships</h2>
-      <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2xl); color: var(--neutral-light-grey);">
-        Join us and make an impact in the marine engineering industry
-      </p>
-      <button onclick="openApplyModal('all')" class="btn btn-secondary btn-large">Start Your Application</button>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       FOOTER
-       ================================================================ -->
-  <footer class="footer footer-compact">
-    <div class="footer-content container">
-      <div class="footer-section">
-        <h4>About PEW Vizag</h4>
-        <p>Leading provider of innovative marine engineering and shipbuilding solutions for over 20 years.</p>
-        <div class="social-links">
-          <a href="#" title="LinkedIn">in</a>
-          <a href="#" title="Facebook">f</a>
-          <a href="#" title="Twitter">𝕏</a>
-          <a href="#" title="YouTube">▶</a>
+          <button class="btn-restart" id="btn-restart">← Submit Another Application</button>
         </div>
       </div>
 
-      <div class="footer-section">
-        <h4>Services</h4>
-        <a href="#">Ship Design</a>
-        <a href="#">Vessel Construction</a>
-        <a href="#">Ship Repair</a>
-        <a href="#">Modernization</a>
-        <a href="#">Offshore Solutions</a>
-        <a href="#">Consulting</a>
-      </div>
-      <div class="footer-section footer-contact">
-        <h4>Contact Info</h4>
-        <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567 346">2567 346</a></span></p>
-        <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 – 2705 624</a></span></p>
-        <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+9193931 02438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+9193931 04894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
-        <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
-      </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
-        <a href="privacy-policy.html" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
-        <a href="terms.html" style="color: var(--neutral-light-grey);">Terms of Service</a>
-      </p>
-    </div>
-  </footer>
+  </section>
 
-  <!-- Scripts -->
-  <script src="../js/main.js"></script>
+  <!-- Shared footer -->
+<footer class="footer footer-compact">
+  <div class="footer-content container">
+    <div class="footer-section">
+      <h4>About PEW Vizag</h4>
+      <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p>
+      <div class="social-links">
+        <a href="#" title="LinkedIn">🔗</a>
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="X">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h4>Services</h4>
+      <a href="#">Ship Design</a>
+      <a href="#">Vessel Construction</a>
+      <a href="#">Ship Repair</a>
+      <a href="#">Modernization</a>
+      <a href="#">Offshore Solutions</a>
+      <a href="#">Consulting</a>
+    </div>
+    <div class="footer-section footer-contact">
+      <h4>Contact Info</h4>
+      <p><strong>Tel:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a><span class="contact-sep">/</span><a href="tel:+918912567346">2567 346</a></span></p>
+      <p><strong>Fax:</strong> <span class="contact-values"><a href="tel:+918912705624">0891 - 2705 624</a></span></p>
+      <p><strong>Mobile:</strong> <span class="contact-values"><a href="tel:+919393102438">93931 02438</a><span class="contact-sep">/</span><a href="tel:+919393104894">93931 04894</a><span class="contact-sep">/</span><a href="tel:+919820970059">9820970059</a></span></p>
+      <p><strong>Email:</strong> <span class="contact-values"><a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Patel Engineering Works. All rights reserved. | 
+      <a href="/privacy-policy" style="color: var(--neutral-light-grey);">Privacy Policy</a> | 
+      <a href="/terms" style="color: var(--neutral-light-grey);">Terms of Service</a>
+    </p>
+  </div>
+</footer>
+<!-- end shared footer -->
+  <script src="../static/js/main.js"></script>
+
   <script>
-    /* ── Job Filter ───────────────────────────────────────── */
-    var filterType     = document.getElementById('filter-type');
-    var filterLocation = document.getElementById('filter-location');
+    const { jsPDF } = window.jspdf;
 
-    function applyFilters() {
-      var type = filterType.value;
-      var loc  = filterLocation.value;
-      document.querySelectorAll('.pew-job-card').forEach(function(card) {
-        var matchType = (type === 'all') || (card.dataset.jobType === type);
-        var matchLoc  = (loc  === 'all') || (card.dataset.location && card.dataset.location.indexOf(loc) !== -1);
-        card.style.display = (matchType && matchLoc) ? '' : 'none';
-      });
+    const form = document.getElementById('career-form');
+    const formPanel = document.getElementById('form-panel');
+    const resultPanel = document.getElementById('result-panel');
+    const btnRedownload = document.getElementById('btn-redownload');
+    const btnRestart = document.getElementById('btn-restart');
+    const mailto1 = document.getElementById('mailto-1');
+    const mailto2 = document.getElementById('mailto-2');
+
+    // Store the last generated PDF blob
+    let lastPdfDoc = null;
+    let lastApplicantName = '';
+    let lastPosition = '';
+
+    // ── Helpers ──
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
     }
 
-    if (filterType)     filterType.addEventListener('change', applyFilters);
-    if (filterLocation) filterLocation.addEventListener('change', applyFilters);
-
-    /* ── Job Detail Modal ─────────────────────────────────── */
-    var jobModal     = document.getElementById('job-modal');
-    var modalTitle   = document.getElementById('modal-title');
-    var modalContent = document.getElementById('modal-content');
-    var modalApplyBtn = document.getElementById('modal-apply-btn');
-    var currentJobId = null;
-
-    function openJobModal(jobId) {
-      currentJobId = jobId;
-      var dataEl = document.getElementById('job-data-' + jobId);
-      if (!dataEl) return;
-      var detail = dataEl.querySelector('.job-detail-view');
-      var titleEl = detail ? detail.querySelector('h3') : null;
-      if (modalTitle) modalTitle.textContent = titleEl ? titleEl.textContent : 'Role Details';
-      if (modalContent) modalContent.innerHTML = detail ? detail.innerHTML : '';
-      if (modalApplyBtn) modalApplyBtn.onclick = function() { closeJobModal(); openApplyModal(jobId); };
-      if (jobModal) jobModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    function pad(s, maxLen) {
+      return String(s).substring(0, maxLen);
     }
 
-    function closeJobModal() {
-      if (jobModal) jobModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    // ── Generate PDF (receives captured data object) ──
+    function generatePDF(d) {
+      const doc = new jsPDF({ unit: 'mm', format: 'a4' });
+      const pageW = doc.internal.pageSize.getWidth();
+      const margin = 18;
+      const colW = pageW - margin * 2;
+      let y = 0;
 
-    /* ── Apply Modal ──────────────────────────────────────── */
-    var applyModal    = document.getElementById('apply-modal');
-    var jobSelectEl   = document.getElementById('modal-job-select');
+      // Header band
+      doc.setFillColor(22, 38, 69);
+      doc.rect(0, 0, pageW, 38, 'F');
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(18);
+      doc.setFont('helvetica', 'bold');
+      doc.text('PATEL ENGINEERING WORKS (VIZAG)', margin, 16);
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'normal');
+      doc.text('Job Application Form', margin, 25);
+      doc.setFontSize(9);
+      doc.text('info@patelenggworks.com  |  www.patelenggworks.com', margin, 33);
+      y = 50;
 
-    function openApplyModal(jobId) {
-      if (jobSelectEl && jobId && jobId !== 'all') {
-        jobSelectEl.value = jobId;
+      // Helpers
+      function sectionTitle(title) {
+        doc.setFillColor(235, 240, 255);
+        doc.rect(margin, y - 4, colW, 9, 'F');
+        doc.setTextColor(22, 38, 69);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'bold');
+        doc.text(title, margin + 2, y + 3);
+        y += 12;
       }
-      if (applyModal) applyModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+
+      function row(label, value) {
+        if (!value || value === '') return;
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(80, 100, 140);
+        doc.text(label + ':', margin, y);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(30, 30, 30);
+        const lines = doc.splitTextToSize(String(value), colW - 48);
+        doc.text(lines, margin + 48, y);
+        y += Math.max(7, lines.length * 5.5);
+        if (y > 270) { doc.addPage(); y = 20; }
+      }
+
+      // 1. Personal Details
+      sectionTitle('1. PERSONAL DETAILS');
+      row('Full Name', d.name);
+      row('Date of Birth', d.dob);
+      row('Gender', d.gender);
+      row('Phone', d.phone);
+      row('Email', d.email);
+      row('Address', d.address);
+      y += 4;
+
+      // 2. Position
+      sectionTitle('2. POSITION APPLIED FOR');
+      row('Position', d.position);
+      row('Preferred Location', d.location || 'Any');
+      y += 4;
+
+      // 3. Qualifications
+      sectionTitle('3. QUALIFICATIONS & EXPERIENCE');
+      row('Highest Qualification', d.qual);
+      row('Field / Branch', d.field);
+      row('Years of Experience', d.exp);
+      row('Current/Last Org.', d.org);
+      y += 4;
+
+      // 4. Skills
+      if (d.skills) {
+        sectionTitle('4. KEY SKILLS & CERTIFICATIONS');
+        const skillLines = doc.splitTextToSize(d.skills, colW);
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(30, 30, 30);
+        doc.text(skillLines, margin, y);
+        y += skillLines.length * 5.5 + 6;
+      }
+
+      // 5. Resume
+      sectionTitle('5. RESUME');
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'italic');
+      doc.setTextColor(80, 80, 80);
+      doc.text(d.resumeName ? 'Resume file: ' + d.resumeName + ' (attach to email)' : 'Applicant will attach resume separately.', margin, y);
+      y += 12;
+
+      // Declaration
+      sectionTitle('DECLARATION');
+      doc.setFontSize(8.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(60, 60, 60);
+      const decl = 'I hereby declare that all information provided in this application is true and correct to the best of my knowledge. I understand that any misrepresentation may result in disqualification or termination.';
+      const declLines = doc.splitTextToSize(decl, colW);
+      doc.text(declLines, margin, y);
+      y += declLines.length * 5 + 12;
+      doc.text('Signature: ___________________________     Date: ' + new Date().toLocaleDateString('en-IN'), margin, y);
+
+      // Footer on every page
+      const pages = doc.internal.getNumberOfPages();
+      for (let i = 1; i <= pages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(7.5);
+        doc.setTextColor(150, 150, 150);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Patel Engineering Works (Vizag) — Confidential Application Document', margin, 292);
+        doc.text('Page ' + i + ' of ' + pages, pageW - margin, 292, { align: 'right' });
+      }
+
+      return doc;
     }
 
-    function closeApplyModal() {
-      if (applyModal) applyModal.classList.remove('active');
-      document.body.style.overflow = '';
+    // ── Build and open mailto ──
+    function openEmail(toEmail) {
+      const subject = encodeURIComponent('Job Application – ' + lastApplicantName + ' – ' + lastPosition);
+      const body = encodeURIComponent(
+        'Dear HR Team,\n\n' +
+        'Please find my job application attached (PDF in Downloads folder).\n\n' +
+        'Name: ' + lastApplicantName + '\n' +
+        'Position: ' + lastPosition + '\n' +
+        'Phone: ' + val('cf-phone') + '\n\n' +
+        'Regards,\n' + lastApplicantName
+      );
+      window.location.href = 'mailto:' + toEmail + '?subject=' + subject + '&body=' + body;
     }
 
-    /* ── Close on overlay click ───────────────────────────── */
-    [jobModal, applyModal].forEach(function(modal) {
-      if (!modal) return;
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
+    // ── Main generate handler (called directly from button onclick) ──
+    function handleGenerate() {
+      // Validate required fields
+      const requiredIds = ['cf-name', 'cf-phone', 'cf-email', 'cf-position', 'cf-exp', 'cf-qual'];
+      let valid = true;
+      requiredIds.forEach(function(id) {
+        const el = document.getElementById(id);
+        if (!el || !el.value.trim()) {
+          if (el) el.style.borderColor = '#e1565a';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
         }
       });
+
+      if (!document.getElementById('cf-terms').checked) {
+        alert('Please agree to the Terms & Conditions to proceed.');
+        return;
+      }
+
+      if (!valid) {
+        alert('Please fill in all required fields (marked with *).');
+        return;
+      }
+
+      // ★ Capture ALL form values RIGHT NOW into a plain object
+      const resumeInput = document.getElementById('cf-resume');
+      const data = {
+        name:       document.getElementById('cf-name').value.trim(),
+        phone:      document.getElementById('cf-phone').value.trim(),
+        email:      document.getElementById('cf-email').value.trim(),
+        dob:        document.getElementById('cf-dob').value.trim(),
+        gender:     document.getElementById('cf-gender').value.trim(),
+        address:    document.getElementById('cf-address').value.trim(),
+        position:   document.getElementById('cf-position').value.trim(),
+        location:   document.getElementById('cf-location').value.trim() || 'Any',
+        exp:        document.getElementById('cf-exp').value.trim(),
+        qual:       document.getElementById('cf-qual').value.trim(),
+        field:      document.getElementById('cf-field').value.trim(),
+        org:        document.getElementById('cf-current-org').value.trim(),
+        skills:     document.getElementById('cf-skills').value.trim(),
+        resumeName: resumeInput && resumeInput.files[0] ? resumeInput.files[0].name : ''
+      };
+
+      // Store for email buttons
+      lastApplicantName = data.name;
+      lastPosition = data.position;
+
+      const btn = document.getElementById('cf-submit-btn');
+      btn.textContent = '⏳ Generating PDF…';
+      btn.disabled = true;
+
+      setTimeout(function() {
+        try {
+          const doc = generatePDF(data);
+          lastPdfDoc = doc;
+          const filename = 'PEW_Application_' + data.name.replace(/\s+/g, '_') + '.pdf';
+          doc.save(filename);
+
+          formPanel.style.display = 'none';
+          resultPanel.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+          console.error('PDF error:', err);
+          alert('Error generating PDF. Please try again.');
+          btn.textContent = '📄 Generate Application PDF';
+          btn.disabled = false;
+        }
+      }, 200);
+    }
+
+    // Re-download button
+    btnRedownload.addEventListener('click', function () {
+      if (lastPdfDoc) {
+        const filename = 'PEW_Application_' + lastApplicantName.replace(/\s+/g, '_') + '.pdf';
+        lastPdfDoc.save(filename);
+      }
     });
 
-    /* ── Close on Escape key ──────────────────────────────── */
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeJobModal();
-        closeApplyModal();
-      }
+    // Restart
+    btnRestart.addEventListener('click', function () {
+      form.reset();
+      document.querySelectorAll('.cf-input, .cf-select, .cf-textarea').forEach(el => el.style.borderColor = '');
+      document.getElementById('cf-submit-btn').textContent = '📄 Generate Application PDF';
+      document.getElementById('cf-submit-btn').disabled = false;
+      resultPanel.style.display = 'none';
+      formPanel.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
 </html>
-
-
-
-
-
