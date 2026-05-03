@@ -119,29 +119,69 @@ def _normalize_image_urls(image_urls: list[str]) -> list[str]:
 
 def register_routes(app: Flask) -> None:
 
-    @app.get("/detail/hull-superstructure", endpoint="detail_hull_superstructure")
-    def detail_hull_superstructure():
+    @app.get("/detail/hull-superstructure")
+    def ship_building_hull():
         return render_template("detail_hull_superstructure.html")
 
-    @app.get("/detail/piping-plumbing", endpoint="detail_piping_plumbing")
-    def detail_piping_plumbing():
+    @app.get("/detail/piping-plumbing")
+    def ship_building_piping():
         return render_template("detail_piping_plumbing.html")
 
-    @app.get("/detail/electrical-outfitting", endpoint="detail_electrical_outfitting")
-    def detail_electrical_outfitting():
+    @app.get("/detail/electrical-outfitting")
+    def ship_building_electrical():
         return render_template("detail_electrical_outfitting.html")
 
-    @app.get("/detail/machinery-equipment", endpoint="detail_machinery_equipment")
-    def detail_machinery_equipment():
+    @app.get("/detail/machinery-equipment")
+    def ship_building_machinery():
         return render_template("detail_machinery_equipment.html")
 
-    @app.get("/detail/in-situ-machining", endpoint="detail_in_situ_machining")
-    def detail_in_situ_machining():
+    @app.get("/detail/in-situ-machining")
+    def ship_building_insitu():
         return render_template("detail_in_situ_machining.html")
 
-    @app.get("/detail/accommodation-habitability", endpoint="detail_accommodation_habitability")
-    def detail_accommodation_habitability():
+    @app.get("/detail/accommodation-habitability")
+    def ship_building_accommodation():
         return render_template("detail_accommodation_habitability.html")
+
+    # Ship Repair Details
+    @app.get("/repair/steel-renewal")
+    def ship_repair_steel():
+        return render_template("repair-detail-steel-renewal.html")
+
+    @app.get("/repair/hydraulics")
+    def ship_repair_hydraulics():
+        return render_template("repair-detail-hydraulics.html")
+
+    @app.get("/repair/propulsion")
+    def ship_repair_propulsion():
+        return render_template("repair-detail-propulsion.html")
+
+    @app.get("/repair/piping")
+    def ship_repair_piping():
+        return render_template("repair-detail-piping.html")
+
+    @app.get("/repair/boilers")
+    def ship_repair_boilers():
+        return render_template("repair-detail-boilers.html")
+
+    @app.get("/repair/hvac")
+    def ship_repair_hvac():
+        return render_template("repair-detail-hvac.html")
+
+    @app.get("/repair/surface-prep")
+    def ship_repair_surface_prep():
+        return render_template("repair-detail-surface-prep.html")
+
+    @app.get("/repair/painting")
+    def ship_repair_painting():
+        return render_template("repair-detail-painting.html")
+
+    @app.get("/divisions/partnership")
+    def divisions_partnership():
+        return render_template("divisions_partnership.html")
+
+
+
     
     # ==================== PUBLIC ROUTES ====================
     @app.get("/")
@@ -197,9 +237,10 @@ def register_routes(app: Flask) -> None:
         # Redirect to ship-building by default or a summary page
         return redirect(url_for('divisions_shipbuilding'))
 
-    @app.get("/partners")
-    def partners():
-        return render_template("partners.html")
+    @app.get("/clients")
+    def clients():
+        return render_template("clients.html")
+
 
     @app.get("/media")
     def media_page():
@@ -470,3 +511,5 @@ if __name__ == "__main__":
         port=int(os.getenv("PORT", "5000")),
         debug=os.getenv("FLASK_DEBUG", "false").lower() == "true",
     )
+
+

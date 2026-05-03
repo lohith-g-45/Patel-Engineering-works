@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Learn about Marine Engineering company overview, mission, and Leadership.">
+		<title>About Us - Marine Engineering & Shipbuilding</title>
+		<link rel="stylesheet" href="/static/css/styles.css">
+	</head>
+	<body>
+		<!-- ================================================================ NAVIGATION BAR ================================================================ -->
+		{% include "_navbar.html" %}
+		<!-- ================================================================ PAGE HEADER ================================================================ -->
+		<section class="hero page-hero" style="--hero-image: url('/static/assets/images/home-bg.jpg');">
+			<div class="page-hero-overlay"></div>
+			<div class="hero-content page-hero-content">
+				<h1 data-word-reveal data-word-reveal-start="120">About Our Company</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A trusted Technical partner to Naval and Commercial Shipyards for Shipbuilding, repair, and lifecycle support.</p>
+			</div>
+		</section>
+
+		<!-- ================================================================ Company Overview (PRIMARY ABOUT PAGE CONTENT) ================================================================ -->
+		<section class="section" id="company-history">
+			<div class="container">
+				<div class="about-history-layout">
+					<div class="about-history-cards">
+						<article class="about-box">
+							<p>Founded in 2001, Patel Engineering Works (Vizag) is a trusted partner to leading Shipyards, specializing in Shipbuilding, repairs, Refits, and Maintenance. Led by experienced promoters and a seasoned Leadership, the company delivers comprehensive Technical and project management solutions.</p>
+						</article>
+						<article class="about-box">
+							<p>With a workforce of 860+ skilled professionals deployed across major Indian ports and Colombo, we support both new Vessel construction and complex repair projects. We proudly serve prestigious clients including the Indian Navy, Indian Coast Guard, and leading public and private Shipyards.</p>
+						</article>
+						<article class="about-box">
+							<p>Driven by a strong commitment to Quality, Safety, and efficiency, Patel Engineering Works continues to grow as a reliable partner in India’s Naval Defense and Maritime industry, with the capability to execute large turnkey projects.</p>
+						</article>
+					</div>
+					<aside class="about-history-visual" aria-hidden="true">
+						<img src="/static/assets/images/companyhistory1.png" alt="Shipyard operations" class="about-history-image">
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<!-- Call-to-action removed from About page per request -->
+
+		<!-- ================================================================ FOOTER ================================================================ -->
+		{% include '_footer.html' %}
+		<!-- Scripts -->
+		<script src="/static/js/main.js"></script>
+	</body>
+</html>
+

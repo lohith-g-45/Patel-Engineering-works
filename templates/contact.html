@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Patel Engineering Works. Get in touch with our offices across India.">
+  <title>Contact Us | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    .contact-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-cards-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-info-card {
+      background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
+      border-radius: 16px;
+      padding: 2rem 2rem;
+      box-shadow: 0 10px 30px rgba(16, 36, 73, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(16, 36, 73, 0.26);
+    }
+
+    /* Each card gets its own full colour */
+    .contact-info-card:nth-child(1) h3,
+    .contact-info-card:nth-child(1) p,
+    .contact-info-card:nth-child(1) a,
+    .contact-info-card:nth-child(1) strong,
+    .contact-info-card:nth-child(1) span { color: #f5c842; }   /* gold  */
+
+    .contact-info-card:nth-child(2) h3,
+    .contact-info-card:nth-child(2) p,
+    .contact-info-card:nth-child(2) a,
+    .contact-info-card:nth-child(2) strong,
+    .contact-info-card:nth-child(2) span { color: #3ddfb8; }   /* mint  */
+
+    .contact-info-card:nth-child(3) h3,
+    .contact-info-card:nth-child(3) p,
+    .contact-info-card:nth-child(3) a,
+    .contact-info-card:nth-child(3) strong,
+    .contact-info-card:nth-child(3) span { color: #e06aff; }   /* magenta */
+
+    /* Location cards */
+    .contact-info-card.loc-1 h3,
+    .contact-info-card.loc-1 p,
+    .contact-info-card.loc-1 a,
+    .contact-info-card.loc-1 strong { color: #63b3ff; }        /* sky blue */
+
+    .contact-info-card.loc-2 h3,
+    .contact-info-card.loc-2 p,
+    .contact-info-card.loc-2 a,
+    .contact-info-card.loc-2 strong { color: #f5c842; }        /* yellow   */
+
+    .contact-info-card.loc-3 h3,
+    .contact-info-card.loc-3 p,
+    .contact-info-card.loc-3 a,
+    .contact-info-card.loc-3 strong { color: #3ddfb8; }        /* mint     */
+
+    .contact-info-card h3 {
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info-card p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-info-card a:hover {
+      opacity: 0.75;
+      text-decoration: underline;
+    }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin: 1.2rem 0;
+    }
+
+    .location-gmap-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+
+    .location-gmap-btn:hover {
+      background: rgba(255,255,255,0.18) !important;
+      opacity: 1 !important;
+      text-decoration: none !important;
+    }
+
+    .locations-section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin: 3.5rem 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  {% include "_navbar.html" %}
+
+  <!-- HERO -->
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/hero_repair.jpg');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1 data-word-reveal data-word-reveal-start="120">Contact Us</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">Get in Touch With Our Team</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CARDS -->
+  <section class="section" id="contact-info">
+    <div class="container">
+      <div class="page-shell">
+
+        <div class="contact-cards-grid">
+
+          <!-- 1 — Email & Web -->
+          <div class="contact-info-card">
+            <h3>📧 Email &amp; Web</h3>
+            <p><strong>Email:</strong> <a href="mailto:info@patelenggworks.com">info@patelenggworks.com</a></p>
+            <p><strong>Website:</strong> <a href="https://www.patelenggworks.com" target="_blank">www.patelenggworks.com</a></p>
+          </div>
+
+          <!-- 2 — Key Contacts -->
+          <div class="contact-info-card">
+            <h3>📞 Key Contacts</h3>
+            <p><strong>Mr. Kiran Sanghvi</strong> — CEO<br>
+               <a href="tel:+919833770060">+91 98337 70060</a></p>
+            <hr class="card-divider">
+            <p><strong>Mr. Rashesh Sanghvi</strong> — Partner<br>
+               <a href="tel:+919820321082">+91 98203 21082</a></p>
+            <hr class="card-divider">
+            <p><strong>Mr. Chirag Sanghvi</strong> — Partner<br>
+               <a href="tel:+919820970059">+91 98209 70059</a></p>
+          </div>
+
+          <!-- 3 — Office Hours -->
+          <div class="contact-info-card">
+            <h3>🕘 Office Hours</h3>
+            <p><strong>Monday – Friday:</strong> 9:00 AM – 6:00 PM IST</p>
+            <p><strong>Saturday:</strong> 9:00 AM – 2:00 PM IST</p>
+            <p><strong>Sunday:</strong> Closed</p>
+          </div>
+
+        </div>
+
+        <!-- LOCATIONS -->
+        <h2 class="locations-section-title">Our Locations</h2>
+
+        <div class="contact-cards-grid">
+
+          <!-- Vishakhapatnam HQ -->
+          <div class="contact-info-card loc-1">
+            <h3>📍 Vishakhapatnam — Headquarters</h3>
+            <p>Patel Engineering Works<br>
+               No. 5, 1st Floor, City Plaza, Daba Garden<br>
+               Vishakhapatnam – 530002, Andhra Pradesh, India</p>
+            <hr class="card-divider">
+            <p><strong>Mr. Kiran Sanghvi (CEO):</strong> <a href="tel:+919833770060">+91 98337 70060</a></p>
+            <p><strong>Mr. Rashesh Sanghvi:</strong> <a href="tel:+919820321082">+91 98203 21082</a></p>
+            <p><strong>Mr. Chirag Sanghvi:</strong> <a href="tel:+919820970059">+91 98209 70059</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@patelenggworks.com">info@patelenggworks.com</a></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=No.+5,+1st+Floor,+City+Plaza,+Daba+Garden,+Vishakhapatnam-+530002"
+               target="_blank" class="location-gmap-btn">
+              📌 View on Google Maps
+            </a>
+          </div>
+
+          <!-- Kolkata -->
+          <div class="contact-info-card loc-2">
+            <h3>📍 Kolkata — Regional Office</h3>
+            <p>Patel Engineering Works<br>
+               Block A, Howrah Industrial Complex<br>
+               Howrah – 711104, West Bengal, India</p>
+            <hr class="card-divider">
+            <p><strong>Mr. Kiran Sanghvi (CEO):</strong> <a href="tel:+919833770060">+91 98337 70060</a></p>
+            <p><strong>Mr. Rashesh Sanghvi:</strong> <a href="tel:+919820321082">+91 98203 21082</a></p>
+            <p><strong>Mr. Chirag Sanghvi:</strong> <a href="tel:+919820970059">+91 98209 70059</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@patelenggworks.com">info@patelenggworks.com</a></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Block+A,+Howrah+Industrial+Complex,+Howrah+711104,+West+Bengal,+India"
+               target="_blank" class="location-gmap-btn">
+              📌 View on Google Maps
+            </a>
+          </div>
+
+          <!-- Goa -->
+          <div class="contact-info-card loc-3">
+            <h3>📍 Goa — Regional Office</h3>
+            <p>Patel Engineering Works<br>
+               Block No B/10, Valmiki Business Centre<br>
+               Vasco-da-Gama, Goa – 403802, India</p>
+            <hr class="card-divider">
+            <p><strong>Mr. Kiran Sanghvi (CEO):</strong> <a href="tel:+919833770060">+91 98337 70060</a></p>
+            <p><strong>Mr. Rashesh Sanghvi:</strong> <a href="tel:+919820321082">+91 98203 21082</a></p>
+            <p><strong>Mr. Chirag Sanghvi:</strong> <a href="tel:+919820970059">+91 98209 70059</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@patelenggworks.com">info@patelenggworks.com</a></p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Block+No+B/10,+Valmiki+Business+Centre,+Vasco-da-Gama,+Goa+-+403802"
+               target="_blank" class="location-gmap-btn">
+              📌 View on Google Maps
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include '_footer.html' %}
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

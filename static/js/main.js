@@ -56,7 +56,7 @@ function initializeNavbar() {
     });
   });
 
-  // Mobile dropdown support for About Us submenu
+  // Mobile dropdown support for About Us/Divisions submenus
   dropdownLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       if (window.innerWidth > 768) return;
@@ -64,6 +64,25 @@ function initializeNavbar() {
       e.preventDefault();
       const parent = this.parentElement;
       dropdownItems.forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+
+  // Mobile nested sub-dropdown support
+  const subDropdownLinks = document.querySelectorAll('.nav-sub-dropdown > .nav-sub-dropdown-link');
+  const subDropdownItems = document.querySelectorAll('.nav-sub-dropdown');
+
+  subDropdownLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth > 768) return;
+
+      e.preventDefault();
+      e.stopPropagation(); // Prevent parent link from being triggered
+      const parent = this.parentElement;
+      
+      subDropdownItems.forEach(item => {
         if (item !== parent) item.classList.remove('open');
       });
       parent.classList.toggle('open');
@@ -92,25 +111,51 @@ function initializeNavbar() {
 }
 
 function updateActiveNavLink() {
-  const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.navbar-menu a');
-
-  let current = '';
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute('id');
-    }
-  });
-
+  const currentPath = window.location.pathname;
+  
+  // First, set active based on URL path
   navLinks.forEach(link => {
     link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
+    const href = link.getAttribute('href');
+    
+    // Ignore dropdown toggle links which have href="#"
+    if (href === '#') return;
+    
+    // Check if the link's href matches the current path exactly, or if we are at root and link is for home
+    if (href === currentPath || (currentPath === '/' && href === '/')) {
       link.classList.add('active');
+      
+      // If it's a sub-menu item, also highlight the parent dropdown
+      const parentDropdown = link.closest('.nav-dropdown');
+      if (parentDropdown) {
+        const parentLink = parentDropdown.querySelector('.nav-dropdown-link');
+        if (parentLink) parentLink.classList.add('active');
+      }
     }
   });
+
+  // Then, handle scrollspy for on-page anchor links (if any exist on the current page)
+  const sections = document.querySelectorAll('section[id]');
+  if (sections.length > 0) {
+    let currentId = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 200) {
+        currentId = section.getAttribute('id');
+      }
+    });
+
+    if (currentId) {
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentId}`) {
+          // Remove active from others if it's an anchor link match
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }
+  }
 }
 
 /* ================================================================
@@ -693,9 +738,10 @@ function initializeHeroRotator() {
     }
   };
 
-  const renderSentence = (sentence) => {
+  const renderSentence = (sentence, index) => {
     display.classList.remove('is-visible', 'is-fading');
     display.innerHTML = '';
+    display.setAttribute('data-line', index);
 
     const words = sentence.split(/\s+/);
     words.forEach((word, wordIndex) => {
@@ -721,7 +767,7 @@ function initializeHeroRotator() {
   };
 
   const runLoop = () => {
-    const wordCount = renderSentence(lines[activeIndex]);
+    const wordCount = renderSentence(lines[activeIndex], activeIndex);
 
     if (prefersReducedMotion || lines.length === 1) {
       return;
