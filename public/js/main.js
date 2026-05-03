@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeScrollAnimations();
   initializeParallax();
   initializeWordReveal();
+  initializeHeroRotator();
   initializeProfessionalMotion();
   initializeScrollReveal();
   initializeAccordions();
@@ -55,7 +56,7 @@ function initializeNavbar() {
     });
   });
 
-  // Mobile dropdown support for About Us submenu
+  // Mobile dropdown support for About Us/Divisions submenus
   dropdownLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       if (window.innerWidth > 768) return;
@@ -63,6 +64,25 @@ function initializeNavbar() {
       e.preventDefault();
       const parent = this.parentElement;
       dropdownItems.forEach(item => {
+        if (item !== parent) item.classList.remove('open');
+      });
+      parent.classList.toggle('open');
+    });
+  });
+
+  // Mobile nested sub-dropdown support
+  const subDropdownLinks = document.querySelectorAll('.nav-sub-dropdown > .nav-sub-dropdown-link');
+  const subDropdownItems = document.querySelectorAll('.nav-sub-dropdown');
+
+  subDropdownLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth > 768) return;
+
+      e.preventDefault();
+      e.stopPropagation(); // Prevent parent link from being triggered
+      const parent = this.parentElement;
+      
+      subDropdownItems.forEach(item => {
         if (item !== parent) item.classList.remove('open');
       });
       parent.classList.toggle('open');
@@ -91,25 +111,51 @@ function initializeNavbar() {
 }
 
 function updateActiveNavLink() {
-  const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.navbar-menu a');
-
-  let current = '';
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    if (scrollY >= sectionTop - 200) {
-      current = section.getAttribute('id');
-    }
-  });
-
+  const currentPath = window.location.pathname;
+  
+  // First, set active based on URL path
   navLinks.forEach(link => {
     link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
+    const href = link.getAttribute('href');
+    
+    // Ignore dropdown toggle links which have href="#"
+    if (href === '#') return;
+    
+    // Check if the link's href matches the current path exactly, or if we are at root and link is for home
+    if (href === currentPath || (currentPath === '/' && href === '/')) {
       link.classList.add('active');
+      
+      // If it's a sub-menu item, also highlight the parent dropdown
+      const parentDropdown = link.closest('.nav-dropdown');
+      if (parentDropdown) {
+        const parentLink = parentDropdown.querySelector('.nav-dropdown-link');
+        if (parentLink) parentLink.classList.add('active');
+      }
     }
   });
+
+  // Then, handle scrollspy for on-page anchor links (if any exist on the current page)
+  const sections = document.querySelectorAll('section[id]');
+  if (sections.length > 0) {
+    let currentId = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 200) {
+        currentId = section.getAttribute('id');
+      }
+    });
+
+    if (currentId) {
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${currentId}`) {
+          // Remove active from others if it's an anchor link match
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }
+  }
 }
 
 /* ================================================================
@@ -662,6 +708,90 @@ function initializeWordReveal() {
   });
 }
 
+/* ================================================================
+  9A. HERO ROTATING SUBTITLE
+   ================================================================ */
+function initializeHeroRotator() {
+  const rotator = document.querySelector('[data-hero-rotator]');
+  if (!rotator) return;
+
+  const display = rotator.querySelector('[data-hero-rotator-display]');
+  const lines = Array.from(rotator.querySelectorAll('.hero-rotator-line'))
+    .map(line => line.textContent.trim())
+    .filter(Boolean);
+
+  if (!display || !lines.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wordDelayMs = Number.parseInt(rotator.getAttribute('data-word-delay') || '240', 10);
+  const sentenceHoldMs = Number.parseInt(rotator.getAttribute('data-sentence-hold') || '1400', 10);
+  const fadeDurationMs = Number.parseInt(rotator.getAttribute('data-fade-duration') || '600', 10);
+  const wordRevealMs = 620;
+
+  let activeIndex = 0;
+  let timeoutId = null;
+
+  const clearTimer = () => {
+    if (timeoutId !== null) {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+  };
+
+  const renderSentence = (sentence, index) => {
+    display.classList.remove('is-visible', 'is-fading');
+    display.innerHTML = '';
+    display.setAttribute('data-line', index);
+
+    const words = sentence.split(/\s+/);
+    words.forEach((word, wordIndex) => {
+      const wordElement = document.createElement('span');
+      wordElement.className = 'hero-rotator-word';
+      wordElement.style.animationDelay = `${wordIndex * wordDelayMs}ms`;
+      wordElement.textContent = word;
+      display.appendChild(wordElement);
+
+      if (wordIndex < words.length - 1) {
+        const space = document.createElement('span');
+        space.className = 'hero-rotator-word-space';
+        space.setAttribute('aria-hidden', 'true');
+        display.appendChild(space);
+      }
+    });
+
+    requestAnimationFrame(() => {
+      display.classList.add('is-visible');
+    });
+
+    return words.length;
+  };
+
+  const runLoop = () => {
+    const wordCount = renderSentence(lines[activeIndex], activeIndex);
+
+    if (prefersReducedMotion || lines.length === 1) {
+      return;
+    }
+
+    const revealTimeMs = Math.max(0, (wordCount - 1) * wordDelayMs) + wordRevealMs;
+    const visibleTimeMs = revealTimeMs + sentenceHoldMs;
+
+    clearTimer();
+    timeoutId = window.setTimeout(() => {
+      display.classList.add('is-fading');
+
+      timeoutId = window.setTimeout(() => {
+        activeIndex = (activeIndex + 1) % lines.length;
+        runLoop();
+      }, fadeDurationMs);
+    }, visibleTimeMs);
+  };
+
+  runLoop();
+
+  window.addEventListener('beforeunload', clearTimer, { once: true });
+}
+
 function initializeProfessionalMotion() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
@@ -1046,78 +1176,4 @@ function initializeJobFilters() {
     filterType.addEventListener('change', filterJobs);
     filterLocation.addEventListener('change', filterJobs);
   }
-}
-
-/* ================================================================
-   9A. HERO ROTATING SUBTITLE (added by friend's commit e06e805)
-   ================================================================ */
-function initializeHeroRotator() {
-  const rotator = document.querySelector('[data-hero-rotator]');
-  if (!rotator) return;
-
-  const display = rotator.querySelector('[data-hero-rotator-display]');
-  const lines = Array.from(rotator.querySelectorAll('.hero-rotator-line'))
-    .map(line => line.textContent.trim())
-    .filter(Boolean);
-
-  if (!display || !lines.length) return;
-
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const wordDelayMs       = Number.parseInt(rotator.getAttribute('data-word-delay')    || '240', 10);
-  const sentenceHoldMs    = Number.parseInt(rotator.getAttribute('data-sentence-hold') || '1400', 10);
-  const fadeDurationMs    = Number.parseInt(rotator.getAttribute('data-fade-duration') || '600', 10);
-  const wordRevealMs      = 620;
-
-  let activeIndex = 0;
-  let timeoutId   = null;
-
-  const clearTimer = () => {
-    if (timeoutId !== null) { window.clearTimeout(timeoutId); timeoutId = null; }
-  };
-
-  const renderSentence = (sentence) => {
-    display.classList.remove('is-visible', 'is-fading');
-    display.innerHTML = '';
-    const words = sentence.split(/\s+/);
-    words.forEach((word, i) => {
-      const span = document.createElement('span');
-      span.className = 'hero-rotator-word';
-      span.style.animationDelay = `${i * wordDelayMs}ms`;
-      span.textContent = word;
-      display.appendChild(span);
-      if (i < words.length - 1) {
-        const sp = document.createElement('span');
-        sp.className = 'hero-rotator-word-space';
-        sp.setAttribute('aria-hidden', 'true');
-        display.appendChild(sp);
-      }
-    });
-    requestAnimationFrame(() => display.classList.add('is-visible'));
-    return words.length;
-  };
-
-  const runLoop = () => {
-    const wordCount = renderSentence(lines[activeIndex]);
-    if (lines.length === 1) return;
-    const revealTimeMs  = Math.max(0, (wordCount - 1) * wordDelayMs) + wordRevealMs;
-    const visibleTimeMs = revealTimeMs + sentenceHoldMs;
-    clearTimer();
-    timeoutId = window.setTimeout(() => {
-      display.classList.add('is-fading');
-      timeoutId = window.setTimeout(() => {
-        activeIndex = (activeIndex + 1) % lines.length;
-        runLoop();
-      }, fadeDurationMs);
-    }, visibleTimeMs);
-  };
-
-  runLoop();
-  window.addEventListener('beforeunload', clearTimer, { once: true });
-}
-
-// Auto-init when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeHeroRotator);
-} else {
-  initializeHeroRotator();
 }
