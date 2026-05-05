@@ -1066,7 +1066,7 @@ li {
   right: 0;
   bottom: 0;
   /* Dark overlay to make text pop without a box */
-  background: linear-gradient(135deg, rgba(8, 16, 36, 0.8) 0%, rgba(4, 10, 24, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(8, 16, 36, 0.3) 0%, rgba(4, 10, 24, 0.2) 100%);
   z-index: 1;
 }
 
@@ -1099,8 +1099,19 @@ li {
   letter-spacing: -0.01em;
   color: #1E90FF;
   text-shadow: 0px 4px 15px rgba(30, 144, 255, 0.3);
-  line-height: 1;
-  white-space: nowrap;
+  line-height: 1.1;
+}
+
+.hero-subtitle p,
+.hero-rotator-display {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-2xl);
+  color: #00d4ff; /* Bright Cyan/Blue for visibility */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-content p {
@@ -1749,7 +1760,6 @@ li {
   margin-top: 0;
   position: relative;
   overflow: hidden;
-  background: #000;
 }
 
 .page-hero::before {
@@ -1759,29 +1769,28 @@ li {
   left: -5%;
   right: -5%;
   bottom: -5%;
-  background-image: var(--hero-image, url('/static/assets/images/home-bg.jpg'));
+  background-image: var(--hero-image, url('/static/assets/images/new_hero_general.png'));
   background-size: cover;
   background-position: center;
-  filter: blur(1px) brightness(0.6) contrast(1.1);
+  filter: none;
   animation: pageHeroKenBurns 25s ease-in-out infinite alternate;
-  z-index: 0;
+  z-index: 1;
 }
 
 @keyframes pageHeroKenBurns {
-  0% { transform: scale(1); filter: blur(1px) brightness(0.6) contrast(1.1); }
-  100% { transform: scale(1.12); filter: blur(1px) brightness(0.5) contrast(1.2); }
+  0% { transform: scale(1); filter: none; }
+  100% { transform: scale(1.12); filter: none; }
 }
 
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(8, 16, 36, 0.8) 0%, rgba(4, 10, 24, 0.6) 100%);
-  z-index: 1;
+  background: radial-gradient(circle at 18% 20%, rgba(110, 166, 255, 0.2) 0%, rgba(110, 166, 255, 0) 42%), 
+              linear-gradient(118deg, rgba(8, 35, 88, 0.5) 0%, rgba(17, 56, 125, 0.38) 55%, rgba(8, 28, 74, 0.58) 100%);
+  z-index: 2;
 }
 
-.leadership-page .page-hero-overlay {
-  background: linear-gradient(135deg, rgba(8, 16, 36, 0.6) 0%, rgba(4, 10, 24, 0.4) 100%);
-}
+
 
 .page-hero-content {
   width: 100% !important;
@@ -1791,12 +1800,21 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-shadow: 0px 2px 15px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 3;
+}
+
+.page-hero-content h1 {
+  color: #ffffff !important;
+  text-shadow: 0 5px 14px rgba(4, 18, 48, 0.4) !important;
+  font-weight: 800 !important;
 }
 
 .page-hero-content .section-subtitle {
-  color: #00f2fe;
-  text-shadow: 0px 2px 8px rgba(0, 242, 254, 0.4);
-  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+  font-weight: 600 !important;
 }
 
 .breadcrumb-section {
@@ -1908,13 +1926,7 @@ li {
   height: 100%;
 }
 
-.division-focus-shipbuilding .page-hero {
-  background-image:
-    linear-gradient(125deg, rgba(10, 28, 62, 0.34) 0%, rgba(32, 52, 95, 0.24) 46%, rgba(193, 64, 70, 0.18) 100%),
-    var(--hero-image, url('/static/images/media-placeholder.svg')) !important;
-  background-size: cover, cover !important;
-  background-position: center, center !important;
-}
+
 
 .shipbuild-overview {
   background:
@@ -2403,17 +2415,9 @@ li {
   line-height: 1.66;
 }
 
-.leadership-page .page-hero {
-  min-height: 500px !important;
-  background-position: center 12% !important;
-}
 
-@media (max-width: 768px) {
-  .leadership-page .page-hero {
-    min-height: 440px !important;
-    background-position: center 8% !important;
-  }
-}
+
+
 
 .certification {
   display: inline-block;
@@ -2454,9 +2458,9 @@ li {
 
 .about-history-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.9fr) minmax(460px, 1.05fr);
+  grid-template-columns: minmax(0, 1.9fr) minmax(360px, 1.05fr);
   gap: clamp(1.2rem, 1.8vw, 2.2rem);
-  align-items: start;
+  align-items: center;
 }
 
 @media (min-width: 1001px) {
@@ -5058,9 +5062,14 @@ img[data-expand-image] {
   .nav-sub-dropdown-link .arrow-right {
     transform: rotate(90deg);
   }
+
+  .nav-sub-dropdown.open > .nav-sub-dropdown-link .arrow-right {
+    transform: rotate(270deg);
+  }
 }
 
- 
+
+ 
  /* -- Premium Detail Cards (Blue background + colorful text) -- */
 .premium-info-card {
   background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
@@ -5122,3 +5131,128 @@ img[data-expand-image] {
     grid-template-columns: 1fr;
   }
 }
+
+/* ================================================================
+   MOBILE COMPATIBILITY OVERRIDES (Universal)
+   ================================================================ */
+@media (max-width: 768px) {
+  /* Grid Layout Stacking */
+  .about-history-layout,
+  .about-content-layout,
+  .shipbuild-intro-layout,
+  .shipbuild-capability-grid,
+  .shipbuild-overview-grid,
+  .about-list-inline,
+  .info-grid,
+  .footer-content,
+  .system-grid,
+  .habitability-grid,
+  .workflow-timeline,
+  .form-row,
+  .repair-highlight-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Footer Adjustments */
+  .footer-content {
+    text-align: center;
+  }
+
+  /* Visual Containers */
+  .about-history-visual,
+  .about-history-visual div {
+    min-height: auto !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+  }
+
+  .about-history-visual img {
+    max-height: 380px;
+  }
+
+  /* Split sections stacking */
+  .contact-info-split {
+    flex-direction: column;
+  }
+
+  .split-item {
+    padding: 2.2rem 1.5rem !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Typography Refinement */
+  h1 {
+    font-size: clamp(1.65rem, 7vw, 2.1rem) !important;
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 5vw, 1.7rem) !important;
+  }
+
+  .section-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Hero & Page Header Adjustments */
+  .page-hero {
+    min-height: 280px !important;
+    padding-top: 50px !important;
+    display: flex;
+    align-items: center;
+  }
+
+  .page-hero-content {
+    padding: 0 1.25rem !important;
+    width: 100%;
+  }
+
+  /* Sidebar/Panel Adjustments */
+  .about-sidecards {
+    margin-top: 2rem;
+  }
+
+  /* Container & Section Spacing */
+  .section {
+    padding: 2.5rem 1rem !important;
+  }
+
+  .page-shell {
+    padding: 1.25rem !important;
+  }
+
+  /* Navbar Adjustments */
+  .navbar-container {
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ultra-small screen adjustments */
+  .hero-content h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .about-box {
+    padding: 1.25rem !important;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 1.2rem !important;
+    font-size: 0.92rem;
+  }
+
+  /* Fix for very narrow screens */
+  .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  .navbar-logo img {
+    height: 28px;
+  }
+}
+
