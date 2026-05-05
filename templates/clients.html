@@ -11,17 +11,21 @@
     /* ── Client cards (home-page "about" style) ── */
     .clients-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
       margin-top: 3rem;
     }
 
     .client-card {
       background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
       border-radius: 16px;
-      padding: 2rem 1.8rem 1.8rem;
+      padding: 1.8rem 1.6rem 1.6rem;
       box-shadow: 0 10px 30px rgba(16, 36, 73, 0.18);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 180px;
     }
 
     .client-card:hover {
@@ -30,37 +34,31 @@
     }
 
     .client-card h3 {
-      font-size: 1.18rem;
+      font-size: 1.12rem;
       font-weight: 700;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.75rem;
       line-height: 1.3;
     }
 
     .client-card p {
-      font-size: 0.96rem;
-      line-height: 1.7;
+      font-size: 0.94rem;
+      line-height: 1.6;
       margin-bottom: 0;
     }
 
-    /* Card 1 — Gold */
-    .client-card:nth-child(1) h3,
-    .client-card:nth-child(1) p { color: #f5c842; }
+    /* Vibrant Palette for 8 Cards */
+    .client-card:nth-child(1) h3, .client-card:nth-child(1) p { color: #f5c842; } /* Gold */
+    .client-card:nth-child(2) h3, .client-card:nth-child(2) p { color: #3ddfb8; } /* Mint */
+    .client-card:nth-child(3) h3, .client-card:nth-child(3) p { color: #e06aff; } /* Magenta */
+    .client-card:nth-child(4) h3, .client-card:nth-child(4) p { color: #63b3ff; } /* Sky Blue */
+    .client-card:nth-child(5) h3, .client-card:nth-child(5) p { color: #ff8a65; } /* Coral */
+    .client-card:nth-child(6) h3, .client-card:nth-child(6) p { color: #b39ddb; } /* Lavender */
+    .client-card:nth-child(7) h3, .client-card:nth-child(7) p { color: #4dd0e1; } /* Cyan */
+    .client-card:nth-child(8) h3, .client-card:nth-child(8) p { color: #ffab91; } /* Salmon */
 
-    /* Card 2 — Mint green */
-    .client-card:nth-child(2) h3,
-    .client-card:nth-child(2) p { color: #3ddfb8; }
-
-    /* Card 3 — Magenta */
-    .client-card:nth-child(3) h3,
-    .client-card:nth-child(3) p { color: #e06aff; }
-
-    /* Card 4 — Sky blue */
-    .client-card:nth-child(4) h3,
-    .client-card:nth-child(4) p { color: #63b3ff; }
-
-    /* Card 5 — Coral orange */
-    .client-card:nth-child(5) h3,
-    .client-card:nth-child(5) p { color: #ff8a65; }
+    @media (max-width: 768px) {
+      .clients-grid { grid-template-columns: 1fr; }
+    }
 
     /* ── Circular stats (original track-record style) ── */
     .clients-stats-section {
@@ -124,7 +122,7 @@
   {% include "_navbar.html" %}
 
   <!-- HERO -->
-  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/hero_repair.jpg');">
+  <section class="hero page-hero">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1 data-word-reveal data-word-reveal-start="120">Our Clients</h1>
@@ -140,23 +138,38 @@
         <div class="clients-grid">
 
           <article class="client-card">
-            <h3>Indian Navy &amp; Indian Coast Guard</h3>
-            <p>Registered contractor for new-build support, outfitting, ship repairs, and lifecycle maintenance on naval and coast guard vessels across multiple yards.</p>
+            <h3>Indian Navy</h3>
+            <p>Registered contractor for new-build support, outfitting, ship repairs, and lifecycle maintenance on naval vessels across multiple yards.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Indian Coast Guard</h3>
+            <p>Trusted partner for outfitting and repair services on coast guard vessels, ensuring operational readiness and compliance with safety standards.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Mazagon Dock Shipbuilders Ltd.</h3>
+            <p>Supporting MDL on defense and commercial vessel programs with specialized piping systems, electrical outfitting, and precision in-situ machining.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Hindustan Shipyard Ltd.</h3>
+            <p>Long-standing sub-contractor to HSL Vizag for naval construction programs including frigates, OPVs, and fleet support vessels.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Goa Shipyard Ltd.</h3>
+            <p>Partnering with GSL on specialized vessel programs, providing high-integrity structural fabrication and outfitting solutions.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Cochin Shipyard Ltd.</h3>
+            <p>Extending technical support to CSL for new-build projects, including advanced mechanical outfitting and habitability systems.</p>
           </article>
 
           <article class="client-card">
             <h3>Garden Reach Shipbuilders &amp; Engineers Ltd.</h3>
-            <p>Partnering with GRSE Kolkata on frigate and fast patrol vessel programs with dedicated skilled manpower deployed at the Kolkata facility.</p>
-          </article>
-
-          <article class="client-card">
-            <h3>Hindustan Shipyard Ltd. &amp; Goa Shipyard Ltd.</h3>
-            <p>Long-standing sub-contractor to HSL Vizag and GSL Goa for naval construction programs including frigates, OPVs, and fleet support vessels.</p>
-          </article>
-
-          <article class="client-card">
-            <h3>Cochin Shipyard Ltd. &amp; Mazagon Dock Shipbuilders Ltd.</h3>
-            <p>Supporting CSL and MDL on defence and commercial vessel programs with piping systems, electrical outfitting, and precision in-situ machining services.</p>
+            <p>Partnering with GRSE Kolkata on frigate and fast patrol vessel programs with dedicated skilled manpower deployed at their facilities.</p>
           </article>
 
           <article class="client-card">
@@ -179,7 +192,7 @@
           <p class="stat-circle-label">Years of Service</p>
         </div>
         <div class="stat-circle-item">
-          <div class="stat-circle">5+</div>
+          <div class="stat-circle">8+</div>
           <p class="stat-circle-label">Major Clients</p>
         </div>
         <div class="stat-circle-item">

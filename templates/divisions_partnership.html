@@ -11,7 +11,7 @@
   {% include "_navbar.html" %}
 
   <!-- HERO -->
-  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/home-bg.jpg');">
+  <section class="hero page-hero">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
       <h1 data-word-reveal data-word-reveal-start="120">Partnership</h1>
@@ -23,40 +23,41 @@
   <section class="section" id="partnership-details">
     <div class="container">
       
-      <div class="about-history-layout">
+      <div class="about-history-layout" style="align-items: start;">
         <!-- LEFT: 3 NAVY CARDS -->
         <div class="about-history-cards">
           
-          <article class="about-box" style="background: linear-gradient(145deg, #162d5c 0%, #1e3a8a 100%); border: none; padding: 2.2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.2); margin-bottom: 1.5rem; border-radius: 12px;">
-            <p style="color: #f5c842; font-weight: 600; font-size: 1.25rem; line-height: 1.6; margin: 0;">
-              <strong>Leading Manufacturer:</strong> RM pressfit systems are in use by major shipyards and navies across the globe. One of their biggest clients is M/s Fincantieri Shipyard, who utilize RM systems for their frontline warships.
+          <article class="about-box" style="background: linear-gradient(145deg, #162d5c 0%, #1e3a8a 100%); border: none; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 1.25rem; border-radius: 12px;">
+            <p style="color: #f5c842; font-weight: 600; font-size: 1.1rem; line-height: 1.5; margin: 0;">
+              To cater to the growing demand for <strong>Pressfit Systems</strong> in Indian Navy, <strong>M/s PEW(V)</strong> collaborated with <strong>M/s Raccorderie Metalliche (RM), Italy</strong>, a 55 year old company and a leading manufacturer and supplier of <strong>Pressfit pipe-fittings system</strong> across the globe.
             </p>
           </article>
 
-          <article class="about-box" style="background: linear-gradient(145deg, #162d5c 0%, #1e3a8a 100%); border: none; padding: 2.2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.2); margin-bottom: 1.5rem; border-radius: 12px;">
-            <p style="color: #3ddfb8; font-weight: 600; font-size: 1.25rem; line-height: 1.6; margin: 0;">
-              <strong>Indian Navy Introduction:</strong> PEW(V) along with RM introduced their products to the Indian Navy in September 2023, bringing advanced maritime piping technology to India.
+          <article class="about-box" style="background: linear-gradient(145deg, #162d5c 0%, #1e3a8a 100%); border: none; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 1.25rem; border-radius: 12px;">
+            <p style="color: #3ddfb8; font-weight: 600; font-size: 1.1rem; line-height: 1.5; margin: 0;">
+              <strong>RM pressfit systems</strong> are in use by many major shipyards and navies across the globe. One of their biggest client is <strong>M/s Fincantieri Shipyard</strong>, who have been using their pressfit systems for their frontline warships.
             </p>
           </article>
 
-          <article class="about-box" style="background: linear-gradient(145deg, #162d5c 0%, #1e3a8a 100%); border: none; padding: 2.2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border-radius: 12px;">
-            <p style="color: #e06aff; font-weight: 600; font-size: 1.25rem; line-height: 1.6; margin: 0;">
-              <strong>Certified Performance:</strong> Following the successful completion of rigorous tests, including NSTL Shock and Vibration, we were approved as a potential supplier and installer on Naval Warships in April 2025.
+          <article class="about-box" style="background: linear-gradient(145deg, #162d5c 0%, #1e3a8a 100%); border: none; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-radius: 12px;">
+            <p style="color: #e06aff; font-weight: 600; font-size: 1.1rem; line-height: 1.5; margin: 0;">
+              <strong>PEW(V)</strong> along with <strong>RM</strong> introduced their products to Indian Navy in <strong>Sep 2023</strong>. After <strong>successfull completion</strong> of all the tests (including <strong>NSTL Shock and Vibration</strong>) and <strong>approval of all drawings</strong>, we were approved as a potential supplier and installer of our products on Naval Warships in <strong>Apr 2025</strong>.
             </p>
           </article>
 
         </div>
 
-        <!-- RIGHT: VISUAL (Fully Covering Container) -->
-        <aside class="about-history-visual" aria-hidden="true" style="min-height: 600px; width: 100%; background: #fff; display: flex; align-items: center; justify-content: center; padding: 1rem; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 60px rgba(16, 36, 73, 0.15);">
-          <img src="/static/assets/images/partnership.jpg" alt="Partnership with Raccorderie Metalliche (RM)" class="about-history-image" style="max-width: 100%; max-height: 100%; object-fit: contain; transform: rotate(90deg); border-radius: 4px;">
+        <!-- RIGHT: VISUAL (Aligned to Text) -->
+        <aside class="about-history-visual" aria-hidden="true" style="width: 100%; background: transparent; display: flex; flex-direction: column; gap: 1.25rem; align-items: stretch; justify-content: flex-start;">
+          <div style="background: #fff; padding: 0.4rem; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 35px rgba(16, 36, 73, 0.08); height: 260px; display: flex; align-items: center; justify-content: center;">
+            <img src="/static/assets/images/pressfit_1.png" alt="Pressfit System Installation 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+          </div>
+          <div style="background: #fff; padding: 0.4rem; border-radius: 12px; overflow: hidden; box-shadow: 0 12px 35px rgba(16, 36, 73, 0.08); height: 260px; display: flex; align-items: center; justify-content: center;">
+            <img src="/static/assets/images/pressfit_2.png" alt="Pressfit System Installation 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+          </div>
         </aside>
       </div>
 
-    </div>
-  </section>
-
-      </div>
     </div>
   </section>
 
