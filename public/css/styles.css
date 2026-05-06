@@ -270,6 +270,11 @@
   --container-padding: 1.5rem;
 }
 
+/* Breadcrumb Removal */
+.media-breadcrumb {
+  display: none !important;
+}
+
 /* ================================================================
    2. RESET & NORMALIZATION
    ================================================================ */
