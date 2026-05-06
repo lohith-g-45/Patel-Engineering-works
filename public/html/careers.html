@@ -458,11 +458,9 @@
             <textarea class="cf-textarea" id="cf-skills" placeholder="e.g. Cable laying, Marine electrical systems, ISO 9001, etc." rows="3"></textarea>
           </div>
 
-          <!-- Resume Upload -->
+          <!-- Resume Note -->
           <div class="cf-group">
-            <label class="cf-label" for="cf-resume">Upload Resume <span>*</span></label>
-            <input class="cf-input" type="file" id="cf-resume" accept=".pdf,.doc,.docx" required>
-            <p class="cf-file-note">Accepted: PDF, DOC, DOCX — max 5 MB. Your resume will be included in the application PDF.</p>
+            <p class="cf-file-note" style="color: var(--primary-navy); font-weight: 600;">Note: You will be asked to attach your original resume separately in the final step after the application PDF is generated.</p>
           </div>
 
           <!-- Checkboxes -->
@@ -497,7 +495,7 @@
           </div>
           <div class="result-step">
             <div class="step-num">3</div>
-            <div class="step-text"><strong>Attach the PDF</strong> — Attach the downloaded PDF to the email, then click <strong>Send</strong>.</div>
+            <div class="step-text"><strong>Attach both files</strong> — Please attach both this generated application PDF and your original resume to the email, then click <strong>Send</strong>.</div>
           </div>
         </div>
 
@@ -515,7 +513,7 @@
             </button>
           </div>
 
-          <p class="email-note">💡 After clicking an email button, attach the downloaded PDF from your Downloads folder and hit <strong>Send</strong>.</p>
+          <p class="email-note">💡 After clicking an email button, attach both the downloaded PDF and your resume from your device and hit <strong>Send</strong>.</p>
 
           <button class="btn-restart" id="btn-restart">← Submit Another Application</button>
         </div>
@@ -673,12 +671,12 @@
         y += skillLines.length * 5.5 + 6;
       }
 
-      // 5. Resume
-      sectionTitle('5. RESUME');
+      // 5. Note
+      sectionTitle('5. ATTACHMENT INSTRUCTIONS');
       doc.setFontSize(9);
       doc.setFont('helvetica', 'italic');
       doc.setTextColor(80, 80, 80);
-      doc.text(d.resumeName ? 'Resume file: ' + d.resumeName + ' (attach to email)' : 'Applicant will attach resume separately.', margin, y);
+      doc.text('Important: Please ensure you attach your original resume along with this application form when sending the email.', margin, y);
       y += 12;
 
       // Declaration
@@ -746,7 +744,6 @@
       }
 
       // ★ Capture ALL form values RIGHT NOW into a plain object
-      const resumeInput = document.getElementById('cf-resume');
       const data = {
         name:       document.getElementById('cf-name').value.trim(),
         phone:      document.getElementById('cf-phone').value.trim(),
@@ -760,8 +757,7 @@
         qual:       document.getElementById('cf-qual').value.trim(),
         field:      document.getElementById('cf-field').value.trim(),
         org:        document.getElementById('cf-current-org').value.trim(),
-        skills:     document.getElementById('cf-skills').value.trim(),
-        resumeName: resumeInput && resumeInput.files[0] ? resumeInput.files[0].name : ''
+        skills:     document.getElementById('cf-skills').value.trim()
       };
 
       // Store for email buttons
