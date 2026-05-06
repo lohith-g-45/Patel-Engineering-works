@@ -1,0 +1,48 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Visual gallery of our maritime projects and facilities."> <title>Gallery - Patel Engineering Works</title> <link rel="stylesheet" href="../css/styles.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap'); body.media-page { font-family: 'Space Grotesk', sans-serif; background: #f4f5f7; } .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; } .gallery-item { position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); aspect-ratio: 4/3; cursor: pointer; transition: transform 0.3s ease; } .gallery-item:hover { transform: scale(1.02); } .gallery-item img { width: 100%; height: 100%; object-fit: cover; } .gallery-item .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.7)); padding: 1.5rem; color: #fff; opacity: 0; transition: opacity 0.3s ease; } .gallery-item:hover .overlay { opacity: 1; } .gallery-item .overlay h3 { margin: 0; font-size: 1.1rem; font-weight: 600; } .media-page .page-hero-content h1 { color: #1E90FF !important; text-shadow: 0px 4px 15px rgba(30, 144, 255, 0.4); line-height: 1.1; } </style> </head> <body class="media-page"> <nav class="navbar"> <div class="navbar-container"> <div class="navbar-logo"> <a href="../index.html" aria-label="PEW Vizag home"> <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo"> </a> </div> <button class="navbar-toggle" aria-label="Toggle menu"> <span>☰</span> </button> <ul class="navbar-menu"> <li><a href="../index.html">Home</a></li> <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="detail-hull-superstructure.html">Hull & Superstructure</a></li>
+              <li><a href="detail-piping-plumbing.html">Piping & Plumbing</a></li>
+              <li><a href="detail-electrical-outfitting.html">Electrical Outfitting</a></li>
+              <li><a href="detail-machinery-equipment.html">Machinery & Equipment</a></li>
+              <li><a href="detail-in-situ-machining.html">In-Situ Machining</a></li>
+              <li><a href="detail-accommodation-habitability.html">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="repair-detail-steel-renewal.html">Steel Renewal & Structural</a></li>
+              <li><a href="repair-detail-hydraulics.html">Hydraulic Systems & Controls</a></li>
+              <li><a href="repair-detail-propulsion.html">Propulsion & Shafting</a></li>
+              <li><a href="repair-detail-piping.html">Piping, Valves & Pumps</a></li>
+              <li><a href="repair-detail-boilers.html">Boilers & Steam Turbines</a></li>
+              <li><a href="repair-detail-hvac.html">HVAC & Refrigeration</a></li>
+              <li><a href="repair-detail-surface-prep.html">Surface Preparation</a></li>
+              <li><a href="repair-detail-painting.html">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Collaborations</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Media <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="media-gallery.html">Gallery</a></li>
+          <li><a href="media-projects.html">Projects</a></li>
+        </ul>
+      </li> <li><a href="clients.html">Clients</a></li> <li><a href="careers.html">Careers</a></li> <li><a href="contact.html">Contact Us</a></li> </ul> </div> </nav> <section class="hero page-hero" style="--hero-image: url('../assets/images/new_hero_general.png');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"> <h1 data-word-reveal data-word-reveal-start="120">Gallery</h1> <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A visual showcase of our engineering excellence and facilities.</p> </div> </section> <div class="media-breadcrumb" aria-label="Breadcrumb"> <div class="container"> <p>Home / Media / Gallery</p> </div> </div> <section class="section"> <div class="container"> <div class="gallery-grid"> <div class="gallery-item"> <img src="../assets/images/pressfit_1.png" alt="Maritime Engineering"> <div class="overlay"><h3>Precision Engineering</h3></div> </div> <div class="gallery-item"> <img src="../assets/images/pressfit_2.png" alt="Shipbuilding Facility"> <div class="overlay"><h3>Modern Facilities</h3></div> </div> <div class="gallery-item"> <img src="../assets/images/hull_and_superstructure_fabrication.jpeg" alt="Hull Construction"> <div class="overlay"><h3>Hull Construction</h3></div> </div> <div class="gallery-item"> <img src="../assets/images/piping_systems.jpeg" alt="Piping Systems"> <div class="overlay"><h3>Advanced Piping Systems</h3></div> </div> <div class="gallery-item"> <img src="../assets/images/new_hero_general.png" alt="Vessel Modernization"> <div class="overlay"><h3>Vessel Modernization</h3></div> </div> <div class="gallery-item"> <img src="../assets/images/new_hero_shipbuild.png" alt="Shipbuilding Excellence"> <div class="overlay"><h3>Strategic Shipbuilding</h3></div> </div> </div> </div> </section> <footer class="footer footer-compact"> <div class="footer-content container"> <div class="footer-section"> <h4>About PEW Vizag</h4> <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p> </div> <div class="footer-section footer-contact"> <h4>Contact HQ</h4> <p>Mumbai - 400001</p> </div> </div> </footer> <script src="../js/main.js"></script> </body> </html>

@@ -1,4 +1,4 @@
-﻿import os
+import os
 import uuid
 import json
 from functools import wraps
@@ -242,9 +242,17 @@ def register_routes(app: Flask) -> None:
         return render_template("clients.html")
 
 
+    @app.get("/media/gallery")
+    def media_gallery():
+        return render_template("media-gallery.html")
+
+    @app.get("/media/projects")
+    def media_projects():
+        return render_template("media-projects.html")
+
     @app.get("/media")
     def media_page():
-        return render_template("media.html")
+        return redirect(url_for('media_projects'))
 
     @app.get("/media/article/<int:article_id>")
     def media_article_detail(article_id):

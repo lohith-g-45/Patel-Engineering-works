@@ -1,0 +1,49 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Latest projects and news from Patel Engineering Works."> <title>Projects - Patel Engineering Works</title> <link rel="stylesheet" href="../css/styles.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap'); body.media-page { font-family: 'Space Grotesk', sans-serif; background: #f4f5f7; } .media-page .hero-crumb { font-size: 0.86rem; font-weight: 600; margin: 0; color: rgba(255, 255, 255, 0.95); } .media-page .page-hero-content h1 { margin: 0; font-size: clamp(1.46rem, 2.1vw, 1.86rem); color: #1E90FF !important; text-shadow: 0px 4px 15px rgba(30, 144, 255, 0.4); line-height: 1.1; } .media-page .hero-wave { display: block; bottom: -1px; } .media-page .hero-wave svg { height: 56px; } .media-page .media-breadcrumb { padding: 0.38rem 0 0.24rem; background: transparent; } .media-page .media-breadcrumb .container { max-width: 1040px; } .media-page .media-breadcrumb p { margin: 0; font-size: 0.85rem; font-weight: 600; color: #3d4e68; letter-spacing: 0.01em; } .media-page .section { padding-top: 0.9rem; padding-bottom: 1.15rem; min-height: calc(100vh - clamp(240px, 31vh, 300px) + 90px); } .media-page .section .container { max-width: 1040px; } .media-page .section-title { margin-bottom: 0.3rem; } .media-page .section-title h2 { margin-bottom: 0.2rem; font-size: 1.45rem; } .media-page .section-kicker { margin-bottom: 0.2rem; font-size: 0.72rem; } .media-news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; } .media-toolbar { display: flex; align-items: center; justify-content: flex-start; gap: 0.95rem; flex-wrap: wrap; margin: 0.2rem 0 1.15rem; padding: 0; } .media-news-grid { margin-top: 0.55rem; } .media-filter-select { border: 1px solid #d0d5dd; background: #ffffff; color: #4b5565; padding: 0.56rem 2.3rem 0.56rem 0.76rem; border-radius: 3px; font-size: 0.86rem; font-weight: 500; cursor: pointer; transition: all 0.22s ease; min-width: 146px; appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: linear-gradient(45deg, transparent 50%, #7b8598 50%), linear-gradient(135deg, #7b8598 50%, transparent 50%); background-position: calc(100% - 16px) calc(50% - 2px), calc(100% - 11px) calc(50% - 2px); background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; } .media-news-card { background: #ffffff; border: 1px solid #d7dbe5; border-radius: 1px; box-shadow: none; transition: border-color 0.2s ease; } .media-news-card .card-image { display: block; width: 100%; aspect-ratio: 16 / 9; max-height: 172px; object-fit: cover; object-position: center; padding: 0; border-bottom: 1px solid rgba(22, 38, 69, 0.1); background: linear-gradient(180deg, #f6f8fc 0%, #eef3fb 100%); } .media-news-card .card-content { padding: 0.84rem 0.92rem 0.8rem; } .media-news-card .card-title { font-size: 1rem; font-weight: 500; line-height: 1.32; margin-bottom: 0.45rem; color: #2f3643; min-height: 2.6rem; } .media-meta-row { display: flex; align-items: center; gap: 0.38rem; color: #4b5568; font-size: 0.9rem; margin-bottom: 0.12rem; } .media-news-card .card-text { margin: 0.25rem 0 0.2rem; color: #5f6673; font-size: 0.88rem; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.25rem; } @media (max-width: 768px) { .media-page .page-hero-content h1 { font-size: 1.2rem; } .media-news-grid { grid-template-columns: 1fr; } } </style> </head> <body class="media-page"> <nav class="navbar"> <div class="navbar-container"> <div class="navbar-logo"> <a href="../index.html" aria-label="PEW Vizag home"> <img src="../assets/images/pew-vizag-logo.svg" alt="PEW Vizag logo"> </a> </div> <button class="navbar-toggle" aria-label="Toggle menu"> <span>☰</span> </button> <ul class="navbar-menu"> <li><a href="../index.html">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="about.html" class="nav-dropdown-link">About Us <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="about.html">Company Overview</a></li>
+          <li><a href="about-values.html">Core Values</a></li>
+          <li><a href="about-leadership.html">Leadership</a></li>
+          <li><a href="about-certifications.html">Certifications</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="detail-hull-superstructure.html">Hull & Superstructure</a></li>
+              <li><a href="detail-piping-plumbing.html">Piping & Plumbing</a></li>
+              <li><a href="detail-electrical-outfitting.html">Electrical Outfitting</a></li>
+              <li><a href="detail-machinery-equipment.html">Machinery & Equipment</a></li>
+              <li><a href="detail-in-situ-machining.html">In-Situ Machining</a></li>
+              <li><a href="detail-accommodation-habitability.html">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="repair-detail-steel-renewal.html">Steel Renewal & Structural</a></li>
+              <li><a href="repair-detail-hydraulics.html">Hydraulic Systems & Controls</a></li>
+              <li><a href="repair-detail-propulsion.html">Propulsion & Shafting</a></li>
+              <li><a href="repair-detail-piping.html">Piping, Valves & Pumps</a></li>
+              <li><a href="repair-detail-boilers.html">Boilers & Steam Turbines</a></li>
+              <li><a href="repair-detail-hvac.html">HVAC & Refrigeration</a></li>
+              <li><a href="repair-detail-surface-prep.html">Surface Preparation</a></li>
+              <li><a href="repair-detail-painting.html">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="divisions_partnership.html" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Collaborations</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Media <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="media-gallery.html">Gallery</a></li>
+          <li><a href="media-projects.html">Projects</a></li>
+        </ul>
+      </li> <li><a href="clients.html">Clients</a></li> <li><a href="careers.html">Careers</a></li> <li><a href="contact.html">Contact Us</a></li> </ul> </div> </nav> <section class="hero page-hero" style="--hero-image: url('../assets/images/new_hero_general.png');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"> <h1 data-word-reveal data-word-reveal-start="120">Projects & News</h1> <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">Latest updates and key milestones from our maritime operations.</p> </div> </section> <div class="media-breadcrumb" aria-label="Breadcrumb"> <div class="container"> <p>Home / Media / Projects</p> </div> </div> <section class="section"> <div class="container"> <div class="grid media-news-grid"> <article class="card media-news-card"> <img class="card-image" src="../assets/images/hull_and_superstructure_fabrication.jpeg" alt="Project Image"> <div class="card-content"> <h4 class="card-title">Major Hull Fabrication Project Completed</h4> <p class="card-text">Successfully delivered a complex hull structure for a major defence vessel, meeting all quality standards.</p> <span class="media-news-link">More Details</span> <p class="media-news-date">April 2025</p> </div> </article> <article class="card media-news-card"> <img class="card-image" src="../assets/images/pressfit_1.png" alt="Project Image"> <div class="card-content"> <h4 class="card-title">New Collaboration for Pressfit Systems</h4> <p class="card-text">Our latest partnership with Raccorderie Metalliche (RM) brings advanced piping solutions to the Indian Navy.</p> <span class="media-news-link">More Details</span> <p class="media-news-date">March 2025</p> </div> </article> </div> </div> </section> <footer class="footer footer-compact"> <div class="footer-content container"> <div class="footer-section"> <h4>About PEW Vizag</h4> <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p> </div> <div class="footer-section footer-contact"> <h4>Contact HQ</h4> <p>Mumbai - 400001</p> </div> </div> </footer> <script src="../js/main.js"></script> </body> </html>

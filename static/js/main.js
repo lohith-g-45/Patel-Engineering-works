@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
    1. NAVBAR FUNCTIONALITY
    ================================================================ */
 function initializeNavbar() {
+  console.log("Navbar initialized - v2.1 (arrows & click support)");
   const toggle = document.querySelector('.navbar-toggle');
   const menu = document.querySelector('.navbar-menu');
   const navbar = document.querySelector('.navbar');
@@ -56,17 +57,23 @@ function initializeNavbar() {
     });
   });
 
-  // Mobile dropdown support for About Us/Divisions submenus
+  // Dropdown support for touch devices and # links
   dropdownLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-      if (window.innerWidth > 768) return;
+      const isMobile = window.innerWidth <= 768;
+      const isHashLink = this.getAttribute('href') === '#';
 
-      e.preventDefault();
-      const parent = this.parentElement;
-      dropdownItems.forEach(item => {
-        if (item !== parent) item.classList.remove('open');
-      });
-      parent.classList.toggle('open');
+      if (isMobile || isHashLink) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        
+        // Close other dropdowns at the same level
+        dropdownItems.forEach(item => {
+          if (item !== parent) item.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+      }
     });
   });
 
