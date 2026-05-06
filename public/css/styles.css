@@ -757,7 +757,7 @@ li {
    ================================================================ */
 .career-hero {
   background: linear-gradient(135deg, rgba(18, 37, 82, 0.9) 0%, rgba(42, 91, 215, 0.8) 58%, rgba(225, 86, 90, 0.7) 100%),
-              url('../images/shipbuild.jpg');
+              url('../assets/images/shipbuild.jpg');
   background-size: cover;
   background-position: center;
   min-height: 400px;
@@ -1769,7 +1769,7 @@ li {
   left: -5%;
   right: -5%;
   bottom: -5%;
-  background-image: var(--hero-image, url('/static/assets/images/new_hero_general.png'));
+  background-image: var(--hero-image, url('../assets/images/new_hero_general.png'));
   background-size: cover;
   background-position: center;
   filter: none;
