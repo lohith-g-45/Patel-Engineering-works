@@ -11,7 +11,7 @@
     /* ── Client cards (home-page "about" style) ── */
     .clients-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
       margin-top: 3rem;
     }
@@ -61,6 +61,18 @@
     /* Card 5 — Coral orange */
     .client-card:nth-child(5) h3,
     .client-card:nth-child(5) p { color: #ff8a65; }
+
+    /* Card 6 — Soft Purple */
+    .client-card:nth-child(6) h3,
+    .client-card:nth-child(6) p { color: #b388ff; }
+
+    /* Card 7 — Lime */
+    .client-card:nth-child(7) h3,
+    .client-card:nth-child(7) p { color: #c0ff8c; }
+
+    /* Card 8 — Cyan */
+    .client-card:nth-child(8) h3,
+    .client-card:nth-child(8) p { color: #00e5ff; }
 
     /* ── Circular stats (original track-record style) ── */
     .clients-stats-section {
@@ -202,23 +214,38 @@
         <div class="clients-grid">
 
           <article class="client-card">
-            <h3>Indian Navy &amp; Indian Coast Guard</h3>
-            <p>Registered contractor for new-build support, outfitting, ship repairs, and lifecycle maintenance on naval and coast guard vessels across multiple yards.</p>
+            <h3>Indian Navy</h3>
+            <p>Registered contractor for new-build support, outfitting, ship repairs, and lifecycle maintenance on naval vessels across multiple yards including Vizag, Mumbai, and Kolkata.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Indian Coast Guard</h3>
+            <p>Providing specialized outfitting and structural repair services for the Indian Coast Guard's fleet of offshore patrol vessels and interceptors.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Mazagon Dock Shipbuilders Ltd.</h3>
+            <p>Supporting MDL on premium defense programs, including frigates and destroyers, with piping systems, electrical outfitting, and precision services.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Cochin Shipyard Ltd.</h3>
+            <p>Partnering on major defense and commercial projects with expertise in specialized piping, hull outfitting, and machinery installation.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Goa Shipyard Ltd.</h3>
+            <p>Long-standing sub-contractor for naval construction programs, focusing on OPVs and specialized vessel outfitting.</p>
+          </article>
+
+          <article class="client-card">
+            <h3>Hindustan Shipyard Ltd.</h3>
+            <p>Strategic partner for ship repairs and new construction at the HSL facility in Vizag, providing comprehensive marine engineering solutions.</p>
           </article>
 
           <article class="client-card">
             <h3>Garden Reach Shipbuilders &amp; Engineers Ltd.</h3>
-            <p>Partnering with GRSE Kolkata on frigate and fast patrol vessel programs with dedicated skilled manpower deployed at the Kolkata facility.</p>
-          </article>
-
-          <article class="client-card">
-            <h3>Hindustan Shipyard Ltd. &amp; Goa Shipyard Ltd.</h3>
-            <p>Long-standing sub-contractor to HSL Vizag and GSL Goa for naval construction programs including frigates, OPVs, and fleet support vessels.</p>
-          </article>
-
-          <article class="client-card">
-            <h3>Cochin Shipyard Ltd. &amp; Mazagon Dock Shipbuilders Ltd.</h3>
-            <p>Supporting CSL and MDL on defence and commercial vessel programs with piping systems, electrical outfitting, and precision in-situ machining services.</p>
+            <p>Partnering with GRSE Kolkata on frigate and fast patrol vessel programs with dedicated skilled manpower and engineering support.</p>
           </article>
 
           <article class="client-card">
@@ -241,7 +268,7 @@
           <p class="stat-circle-label">Years of Service</p>
         </div>
         <div class="stat-circle-item">
-          <div class="stat-circle">5+</div>
+          <div class="stat-circle">8+</div>
           <p class="stat-circle-label">Major Clients</p>
         </div>
         <div class="stat-circle-item">
