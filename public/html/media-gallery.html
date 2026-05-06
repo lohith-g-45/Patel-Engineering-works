@@ -6,8 +6,8 @@
     
     body.media-page {
       font-family: 'Space Grotesk', sans-serif;
-      background: #0a1128; /* Darker background for gallery contrast */
-      color: #fff;
+      background: #ffffff;
+      color: #162645;
       overflow-x: hidden;
     }
 
@@ -86,14 +86,14 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.2);
+      border: 2px solid rgba(16, 36, 73, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
       background: transparent;
-      color: #fff;
+      color: #162645;
       font-size: 1.2rem;
     }
 
@@ -115,7 +115,7 @@
       font-size: 0.9rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: rgba(16, 36, 73, 0.5);
     }
 
     @media (max-width: 768px) {
@@ -671,9 +671,6 @@
         <button class="nav-btn prev-btn">←</button>
         <button class="nav-btn next-btn">→</button>
       </div>
-      
-      <!-- Pagination -->
-      <div class="swiper-pagination"></div>
     </div>
   </div>
  </section> <footer class="footer footer-compact"> <div class="footer-content container"> <div class="footer-section"> <h4>About PEW Vizag</h4> <p>Leading provider of innovative Marine Engineering and Shipbuilding solutions for over 20 years.</p> </div> <div class="footer-section footer-contact"> <h4>Contact HQ</h4> <p>Mumbai - 400001</p> </div> </div> </footer> 
@@ -698,10 +695,6 @@
       navigation: {
         nextEl: '.next-btn',
         prevEl: '.prev-btn',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
       },
       autoplay: {
         delay: 4000,

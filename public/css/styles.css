@@ -288,7 +288,7 @@ body {
   font-size: var(--font-size-base);
   line-height: 1.72;
   color: var(--text-dark);
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.96) 0%, rgba(243, 246, 251, 0.96) 45%, rgba(231, 238, 249, 0.9) 100%);
+  background: #ffffff;
   overflow-x: hidden;
 }
 
