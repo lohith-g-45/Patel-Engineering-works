@@ -5308,3 +5308,34 @@ img[data-expand-image] {
     gap: 0.5rem;
   }
 }
+
+@media (max-width: 992px) {
+  .about-history-layout,
+  .shipbuild-intro-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+  
+  .about-history-visual,
+  .shipbuild-intro-grid div:last-child {
+    order: 2;
+    margin-top: 0 !important;
+    justify-content: center !important;
+  }
+  
+  .about-history-cards,
+  .shipbuild-intro-grid div:first-child {
+    order: 1;
+    max-width: 100% !important;
+  }
+
+  .about-history-visual div {
+    height: auto !important;
+    min-height: 200px;
+  }
+  
+  .shipbuild-intro-grid img {
+    max-width: 100% !important;
+    margin: 0 auto;
+  }
+}
