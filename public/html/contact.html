@@ -18,6 +18,10 @@
       .contact-cards-grid { grid-template-columns: 1fr; }
     }
 
+    .contact-cards-grid.locations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .contact-info-card {
       background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
       border-radius: 16px;
@@ -232,11 +236,23 @@
         <!-- LOCATIONS -->
         <h2 class="locations-section-title">Our Locations</h2>
 
-        <div class="contact-cards-grid">
+        <div class="contact-cards-grid locations-grid">
 
-          <!-- Vishakhapatnam HQ -->
-          <div class="contact-info-card loc-1">
-            <h3>📍 Vishakhapatnam — Headquarters</h3>
+          <!-- Mumbai HQ -->
+          <div class="contact-info-card loc-1" style="border-top: 4px solid #f5c842;">
+            <h3>📍 Mumbai — Headquarters</h3>
+            <p>Patel Engineering Works<br>
+               207, Old Bake House, N.M. Road Extension<br>
+               Fort, Mumbai – 400001, Maharashtra, India</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=207,+Old+Bake+House,+N.M.+Road+Extension,+Fort,+Mumbai+-+400+001"
+               target="_blank" class="location-gmap-btn">
+              📌 View on Google Maps
+            </a>
+          </div>
+
+          <!-- Vishakhapatnam -->
+          <div class="contact-info-card loc-2">
+            <h3>📍 Vishakhapatnam — Regional Office</h3>
             <p>Patel Engineering Works<br>
                No. 5, 1st Floor, City Plaza, Daba Garden<br>
                Vishakhapatnam – 530002, Andhra Pradesh, India</p>
@@ -247,7 +263,7 @@
           </div>
 
           <!-- Kolkata -->
-          <div class="contact-info-card loc-2">
+          <div class="contact-info-card loc-3">
             <h3>📍 Kolkata — Regional Office</h3>
             <p>Patel Engineering Works<br>
                Block A, Howrah Industrial Complex<br>
@@ -259,7 +275,7 @@
           </div>
 
           <!-- Goa -->
-          <div class="contact-info-card loc-3">
+          <div class="contact-info-card loc-1">
             <h3>📍 Goa — Regional Office</h3>
             <p>Patel Engineering Works<br>
                Block No B/10, Valmiki Business Centre<br>
@@ -300,7 +316,7 @@
     </div>
         <div class="footer-section footer-contact">
       <h4>Contact HQ</h4>
-      <p style="margin-bottom: var(--spacing-xs); font-size: 0.95em;">No. 5, City Plaza, Daba Garden,<br>Vishakhapatnam - 530002</p>
+      <p style="margin-bottom: var(--spacing-xs); font-size: 0.95em;">207, Old Bake House, N.M. Road Extension,<br>Fort, Mumbai - 400001</p>
       <p><strong>Tel:</strong> <a href="tel:+918912705624">0891 – 2705 624</a></p>
       <p><strong>Mob:</strong> <a href="tel:+919393102438">93931 02438</a> / <a href="tel:+919393104894">93931 04894</a></p>
       <p><strong>Email:</strong> <a href="mailto:shipservice@yahoo.com">shipservice@yahoo.com</a></p>
