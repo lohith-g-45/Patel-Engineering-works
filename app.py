@@ -9,7 +9,7 @@ import jwt
 from werkzeug.utils import secure_filename
 from models import db, AdminUser, Article, ContentHistory
 
-# Build timestamp: 2026-06-15 11:45 UTC
+# Build timestamp: 2026-06-15 12:30 UTC - FORCE RENDER RESTART NOW
 
 
 
