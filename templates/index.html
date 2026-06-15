@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Patel Engineering Works (Vizag) is a premier naval engineering, shipbuilding, and marine repair contractor serving the Indian Navy, Coast Guard, and major shipyards.">
   <meta name="keywords" content="marine engineering, shipbuilding, ship repair, Indian Navy, Visakhapatnam, naval contractor">
-  <title>Patel Engineering Works (Vizag) | Shipbuilding, Repair & Lifecycle Support</title>
+  <title>Patel Engineering Works (Vizag) | Shipbuilding, Repair &amp; Lifecycle Support</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/images/favicon.png') }}">
 </head>
@@ -24,8 +24,9 @@
     <div class="container" style="position: relative; z-index: 5;">
       <div class="hero-new-content">
         <div style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #E2E5EA; margin-bottom: var(--spacing-16); font-family: var(--font-heading);">Patel Engineering Works (Vizag)</div>
-        <h1 style="font-size: 44px; font-weight: 600; line-height: 1.2; margin-bottom: var(--spacing-16);">India's Trusted Partner in Shipbuilding &amp; Ship Repair</h1>
-        <p style="font-size: 19px; line-height: 1.5; color: rgba(255, 255, 255, 0.95); margin-bottom: var(--spacing-32); font-family: var(--font-heading); font-weight: 500;">Two decades delivering new construction and lifecycle support to the Indian Navy, Coast Guard, and major shipyards.</p>
+        <h1 style="font-size: 44px; font-weight: 600; line-height: 1.2; margin-bottom: var(--spacing-16);">India's trusted partner in shipbuilding &amp; ship repair</h1>
+        <p class="hero-sub-desktop" style="font-size: 19px; line-height: 1.5; color: rgba(255, 255, 255, 0.95); margin-bottom: var(--spacing-32); font-family: var(--font-heading); font-weight: 500;">Two decades delivering new construction and lifecycle support to the Indian Navy, Coast Guard, and the nation’s leading shipyards — on time, to spec, every time.</p>
+        <p class="hero-sub-mobile" style="font-size: 19px; line-height: 1.5; color: rgba(255, 255, 255, 0.95); margin-bottom: var(--spacing-32); font-family: var(--font-heading); font-weight: 500;">Shipbuilding &amp; repair. On time, every time.</p>
         <div class="hero-btn-group">
           <a href="{{ url_for('divisions_shipbuilding') }}" class="btn-primary-new">Explore Capabilities</a>
           <a href="{{ url_for('contact') }}" class="btn-outline-light-new">Work With Us</a>
@@ -35,21 +36,20 @@
   </section>
 
   <!-- ================================================================
-       3. INTRODUCTORY SECTION
+       3. INTRODUCTORY SECTION (White Background)
        ================================================================ -->
   <section class="home-section home-section-padding-lg">
     <div class="container">
       <div class="text-center" style="max-width: 900px; margin: 0 auto;">
-        <h2 style="margin-bottom: var(--spacing-24);">Two Decades of Naval Engineering Excellence</h2>
-        <p class="section-lead" style="margin-bottom: 0;">
-          Patel Engineering Works (Vizag) is a premier marine engineering, shipbuilding, and ship repair contractor. For over 20 years, we have delivered critical fabrication, outfitting, and turnkey refit solutions to defense and commercial clients. Deployed across major shipyards in India and Sri Lanka, our certified team is trusted by the Indian Navy and leading public-sector enterprises for reliability, class-standard workmanship, and absolute operational integrity.
+        <p class="section-lead" style="font-size: 20px; line-height: 1.6; color: var(--text-dark); margin-bottom: 0; font-family: var(--font-heading); font-weight: 500; text-align: center !important;">
+          "From new builds to emergency refits, Patel Engineering Works keeps India's fleet ready — backed by class-certified teams, dependable timelines, and a track record the defence sector trusts."
         </p>
       </div>
     </div>
   </section>
 
   <!-- ================================================================
-       4. STATISTICS BAND
+       4. STATISTICS BAND (Mist Background)
        ================================================================ -->
   <section class="home-section-alt">
     <div class="container">
@@ -64,42 +64,41 @@
         </article>
         <article class="stat-card-new">
           <div class="stat-number-new">7</div>
-          <div class="stat-label-new">Locations in India &amp; Sri Lanka</div>
+          <div class="stat-label-new">Locations across India &amp; Sri Lanka</div>
         </article>
         <article class="stat-card-new">
           <div class="stat-number-new">Largest</div>
-          <div class="stat-label-new">Private UHP Hydroblasting Fleet</div>
+          <div class="stat-label-new">Private UHP hydroblasting fleet in India</div>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ================================================================
-       5. WHAT WE DELIVER
+       5. WHAT WE DELIVER (White Background)
        ================================================================ -->
   <section class="home-section home-section-padding-lg">
     <div class="container">
       <div class="text-center" style="margin-bottom: var(--spacing-48);">
         <h2>What We Deliver</h2>
-        <p class="section-lead">A comprehensive suite of marine services executed to international classification society standards.</p>
       </div>
       <div class="deliver-grid-new">
         <!-- Shipbuilding -->
         <article class="deliver-card-new">
-          <h3>Shipbuilding &amp; Construction</h3>
-          <p>High-integrity structural fabrication, outfitting, electrical installation, and machinery setup for naval, auxiliary, and commercial vessels. Executed to strict classification society rules and client designs.</p>
+          <h3>Shipbuilding</h3>
+          <p>Hull fabrication, outfitting, and equipment installation for complex defence and auxiliary vessels.</p>
           <a href="{{ url_for('divisions_shipbuilding') }}" class="deliver-link-new">Explore Capabilities &rarr;</a>
         </article>
         <!-- Ship Repair -->
         <article class="deliver-card-new">
-          <h3>Ship Repair &amp; Turnkey Refit</h3>
-          <p>Comprehensive machinery, propulsion, piping, steel renewal, and surface preparation services. We specialize in fast-turnaround refits for patrol boats, interceptors, and large vessels to restore operational readiness.</p>
+          <h3>Ship Repair &amp; Refit</h3>
+          <p>Turnkey refits, emergency repairs, and precision overhauls with minimal downtime.</p>
           <a href="{{ url_for('divisions_repair') }}" class="deliver-link-new">Explore Capabilities &rarr;</a>
         </article>
         <!-- Lifecycle Support -->
         <article class="deliver-card-new">
-          <h3>Lifecycle &amp; Support Services</h3>
-          <p>Continuous onboard maintenance, troubleshooting, and lifecycle engineering support. Deployed teams at yards and bases across India to ensure peak operational reliability and minimal downtime.</p>
+          <h3>Lifecycle Support</h3>
+          <p>Class-compliant maintenance and modernization across the life of the vessel.</p>
           <a href="{{ url_for('divisions_repair') }}#lifecycle" class="deliver-link-new">Explore Capabilities &rarr;</a>
         </article>
       </div>
@@ -107,18 +106,17 @@
   </section>
 
   <!-- ================================================================
-       6. TRUSTED BY
+       6. TRUSTED BY (Mist Background)
        ================================================================ -->
   <section class="home-section-alt">
     <div class="container">
-      <div class="text-center" style="margin-bottom: var(--spacing-32);">
-        <h2 style="font-size: 24px; margin-bottom: var(--spacing-8);">Trusted by Government Organizations &amp; Leading Shipyards</h2>
-        <p class="section-lead" style="font-size: 15px; margin-bottom: 0;">Approved contractor and trusted engineering partner.</p>
+      <div class="text-center" style="margin-bottom: var(--spacing-24);">
+        <h2 style="font-size: 24px; margin-bottom: var(--spacing-8);">Trusted by India’s Navy, Coast Guard &amp; leading shipyards</h2>
       </div>
       <div class="trusted-strip-new">
         <div class="client-logo-tag-new">Indian Navy</div>
         <div class="client-logo-tag-new">Indian Coast Guard</div>
-        <div class="client-logo-tag-new">GRSE Kolkata</div>
+        <div class="client-logo-tag-new">GRSE</div>
         <div class="client-logo-tag-new">Hindustan Shipyard</div>
         <div class="client-logo-tag-new">Goa Shipyard</div>
         <div class="client-logo-tag-new">Cochin Shipyard</div>
@@ -129,13 +127,58 @@
   </section>
 
   <!-- ================================================================
-       7. WHY CHOOSE US
+       7. PROJECT HIGHLIGHTS (White Background - Moved below Trusted By)
        ================================================================ -->
   <section class="home-section home-section-padding-lg">
     <div class="container">
       <div class="text-center" style="margin-bottom: var(--spacing-48);">
+        <h2>Project Highlights</h2>
+      </div>
+      <div class="projects-grid-new">
+        <!-- Project 1 -->
+        <article class="project-card-new">
+          <div class="project-img-new">
+            <img src="{{ url_for('static', filename='assets/images/hull_and_superstructure_fabrication.jpeg') }}" alt="INS Car Nicobar WJFAC refit">
+          </div>
+          <div class="project-card-content-new">
+            <h3>INS Car Nicobar</h3>
+            <p>The first-ever Major Refit of INS Car Nicobar — and the first time a private firm was trusted with a Major Refit of this Fast Attack Craft class. Delivered on time to the Indian Navy's exacting standards, extending the vessel's operational life for years to come.</p>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="project-card-new">
+          <div class="project-img-new">
+            <img src="{{ url_for('static', filename='assets/images/machinery_and_equipment_installation.jpeg') }}" alt="INS Kalpeni engineering refit">
+          </div>
+          <div class="project-card-content-new">
+            <h3>INS Kalpeni</h3>
+            <p>The maiden Major Refit of INS Kalpeni, a Fast Attack Craft — the first WJFAC-class vessel refitted on a turnkey basis at GRSE, completed on schedule.</p>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="project-card-new">
+          <div class="project-img-new">
+            <img src="{{ url_for('static', filename='assets/images/piping_and_plumbing_systems.jpeg') }}" alt="INS Astradharini maintenance">
+          </div>
+          <div class="project-card-content-new">
+            <h3>INS Astradharini</h3>
+            <p>A repeat refit of this specialized naval vessel — a platform we have supported through multiple cycles. Scope covered overhaul and renewal of auxiliary machinery, piping systems, and deck upkeep.</p>
+          </div>
+        </article>
+      </div>
+      <div class="text-center">
+        <a href="{{ url_for('media_projects') }}" class="btn-primary-new">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       8. WHY CHOOSE US (Mist Background - Moved below Projects & Expanded to 5 Cards)
+       ================================================================ -->
+  <section class="home-section-alt home-section-padding-lg">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: var(--spacing-48);">
         <h2>Why Choose Patel Engineering Works</h2>
-        <p class="section-lead">A unique combination of capabilities, experience, and commitment to naval standards.</p>
       </div>
       <div class="why-grid-new">
         <!-- Certified Excellence -->
@@ -147,7 +190,7 @@
             </svg>
           </div>
           <h3>Certified Excellence</h3>
-          <p>Class-qualified welders, certified NDT procedures, and highly trained technicians delivering high-tolerance fabrication.</p>
+          <p>class-qualified welders and skilled tradesmen ensuring top-quality workmanship</p>
         </article>
         <!-- Expert Engineers -->
         <article class="why-card-new">
@@ -159,9 +202,9 @@
             </svg>
           </div>
           <h3>Expert Engineers</h3>
-          <p>Dedicated project managers and engineering teams who command extensive experience in complex naval systems and structural design.</p>
+          <p>experienced professionals driving every project to success</p>
         </article>
-        <!-- Defense Sector Trust -->
+        <!-- Trusted by Government -->
         <article class="why-card-new">
           <div class="why-icon-new">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -169,77 +212,42 @@
               <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
             </svg>
           </div>
-          <h3>Defense-Sector Trust</h3>
-          <p>Registered contractor across major commands, with clearance and compliance systems tailored for sensitive defense facilities.</p>
+          <h3>Trusted by Government</h3>
+          <p>approved contractor for leading defence, PSU, and DPSU organisations</p>
         </article>
-        <!-- End-to-End Delivery -->
+        <!-- End-to-End Solutions -->
         <article class="why-card-new">
           <div class="why-icon-new">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
             </svg>
           </div>
-          <h3>End-to-End Delivery</h3>
-          <p>From initial design alignment and raw material preparation to installation, integration, trial support, and final class approval.</p>
+          <h3>End-to-End Solutions</h3>
+          <p>from shipbuilding to complex repairs, delivered as one capability</p>
+        </article>
+        <!-- Global Expertise -->
+        <article class="why-card-new">
+          <div class="why-icon-new">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>Global Expertise</h3>
+          <p>partnering with international clients such as Colombo Dockyard, Sri Lanka</p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ================================================================
-       8. PROJECT HIGHLIGHTS
-       ================================================================ -->
-  <section class="home-section-alt home-section-padding-lg">
-    <div class="container">
-      <div class="text-center" style="margin-bottom: var(--spacing-48);">
-        <h2>Project Highlights</h2>
-        <p class="section-lead">A proven track record of turnkey delivery on critical naval defense platforms.</p>
-      </div>
-      <div class="projects-grid-new">
-        <!-- Project 1 -->
-        <article class="project-card-new">
-          <div class="project-img-new">
-            <img src="{{ url_for('static', filename='assets/images/hull_and_superstructure_fabrication.jpeg') }}" alt="INS Car Nicobar WJFAC refit">
-          </div>
-          <div class="project-card-content-new">
-            <h3>INS Car Nicobar (WJFAC)</h3>
-            <p>Executed the first-ever turnkey Major Refit of a Water Jet Fast Attack Craft by a private contractor, delivering full hull, propulsion, and machinery overhauls.</p>
-          </div>
-        </article>
-        <!-- Project 2 -->
-        <article class="project-card-new">
-          <div class="project-img-new">
-            <img src="{{ url_for('static', filename='assets/images/machinery_and_equipment_installation.jpeg') }}" alt="INS Kalpeni engineering refit">
-          </div>
-          <div class="project-card-content-new">
-            <h3>INS Kalpeni</h3>
-            <p>Completed comprehensive engineering overhauls on main engines, propulsion shafting, gearboxes, and auxiliary generators to tight defense schedules.</p>
-          </div>
-        </article>
-        <!-- Project 3 -->
-        <article class="project-card-new">
-          <div class="project-img-new">
-            <img src="{{ url_for('static', filename='assets/images/piping_and_plumbing_systems.jpeg') }}" alt="INS Astradharini maintenance">
-          </div>
-          <div class="project-card-content-new">
-            <h3>INS Astradharini</h3>
-            <p>Provided structural restoration, extensive piping network renewals, and auxiliary machinery overhauls for the Navy's torpedo recovery vessel.</p>
-          </div>
-        </article>
-      </div>
-      <div class="text-center">
-        <a href="{{ url_for('media_projects') }}" class="btn-primary-new">View All Projects</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       9. FINAL CTA SECTION
+       9. FINAL CTA SECTION (Dark Navy Background)
        ================================================================ -->
   <section class="final-cta-new">
     <div class="container">
       <h2>Let's talk about your next project</h2>
-      <p>Patel Engineering Works (Vizag) provides the mobilization capacity, technical skill, and defense credentials required for high-integrity marine engineering projects.</p>
+      <p style="margin-bottom: var(--spacing-32);">Patel Engineering Works (Vizag) provides the mobilization capacity, technical skill, and defence credentials required for high-integrity marine engineering projects.</p>
       <a href="{{ url_for('contact') }}" class="btn-accent-new">Contact Our Team</a>
     </div>
   </section>
