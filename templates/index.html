@@ -1,11 +1,201 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Leading marine engineering and shipbuilding company. Excellence in maritime innovation."> <meta name="keywords" content="marine engineering, shipbuilding, maritime, naval construction"> <title>Marine Engineering & Shipbuilding - Excellence in Maritime Innovation</title> <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=20260501-no-blue-bg-1"> </head> <body> <!-- ================================================================ NAVIGATION BAR ================================================================ --> {% include "_navbar.html" %} <!-- ================================================================ HERO SECTION ================================================================ --> <section class="hero hero-fullpage" id="home"> <img class="hero-background" src="{{ url_for('static', filename='assets/images/new_hero_general.png') }}" alt="Marine engineering background"> <div class="hero-overlay"></div>    <div class="hero-content hero-content-centered"> <h1 class="hero-static-heading">Patel Engineering Works (Vizag)</h1>
-    <div class="hero-rotator" data-hero-rotator data-word-delay="450" data-sentence-hold="2500" data-fade-duration="1000" aria-live="polite">
-        <p class="hero-rotator-display" data-hero-rotator-display></p>
-        <div class="hero-rotator-source" aria-hidden="true">
-            <p class="hero-rotator-line">Forging Ship. Restoring Strength. Driving Marine Excellence</p>
-            <p class="hero-rotator-line">Your Trusted Partner in Ship Building and Repair</p>
-            <p class="hero-rotator-line">Reviving Vessels. Reinforcing Performance</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="India's trusted partner in shipbuilding and ship repair. Over 20 years delivering to the Indian Navy, Coast Guard, and leading shipyards.">
+    <meta name="keywords" content="shipbuilding, ship repair, marine engineering, Indian Navy, naval vessels">
+    <title>Patel Engineering Works - Shipbuilding & Ship Repair</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}?v=20260615">
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    {% include "_navbar.html" %}
+
+    <!-- ============================================================
+         SECTION 1: HERO
+         ============================================================ -->
+    <section class="hero" id="hero">
+        <img class="hero-background" src="{{ url_for('static', filename='assets/images/new_hero_general.png') }}" alt="Patel Engineering Works shipyard">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-headline">India's trusted partner in shipbuilding & ship repair</h1>
+            <p class="hero-subheadline">Two decades delivering new construction and lifecycle support to the Indian Navy, Coast Guard, and the nation's leading shipyards — on time, to spec, every time.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Explore Capabilities</button>
+                <button class="btn btn-secondary">Work With Us</button>
+            </div>
         </div>
-    </div>
-    </div>
- <!-- wave removed to keep straight divider --> <!-- hero scroll indicator removed per request --> </section> <!-- ================================================================ ABOUT US ================================================================ --> <section class="section" id="about-us"> <div class="container"> <div class="about-shell"> <div class="about-single-layout"> <article class="about-panel about-panel-single"> <div class="about-content-layout"> <div class="about-copy"> <p>Patel Engineering Works (Vizag) is a leading provider of specialized Ship Building and Repair services, supporting the Indian Navy, Coast Guard, public-sector Shipyards, and select international clients. With over two decades of proven execution and a skilled workforce deployed across India, we bring unmatched Technical depth and project reliability to every engagement.</p> <p>Our Ship Building division delivers high-integrity Fabrication, Outfitting, and equipment installation services for complex Defense and Auxiliary Vessels, working in close alignment with classification societies and OEMs.</p> <p class="about-panel-note">Parallelly, our Ship Repair services division undertakes turnkey Refits, emergency repairs, and precision Overhauls for a wide range of Onboard systems, ensuring operational readiness with minimal downtime.</p> <p>Known for our rigorous Quality systems, certified personnel, and timely project completion, we are committed to delivering consistent results across both new construction and lifecycle support. Whether executing at yard, Onboard, or within our dedicated workshops, we bring the same focus: Technical excellence, Safety, and dependable service.</p> </div> <div class="about-sidecards"> <ul class="about-list about-list-stack"> <li class="about-list-item"> <span class="about-list-icon"></span> <div> <strong>Quality &amp; Compliance</strong> <p>Class-aligned execution with certified teams and controlled processes</p> </div> </li> <li class="about-list-item"> <span class="about-list-icon"></span> <div> <strong>Ship Building and Repair</strong> <p>Strong capabilities across new-build support, Refits, and lifecycle services</p> </div> </li> <li class="about-list-item"> <span class="about-list-icon"></span> <div> <strong>Dependable Delivery</strong> <p>On-time completion with Safety-first execution across yard and Onboard work</p> </div> </li> </ul> </div> </div> </article> </div> </div> </div> </section> <!-- ================================================================ FOOTER ================================================================ --> {% include '_footer.html' %} <!-- Scripts --> <script src="{{ url_for('static', filename='js/main.js') }}"></script> </body> </html>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2: INTRODUCTION
+         ============================================================ -->
+    <section class="section section-intro">
+        <div class="container">
+            <div class="intro-content">
+                <p class="intro-text">From new builds to emergency refits, Patel Engineering Works keeps India's fleet ready — backed by class-certified teams, dependable timelines, and a track record the defence sector trusts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: STATISTICS BAND
+         ============================================================ -->
+    <section class="section section-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Years of Execution</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,000+</div>
+                    <div class="stat-label">Skilled Professionals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Locations Across India & Sri Lanka</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Largest</div>
+                    <div class="stat-label">Private UHP Hydroblasting Fleet in India</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: WHAT WE DELIVER
+         ============================================================ -->
+    <section class="section section-deliver">
+        <div class="container">
+            <h2 class="section-heading">What We Deliver</h2>
+            <div class="deliver-grid">
+                <div class="deliver-card">
+                    <div class="card-icon">■</div>
+                    <h3 class="card-title">Shipbuilding</h3>
+                    <p class="card-text">Hull fabrication, outfitting, and equipment installation for complex defence and auxiliary vessels.</p>
+                </div>
+                <div class="deliver-card">
+                    <div class="card-icon">■</div>
+                    <h3 class="card-title">Ship Repair & Refit</h3>
+                    <p class="card-text">Turnkey refits, emergency repairs, and precision overhauls with minimal downtime.</p>
+                </div>
+                <div class="deliver-card">
+                    <div class="card-icon">■</div>
+                    <h3 class="card-title">Lifecycle Support</h3>
+                    <p class="card-text">Class-compliant maintenance and modernization across the life of the vessel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5: TRUSTED BY
+         ============================================================ -->
+    <section class="section section-trusted">
+        <div class="container">
+            <p class="trusted-label">Trusted by India's Defence Sector</p>
+            <div class="logo-strip">
+                <div class="logo-item">Indian Navy</div>
+                <div class="logo-item">Indian Coast Guard</div>
+                <div class="logo-item">GRSE</div>
+                <div class="logo-item">Hindustan Shipyard</div>
+                <div class="logo-item">Goa Shipyard</div>
+                <div class="logo-item">Cochin Shipyard</div>
+                <div class="logo-item">Mazagon Dock</div>
+                <div class="logo-item">Colombo Dockyard</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6: WHY CHOOSE US
+         ============================================================ -->
+    <section class="section section-why">
+        <div class="container">
+            <h2 class="section-heading">Why Choose Patel Engineering Works</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">✓</div>
+                    <h3 class="card-title">Certified Excellence</h3>
+                    <p class="card-text">Class-qualified welders and skilled tradesmen ensuring top-quality workmanship</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">✓</div>
+                    <h3 class="card-title">Expert Engineers</h3>
+                    <p class="card-text">Experienced professionals driving every project to success</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">✓</div>
+                    <h3 class="card-title">Trusted by Government</h3>
+                    <p class="card-text">Approved contractor for leading defence, PSU, and DPSU organisations</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">✓</div>
+                    <h3 class="card-title">End-to-End Solutions</h3>
+                    <p class="card-text">From shipbuilding to complex repairs, delivered as one capability</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7: PROJECT HIGHLIGHTS
+         ============================================================ -->
+    <section class="section section-projects">
+        <div class="container">
+            <h2 class="section-heading">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <span>INS Car Nicobar</span>
+                    </div>
+                    <h3 class="project-title">INS Car Nicobar</h3>
+                    <p class="project-meta">Major Refit — Naval Dockyard</p>
+                    <p class="project-text">First-ever Major Refit of this Fast Attack Craft. Delivered on time to the Indian Navy's exacting standards, extending the vessel's operational life for years to come.</p>
+                    <a href="#" class="btn btn-secondary btn-sm">Learn More</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <span>INS Kalpeni</span>
+                    </div>
+                    <h3 class="project-title">INS Kalpeni</h3>
+                    <p class="project-meta">Major Refit — GRSE</p>
+                    <p class="project-text">Maiden Major Refit of this Fast Attack Craft — the first WJFAC-class vessel refitted on a turnkey basis at GRSE, completed on schedule.</p>
+                    <a href="#" class="btn btn-secondary btn-sm">Learn More</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <span>INS Astradharini</span>
+                    </div>
+                    <h3 class="project-title">INS Astradharini</h3>
+                    <p class="project-meta">Short Refit — Hindustan Shipyard</p>
+                    <p class="project-text">Repeat refit of this specialized naval vessel — a platform we have supported through multiple cycles. Recognised with appreciation from the Commanding Officer.</p>
+                    <a href="#" class="btn btn-secondary btn-sm">Learn More</a>
+                </div>
+            </div>
+            <div class="projects-cta">
+                <a href="/html/media-projects.html" class="btn btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8: FINAL CTA
+         ============================================================ -->
+    <section class="section section-final-cta">
+        <div class="container">
+            <h2 class="cta-heading">Let's talk about your next project</h2>
+            <button class="btn btn-accent">Contact Our Team</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    {% include "_footer.html" %}
+
+    <script src="{{ url_for('static', filename='js/homepage.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+/* ============================================================
+   PATEL ENGINEERING WORKS - HOMEPAGE
+   Premium Corporate Design System
+   ============================================================ */
+
+/* ============================================================
+   1. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   ============================================================ */
+:root {
+  /* COLORS - Exact as specified */
+  --navy: #1F3A7A;
+  --red: #C0182E;
+  --ink: #1A1A1A;
+  --slate: #5F6B7A;
+  --mist: #F4F5F7;
+  --white: #FFFFFF;
+  --border: #E2E5EA;
+
+  /* TYPOGRAPHY */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* SPACING SCALE (8px multiples) */
+  --sp-8: 8px;
+  --sp-16: 16px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-96: 96px;
+
+  /* LAYOUT */
+  --container-max: 1200px;
+  --section-padding: 96px;
+
+  /* BORDER RADIUS */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* SHADOWS */
+  --shadow: 0 2px 12px rgba(31, 58, 122, 0.08);
+  --shadow-md: 0 8px 24px rgba(31, 58, 122, 0.12);
+
+  /* TRANSITIONS */
+  --transition: 0.3s ease;
+}
+
+/* ============================================================
+   2. RESET & NORMALIZATION
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   3. TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 20px;
+  color: var(--ink);
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  text-align: left;
+}
+
+/* ============================================================
+   4. CONTAINER & LAYOUT
+   ============================================================ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--sp-32);
+}
+
+.section {
+  padding: var(--section-padding) 0;
+  background: var(--white);
+}
+
+.section-intro {
+  background: var(--mist);
+}
+
+.section-stats {
+  background: var(--white);
+}
+
+.section-deliver {
+  background: var(--mist);
+}
+
+.section-trusted {
+  background: var(--white);
+  padding: var(--sp-96) 0;
+}
+
+.section-why {
+  background: var(--mist);
+}
+
+.section-projects {
+  background: var(--white);
+}
+
+.section-final-cta {
+  background: var(--navy);
+  padding: var(--sp-96) 0;
+}
+
+/* ============================================================
+   5. HERO SECTION
+   ============================================================ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 58, 122, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  max-width: 900px;
+  padding: var(--sp-32);
+}
+
+.hero-headline {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--sp-24);
+  line-height: 1.2;
+}
+
+.hero-subheadline {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: var(--sp-48);
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--sp-24);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   6. BUTTONS
+   ============================================================ */
+.btn {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  height: fit-content;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: #152d63;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--navy);
+  border: 1px solid var(--navy);
+}
+
+.btn-secondary:hover {
+  background: var(--mist);
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: var(--red);
+  color: var(--white);
+}
+
+.btn-accent:hover {
+  background: #a41424;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-sm {
+  font-size: 13px;
+  padding: 10px 18px;
+}
+
+/* ============================================================
+   7. SECTION HEADINGS
+   ============================================================ */
+.section-heading {
+  text-align: center;
+  margin-bottom: var(--sp-64);
+  font-size: 32px;
+}
+
+/* ============================================================
+   8. INTRODUCTION SECTION
+   ============================================================ */
+.section-intro {
+  padding: var(--sp-96) 0;
+}
+
+.intro-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ============================================================
+   9. STATISTICS SECTION
+   ============================================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-32);
+}
+
+.stat-card {
+  text-align: center;
+  padding: var(--sp-32);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: var(--sp-16);
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   10. WHAT WE DELIVER SECTION
+   ============================================================ */
+.deliver-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-32);
+}
+
+.deliver-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-32);
+  text-align: left;
+  transition: all var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.deliver-card:hover {
+  border-color: var(--navy);
+  box-shadow: var(--shadow-md);
+}
+
+.card-icon {
+  font-size: 24px;
+  color: var(--red);
+  margin-bottom: var(--sp-24);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: var(--sp-16);
+}
+
+.card-text {
+  font-size: 16px;
+  color: var(--slate);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* ============================================================
+   11. TRUSTED BY SECTION
+   ============================================================ */
+.trusted-label {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--sp-48);
+}
+
+.logo-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-32);
+}
+
+.logo-item {
+  background: var(--mist);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-32);
+  text-align: center;
+  font-weight: 500;
+  color: var(--navy);
+  font-size: 14px;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+
+.logo-item:hover {
+  background: var(--white);
+  border-color: var(--navy);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* ============================================================
+   12. WHY CHOOSE US SECTION
+   ============================================================ */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-32);
+}
+
+.why-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-32);
+  display: flex;
+  gap: var(--sp-24);
+  align-items: flex-start;
+  transition: all var(--transition);
+}
+
+.why-card:hover {
+  border-color: var(--navy);
+  box-shadow: var(--shadow);
+}
+
+.why-icon {
+  font-size: 24px;
+  color: var(--red);
+  font-weight: 700;
+  min-width: 24px;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   13. PROJECT HIGHLIGHTS SECTION
+   ============================================================ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-32);
+  margin-bottom: var(--sp-48);
+}
+
+.project-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  border-color: var(--navy);
+  box-shadow: var(--shadow-md);
+}
+
+.project-image-placeholder {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a4a9a 100%);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 600;
+  text-align: center;
+  padding: var(--sp-24);
+  font-size: 16px;
+}
+
+.project-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: var(--sp-24) var(--sp-24) 0 var(--sp-24);
+}
+
+.project-meta {
+  font-size: 13px;
+  color: var(--slate);
+  font-weight: 500;
+  margin: var(--sp-8) var(--sp-24) 0 var(--sp-24);
+}
+
+.project-text {
+  font-size: 15px;
+  color: var(--slate);
+  padding: var(--sp-16) var(--sp-24);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.project-card .btn {
+  margin: var(--sp-16) var(--sp-24) var(--sp-24) var(--sp-24);
+  align-self: flex-start;
+}
+
+.projects-cta {
+  text-align: center;
+}
+
+/* ============================================================
+   14. FINAL CTA SECTION
+   ============================================================ */
+.cta-heading {
+  color: var(--white);
+  text-align: center;
+  margin-bottom: var(--sp-48);
+  font-size: 32px;
+}
+
+.section-final-cta .container {
+  text-align: center;
+}
+
+/* ============================================================
+   15. RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 992px) {
+  :root {
+    --section-padding: 64px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .hero-headline {
+    font-size: 36px;
+  }
+
+  .hero-subheadline {
+    font-size: 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .deliver-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 48px;
+    --container-padding: 24px;
+  }
+
+  .container {
+    padding: 0 var(--sp-24);
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .hero {
+    min-height: 500px;
+  }
+
+  .hero-headline {
+    font-size: 28px;
+    margin-bottom: var(--sp-16);
+  }
+
+  .hero-subheadline {
+    font-size: 14px;
+    margin-bottom: var(--sp-32);
+  }
+
+  .hero-buttons {
+    gap: var(--sp-16);
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-24);
+  }
+
+  .stat-card {
+    padding: var(--sp-24);
+  }
+
+  .section-heading {
+    margin-bottom: var(--sp-32);
+  }
+
+  .logo-strip {
+    grid-template-columns: 1fr;
+    gap: var(--sp-16);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-24);
+  }
+
+  .why-card {
+    padding: var(--sp-24);
+  }
+
+  .cta-heading {
+    font-size: 24px;
+    margin-bottom: var(--sp-32);
+  }
+
+  .intro-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 32px;
+  }
+
+  .container {
+    padding: 0 var(--sp-16);
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .hero-headline {
+    font-size: 22px;
+  }
+
+  .hero-subheadline {
+    font-size: 13px;
+  }
+
+  .stat-card {
+    padding: var(--sp-16);
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .deliver-card {
+    padding: var(--sp-24);
+  }
+
+  .project-image-placeholder {
+    height: 150px;
+    font-size: 14px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+/* ============================================================
+   16. UTILITY CLASSES
+   ============================================================ */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mt-16 {
+  margin-top: var(--sp-16);
+}
+
+.mt-32 {
+  margin-top: var(--sp-32);
+}
+
+.mb-16 {
+  margin-bottom: var(--sp-16);
+}
+
+.mb-32 {
+  margin-bottom: var(--sp-32);
+}
