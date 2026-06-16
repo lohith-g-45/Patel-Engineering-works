@@ -1,10 +1,65 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Steel Renewal and Structural Repairs - Patel Engineering Works Ship Repair Division."> <title>Steel Renewal and Structural Repairs - Patel Engineering Works</title> <link rel="stylesheet" href="/static/css/styles.css"> </head> <body> {% include "_navbar.html" %} <section class="hero page-hero" style="--hero-image: url('/static/assets/images/new_hero_repair.png');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"></div> <!-- wave removed to keep straight divider --> </section> <section class="section" id="detail-content"> <div class="container"> <div class="page-shell">   <div class="shipbuild-intro-grid">
-    <div style="display: flex; flex-direction: column; justify-content: center; background: none; border: none; padding: 0;">
-        <p>As an experienced Marine Engineering contractor, Patel Engineering Works (Vizag) specializes in the systematic renewal and structural repair of corroded or damaged ship steelwork - both afloat and in drydock conditions.</p>
-    </div>
-    <div style="display: flex; align-items: center; justify-content: stretch; background: none; border: none; padding: 0; height: 100%;">
-        <img src="/static/assets/images/repair_steel.jpg" alt="Steel Renewal" style="width: 100%; height: 100%; min-height: 480px; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: none; display: block; margin-top: 0;">
-    </div>
-</div> <h3 style="color:var(--primary-navy);margin-top:2rem;">Structural Scope</h3> <p>We carry out extensive Steel Renewal for Hull plating, internal bulkheads, tank structures, deck houses, and other key load-bearing and watertight components. Our services are tailored to meet the demanding requirements of Naval and Commercial platforms, where precision, speed, and classification compliance are non-negotiable.</p> <h3 style="color:var(--primary-navy);margin-top:2rem;">Certified Technical Teams</h3> <p>Our Steel Renewal teams are composed of highly skilled fabricators and ABS/IRS-certified Welders, proficient in working under tight schedules, complex geometries, and Onboard constraints. All work is performed in strict adherence to approved Welding Procedure Specifications (WPS), with materials sourced as per IACS, Indian Navy, or client-specific standards.</p> <h3 style="color:var(--primary-navy);margin-top:2rem;">Advanced Welding Techniques</h3> <ul class="feature-list-simple" style="margin-top:0.75rem;"> <li><strong>FCAW</strong> - Flux-Cored Arc Welding</li> <li><strong>SMAW</strong> - Shielded Metal Arc Welding</li> <li><strong>GMAW</strong> - Gas Metal Arc Welding</li> <li><strong>GTAW</strong> - Gas Tungsten Arc Welding</li> </ul> <h3 style="color:var(--primary-navy);margin-top:2rem;">Specialized Materials</h3> <p>We routinely work with <strong>IS 2062</strong> for standard Steel Renewal, <strong>AH36</strong> for high-strength applications, and <strong>DMR 249A</strong> for Naval-grade requirements. Our teams are also well-versed in fabricating and repairing structures made from <strong>aluminium alloy H8053 H111</strong>, commonly used for lightweight Naval superstructures.</p> <p style="margin-top:1rem;">Our stringent QA/QC protocols are overseen by NDT Level II certified inspectors who ensure weld integrity and dimensional conformity at every stage of renewal.</p>  </div> </div> </section> {% include '_footer.html' %} <script src="/static/js/main.js"></script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steel Renewal & Structural - Ship Repair | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    /* Structural Layout Only - Inherit Typography from styles.css */
+    .page-header { padding: 60px 0 40px; border-bottom: 1px solid var(--border-color, #eee); background-color: var(--bg-light, #f8f9fa); }
+    .page-header h1 { margin: 0; }
+    .content-section { padding: 60px 0; }
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; margin-bottom: 40px; }
+    @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+    .content-image { height: 100%; }
+    .content-image img { width: 100%; height: 100%; object-fit: cover; min-height: 250px; border-radius: 4px; box-shadow: var(--shadow-sm, 0 4px 12px rgba(0,0,0,0.05)); }
+    .tech-list { list-style: none; padding: 0; margin: 20px 0; }
+    .tech-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: inherit; }
+    .tech-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red, #C0182E); font-weight: bold; }
+    .cta-section { background: var(--bg-light, #f8f9fa); padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color, #eee); }
+    .btn-navy { display: inline-block; background-color: var(--primary-navy, #123A7A); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
+    .btn-navy:hover { background-color: #0c2652; color: #ffffff; }
+    .btn-red { display: inline-block; background-color: var(--accent-red, #C0182E); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
+    .btn-red:hover { background-color: #a01325; color: #ffffff; }
+  </style>
+</head>
+<body>
 
+  {% include "_navbar.html" %}
 
+  <div class="page-header">
+    <div class="container" style="max-width: 1200px;">
+      <h1>Steel Renewal & Structural</h1>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="container" style="max-width: 1200px;">
+      <div class="content-grid">
+        <div class="content-text">
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dark, #333);">Systematic renewal and structural repair of corroded or damaged steelwork — hull plating, bulkheads, tank structures, and deck houses — afloat or in drydock. Carried out by class-qualified welders to approved WPS, using materials to IACS, Indian Navy, or client standards, with NDT-certified inspection at every stage. Proficient across FCAW, SMAW, GMAW, and GTAW and across IS 2062, AH36, DMR 249A, and aluminium alloys.</p>
+          <ul class="tech-list" style="margin-top: 15px;">
+            <li>Hull & bulkhead plating repair</li><li>Drydock & afloat structural renewal</li><li>Class-qualified WPS welding</li><li>NDT-certified stage inspections</li><li>Multi-alloy & high-strength steel proficiency</li>
+          </ul>
+        </div>
+        <div class="content-image">
+          <img src="/static/assets/images/repair_steel.jpg" alt="Steel Renewal & Structural">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container" style="max-width: 1200px;">
+      <h3 style="margin-bottom: 30px;">Need support for your next repair project?</h3>
+      <a href="{{ url_for('contact') }}" class="btn-red">Contact Us</a>
+      <a href="{{ url_for('divisions_repair') }}" class="btn-navy">Explore Other Capabilities</a>
+    </div>
+  </section>
+
+  {% include "_footer.html" %}
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

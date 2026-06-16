@@ -1,10 +1,65 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Propulsion, Shafting & Rudder Works - Patel Engineering Works Ship Repair Division."> <title>Propulsion, Shafting & Rudder Works - Patel Engineering Works</title> <link rel="stylesheet" href="/static/css/styles.css"> </head> <body> {% include "_navbar.html" %} <section class="hero page-hero" style="--hero-image: url('/static/assets/images/new_hero_repair.png');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"></div> <!-- wave removed to keep straight divider --> </section> <section class="section" id="detail-content"> <div class="container"> <div class="page-shell">   <div class="shipbuild-intro-grid">
-    <div style="display: flex; flex-direction: column; justify-content: center; background: none; border: none; padding: 0;">
-        <p>We deliver a focused suite of services for the Propulsion and steering (stern gear equipment) of Naval and Commercial Vessels, ensuring smooth maneuverability and long-term reliability.</p>
-    </div>
-    <div style="display: flex; align-items: center; justify-content: stretch; background: none; border: none; padding: 0; height: 100%;">
-        <img src="/static/assets/images/repair_propulsion.jpg" alt="Propulsion" style="width: 100%; height: 100%; min-height: 480px; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: none; display: block; margin-top: 0;">
-    </div>
-</div> <h3 style="color:var(--primary-navy);margin-top:2rem;">Core Capabilities</h3> <ul class="feature-list-simple" style="margin-top:0.75rem;"> <li><strong>Routine Maintenance &amp; Overhaul:</strong> Scheduled servicing of steering systems, rudder assemblies, and complete shaft lines.</li> <li><strong>Heavy Lift Operations:</strong> Custom lifting frames and mobile crane operations safely extract/reinstall heavy assemblies.</li> <li><strong>Laser Shaft Alignment:</strong> Precision verification from main engine output to propeller flange within stringent tolerances.</li> <li><strong>Propulsion Systems:</strong> Fixed Pitch or Controllable Pitch (CPP), Azimuth/Tunnel thrusters, and Waterjets.</li> <li><strong>Deep Seal Systems:</strong> Inspection and complete replacement of seal arrangements.</li> <li><strong>Gearboxes &amp; Clutches:</strong> Overhaul and repair of reduction gearboxes, clutches, PTO units, and FiFi pumps.</li> <li><strong>In-Situ Machining:</strong> On-board refacing of sealing surfaces and line boring on stern tubes and rudder tubes.</li> <li><strong>Propeller Maintenance:</strong> NDT inspections, buffing, preservation, and tip straightening coordination.</li> </ul> <h3 style="color:var(--primary-navy);margin-top:2rem;">Quality Assurance &amp; Compliance</h3> <p>All work is performed in accordance with OEM procedures and classification society rules. Inspections are witnessed by OEM representatives, owners' representatives, or classification agencies to ensure full transparency and traceability.</p>  </div> </div> </section> {% include '_footer.html' %} <script src="/static/js/main.js"></script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propulsion & Shafting - Ship Repair | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    /* Structural Layout Only - Inherit Typography from styles.css */
+    .page-header { padding: 60px 0 40px; border-bottom: 1px solid var(--border-color, #eee); background-color: var(--bg-light, #f8f9fa); }
+    .page-header h1 { margin: 0; }
+    .content-section { padding: 60px 0; }
+    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; margin-bottom: 40px; }
+    @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+    .content-image { height: 100%; }
+    .content-image img { width: 100%; height: 100%; object-fit: cover; min-height: 250px; border-radius: 4px; box-shadow: var(--shadow-sm, 0 4px 12px rgba(0,0,0,0.05)); }
+    .tech-list { list-style: none; padding: 0; margin: 20px 0; }
+    .tech-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: inherit; }
+    .tech-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red, #C0182E); font-weight: bold; }
+    .cta-section { background: var(--bg-light, #f8f9fa); padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color, #eee); }
+    .btn-navy { display: inline-block; background-color: var(--primary-navy, #123A7A); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
+    .btn-navy:hover { background-color: #0c2652; color: #ffffff; }
+    .btn-red { display: inline-block; background-color: var(--accent-red, #C0182E); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
+    .btn-red:hover { background-color: #a01325; color: #ffffff; }
+  </style>
+</head>
+<body>
 
+  {% include "_navbar.html" %}
 
+  <div class="page-header">
+    <div class="container" style="max-width: 1200px;">
+      <h1>Propulsion & Shafting</h1>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="container" style="max-width: 1200px;">
+      <div class="content-grid">
+        <div class="content-text">
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dark, #333);">Shaft-line inspection, laser shaft alignment, bearing replacement, stern/rudder tube weld repair, and vibration correction — across fixed and controllable-pitch propellers, azimuth and tunnel thrusters, waterjets, and fin stabilizers, plus gearboxes, clutches, and FiFi pumps. Propeller NDT, buffing, and preservation restore efficiency.</p>
+          <ul class="tech-list" style="margin-top: 15px;">
+            <li>Laser shaft alignment & inspection</li><li>Bearing replacement & weld repair</li><li>Azimuth & tunnel thruster service</li><li>Vibration correction & NDT</li><li>Propeller buffing & preservation</li>
+          </ul>
+        </div>
+        <div class="content-image">
+          <img src="/static/assets/images/repair_propulsion.jpg" alt="Propulsion & Shafting">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container" style="max-width: 1200px;">
+      <h3 style="margin-bottom: 30px;">Need support for your next repair project?</h3>
+      <a href="{{ url_for('contact') }}" class="btn-red">Contact Us</a>
+      <a href="{{ url_for('divisions_repair') }}" class="btn-navy">Explore Other Capabilities</a>
+    </div>
+  </section>
+
+  {% include "_footer.html" %}
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

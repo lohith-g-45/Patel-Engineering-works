@@ -1,4 +1,4 @@
-/* Welding Techniques Horizontal Boxes with Arrow and Scroll Reveal */
+﻿/* Welding Techniques Horizontal Boxes with Arrow and Scroll Reveal */
 .welding-techniques-list {
   display: flex;
   flex-direction: column;
@@ -2334,12 +2334,12 @@ li {
 }
 
 .team-card .card-content {
-  text-align: justify;
+  text-align: left;
 }
 
 .team-card h3,
 .team-card .designation {
-  text-align: center;
+  text-align: left;
 }
 
 /* Feature List Simple (for accordions) */
@@ -2358,7 +2358,7 @@ li {
 }
 
 .feature-list-simple li::before {
-  content: '→';
+  content: 'â†’';
   position: absolute;
   left: 0;
   color: var(--accent-red);
@@ -2584,63 +2584,49 @@ li {
 
 .value-insight-card {
   position: relative;
-  padding: clamp(1.2rem, 1.1vw + 0.95rem, 1.9rem);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: clamp(1.4rem, 1.2vw + 1.1rem, 2.1rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
-  background: linear-gradient(135deg, #123873 0%, #1b4e96 100%);
-  box-shadow: 0 14px 28px rgba(12, 33, 77, 0.24);
+  background: var(--primary-navy);
+  box-shadow: 0 14px 28px rgba(12, 33, 77, 0.20);
   overflow: hidden;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .value-insight-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 34px rgba(12, 33, 77, 0.28);
+  box-shadow: 0 20px 36px rgba(12, 33, 77, 0.28);
 }
 
 .value-topline {
-  display: none; /* Removed as per home page style */
+  display: none;
+}
+
+.value-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.25rem;
 }
 
 .value-insight-card h3 {
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.55rem, 0.7vw + 1.32rem, 1.95rem);
-  text-align: justify;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.25rem, 0.55vw + 1.08rem, 1.55rem);
+  text-align: left;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .value-insight-card p {
   margin: 0;
-  line-height: 1.78;
-  font-size: clamp(1.05rem, 0.25vw + 0.99rem, 1.15rem);
-  text-align: justify;
-}
-
-/* Card 1: Yellow */
-.value-insight-card:nth-child(1) h3,
-.value-insight-card:nth-child(1) p {
-  color: #FFD700;
-  text-shadow: 0px 2px 8px rgba(255, 215, 0, 0.4);
-}
-
-/* Card 2: Green */
-.value-insight-card:nth-child(2) h3,
-.value-insight-card:nth-child(2) p {
-  color: #00E676;
-  text-shadow: 0px 2px 8px rgba(0, 230, 118, 0.4);
-}
-
-/* Card 3: Purple */
-.value-insight-card:nth-child(3) h3,
-.value-insight-card:nth-child(3) p {
-  color: #E040FB;
-  text-shadow: 0px 2px 8px rgba(224, 64, 251, 0.4);
-}
-
-/* Card 4: Cyan */
-.value-insight-card:nth-child(4) h3,
-.value-insight-card:nth-child(4) p {
-  color: #00f2fe;
-  text-shadow: 0px 2px 8px rgba(0, 242, 254, 0.4);
+  line-height: 1.75;
+  font-size: clamp(0.97rem, 0.22vw + 0.92rem, 1.07rem);
+  text-align: left;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 1000px) {
@@ -2817,7 +2803,7 @@ li {
 
 .team-card .card-content {
   padding: var(--spacing-xl);
-  text-align: justify;
+  text-align: left;
 }
 
 .accordion-content .metric-grid {
@@ -3526,7 +3512,7 @@ img[data-expand-image] {
 }
 
 /* ================================================================
-   HOMEPAGE — HERO FULLPAGE
+   HOMEPAGE â€” HERO FULLPAGE
    ================================================================ */
 .hero-fullpage {
   height: 86vh;
@@ -3667,7 +3653,7 @@ img[data-expand-image] {
 }
 
 /* ================================================================
-   HOMEPAGE — ABOUT US SECTION
+   HOMEPAGE â€” ABOUT US SECTION
    ================================================================ */
 .section-title h2 {
   margin-bottom: var(--spacing-md);
@@ -3985,7 +3971,7 @@ img[data-expand-image] {
 }
 
 /* ================================================================
-   HOMEPAGE — STATS STRIP
+   HOMEPAGE â€” STATS STRIP
    ================================================================ */
 .stats-strip {
   display: grid;
@@ -4062,7 +4048,7 @@ img[data-expand-image] {
 }
 
 /* ================================================================
-   HOMEPAGE — ABOUT STRUCTURE ENFORCEMENT
+   HOMEPAGE â€” ABOUT STRUCTURE ENFORCEMENT
    ================================================================ */
 #about-us .about-shell {
   position: relative;
@@ -4463,7 +4449,7 @@ img[data-expand-image] {
 }
 
 .accordion-inner-content ul li::before {
-  content: "→";
+  content: "â†’";
   position: absolute;
   left: 0;
   color: var(--accent-red);
@@ -4946,7 +4932,7 @@ img[data-expand-image] {
 }
 
 .quote-text::before {
-  content: '“';
+  content: 'â€œ';
   position: absolute;
   left: 0;
   top: -0.5rem;
@@ -5228,18 +5214,7 @@ img[data-expand-image] {
 }
 
 
-/* Page Hero Header Standardization (Matching Home Page) */
-.page-hero-content h1 {
-  color: #1E90FF !important;
-  text-shadow: 0px 4px 15px rgba(30, 144, 255, 0.4);
-}
 
-.page-hero-content .section-subtitle,
-.page-hero-content p {
-  color: #00f2fe !important;
-  text-shadow: 0px 2px 10px rgba(0, 242, 254, 0.3);
-  font-weight: 600;
-}
 
 /* Hero Taglines (Static 3-line display) */
 .hero-taglines-container {
@@ -5347,7 +5322,7 @@ img[data-expand-image] {
 /* Hero Section */
 .hero-new {
   position: relative;
-  min-height: 600px;
+  min-height: 740px;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -5783,3 +5758,846 @@ img[data-expand-image] {
     display: block;
   }
 }
+
+/* Final Client-Compliance Typography & Styling overrides */
+.hero-new h1 {
+  font-size: 48px !important;
+  font-family: var(--font-heading) !important;
+}
+
+.home-section h2,
+.home-section-alt h2 {
+  font-size: 36px !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: var(--primary-navy) !important;
+  margin-bottom: var(--spacing-24) !important;
+  text-align: center;
+}
+
+.intro-heading-new {
+  font-size: 36px !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: var(--primary-navy) !important;
+  margin-bottom: var(--spacing-24) !important;
+  text-align: center;
+}
+
+.deliver-card-new h3,
+.project-card-content-new h3,
+.why-card-new h3 {
+  font-size: 24px !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: var(--primary-navy) !important;
+  margin-bottom: var(--spacing-12) !important;
+}
+
+.deliver-card-new p,
+.project-card-content-new p,
+.why-card-new p,
+.section-lead {
+  font-size: 16px !important;
+  font-family: var(--font-body) !important;
+  line-height: 1.6 !important;
+  color: var(--text-dark) !important;
+}
+
+.stat-number-new {
+  font-size: 36px !important;
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  color: var(--accent-red) !important;
+}
+
+.stat-label-new {
+  font-size: 14px !important;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  color: var(--primary-navy) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Reduced Shadows & Flatter Corporate appearance (Point 9) */
+.stat-card-new,
+.deliver-card-new,
+.project-card-new,
+.why-card-new {
+  background-color: var(--neutral-white) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.deliver-card-new:hover,
+.project-card-new:hover,
+.why-card-new:hover {
+  border-color: var(--primary-navy) !important;
+  box-shadow: 0 4px 12px rgba(31, 58, 122, 0.06) !important; /* light elevation */
+  transform: none !important; /* no modern startup floating/translation */
+}
+
+/* Grayscale to full color transition for logos (Point 2) */
+.client-logo-svg {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: filter var(--transition-base), opacity var(--transition-base), transform var(--transition-base);
+}
+
+.client-logo-svg:hover {
+  filter: grayscale(0%) !important;
+  opacity: 1 !important;
+  transform: scale(1.05);
+}
+
+/* Perfect 5-card grid alignment (Point 4) */
+.why-grid-new {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: var(--spacing-24) !important;
+}
+
+.why-card-new {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  height: 100% !important;
+  padding: var(--spacing-32) var(--spacing-24) !important;
+}
+
+.why-icon-new {
+  width: 44px !important;
+  height: 44px !important;
+  margin-bottom: var(--spacing-16) !important;
+  flex-shrink: 0 !important;
+}
+
+.why-card-new h3 {
+  margin-bottom: var(--spacing-12) !important;
+}
+
+.why-card-new p {
+  margin: 0 !important;
+  flex-grow: 1 !important;
+}
+
+/* Project card spacing & sizing (Point 3) */
+.project-img-new {
+  height: 260px !important; /* 30% increase from 200px */
+}
+
+.project-card-content-new {
+  padding: var(--spacing-32) !important;
+}
+
+@media (max-width: 1200px) {
+  .why-grid-new {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-grid-new {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+   ABOUT US SECTION â€” COMPLETE COMPONENT STYLES
+   Added: Company Overview, Core Values, Leadership, Certifications
+   Brand Colors: #1F3A7A (Navy), #C0182E (Red), #1A1A1A (Ink),
+                 #5F6B7A (Slate), #F4F5F7 (Mist), #FFFFFF (White)
+   ================================================================ */
+
+/* ----------------------------------------------------------
+   SHARED ABOUT PAGE UTILITIES
+   ---------------------------------------------------------- */
+.pew-section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-red);
+  margin-bottom: 0.75rem;
+}
+
+.pew-section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 1.2vw + 1.3rem, 2.2rem);
+  font-weight: 600;
+  color: var(--primary-navy);
+  line-height: 1.25;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.pew-section-intro {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  text-align: left;
+  margin-bottom: 2.5rem;
+  max-width: 820px;
+}
+
+/* ----------------------------------------------------------
+   COMPANY OVERVIEW â€” STATS STRIP
+   ---------------------------------------------------------- */
+.pew-stats-strip {
+  background: var(--primary-navy);
+  padding: 2rem 1.5rem;
+  border-top: 3px solid var(--accent-red);
+}
+
+.pew-stats-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pew-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75rem 2.5rem;
+  text-align: center;
+}
+
+.pew-stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 1.5vw + 1.4rem, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.pew-stat-plus {
+  font-size: 0.75em;
+  vertical-align: super;
+  color: var(--accent-red);
+}
+
+.pew-stat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.pew-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* ----------------------------------------------------------
+   COMPANY OVERVIEW â€” OVERVIEW BLOCKS
+   ---------------------------------------------------------- */
+.pew-overview-block {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--accent-red);
+  background: #F4F5F7;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 0.75rem;
+}
+
+.pew-overview-block p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-dark);
+  text-align: left;
+}
+
+.pew-overview-block p strong {
+  color: var(--primary-navy);
+}
+
+/* ----------------------------------------------------------
+   COMPANY OVERVIEW â€” WHY CHOOSE PEW CARDS
+   ---------------------------------------------------------- */
+.pew-why-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.pew-why-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.75rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pew-why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(192, 24, 46, 0.25);
+}
+
+.pew-why-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+.pew-why-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  text-align: left;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.pew-why-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-light);
+  text-align: left;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* ----------------------------------------------------------
+   COMPANY OVERVIEW â€” TRUSTED CLIENTS
+   ---------------------------------------------------------- */
+.pew-clients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.pew-client-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: default;
+}
+
+.pew-client-badge:hover {
+  border-color: var(--primary-navy);
+  box-shadow: 0 4px 16px rgba(31, 58, 122, 0.12);
+  transform: translateY(-2px);
+}
+
+.pew-client-icon {
+  font-size: 1rem;
+  color: var(--primary-navy);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.pew-client-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------
+   COMPANY OVERVIEW â€” LOCATIONS
+   ---------------------------------------------------------- */
+.pew-locations-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.pew-location-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 0.6rem 1.25rem 0.6rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pew-location-chip:hover {
+  border-color: var(--primary-navy);
+  transform: translateY(-2px);
+}
+
+.pew-location-pin {
+  flex-shrink: 0;
+}
+
+.pew-location-hq,
+.pew-location-intl {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  margin-left: 0.2rem;
+}
+
+.pew-location-hq {
+  background: var(--accent-red);
+  color: #ffffff;
+}
+
+.pew-location-intl {
+  background: var(--primary-navy);
+  color: #ffffff;
+}
+
+/* ----------------------------------------------------------
+   LEADERSHIP PAGE â€” CARDS
+   ---------------------------------------------------------- */
+.pew-leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.pew-leader-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pew-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.pew-leader-image-wrap {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pew-leader-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.pew-leader-card:hover .pew-leader-img {
+  transform: scale(1.03);
+}
+
+.pew-leader-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.pew-leader-title-area {
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pew-leader-name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  text-align: left;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.pew-leader-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-red);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.pew-leader-exp {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.4rem;
+  margin-top: 0.15rem;
+}
+
+.pew-leader-bio {
+  font-size: 0.95rem;
+  line-height: 1.72;
+  color: var(--text-light);
+  text-align: left;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* ----------------------------------------------------------
+   CERTIFICATIONS PAGE â€” LAYOUT
+   ---------------------------------------------------------- */
+.pew-credentials-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.pew-credentials-text p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.pew-credentials-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pew-cred-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.pew-cred-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(192, 24, 46, 0.06);
+  border-radius: 8px;
+}
+
+.pew-cred-item > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pew-cred-item strong {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  display: block;
+}
+
+.pew-cred-item span {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* Certificate Showcase */
+.pew-cert-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.pew-cert-frame {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(31, 58, 122, 0.12);
+  padding: 1rem;
+}
+
+.pew-cert-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.pew-cert-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pew-cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(192, 24, 46, 0.07);
+  color: var(--accent-red);
+  border: 1px solid rgba(192, 24, 46, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.pew-cert-caption p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  text-align: left;
+  margin: 0;
+}
+
+/* Defence Narrative Grid */
+.pew-defence-narrative {
+  max-width: 100%;
+}
+
+.pew-defence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pew-defence-block {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  border-left: 4px solid var(--primary-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.pew-defence-block h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-navy);
+  text-align: left;
+  margin-bottom: 0.6rem;
+}
+
+.pew-defence-block p {
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: var(--text-light);
+  text-align: left;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------
+   ABOUT PAGES â€” RESPONSIVE
+   ---------------------------------------------------------- */
+
+/* Large Desktop: 1200px+ â€” all defaults above apply */
+
+/* Medium Desktop: 1024px and below */
+@media (max-width: 1024px) {
+  .pew-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pew-credentials-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pew-cert-showcase {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Tablet: 768px and below */
+@media (max-width: 768px) {
+  .pew-stats-grid {
+    gap: 0;
+  }
+
+  .pew-stat-item {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .pew-stat-divider {
+    display: none;
+  }
+
+  .pew-why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pew-leadership-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .pew-leader-title-area {
+    min-height: auto;
+  }
+
+  .pew-defence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pew-credentials-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+  .pew-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pew-leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pew-leader-image-wrap {
+    height: 260px;
+  }
+
+  .pew-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+  }
+
+  .pew-stat-divider {
+    display: none;
+  }
+}
+
+/* ================================================================
+   NEW COMPANY OVERVIEW PAGE (ABOUT REDESIGN)
+   ================================================================ */
+
+/* Our Story Layout */
+.pew-story-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.pew-story-text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.pew-story-image-wrap {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.pew-story-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .pew-story-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CTA Section */
+.pew-cta-section {
+  background: var(--primary-navy);
+  padding: 5rem 0;
+  color: var(--neutral-white);
+}
+
+.pew-cta-section h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--neutral-white);
+}
+
+.pew-cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.pew-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-outline-primary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--primary-navy);
+  color: var(--primary-navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary-navy);
+  color: var(--neutral-white);
+}
+
+

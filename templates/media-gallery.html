@@ -1,10 +1,12 @@
-{% extends "base.html" %}
-
-{% block title %}Gallery - Patel Engineering Works{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
     body.media-page {
       background: #0a1128;
       color: #fff;
@@ -126,10 +128,10 @@
         font-size: 2.5rem;
       }
     }
-</style>
-{% endblock %}
-
-{% block content %}
+  </style>
+</head>
+<body class="media-page">
+  {% include "_navbar.html" %}
 <section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='assets/images/new_hero_general.png') }}');">
     <div class="page-hero-overlay"></div>
     <div class="hero-content page-hero-content">
@@ -644,38 +646,38 @@
       <div class="swiper-pagination"></div>
     </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const swiper = new Swiper('.gallery-swiper', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      loop: true,
-      coverflowEffect: {
-        rotate: 15,
-        stretch: 0,
-        depth: 300,
-        modifier: 1,
-        slideShadows: true,
-      },
-      navigation: {
-        nextEl: '.next-btn',
-        prevEl: '.prev-btn',
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      }
+  {% include "_footer.html" %}
+  <script src="/static/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const swiper = new Swiper('.gallery-swiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        coverflowEffect: {
+          rotate: 15,
+          stretch: 0,
+          depth: 300,
+          modifier: 1,
+          slideShadows: true,
+        },
+        navigation: {
+          nextEl: '.next-btn',
+          prevEl: '.prev-btn',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        }
+      });
     });
-  });
-</script>
-{% endblock %}
+  </script>
+</body>
+</html>

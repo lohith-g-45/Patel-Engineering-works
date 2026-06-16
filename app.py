@@ -235,10 +235,13 @@ def register_routes(app: Flask) -> None:
     def divisions_repair():
         return render_template("divisions-repair.html")
 
+    @app.get("/divisions/overview", endpoint="divisions_overview")
+    def divisions_overview():
+        return render_template("divisions-overview.html")
+
     @app.get("/divisions")
     def divisions():
-        # Redirect to ship-building by default or a summary page
-        return redirect(url_for('divisions_shipbuilding'))
+        return render_template("divisions.html")
 
     @app.get("/clients")
     def clients():

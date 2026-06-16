@@ -24,7 +24,7 @@
     <div class="container" style="position: relative; z-index: 5;">
       <div class="hero-new-content">
         <div style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #E2E5EA; margin-bottom: var(--spacing-16); font-family: var(--font-heading);">Patel Engineering Works (Vizag)</div>
-        <h1 style="font-size: 44px; font-weight: 600; line-height: 1.2; margin-bottom: var(--spacing-16);">India's trusted partner in shipbuilding &amp; ship repair</h1>
+        <h1 style="font-size: 48px; font-weight: 600; line-height: 1.25; margin-bottom: var(--spacing-24); color: var(--neutral-white) !important;">India's trusted partner in shipbuilding &amp; ship repair</h1>
         <p class="hero-sub-desktop" style="font-size: 19px; line-height: 1.5; color: rgba(255, 255, 255, 0.95); margin-bottom: var(--spacing-32); font-family: var(--font-heading); font-weight: 500;">Two decades delivering new construction and lifecycle support to the Indian Navy, Coast Guard, and the nation’s leading shipyards — on time, to spec, every time.</p>
         <p class="hero-sub-mobile" style="font-size: 19px; line-height: 1.5; color: rgba(255, 255, 255, 0.95); margin-bottom: var(--spacing-32); font-family: var(--font-heading); font-weight: 500;">Shipbuilding &amp; repair. On time, every time.</p>
         <div class="hero-btn-group">
@@ -36,24 +36,19 @@
   </section>
 
   <!-- ================================================================
-       3. INTRODUCTORY SECTION (White Background)
+       3. INTRO & STATS SECTION (White Background)
        ================================================================ -->
   <section class="home-section home-section-padding-lg">
     <div class="container">
-      <div class="text-center" style="max-width: 900px; margin: 0 auto;">
-        <p class="section-lead" style="font-size: 20px; line-height: 1.6; color: var(--text-dark); margin-bottom: 0; font-family: var(--font-heading); font-weight: 500; text-align: center !important;">
-          "From new builds to emergency refits, Patel Engineering Works keeps India's fleet ready — backed by class-certified teams, dependable timelines, and a track record the defence sector trusts."
+      <div class="text-center" style="max-width: 900px; margin: 0 auto var(--spacing-48) auto;">
+        <h2 class="intro-heading-new">Two Decades of Naval Engineering Excellence</h2>
+        <p class="section-lead" style="font-size: 18px; line-height: 1.6; color: var(--text-dark); margin-bottom: 0; font-family: var(--font-heading); font-weight: 500; text-align: center !important;">
+          "From new builds to emergency refits, Patel Engineering Works keeps India's fleet ready — backed by class-certified teams, dependable timelines, and a track record trusted across the defence sector."
         </p>
       </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       4. STATISTICS BAND (Mist Background)
-       ================================================================ -->
-  <section class="home-section-alt">
-    <div class="container">
-      <div class="stats-grid-new">
+      
+      <!-- Stats Band Integrated Here -->
+      <div class="stats-grid-new" style="margin-top: var(--spacing-48);">
         <article class="stat-card-new">
           <div class="stat-number-new">20+</div>
           <div class="stat-label-new">Years of Execution</div>
@@ -75,9 +70,9 @@
   </section>
 
   <!-- ================================================================
-       5. WHAT WE DELIVER (White Background)
+       4. WHAT WE DELIVER (Mist Background)
        ================================================================ -->
-  <section class="home-section home-section-padding-lg">
+  <section class="home-section-alt home-section-padding-lg">
     <div class="container">
       <div class="text-center" style="margin-bottom: var(--spacing-48);">
         <h2>What We Deliver</h2>
@@ -106,143 +101,47 @@
   </section>
 
   <!-- ================================================================
-       6. TRUSTED BY (Mist Background)
-       ================================================================ -->
-  <section class="home-section-alt">
-    <div class="container">
-      <div class="text-center" style="margin-bottom: var(--spacing-24);">
-        <h2 style="font-size: 24px; margin-bottom: var(--spacing-8);">Trusted by India’s Navy, Coast Guard &amp; leading shipyards</h2>
-      </div>
-      <div class="trusted-strip-new">
-        <div class="client-logo-tag-new">Indian Navy</div>
-        <div class="client-logo-tag-new">Indian Coast Guard</div>
-        <div class="client-logo-tag-new">GRSE</div>
-        <div class="client-logo-tag-new">Hindustan Shipyard</div>
-        <div class="client-logo-tag-new">Goa Shipyard</div>
-        <div class="client-logo-tag-new">Cochin Shipyard</div>
-        <div class="client-logo-tag-new">Mazagon Dock</div>
-        <div class="client-logo-tag-new">Colombo Dockyard</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================
-       7. PROJECT HIGHLIGHTS (White Background - Moved below Trusted By)
+       5. TRUSTED BY (White Background)
        ================================================================ -->
   <section class="home-section home-section-padding-lg">
     <div class="container">
       <div class="text-center" style="margin-bottom: var(--spacing-48);">
-        <h2>Project Highlights</h2>
+        <h2>Trusted by India’s Navy, Coast Guard &amp; leading shipyards</h2>
       </div>
-      <div class="projects-grid-new">
-        <!-- Project 1 -->
-        <article class="project-card-new">
-          <div class="project-img-new">
-            <img src="{{ url_for('static', filename='assets/images/hull_and_superstructure_fabrication.jpeg') }}" alt="INS Car Nicobar WJFAC refit">
-          </div>
-          <div class="project-card-content-new">
-            <h3>INS Car Nicobar</h3>
-            <p>The first-ever Major Refit of INS Car Nicobar — and the first time a private firm was trusted with a Major Refit of this Fast Attack Craft class. Delivered on time to the Indian Navy's exacting standards, extending the vessel's operational life for years to come.</p>
-          </div>
-        </article>
-        <!-- Project 2 -->
-        <article class="project-card-new">
-          <div class="project-img-new">
-            <img src="{{ url_for('static', filename='assets/images/machinery_and_equipment_installation.jpeg') }}" alt="INS Kalpeni engineering refit">
-          </div>
-          <div class="project-card-content-new">
-            <h3>INS Kalpeni</h3>
-            <p>The maiden Major Refit of INS Kalpeni, a Fast Attack Craft — the first WJFAC-class vessel refitted on a turnkey basis at GRSE, completed on schedule.</p>
-          </div>
-        </article>
-        <!-- Project 3 -->
-        <article class="project-card-new">
-          <div class="project-img-new">
-            <img src="{{ url_for('static', filename='assets/images/piping_and_plumbing_systems.jpeg') }}" alt="INS Astradharini maintenance">
-          </div>
-          <div class="project-card-content-new">
-            <h3>INS Astradharini</h3>
-            <p>A repeat refit of this specialized naval vessel — a platform we have supported through multiple cycles. Scope covered overhaul and renewal of auxiliary machinery, piping systems, and deck upkeep.</p>
-          </div>
-        </article>
-      </div>
-      <div class="text-center">
-        <a href="{{ url_for('media_projects') }}" class="btn-primary-new">View All Projects</a>
+      <div class="trusted-strip-new">
+        <!-- Indian Navy -->
+        <img src="{{ url_for('static', filename='assets/images/clients/indian navy.png') }}" alt="Indian Navy" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- Indian Coast Guard -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Indian Coast Guard (ICG).png') }}" alt="Indian Coast Guard" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- GRSE -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Garden Reach Shipbuilders and Engineers (GRSE).png') }}" alt="GRSE" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- Hindustan Shipyard -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Hindustan Shipyard Limited (HSL).png') }}" alt="Hindustan Shipyard" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- Goa Shipyard -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Goa Shipyard Limited (GSL).png') }}" alt="Goa Shipyard" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- Cochin Shipyard -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Cochin Shipyard Limited (CSL).png') }}" alt="Cochin Shipyard" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- Mazagon Dock -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Mazagon Dock Shipbuilders Limited (MDSL) .png') }}" alt="Mazagon Dock" style="height: 50px; width: auto; object-fit: contain;">
+        
+        <!-- Colombo Dockyard -->
+        <img src="{{ url_for('static', filename='assets/images/clients/Colombo Dockyard PLC.png') }}" alt="Colombo Dockyard" style="height: 50px; width: auto; object-fit: contain;">
       </div>
     </div>
   </section>
 
-  <!-- ================================================================
-       8. WHY CHOOSE US (Mist Background - Moved below Projects & Expanded to 5 Cards)
-       ================================================================ -->
-  <section class="home-section-alt home-section-padding-lg">
-    <div class="container">
-      <div class="text-center" style="margin-bottom: var(--spacing-48);">
-        <h2>Why Choose Patel Engineering Works</h2>
-      </div>
-      <div class="why-grid-new">
-        <!-- Certified Excellence -->
-        <article class="why-card-new">
-          <div class="why-icon-new">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="m9 11 2 2 4-4"/>
-            </svg>
-          </div>
-          <h3>Certified Excellence</h3>
-          <p>class-qualified welders and skilled tradesmen ensuring top-quality workmanship</p>
-        </article>
-        <!-- Expert Engineers -->
-        <article class="why-card-new">
-          <div class="why-icon-new">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 2v20"/>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
-          </div>
-          <h3>Expert Engineers</h3>
-          <p>experienced professionals driving every project to success</p>
-        </article>
-        <!-- Trusted by Government -->
-        <article class="why-card-new">
-          <div class="why-icon-new">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-          </div>
-          <h3>Trusted by Government</h3>
-          <p>approved contractor for leading defence, PSU, and DPSU organisations</p>
-        </article>
-        <!-- End-to-End Solutions -->
-        <article class="why-card-new">
-          <div class="why-icon-new">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <h3>End-to-End Solutions</h3>
-          <p>from shipbuilding to complex repairs, delivered as one capability</p>
-        </article>
-        <!-- Global Expertise -->
-        <article class="why-card-new">
-          <div class="why-icon-new">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
-          <h3>Global Expertise</h3>
-          <p>partnering with international clients such as Colombo Dockyard, Sri Lanka</p>
-        </article>
-      </div>
-    </div>
-  </section>
+
+
+
 
   <!-- ================================================================
-       9. FINAL CTA SECTION (Dark Navy Background)
+       8. FINAL CTA SECTION (Dark Navy Background)
        ================================================================ -->
   <section class="final-cta-new">
     <div class="container">
@@ -253,7 +152,7 @@
   </section>
 
   <!-- ================================================================
-       10. FOOTER
+       9. FOOTER
        ================================================================ -->
   {% include "_footer.html" %}
 
