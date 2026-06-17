@@ -227,13 +227,6 @@ def register_routes(app: Flask) -> None:
     def privacy_policy():
         return render_template("privacy-policy.html")
 
-    @app.get("/divisions/ship-building", endpoint="divisions_shipbuilding")
-    def divisions_shipbuilding():
-        return render_template("divisions-shipbuilding.html")
-
-    @app.get("/divisions/ship-repair", endpoint="divisions_repair")
-    def divisions_repair():
-        return render_template("divisions-repair.html")
 
     @app.get("/divisions/overview", endpoint="divisions_overview")
     def divisions_overview():

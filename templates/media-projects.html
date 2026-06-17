@@ -1,1 +1,450 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Latest projects and news from Patel Engineering Works."> <title>Projects - Patel Engineering Works</title> <link rel="stylesheet" href="/static/css/styles.css"> <style> @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap'); body.media-page { font-family: 'Space Grotesk', sans-serif; background: #f4f5f7; } .media-page .hero-crumb { font-size: 0.86rem; font-weight: 600; margin: 0; color: rgba(255, 255, 255, 0.95); } .media-page .page-hero-content h1 { margin: 0; font-size: clamp(1.46rem, 2.1vw, 1.86rem); color: #1E90FF !important; text-shadow: 0px 4px 15px rgba(30, 144, 255, 0.4); line-height: 1.1; } .media-page .hero-wave { display: block; bottom: -1px; } .media-page .hero-wave svg { height: 56px; } .media-page .media-breadcrumb { padding: 0.38rem 0 0.24rem; background: transparent; } .media-page .media-breadcrumb .container { max-width: 1040px; } .media-page .media-breadcrumb p { margin: 0; font-size: 0.85rem; font-weight: 600; color: #3d4e68; letter-spacing: 0.01em; } .media-page .section { padding-top: 0.9rem; padding-bottom: 1.15rem; min-height: calc(100vh - clamp(240px, 31vh, 300px) + 90px); } .media-page .section .container { max-width: 1040px; } .media-page .section-title { margin-bottom: 0.3rem; } .media-page .section-title h2 { margin-bottom: 0.2rem; font-size: 1.45rem; } .media-page .section-kicker { margin-bottom: 0.2rem; font-size: 0.72rem; } /* Admin controls aligned with dashboard visual language */ .admin-controls { display: none; position: absolute; top: 12px; right: 12px; gap: 0.5rem; z-index: 10; } .admin-controls.visible { display: flex; } .feature-card { position: relative; } .feature-card.clickable { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; } .feature-card.clickable:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(12, 26, 61, 0.16); } .admin-btn { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(23, 43, 82, 0.12); width: 36px; height: 36px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s; box-shadow: 0 8px 20px rgba(12, 26, 61, 0.14); backdrop-filter: blur(12px); } .admin-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(12, 26, 61, 0.18); } .admin-btn.edit { color: #2a5bd7; } .admin-btn.delete { color: #e74c3c; } .admin-btn img { width: 16px; height: 16px; } .admin-btn-add { display: none; background: linear-gradient(135deg, #2a5bd7 0%, #6aa2ff 100%); color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 999px; cursor: pointer; font-weight: 600; letter-spacing: 0.01em; transition: all 0.3s; box-shadow: 0 10px 24px rgba(42, 91, 215, 0.28); } .admin-btn-add:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(42, 91, 215, 0.34); } .media-news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; } .media-toolbar { display: flex; align-items: center; justify-content: flex-start; gap: 0.95rem; flex-wrap: wrap; margin: 0.2rem 0 1.15rem; padding: 0; } .media-news-grid { margin-top: 0.55rem; } .media-filter-title { margin: 0; font-size: 0.82rem; color: #344054; font-weight: 500; display: none; } .media-filter-group { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; } .media-filter-select { border: 1px solid #d0d5dd; background: #ffffff; color: #4b5565; padding: 0.56rem 2.3rem 0.56rem 0.76rem; border-radius: 3px; font-size: 0.86rem; font-weight: 500; cursor: pointer; transition: all 0.22s ease; min-width: 146px; appearance: none; -webkit-appearance: none; -moz-appearance: none; background-image: linear-gradient(45deg, transparent 50%, #7b8598 50%), linear-gradient(135deg, #7b8598 50%, transparent 50%); background-position: calc(100% - 16px) calc(50% - 2px), calc(100% - 11px) calc(50% - 2px); background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; } .media-filter-select:hover { border-color: #bfc6d4; color: #4b5565; } .media-filter-select:focus { outline: none; border-color: #8ca6dd; box-shadow: 0 0 0 3px rgba(42, 91, 215, 0.09); color: #3f4e67; } .media-news-card { background: #ffffff; border: 1px solid #d7dbe5; border-radius: 1px; box-shadow: none; transition: border-color 0.2s ease; } .media-news-card:hover { transform: none; border-color: #c1c8d8; box-shadow: none; } .media-news-card .card-image { display: block; width: 100%; aspect-ratio: 16 / 9; max-height: 172px; object-fit: cover; object-position: center; padding: 0; border-bottom: 1px solid rgba(22, 38, 69, 0.1); background: linear-gradient(180deg, #f6f8fc 0%, #eef3fb 100%); } .media-news-card .card-content { padding: 0.84rem 0.92rem 0.8rem; } .media-news-card .card-title { font-size: 1rem; font-weight: 500; line-height: 1.32; margin-bottom: 0.45rem; color: #2f3643; min-height: 2.6rem; } .media-meta-row { display: flex; align-items: center; gap: 0.38rem; color: #4b5568; font-size: 0.9rem; margin-bottom: 0.12rem; } .media-meta-row img { width: 11px; height: 11px; opacity: 0.95; } .media-news-card .card-text { margin: 0.25rem 0 0.2rem; color: #5f6673; font-size: 0.88rem; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.25rem; } .media-news-link { display: inline-block; color: #3b82f6; font-size: 0.9rem; font-weight: 600; margin-top: 0; } .media-news-date { margin-top: 0.26rem; color: #818897; font-size: 0.86rem; } .admin-link-navbar { display: none; } .admin-link-navbar.visible { display: block; } .admin-link-navbar a { color: inherit; text-decoration: none; } .admin-nav-link a { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.48rem 0.95rem; border-radius: 999px; border: 1px solid rgba(42, 91, 215, 0.25); color: #2a5bd7; background: rgba(42, 91, 215, 0.08); font-weight: 600; font-size: 0.86rem; transition: all 0.3s; } .admin-nav-link a:hover { background: rgba(42, 91, 215, 0.14); } .logout-btn { background: rgba(42, 91, 215, 0.1); color: #2a5bd7; border: 1px solid rgba(42, 91, 215, 0.25); padding: 0.5rem 1rem; border-radius: 999px; cursor: pointer; font-size: 0.875rem; font-weight: 600; transition: all 0.3s; } .logout-btn:hover { background: rgba(42, 91, 215, 0.2); } /* Modal for delete confirmation */ .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(9, 18, 40, 0.55); animation: fadeIn 0.3s; } .modal.show { display: block; } .modal-content { background: rgba(255, 255, 255, 0.95); margin: 12% auto; padding: 2rem; border-radius: 16px; border: 1px solid rgba(23, 43, 82, 0.12); width: 90%; max-width: 400px; box-shadow: 0 18px 44px rgba(12, 26, 61, 0.24); backdrop-filter: blur(12px); } .modal-content h3 { margin-top: 0; color: #16213b; } .modal-content p { color: #4f5f7c; margin: 1rem 0; } .modal-actions { display: flex; gap: 1rem; margin-top: 2rem; } .modal-actions button { flex: 1; padding: 0.75rem; border-radius: 999px; cursor: pointer; font-weight: 600; transition: all 0.3s; } .modal-actions .confirm { border: none; background: linear-gradient(135deg, #e1565a 0%, #c8484c 100%); color: #fff; } .modal-actions .confirm:hover { transform: translateY(-1px); box-shadow: 0 10px 20px rgba(200, 72, 76, 0.3); } .modal-actions .cancel { border: 1px solid rgba(23, 43, 82, 0.14); background: rgba(255, 255, 255, 0.9); color: #1c2a4a; } .modal-actions .cancel:hover { background: rgba(42, 91, 215, 0.08); } @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } @media (max-width: 768px) { .media-page .page-hero-content { min-height: 0; } .media-page .hero-crumb { font-size: 0.74rem; } .media-page .page-hero-content h1 { font-size: 1.2rem; } .media-page .hero-wave svg { height: 40px; } .media-page .media-breadcrumb { padding: 0.28rem 0 0.2rem; } .media-page .media-breadcrumb p { font-size: 0.78rem; } .media-page .section { padding-top: 0.7rem; padding-bottom: 0.9rem; min-height: calc(100vh - clamp(184px, 36vh, 236px) + 70px); } .media-page .section .container { max-width: 100%; } .media-news-grid { grid-template-columns: 1fr; } .media-toolbar { margin-bottom: 1rem; } .media-filter-title { display: none; } .media-filter-group { width: 100%; gap: 0.45rem; } .media-filter-select { min-width: 136px; } .admin-controls { top: 8px; right: 8px; } .admin-btn { width: 32px; height: 32px; font-size: 1rem; } .modal-content { margin-top: 24%; } } </style> </head> <body class="media-page"> {% include "_navbar.html" %} <section class="hero page-hero" style="--hero-image: url('/static/assets/images/new_hero_general.png');"> <div class="page-hero-overlay"></div> <div class="hero-content page-hero-content"> <h1 data-word-reveal data-word-reveal-start="120">Projects & News</h1> <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">Latest updates and key milestones from our maritime operations.</p> </div> </section> <div class="media-breadcrumb" aria-label="Breadcrumb"> <div class="container"> <p>Home / Media / Projects</p> </div> </div> <section class="section"> <div class="container"> <div style="text-align: center; margin-bottom: 0.22rem;"> <button class="admin-btn-add" id="addArticleBtn"> + Add New Article </button> </div> <div class="media-toolbar" aria-label="Article filters"> <p class="media-filter-title">Filter by type</p> <div class="media-filter-group" id="mediaFilterGroup"> <select class="media-filter-select" id="mediaTypeFilter" aria-label="Filter media by type"> <option value="all" selected>All Types</option> <option value="news">News</option> <option value="blog">Blogs</option> </select> <select class="media-filter-select" id="mediaYearFilter" aria-label="Filter media by year"> <option value="all" selected>All Years</option> </select> </div> </div> <div class="grid media-news-grid" id="articlesContainer"> <!-- Articles will be loaded here --> </div> </div> </section> {% include '_footer.html' %} <!-- Delete Confirmation Modal --> <div class="modal" id="deleteModal"> <div class="modal-content"> <h3>Delete Article</h3> <p>Are you sure you want to delete this article? This action cannot be undone.</p> <div class="modal-actions"> <button class="confirm" id="confirmDeleteBtn">Delete</button> <button class="cancel" onclick="document.getElementById('deleteModal').classList.remove('show')">Cancel</button> </div> </div> </div> <script src="/static/js/main.js"></script> <script> let isAdmin = false; let deleteArticleId = null; let allArticles = []; let activeFilterType = 'all'; let activeFilterYear = 'all'; // Check if user is admin function checkAdminStatus() { const token = localStorage.getItem('admin_token'); isAdmin = !!token; if (isAdmin) { const navMenu = document.querySelector('.navbar-menu'); // Inject Admin link const adminLi = document.createElement('li'); adminLi.className = 'admin-nav-link'; adminLi.innerHTML = '<a href="/admin/dashboard">Admin Panel</a>'; navMenu.appendChild(adminLi); // Inject Logout button const logoutLi = document.createElement('li'); logoutLi.id = 'logoutContainer'; logoutLi.innerHTML = '<button class="logout-btn" id="logoutBtn">Logout</button>'; navMenu.appendChild(logoutLi); // Re-attach logout event listener document.getElementById('logoutBtn').addEventListener('click', handleLogout); document.getElementById('addArticleBtn').style.display = 'inline-block'; } } // Logout handler async function handleLogout() { const token = localStorage.getItem('admin_token'); try { await fetch('/api/auth/logout', { method: 'POST', headers: { 'Authorization': `Bearer ${token}` } }); } catch (error) { console.error('Logout error:', error); } localStorage.removeItem('admin_token'); localStorage.removeItem('admin_username'); window.location.reload(); } // Load articles async function loadArticles() { try { const response = await fetch('/api/articles'); const data = await response.json(); allArticles = Array.isArray(data.articles) ? data.articles : []; populateYearFilter(allArticles); renderArticles(); } catch (error) { console.error('Error loading articles:', error); } } function populateYearFilter(articles) { const yearFilterSelect = document.getElementById('mediaYearFilter'); if (!yearFilterSelect) return; const years = Array.from(new Set( articles .map((article) => { const year = new Date(article.created_at).getFullYear(); return Number.isFinite(year) ? String(year) : null; }) .filter(Boolean) )).sort((a, b) => Number(b) - Number(a)); yearFilterSelect.innerHTML = '<option value="all" selected>All Years</option>' + years .map((year) => `<option value="${year}">${year}</option>`) .join(''); } function renderArticles() { const container = document.getElementById('articlesContainer'); const filteredArticles = allArticles.filter((article) => { const typeMatch = activeFilterType === 'all' ? true : String(article.category || '').toLowerCase() === activeFilterType; const articleYear = String(new Date(article.created_at).getFullYear()); const yearMatch = activeFilterYear === 'all' ? true : articleYear === activeFilterYear; return typeMatch && yearMatch; }); if (!filteredArticles.length) { container.innerHTML = ` <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #6b7280;"> <p>No ${activeFilterType === 'all' ? '' : activeFilterType + ' '}articles available${isAdmin ? '. <a href="/admin/add">Create one now!</a>' : '.'}</p> </div> `; return; } container.innerHTML = filteredArticles.map(article => ` <article class="card feature-card media-news-card clickable" onclick="openArticle(${article.id})" role="link" tabindex="0" onkeydown="handleArticleKey(event, ${article.id})"> ${article.image_url ? `<img class="card-image" src="${article.image_url}" alt="${article.title}">` : `<img class="card-image" src="/static/assets/images/media-placeholder.svg" alt="Article image">`} <div class="admin-controls ${isAdmin ? 'visible' : ''}"> <button class="admin-btn edit" onclick="editArticle(event, ${article.id})" title="Edit article"> <img src="/static/assets/icons/edit.svg" alt=""> </button> <button class="admin-btn delete" onclick="openDeleteModal(event, ${article.id})" title="Delete article"> <img src="/static/assets/icons/trash-x.svg" alt=""> </button> </div> <div class="card-content"> <h4 class="card-title">${article.title}</h4> <p class="media-meta-row"> <img src="/static/assets/icons/briefcase.svg" alt=""> <span>${formatCategoryLabel(article.category)}</span> </p> <p class="card-text">${(article.content || '').substring(0, 72)}${(article.content || '').length > 72 ? '...' : ''}</p> <span class="media-news-link">More Details '</span> <p class="media-news-date">Posted on: ${new Date(article.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p> </div> </article> `).join(''); } function formatCategoryLabel(category) { const normalized = String(category || 'general').toLowerCase(); if (normalized === 'news') return 'News'; if (normalized === 'blog') return 'Blogs'; return 'General'; } function bindFilterControls() { const typeFilterSelect = document.getElementById('mediaTypeFilter'); const yearFilterSelect = document.getElementById('mediaYearFilter'); if (!typeFilterSelect || !yearFilterSelect) return; typeFilterSelect.addEventListener('change', (event) => { activeFilterType = event.target.value; renderArticles(); }); yearFilterSelect.addEventListener('change', (event) => { activeFilterYear = event.target.value; renderArticles(); }); } function openArticle(articleId) { window.location.href = `/media/article/${articleId}`; } function handleArticleKey(event, articleId) { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openArticle(articleId); } } // Edit article function editArticle(event, articleId) { event.stopPropagation(); window.location.href = `/admin/edit/${articleId}`; } // Delete modal function openDeleteModal(event, articleId) { event.stopPropagation(); deleteArticleId = articleId; document.getElementById('deleteModal').classList.add('show'); } // Confirm delete document.getElementById('confirmDeleteBtn').addEventListener('click', async () => { if (!deleteArticleId) return; const token = localStorage.getItem('admin_token'); try { const response = await fetch(`/api/articles/${deleteArticleId}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } }); if (response.ok) { document.getElementById('deleteModal').classList.remove('show'); loadArticles(); // Reload articles } else { alert('Failed to delete article'); } } catch (error) { console.error('Delete error:', error); alert('Error deleting article'); } }); // Add article button document.getElementById('addArticleBtn').addEventListener('click', () => { window.location.href = '/admin/add'; }); // Initialize checkAdminStatus(); bindFilterControls(); loadArticles(); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project highlights from Patel Engineering Works (Vizag).">
+  <title>Projects - Patel Engineering Works (Vizag)</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    /* Projects Page Specific Styles */
+    .proj-hero {
+      background: linear-gradient(rgba(8,25,60,0.7), rgba(8,25,60,0.7)), url('/static/assets/images/new_hero_general.png');
+      background-size: cover;
+      background-position: center;
+      padding: 140px 0 100px 0;
+      text-align: center;
+      color: #ffffff;
+    }
+    .proj-hero h1 {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: var(--font-heading, sans-serif);
+    }
+    .proj-hero p {
+      color: rgba(255,255,255,0.9);
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    .proj-section {
+      padding: 60px 0 100px 0;
+      background-color: #f8f9fb;
+      min-height: 60vh;
+    }
+
+    .proj-tabs-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #e0e4eb;
+    }
+    .proj-tab {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #555555;
+      padding: 15px 30px;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+      font-family: inherit;
+    }
+    .proj-tab:hover {
+      color: #1f438a;
+    }
+    .proj-tab.active {
+      color: #c91f2f; /* Action Red */
+    }
+    .proj-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #c91f2f;
+    }
+
+    .proj-grid {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .proj-grid.active {
+      display: grid;
+    }
+
+    /* Override for single column layout if text is very long, but grid is preferred */
+    @media (max-width: 992px) {
+      .proj-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .proj-card {
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(22, 53, 109, 0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(22, 53, 109, 0.12);
+    }
+
+    .proj-img-wrap {
+      width: 100%;
+      height: 250px;
+      background: #eef3fb;
+      border-bottom: 1px solid #eaeaea;
+      position: relative;
+    }
+    .proj-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .proj-img-note {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(8, 25, 60, 0.85);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 6px 15px;
+      font-style: italic;
+    }
+
+    .proj-body {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .proj-title {
+      font-size: 1.4rem;
+      color: #16356d; /* Dark Navy */
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .proj-meta {
+      font-size: 0.9rem;
+      color: #c91f2f; /* Action Red */
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .proj-desc {
+      font-size: 0.95rem;
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .proj-list-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f438a;
+      margin-bottom: 10px;
+    }
+    .proj-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .proj-list li {
+      font-size: 0.9rem;
+      color: #4a5568;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .proj-list li::before {
+      content: '•';
+      color: #c91f2f;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .proj-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      color: #64748b;
+    }
+
+    /* Footer Enforcement */
+    footer, .site-footer { background-color: #16356d !important; }
+    footer *, .site-footer * { color: #ffffff !important; }
+    footer a:hover, .site-footer a:hover { opacity: 0.8 !important; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  {% include "_navbar.html" %}
+
+  <!-- HERO BANNER -->
+  <section class="proj-hero" id="top">
+    <div class="container">
+      <h1>Project Highlights</h1>
+      <p>Delivering precision engineering and turnkey execution for critical defense vessels.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section class="proj-section">
+    <div class="container">
+      
+      <!-- FILTER TABS -->
+      <div class="proj-tabs-container">
+        <button class="proj-tab active" id="tab-repair" onclick="switchTab('repair')">Ship Repair</button>
+        <button class="proj-tab" id="tab-build" onclick="switchTab('build')">Shipbuilding</button>
+        <button class="proj-tab" id="tab-devs" onclick="switchTab('devs')">New Developments</button>
+      </div>
+
+      <!-- SHIP REPAIR GRID -->
+      <div id="grid-repair" class="proj-grid active">
+        
+        <!-- CARD 1 -->
+        <article class="proj-card" id="repair">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/projects/CAR NICOBAR.jpeg" alt="INS Car Nicobar">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">INS Car Nicobar – Major Refit</h3>
+            <div class="proj-meta">Naval Dockyard, Visakhapatnam · 6-month Major Refit</div>
+            <p class="proj-desc">The first-ever Major Refit of INS Car Nicobar — and the first time a private firm was trusted with a Major Refit of this Fast Attack Craft class. Delivered on time to the Indian Navy's exacting standards, extending the vessel's operational life for years to come.</p>
+            <div class="proj-list-title">Scope Highlights:</div>
+            <ul class="proj-list">
+              <li>Replacement of 3 main engines, emergency generator, AHU, and AC compressor</li>
+              <li>Overhaul of 3 diesel generators, 3 water-jet propulsion units, pumps, compressors, kilometres of piping, and hundreds of valves</li>
+              <li>Obsolescence upgrades to the main switchboard and DG control panels</li>
+              <li>Major HVAC optimization, including robotic trunk cleaning across the ship</li>
+              <li>Extensive steel and aluminium structural repair with full-ship surface prep and painting</li>
+              <li>Revival of a deck davit once deemed beyond repair</li>
+              <li>Modernized crew accommodation, LED lighting to Navy policy, and enhanced CO2 / fire-detection safety systems</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/projects/KAPLENI.jpeg" alt="INS Kalpeni">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">INS Kalpeni – Major Refit</h3>
+            <div class="proj-meta">GRSE / Naval Shipyard Kochi · MoU partner to GRSE</div>
+            <p class="proj-desc">The maiden Major Refit of INS Kalpeni, a Fast Attack Craft — the first WJFAC-class vessel refitted on a turnkey basis at GRSE, completed on schedule.</p>
+            <div class="proj-list-title">Scope Highlights:</div>
+            <ul class="proj-list">
+              <li>Replacement of 2 main engines and full pump suite; rehabilitation of the ship's RHIB</li>
+              <li>Overhaul of 3 reduction gearboxes, 3 diesel generators, 3 water-jet units, fuel-oil centrifuges, and HP air compressors</li>
+              <li>Machinery Control System reconfigured and integrated with engine controls, alarms, HVAC, and fire main</li>
+              <li>Major steel renewal (including full bulwark), aluminium superstructure and bimetallic-joint repair</li>
+              <li>Upgraded crew accommodation, LED lighting, and modernized fire/flood safety systems</li>
+              <li>New Naval Tactical Communication System, SATCOM, remote searchlight; all three shaft lines realigned</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/projects/ASTRADHARANI.jpeg" alt="INS Astradharini">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">INS Astradharini – Short Refit (SR-25)</h3>
+            <div class="proj-meta">Hindustan Shipyard Limited · Completed November 2025 · On time</div>
+            <p class="proj-desc">A repeat refit of this specialized naval vessel — a platform we have supported through multiple cycles. Scope covered overhaul and renewal of pumps, valves, piping, motors, control panels, STP and EVAC systems, fuel-oil centrifuge, starting compressors, davits, and flood/fire-detection systems, plus hull upkeep, deck-machinery servicing, and propeller replacement. Recognised with appreciation from the Commanding Officer and crew.</p>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/projects/BPT-2.jpeg" alt="BPT-2 Battle Practice Target Barge">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">BPT-2 Battle Practice Target Barge – Special Repair</h3>
+            <div class="proj-meta">Naval Dockyard, Visakhapatnam · Special Repair</div>
+            <p class="proj-desc">Restoration of a heavily used naval target/training platform to full working order — extensive hull repairs, overhaul of onboard systems and deck machinery, diesel-generator overhaul and replacement, a new LCP, main switchboard and inverter, and renewal of power, control, and lighting cables across the vessel, including procurement and installation of mission-critical equipment.</p>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="proj-card" style="grid-column: 1 / -1; max-width: 800px; justify-self: center;">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/projects/SCGS.jpeg" alt="SCGS Zoroaster">
+          </div>
+          <div class="body" style="padding: 30px;">
+            <h3 class="proj-title">SCGS Zoroaster – Short Refit</h3>
+            <div class="proj-meta">Seychelles Coast Guard, at GRSE · Completed in 2 months</div>
+            <p class="proj-desc">An international refit delivered within schedule while running parallel assignments — covering main engines, diesel alternators, the engine control system, waterjets, electrical systems, pumps, compressors, valves, and life-saving equipment, plus refurbishment of the wardroom and captain's cabin.</p>
+            <p class="proj-desc">Notably, the vessel's fresh-water system was upgraded from conventional piping to a modern press-fit system — a live demonstration of the press-fit technology we bring to fleets, improving maintainability and reliability.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SHIPBUILDING GRID -->
+      <div id="grid-build" class="proj-grid">
+        <div style="grid-column: 1 / -1; margin-bottom: 20px;">
+          <p class="proj-desc" style="font-size: 1.05rem; font-weight: 500; text-align: center; max-width: 900px; margin: 0 auto; color: #1f438a;">From turnkey new-builds to frontline warship support, we deliver complex shipbuilding scopes to class and naval standards. A selection of landmark work:</p>
+        </div>
+
+        <!-- CARD 1 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Six 10T Tugs">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Six 10T Tugs — Indian Navy</h3>
+            <div class="proj-meta">Hindustan Shipyard Ltd · Full design-to-delivery</div>
+            <p class="proj-desc">Complete turnkey construction of six 10-tonne tugs under a full design-to-delivery framework — basic design, model testing, and production drawings with Class and Indian Navy approvals, hull fabrication and erection, installation and commissioning of main engines and Schottel propulsion, electrical and accommodation outfitting, and piping. All six were undocked simultaneously and delivered to their home ports — a landmark that established our turnkey credentials.</p>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Next-Generation Electric Ferry">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Next-Generation Electric Ferry</h3>
+            <div class="proj-meta">Garden Reach Shipbuilders & Engineers · 2023–24</div>
+            <p class="proj-desc">A catamaran-type, solar-electric propulsion ferry built for GRSE and delivered to the Government of West Bengal as part of its inland-waterway modernization — showcasing our capability in clean-propulsion and composite vessel construction.</p>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Six 13m FRP Patrol Boats">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Six 13m FRP Patrol Boats</h3>
+            <div class="proj-meta">With GRSE · Bangladesh Fisheries Department</div>
+            <p class="proj-desc">Turnkey construction of six 13-metre FRP patrol boats, delivered on schedule — deepening our expertise in FRP composite vessels and end-to-end project delivery, from design and procurement to commissioning.</p>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Frontline Warship Construction at GRSE">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Frontline Warship Construction at GRSE</h3>
+            <div class="proj-meta">Garden Reach Shipbuilders & Engineers · 600+ personnel</div>
+            <p class="proj-desc">A long-standing shipbuilding partner at GRSE, contributing a significant share of hull fabrication and erection, piping, and electrical outfitting across some of the Navy's most advanced platforms — P17A frigates, anti-submarine warfare corvettes, offshore patrol vessels, Water Jet Fast Attack Craft, Landing Craft Utility vessels, and survey vessels.</p>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="proj-card" style="grid-column: 1 / -1; max-width: 800px; justify-self: center;">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Machinery Installation at HSL">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Machinery Installation at HSL</h3>
+            <div class="proj-meta">Hindustan Shipyard Ltd</div>
+            <p class="proj-desc">Installation and commissioning of propulsion and machinery across larger platforms — Voith and Schottel propulsion on 50T and 25T tugs, shafting and propulsion alignment plus accommodation outfitting on 53,000 DWT bulk carriers, and bow-thruster installation on diving support vessels.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- NEW DEVELOPMENTS GRID -->
+      <div id="grid-devs" class="proj-grid">
+        <div style="grid-column: 1 / -1; margin-bottom: 20px;">
+          <p class="proj-desc" style="font-size: 1.05rem; font-weight: 500; text-align: center; max-width: 900px; margin: 0 auto; color: #1f438a;">Building on decades of marine engineering, we are investing in the technologies that will shape the next era of naval and commercial shipbuilding:</p>
+        </div>
+
+        <!-- CARD 1 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Press-Fit Piping Systems">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Press-Fit Piping Systems</h3>
+            <div class="proj-meta">Partnership with Raccorderie Metalliche (Italy)</div>
+            <p class="proj-desc">In partnership with Raccorderie Metalliche (Italy), a 55-year global leader, we have introduced modern press-fit piping to the Indian Navy — faster to install, easier to maintain, and more reliable than conventional systems. Following naval drawing approval and successful NSTL shock & vibration testing, PEWV serves as the authorized distribution and onboard installation partner for naval warships. Already proven in service, including the fresh-water system upgrade aboard SCGS Zoroaster.</p>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Unmanned Surface Vessels (USVs)">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Unmanned Surface Vessels (USVs)</h3>
+            <div class="proj-meta">Prototype Development</div>
+            <p class="proj-desc">Leveraging our experience in high-speed FRP and aluminium vessels, we have initiated development of prototype USVs featuring advanced propulsion and autonomy systems — positioning PEWV at the forefront of next-generation maritime platforms.</p>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="proj-card" style="grid-column: 1 / -1; max-width: 800px; justify-self: center;">
+          <div class="proj-img-wrap">
+            <img src="/static/assets/images/media-placeholder.svg" alt="Robotics & Automation">
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Robotics & Automation</h3>
+            <div class="proj-meta">Technology Investment</div>
+            <p class="proj-desc">We continue to invest in robotics for surface preparation and confined-space work — including robotic systems for hazardous environments.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  {% include '_footer.html' %}
+
+  <script src="/static/js/main.js"></script>
+  <script>
+    function switchTab(tabName) {
+      // Update buttons
+      document.getElementById('tab-repair').classList.remove('active');
+      document.getElementById('tab-build').classList.remove('active');
+      document.getElementById('tab-devs').classList.remove('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+
+      // Update grids
+      document.getElementById('grid-repair').classList.remove('active');
+      document.getElementById('grid-build').classList.remove('active');
+      document.getElementById('grid-devs').classList.remove('active');
+      document.getElementById('grid-' + tabName).classList.add('active');
+    }
+
+    // Auto-switch based on URL hash if present
+    window.onload = function() {
+      if(window.location.hash === '#shipbuilding') {
+        switchTab('build');
+      }
+    };
+  </script>
+</body>
+</html>
