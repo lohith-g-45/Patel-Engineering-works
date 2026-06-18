@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    body.media-page {
+      background: #0a1128;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .gallery-container {
+      padding: 4rem 0 6rem;
+      position: relative;
+    }
+
+    .swiper {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 500px;
+      height: 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      filter: blur(2px) brightness(0.6);
+    }
+
+    .swiper-slide-active {
+      filter: blur(0) brightness(1);
+      box-shadow: 0 25px 60px rgba(22, 53, 109, 0.4);
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .swiper-slide-active .slide-info {
+      transform: translateY(0);
+    }
+
+    .slide-info h3 {
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .slide-info p {
+      font-size: 0.9rem;
+      margin: 0;
+      opacity: 0.8;
+      line-height: 1.4;
+    }
+
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .nav-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: transparent;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    .nav-btn:hover {
+      background: #c8102e;
+      border-color: #c8102e;
+      box-shadow: 0 0 20px rgba(200, 16, 46, 0.4);
+    }
+
+    .hero-content h1 {
+      color: #ffffff !important;
+      text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 700;
+      font-family: var(--font-heading, sans-serif);
+    }
+
+    .category-label {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .swiper-slide {
+        width: 300px;
+        height: 400px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="media-page">
+  {% include "_navbar.html" %}
+<section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='assets/images/new_hero_general.png') }}');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+        <h1 data-word-reveal data-word-reveal-start="120">Gallery</h1>
+        <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A visual showcase of our engineering excellence and facilities.</p>
+    </div>
+</section>
+
+<div class="media-breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <p>Home / Media / Gallery</p>
+    </div>
+</div>
+
+<div class="gallery-container">
+    <div class="category-label">Engineering Excellence in Motion</div>
+    <div class="swiper gallery-swiper">
+      <div class="swiper-wrapper">
+        <!-- HAND-PICKED HIGHLIGHTS FIRST -->
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/new_hero_shipbuild.png') }}" alt="Strategic Shipbuilding">
+          <div class="slide-info">
+            <h3>Strategic Shipbuilding</h3>
+            <p>Advanced vessel construction and precision engineering at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/hull_and_superstructure_fabrication.jpeg') }}" alt="Hull Fabrication">
+          <div class="slide-info">
+            <h3>Hull Fabrication</h3>
+            <p>High-integrity structural assembly for defense and commercial vessels.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/new_hero_repair.png') }}" alt="Vessel Modernization">
+          <div class="slide-info">
+            <h3>Vessel Modernization</h3>
+            <p>Upgrading maritime assets with cutting-edge technology and structural refits.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/pressfit_2.png') }}" alt="Pressfit Piping">
+          <div class="slide-info">
+            <h3>Advanced Piping</h3>
+            <p>Innovative Pressfit solutions for rapid and reliable maritime plumbing.</p>
+          </div>
+        </div>
+
+        <!-- ALL IMAGES FROM GALLERY SUBFOLDER -->
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.47.42 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.47.43 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.47.43 PM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.47.43 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.47.44 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.48.14 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.48.14 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.48.15 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.48.15 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.48.16 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-04-30 at 1.48.16 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.49 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.49 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.50 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.50 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.50 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.51 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.51 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.51 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.52 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.52 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.52 AM (3).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.52 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.53 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.53 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.54 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.54 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.54 AM (3).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.54 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.55 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.55 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.55 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.56 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.56 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.56 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.57 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.57 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.57 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.58 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.58 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.58 AM (3).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.58 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.59 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.59 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.04.59 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.05.00 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.05.00 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.05.01 AM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.05.01 AM (2).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-01 at 11.05.01 AM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 1.41.49 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 1.41.49 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 1.42.47 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 1.42.48 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 1.42.48 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.37 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.38 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.39 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.39 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.40 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.40 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.41 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.41 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.42 PM (1).jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ url_for('static', filename='assets/images/gallery/WhatsApp Image 2026-05-03 at 12.09.42 PM.jpeg') }}" alt="Maritime Project">
+          <div class="slide-info">
+            <h3>Project Highlight</h3>
+            <p>Advanced maritime engineering and technical execution at PEW Vizag.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-nav">
+        <button class="nav-btn prev-btn">←</button>
+        <button class="nav-btn next-btn">→</button>
+      </div>
+      
+      <div class="swiper-pagination"></div>
+    </div>
+</div>
+  {% include "_footer.html" %}
+  <script src="/static/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const swiper = new Swiper('.gallery-swiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        coverflowEffect: {
+          rotate: 15,
+          stretch: 0,
+          depth: 300,
+          modifier: 1,
+          slideShadows: true,
+        },
+        navigation: {
+          nextEl: '.next-btn',
+          prevEl: '.prev-btn',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        }
+      });
+    });
+  </script>
+</body>
+</html>

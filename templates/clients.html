@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Our Clients - Patel Engineering Works. Trusted sub-contractor to India's leading shipyards and defence organisations.">
+  <title>Our Clients | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="icon" type="image/png" href="/static/assets/images/favicon.png">
+  <style>
+    /* ── Client cards (home-page "about" style) ── */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .client-card {
+      background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
+      border-radius: 16px;
+      padding: 1.8rem 1.6rem 1.6rem;
+      box-shadow: 0 10px 30px rgba(16, 36, 73, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 180px;
+    }
+
+    .client-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 44px rgba(16, 36, 73, 0.28);
+    }
+
+    .client-card h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .client-card p {
+      font-size: 0.94rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* Vibrant Palette for 8 Cards */
+    .client-card:nth-child(1) h3, .client-card:nth-child(1) p { color: #f5c842; } /* Gold */
+    .client-card:nth-child(2) h3, .client-card:nth-child(2) p { color: #3ddfb8; } /* Mint */
+    .client-card:nth-child(3) h3, .client-card:nth-child(3) p { color: #e06aff; } /* Magenta */
+    .client-card:nth-child(4) h3, .client-card:nth-child(4) p { color: #63b3ff; } /* Sky Blue */
+    .client-card:nth-child(5) h3, .client-card:nth-child(5) p { color: #ff8a65; } /* Coral */
+    .client-card:nth-child(6) h3, .client-card:nth-child(6) p { color: #b39ddb; } /* Lavender */
+    .client-card:nth-child(7) h3, .client-card:nth-child(7) p { color: #4dd0e1; } /* Cyan */
+    .client-card:nth-child(8) h3, .client-card:nth-child(8) p { color: #ffab91; } /* Salmon */
+
+    @media (max-width: 768px) {
+      .clients-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Circular stats (original track-record style) ── */
+    .clients-stats-section {
+      background: linear-gradient(135deg, #f0f5ff 0%, #e8f0fe 100%);
+      padding: 4rem 0;
+      margin-top: 4rem;
+    }
+
+    .clients-stats-inner {
+      text-align: center;
+    }
+
+    .clients-stats-inner h3 {
+      font-size: 2rem;
+      color: #12254a;
+      margin-bottom: 2rem;
+    }
+
+    .stats-circles {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+
+    .stat-circle-item {
+      text-align: center;
+      width: 160px;
+    }
+
+    .stat-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--primary-navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 18px rgba(16, 36, 73, 0.22);
+    }
+
+    .stat-circle-label {
+      margin-top: 0.9rem;
+      font-weight: 500;
+      font-size: 0.97rem;
+      color: var(--primary-navy);
+    }
+
+    @media (max-width: 768px) {
+      .clients-grid { grid-template-columns: 1fr; }
+      .stats-circles { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="divisions-page">
+
+  {% include "_navbar.html" %}
+
+  <!-- HERO -->
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/new_hero_general.png');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+				<h1 data-word-reveal data-word-reveal-start="120">Our Clients</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A legacy of trust with the Indian Navy and leading maritime organizations.</p>
+			</div>
+  </section>
+
+  <!-- CLIENTS CONTENT -->
+  <style>
+    .client-deliverables-list { list-style: none; padding: 0; margin: 0; }
+    .client-deliverables-list li { position: relative; padding-left: 20px; margin-bottom: 12px; font-size: 1.05rem; line-height: 1.6; color: #333; }
+    .client-deliverables-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red, #C0182E); font-weight: bold; font-size: 1.2rem; }
+    .client-logo-img { height: 90px; object-fit: contain; margin: 10px; transition: transform 0.3s ease; }
+    .client-logo-img:hover { transform: scale(1.05); }
+  </style>
+
+  <section class="section" id="clients-details" style="padding: 4rem 0; background-color: #fff;">
+    <div class="container" style="max-width: 1000px; margin: 0 auto;">
+
+      <!-- Heading -->
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2.2rem; color: var(--primary-navy, #12254a); margin-bottom: 1rem;">Trusted by India's Navy, Coast Guard &amp; leading shipyards</h2>
+      </div>
+
+      <!-- Logos Grid -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 4rem; align-items: center;">
+        <img src="/static/assets/images/clients/indian_navy.png" alt="Indian Navy" class="client-logo-img">
+        <img src="/static/assets/images/clients/icg.png" alt="Indian Coast Guard" class="client-logo-img">
+        <img src="/static/assets/images/clients/grse.png" alt="GRSE" class="client-logo-img">
+        <img src="/static/assets/images/clients/hsl.png" alt="Hindustan Shipyard" class="client-logo-img">
+        <img src="/static/assets/images/clients/gsl.png" alt="Goa Shipyard" class="client-logo-img">
+        <img src="/static/assets/images/clients/csl.png" alt="Cochin Shipyard" class="client-logo-img">
+        <img src="/static/assets/images/clients/mdsl.png" alt="Mazagon Dock" class="client-logo-img">
+        <img src="/static/assets/images/clients/colombo.png" alt="Colombo Dockyard" class="client-logo-img">
+      </div>
+
+      <!-- Deliverables PDF Layout -->
+      <div style="border: 1px solid #ddd; padding: 2.5rem; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px;">
+        <h3 style="color: var(--accent-red, #C0182E); font-size: 1.4rem; font-weight: 600; margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent-red, #C0182E); padding-bottom: 10px; display: inline-block;">What we deliver to each</h3>
+        <ul class="client-deliverables-list">
+          <li><strong>GRSE (Kolkata)</strong> — full shipbuilding suite; guarantee repairs; turnkey repairs &amp; refits</li>
+          <li><strong>Hindustan Shipyard (Visakhapatnam)</strong> — full shipbuilding suite; ship repairs; turnkey refits</li>
+          <li><strong>Goa Shipyard</strong> — shipbuilding; turnkey repairs &amp; refits</li>
+          <li><strong>Cochin Shipyard</strong> — ship repairs</li>
+          <li><strong>Mazagon Dock</strong> — guarantee repairs</li>
+          <li><strong>Colombo Dockyard (Sri Lanka)</strong> — shipbuilding: hull &amp; electrical outfitting</li>
+          <li><strong>Naval Dockyards (Mumbai &amp; Vizag)</strong> — ship repairs, turnkey refits, maintenance, modifications, new-system installation</li>
+          <li><strong>Naval Ship Repair Yards (Karwar &amp; Port Blair)</strong> — ship repairs &amp; maintenance</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CIRCULAR STATS -->
+  <section class="clients-stats-section">
+    <div class="container clients-stats-inner">
+      <h3>Our Track Record</h3>
+      <div class="stats-circles">
+        <div class="stat-circle-item">
+          <div class="stat-circle">20+</div>
+          <p class="stat-circle-label">Years of Service</p>
+        </div>
+        <div class="stat-circle-item">
+          <div class="stat-circle">8+</div>
+          <p class="stat-circle-label">Major Clients</p>
+        </div>
+        <div class="stat-circle-item">
+          <div class="stat-circle">860+</div>
+          <p class="stat-circle-label">Skilled Personnel</p>
+        </div>
+        <div class="stat-circle-item">
+          <div class="stat-circle">5+</div>
+          <p class="stat-circle-label">Locations Served</p>
+        </div>
+        <div class="stat-circle-item">
+          <div class="stat-circle">100%</div>
+          <p class="stat-circle-label">On-Time Delivery</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "_footer.html" %}
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

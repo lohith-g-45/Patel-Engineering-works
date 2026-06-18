@@ -1,0 +1,65 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <a href="{{ url_for('home') }}" aria-label="PEW Vizag home">
+        <img src="{{ url_for('static', filename='assets/images/pew-vizag-logo.svg') }}" alt="PEW Vizag logo">
+      </a>
+    </div>
+    <button class="navbar-toggle" aria-label="Toggle menu">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li class="nav-dropdown">
+        <a href="{{ url_for('about') }}" class="nav-dropdown-link">About Us <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('about') }}">Company Overview</a></li>
+          <li><a href="{{ url_for('about_values') }}">Core Values</a></li>
+          <li><a href="{{ url_for('about_leadership') }}">Leadership</a></li>
+          <li><a href="{{ url_for('about_certifications') }}">Certifications & Standing</a></li>
+        </ul>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#" class="nav-dropdown-link">Divisions <span class="arrow-down" style="font-size: 0.7rem; margin-left: 4px; opacity: 0.7;">▼</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('divisions_overview') }}">Overview</a></li>
+          <!-- Ship Building with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Building <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="{{ url_for('ship_building_hull') }}">Hull & Superstructure</a></li>
+              <li><a href="{{ url_for('ship_building_piping') }}">Piping & Plumbing</a></li>
+              <li><a href="{{ url_for('ship_building_electrical') }}">Electrical Outfitting</a></li>
+              <li><a href="{{ url_for('ship_building_machinery') }}">Machinery & Equipment</a></li>
+              <li><a href="{{ url_for('ship_building_insitu') }}">In-Situ Machining</a></li>
+              <li><a href="{{ url_for('ship_building_accommodation') }}">Accommodation & Habitability</a></li>
+            </ul>
+          </li>
+          <!-- Ship Repair with Sub-dropdown -->
+          <li class="nav-sub-dropdown">
+            <a href="#" class="nav-sub-dropdown-link">Ship Repair & Modernization <span class="arrow-right">▶</span></a>
+            <ul class="sub-dropdown-menu">
+              <li><a href="{{ url_for('ship_repair_steel') }}">Steel Renewal & Structural</a></li>
+              <li><a href="{{ url_for('ship_repair_hydraulics') }}">Hydraulic Systems & Controls</a></li>
+              <li><a href="{{ url_for('ship_repair_propulsion') }}">Propulsion & Shafting</a></li>
+              <li><a href="{{ url_for('ship_repair_piping') }}">Piping, Valves & Pumps</a></li>
+              <li><a href="{{ url_for('ship_repair_boilers') }}">Boilers & Steam Turbines</a></li>
+              <li><a href="{{ url_for('ship_repair_hvac') }}">HVAC & Refrigeration</a></li>
+              <li><a href="{{ url_for('ship_repair_surface_prep') }}">Surface Preparation</a></li>
+              <li><a href="{{ url_for('ship_repair_painting') }}">Painting & Coating</a></li>
+            </ul>
+          </li>
+          <!-- Partnership -->
+          <li>
+            <a href="{{ url_for('divisions_partnership') }}" class="nav-sub-dropdown-link" style="padding: 0.85rem 1.4rem; display: block; border-top: 1px solid rgba(16, 36, 73, 0.06); font-weight: 600; color: var(--primary-navy);">Collaborations</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="{{ url_for('media_projects') }}">Projects</a></li>
+      <li><a href="{{ url_for('media_gallery') }}">Media</a></li>
+      <li><a href="{{ url_for('clients') }}">Clients</a></li>
+      <li><a href="{{ url_for('careers') }}">Careers</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>

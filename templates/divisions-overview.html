@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divisions Overview — Patel Engineering Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    /* STRICT GLOBAL DESIGN TOKENS */
+    :root {
+      --color-navy: #1F3A7A;
+      --color-red: #C0182E;
+      --color-ink: #1A1A1A;
+      --color-slate: #5F6B7A;
+      --color-mist: #F4F5F7;
+      --color-white: #FFFFFF;
+      --color-border: #E2E5EA;
+      
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-ink);
+      background-color: var(--color-white);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .section-alternate {
+      background-color: var(--color-mist);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: none;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: var(--color-navy);
+    }
+
+    h2 {
+      font-size: 32px;
+      color: var(--color-navy);
+    }
+
+    h3 {
+      font-size: 22px;
+      color: var(--color-ink);
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-ink);
+      margin: 0 0 16px 0;
+      text-align: left;
+      max-width: 75ch;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background-image: url('/static/assets/images/new_hero_general.png');
+      background-size: cover;
+      background-position: center;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(31, 58, 122, 0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center !important;
+    }
+
+    .hero h1 {
+      color: var(--color-white);
+      text-align: center !important;
+    }
+
+    .hero p {
+      color: var(--color-white);
+      font-size: 22px;
+      margin-bottom: 0;
+      text-align: center !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Content Layout */
+    .content-block {
+      max-width: 900px;
+    }
+    
+    .content-block p {
+      max-width: none;
+    }
+
+    .content-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .content-layout.reverse {
+      flex-direction: column;
+    }
+
+    @media (min-width: 992px) {
+      .content-layout {
+        flex-direction: row;
+        align-items: center;
+      }
+      .content-layout.reverse {
+        flex-direction: row-reverse;
+      }
+      .content-text {
+        flex: 1;
+      }
+      .content-image-wrapper {
+        flex: 1;
+      }
+    }
+
+    .content-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(31, 58, 122, 0.08);
+    }
+
+    ul.content-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin: 0 0 24px 0;
+      max-width: 900px;
+    }
+
+    ul.content-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 8px;
+      font-size: 16px;
+      color: var(--color-ink);
+    }
+    
+    ul.content-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--color-navy);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  {% include "_navbar.html" %}
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Divisions Overview</h1>
+      <p>Delivering end-to-end technical solutions to India's defence, public-sector, and commercial marine clients.</p>
+    </div>
+  </section>
+
+  <!-- INTRO & WORKSHOPS -->
+  <section class="section">
+    <div class="container">
+      <div class="content-block" style="margin-bottom: 64px;">
+        <p>We operate across two core domains — Shipbuilding and Ship Repair &amp; Modernization — delivering end-to-end technical solutions to India's defence, public-sector, and commercial marine clients. Every scope is executed by class-qualified teams under strict QA/QC, in full compliance with class, OEM, and naval standards.</p>
+      </div>
+      
+      <div class="content-layout">
+        <div class="content-text">
+          <h2>Our workshops &amp; infrastructure</h2>
+          <p>Our strategic network of workshops, combined with our established presence at major shipyards and dockyards, lets us mobilise rapidly and execute with speed across key maritime regions. Each facility offers substantial indoor and outdoor work areas with integrated cranes for safe handling of heavy equipment.</p>
+          <p>Across these workshops we deliver, among much else:</p>
+          
+          <ul class="content-list">
+            <li>New fabrication and structural repairs</li>
+            <li>Repair and overhaul of shafting, CPP propulsion units, thrusters, water jets, and gearboxes</li>
+            <li>Overhaul of pumps (triplex, centrifugal, gear) and compressors</li>
+            <li>Hydraulic power packs and cylinders; motors, blowers, and control panels</li>
+            <li>All types of coolers and valves</li>
+            <li>Fabrication and repair of piping in copper, cupro-nickel, stainless steel, mild steel, and titanium</li>
+          </ul>
+        </div>
+        <div class="content-image-wrapper">
+          <img src="/static/assets/images/workshop_hull_repair.jpeg" class="content-image" alt="Workshops and Infrastructure">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section class="section section-alternate">
+    <div class="container">
+      <div class="content-layout reverse">
+        <div class="content-text">
+          <h2>A complete supporting ecosystem</h2>
+          <p>Our workshops are backed by an ecosystem that lets us deliver complete, in-house solutions — reducing dependencies and turnaround time:</p>
+          
+          <ul class="content-list">
+            <li>Precision dynamic balancing</li>
+            <li>On-site ferrous and non-ferrous casting</li>
+            <li>Advanced CNC machining</li>
+            <li>Metal build-up and rebabbitting</li>
+            <li>NABL-approved testing and NDT laboratories</li>
+            <li>Independent third-party inspection services</li>
+            <li>Storage and maintenance of our extensive fleet of abrasive and UHP blasting equipment</li>
+          </ul>
+        </div>
+        <div class="content-image-wrapper">
+          <img src="/static/assets/images/ecosystem_piping.jpeg" class="content-image" alt="Supporting Ecosystem">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINANCIAL STRENGTH -->
+  <section class="section">
+    <div class="container">
+      <div class="content-layout">
+        <div class="content-text">
+          <h2>Financial strength</h2>
+          <p>Our proven record as a reliable solution provider and trusted partner — particularly within the naval defence sector — has built strong client confidence and allowed us to steadily expand and diversify both our revenue and our client base.</p>
+          
+          <ul class="content-list">
+            <li>Consistent growth with healthy margins, reflecting our market strength and operational efficiency</li>
+            <li>Balanced revenue across shipbuilding and ship repair, for stability and resilience</li>
+            <li>A strong national client presence across India</li>
+            <li>An independent credit rating affirming our financial stability, and ISO 9001 quality certification</li>
+          </ul>
+          
+          <p>This financial strength underpins our capacity to manage large turnkey projects reliably — maintaining healthy cash flows for timely payments to our vendor and OEM partners, and continuous investment in robotics, equipment, and our people.</p>
+        </div>
+        <div class="content-image-wrapper">
+          <img src="/static/assets/images/naval_partner.jpeg" class="content-image" alt="Financial Strength">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  {% include '_footer.html' %}
+  
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

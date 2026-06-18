@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Patel Engineering Works. Get in touch with our offices across India.">
+  <title>Contact Us | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    .contact-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-cards-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .contact-cards-grid.locations-grid { grid-template-columns: 1fr; }
+    }
+
+    .contact-cards-grid.locations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-info-card {
+      background: linear-gradient(145deg, #162d5c 0%, #1d3a75 60%, #22417e 100%);
+      border-radius: 16px;
+      padding: 2rem 2rem;
+      box-shadow: 0 10px 30px rgba(16, 36, 73, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 44px rgba(16, 36, 73, 0.26);
+    }
+
+    /* Each card gets its own full colour */
+    .contact-info-card:nth-child(1) h3,
+    .contact-info-card:nth-child(1) p,
+    .contact-info-card:nth-child(1) a,
+    .contact-info-card:nth-child(1) strong,
+    .contact-info-card:nth-child(1) span { color: #f5c842; }   /* gold  */
+
+    .contact-info-card:nth-child(2) h3,
+    .contact-info-card:nth-child(2) p,
+    .contact-info-card:nth-child(2) a,
+    .contact-info-card:nth-child(2) strong,
+    .contact-info-card:nth-child(2) span { color: #3ddfb8; }   /* mint  */
+
+    .contact-info-card:nth-child(3) h3,
+    .contact-info-card:nth-child(3) p,
+    .contact-info-card:nth-child(3) a,
+    .contact-info-card:nth-child(3) strong,
+    .contact-info-card:nth-child(3) span { color: #e06aff; }   /* magenta */
+
+    /* Location cards */
+    .contact-info-card.loc-1 h3,
+    .contact-info-card.loc-1 p,
+    .contact-info-card.loc-1 a,
+    .contact-info-card.loc-1 strong { color: #63b3ff; }        /* sky blue */
+
+    .contact-info-card.loc-2 h3,
+    .contact-info-card.loc-2 p,
+    .contact-info-card.loc-2 a,
+    .contact-info-card.loc-2 strong { color: #f5c842; }        /* yellow   */
+
+    .contact-info-card.loc-3 h3,
+    .contact-info-card.loc-3 p,
+    .contact-info-card.loc-3 a,
+    .contact-info-card.loc-3 strong { color: #3ddfb8; }        /* mint     */
+
+    .contact-info-card h3 {
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info-card p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-info-card a:hover {
+      opacity: 0.75;
+      text-decoration: underline;
+    }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin: 1.2rem 0;
+    }
+
+    .location-gmap-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+
+    .location-gmap-btn:hover {
+      background: rgba(255,255,255,0.18) !important;
+      opacity: 1 !important;
+      text-decoration: none !important;
+    }
+
+    .locations-section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin: 3.5rem 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  {% include "_navbar.html" %}
+
+  <!-- HERO -->
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/new_hero_general.png');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+				<h1 data-word-reveal data-word-reveal-start="120">Contact Us</h1>
+      <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">Let's talk about your next project.</p>
+			</div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact-details" style="padding: 4rem 0; background-color: #fff;">
+    <div class="container" style="max-width: 900px; margin: 0 auto; text-align: left;">
+      
+      <!-- PDF LAYOUT -->
+      <div style="border: 1px solid #ddd; padding: 2rem; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px;">
+        
+        <!-- Main Title -->
+        <div style="background-color: var(--primary-navy, #12254a); color: #fff; padding: 12px 20px; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.02em; text-transform: uppercase;">
+          CONTACT
+        </div>
+
+        <!-- Content -->
+        <div style="padding: 25px 20px; font-size: 1.05rem; line-height: 2.0; color: #333;">
+          <p style="margin-bottom: 1.2rem;"><strong style="color: var(--primary-navy, #12254a);">Email:</strong> <a href="mailto:info@patelengv.com" style="color: inherit; text-decoration: underline;">info@patelengv.com</a></p>
+          <p style="margin-bottom: 1.2rem;"><strong style="color: var(--primary-navy, #12254a);">Phone:</strong> 9820321082 &middot; 8247204966 &middot; 9393102438</p>
+          <p style="margin-bottom: 1.2rem;"><strong style="color: var(--primary-navy, #12254a);">Vizag office:</strong> No. 5, 1st Floor, City Plaza, Daba Gardens, Visakhapatnam – 530020</p>
+          <p style="margin-bottom: 0;"><strong style="color: var(--primary-navy, #12254a);">Workshops:</strong> Kancharpalem (Visakhapatnam) &middot; Kidderpore (Kolkata)</p>
+        </div>
+
+      </div>
+    </div> 
+  </section>
+
+  {% include '_footer.html' %}
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

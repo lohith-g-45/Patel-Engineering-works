@@ -1,4 +1,4 @@
-/* Welding Techniques Horizontal Boxes with Arrow and Scroll Reveal */
+﻿/* Welding Techniques Horizontal Boxes with Arrow and Scroll Reveal */
 .welding-techniques-list {
   display: flex;
   flex-direction: column;
@@ -6600,7 +6600,4 @@ img[data-expand-image] {
   color: var(--neutral-white);
 }
 
-/* Global Heading Capitalization */
-h1 {
-  text-transform: capitalize !important;
-}
+

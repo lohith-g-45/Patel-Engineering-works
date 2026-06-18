@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Overview — Patel Engineering Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    /* STRICT GLOBAL DESIGN TOKENS */
+    :root {
+      --color-navy: #1F3A7A;
+      --color-red: #C0182E;
+      --color-ink: #1A1A1A;
+      --color-slate: #5F6B7A;
+      --color-mist: #F4F5F7;
+      --color-white: #FFFFFF;
+      --color-border: #E2E5EA;
+      
+      --font-heading: 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-ink);
+      background-color: var(--color-white);
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .section-alternate {
+      background-color: var(--color-mist);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      text-transform: none;
+    }
+
+    h1 {
+      font-size: 48px;
+      color: var(--color-navy);
+    }
+
+    h2 {
+      font-size: 32px;
+      color: var(--color-navy);
+    }
+
+    h3 {
+      font-size: 22px;
+      color: var(--color-ink);
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--color-ink);
+      margin: 0 0 16px 0;
+      text-align: left;
+      max-width: 75ch;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background-image: url('/static/assets/images/new_hero_general.png');
+      background-size: cover;
+      background-position: center;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(31, 58, 122, 0.4);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center !important;
+    }
+
+    .hero h1 {
+      color: var(--color-white);
+      text-align: center !important;
+    }
+
+    .hero p {
+      color: var(--color-white);
+      font-size: 22px; /* Slightly larger for hero subtitle, but remaining simple */
+      margin-bottom: 0;
+      text-align: center !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    .card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .card h3 {
+      color: var(--color-navy);
+    }
+
+    .card p {
+      margin-bottom: 0;
+    }
+
+    /* Content Layout */
+    .content-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .content-layout {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+      .content-text {
+        flex: 1;
+      }
+      .content-image-wrapper {
+        flex: 1;
+      }
+    }
+
+    .content-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px; /* Matching the card radius */
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      border-radius: 8px;
+      padding: 16px 32px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #172B5C; /* Slightly darker navy */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  {% include "_navbar.html" %}
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Company overview</h1>
+      <p>Your stalwart partner in ship repair, shipbuilding, and marine services.</p>
+    </div>
+  </section>
+
+  <!-- COMPANY OVERVIEW TEXT -->
+  <section class="section">
+    <div class="container">
+      <div class="content-layout">
+        <div class="content-text">
+          <p>Founded in 2001, Patel Engineering Works (Vizag) has grown from a humble repair workshop into one of India's most trusted names in ship repair and shipbuilding. Headed by Mr. Rashesh Sanghvi and Mr. Chirag Sanghvi, with founder and CEO Mr. Kiran Sanghvi, we carry a robust legacy — an executive and supervisory team whose majority bring over 30 years of collective experience in the field.</p>
+          <p>Our work is built around a single role we take seriously: being a trusted partner to leading shipyards and naval dockyards, delivering comprehensive technical services and project management for both new construction and the repair and refit of vessels in service.</p>
+          <p>With a dedicated workforce of over 1,000 skilled professionals across India and Sri Lanka — engineers, qualified supervisors, and skilled tradesmen — we execute major shipbuilding, repair, and maintenance work at key ports including Visakhapatnam, Kolkata, Goa, Karwar, Mumbai, and Port Blair, as well as Colombo. We proudly serve the Indian Navy, Indian Coast Guard, Hindustan Shipyard, Goa Shipyard, Cochin Shipyard, Garden Reach Shipbuilders & Engineers, Mazagon Dock, L&T Shipbuilding Chennai, NSTL, and select rig and ship owners.</p>
+          <p>Our unwavering commitment to quality, safety, and efficiency has earned the trust of naval defence and public-sector undertakings. With sustained growth over more than two decades and a steadfast dedication to excellence, we are poised for continued success — ready to undertake large turnkey projects and to contribute to the evolving naval defence and maritime landscape.</p>
+        </div>
+        <div class="content-image-wrapper">
+          <!-- Placeholder, wait I'll use the existing image that was in the file -->
+          <img src="/static/assets/images/companyhistory_photo.png" alt="Engineering team reviewing drawings" class="content-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  {% include '_footer.html' %}
+  
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
