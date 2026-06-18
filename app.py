@@ -179,9 +179,7 @@ def register_routes(app: Flask) -> None:
     def ship_repair_painting():
         return render_template("repair-detail-painting.html")
 
-    @app.get("/divisions/partnership")
-    def divisions_partnership():
-        return render_template("divisions_partnership.html")
+
 
 
 
