@@ -6601,3 +6601,33 @@ img[data-expand-image] {
 }
 
 
+
+/* Unified Hero Fonts (Match Homepage) */
+.hero h1, .proj-hero h1, .page-hero-content h1, .hero-content h1, .hero-sub-desktop, .hero-sub-mobile, .hero p, .proj-hero p, .page-hero-content p, .hero-content p {
+  font-family: var(--font-heading, sans-serif) !important;
+}
+
+.hero h1, .proj-hero h1, .page-hero-content h1, .hero-content h1 {
+  font-size: 48px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  color: var(--neutral-white) !important;
+  margin-bottom: var(--spacing-24) !important;
+}
+
+.hero p, .proj-hero p, .page-hero-content p, .hero-content p {
+  font-size: 19px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .hero h1, .proj-hero h1, .page-hero-content h1, .hero-content h1 {
+    font-size: 36px !important;
+  }
+  .hero p, .proj-hero p, .page-hero-content p, .hero-content p {
+    font-size: 17px !important;
+  }
+}
