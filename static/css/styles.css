@@ -6601,3 +6601,6 @@ img[data-expand-image] {
 }
 
 
+
+/* Global Heading Capitalization */
+h1 { text-transform: capitalize !important; }
