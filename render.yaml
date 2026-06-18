@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: patel-engineering-works
+    name: patel-engineering-works-web
     env: python
     plan: starter
     buildCommand: pip install -r requirements.txt
