@@ -6601,9 +6601,3 @@ img[data-expand-image] {
 }
 
 
-
-/* Global Heading Capitalization */
-h1 { text-transform: capitalize !important; }
-
-/* Capitalize Subtitles */
-.hero p, .proj-hero p, .page-hero-content p, .section-subtitle, .hero-sub-desktop, .hero-sub-mobile, .hero-content p { text-transform: capitalize !important; }
