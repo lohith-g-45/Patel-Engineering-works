@@ -9,9 +9,7 @@
   <style>
     /* Strict Client Adherence Styles for Certifications */
     .cert-hero {
-      background: linear-gradient(rgba(8,25,60,0.65), rgba(8,25,60,0.65)), url('/static/assets/images/new_hero_general.png');
-      background-size: cover;
-      background-position: center;
+      background-color: #08193C;
       padding: 140px 0;
       display: flex;
       align-items: center;
@@ -20,6 +18,20 @@
       position: relative;
       width: 100%;
     }
+    .cert-hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 50%; height: 100%;
+      background: url('/static/assets/images/certificate_bg1.jpg') center/cover no-repeat;
+      opacity: 0.35;
+    }
+    .cert-hero::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0; width: 50%; height: 100%;
+      background: url('/static/assets/images/certificate_bg2.png') center/cover no-repeat;
+      opacity: 0.35;
+    }
     .cert-hero .container {
       display: flex;
       flex-direction: column;
@@ -27,6 +39,8 @@
       justify-content: center;
       text-align: center;
       width: 100%;
+      position: relative;
+      z-index: 2;
     }
     .cert-hero h1 {
       color: #ffffff;
