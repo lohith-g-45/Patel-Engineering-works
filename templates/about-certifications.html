@@ -177,7 +177,7 @@
       
       <div class="cert-grid">
         <!-- Certificate 1 -->
-        <a href="/static/assets/certs/aero india.jpeg" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/aero india.jpeg"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/aero india.jpeg" alt="Aero India" class="cert-img">
           </div>
@@ -185,7 +185,7 @@
         </a>
 
         <!-- Certificate 2 (PDF) -->
-        <a href="/static/assets/certs/Appreciation letter.pdf" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/Appreciation letter.pdf"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/Appreciation letter.jpeg" alt="Appreciation Letter" class="cert-img">
           </div>
@@ -193,7 +193,7 @@
         </a>
 
         <!-- Certificate 3 -->
-        <a href="/static/assets/certs/indian coastal guard.jpeg" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/indian coastal guard.jpeg"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/indian coastal guard.jpeg" alt="Indian Coastal Guard" class="cert-img">
           </div>
@@ -201,7 +201,7 @@
         </a>
 
         <!-- Certificate 4 (PDF) -->
-        <a href="/static/assets/certs/ISO CERTIFICATE VALID UP TO 26-05-2029.pdf" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/ISO CERTIFICATE VALID UP TO 26-05-2029.pdf"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/ISO CERTIFICATE VALID UP TO 26-05-2029.jpeg" alt="ISO Certificate Valid Up To 2029" class="cert-img">
           </div>
@@ -209,7 +209,7 @@
         </a>
 
         <!-- Certificate 5 (PDF) -->
-        <a href="/static/assets/certs/Letter of Appericiation- ICGS Shaunak.pdf" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/Letter of Appericiation- ICGS Shaunak.pdf"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/Letter of Appericiation- ICGS Shaunak.jpeg" alt="Letter of Appreciation - ICGS Shaunak" class="cert-img">
           </div>
@@ -217,7 +217,7 @@
         </a>
 
         <!-- Certificate 6 -->
-        <a href="/static/assets/certs/sujata.jpeg" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/sujata.jpeg"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/sujata.jpeg" alt="Sujata" class="cert-img">
           </div>
@@ -225,7 +225,7 @@
         </a>
 
         <!-- Certificate 7 -->
-        <a href="/static/assets/certs/vikramadithya.jpeg" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/vikramadithya.jpeg"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/vikramadithya.jpeg" alt="Vikramadithya" class="cert-img">
           </div>
@@ -233,7 +233,7 @@
         </a>
 
         <!-- Certificate 8 -->
-        <a href="/static/assets/certs/zoroaster.jpeg" target="_blank" class="cert-card">
+        <a href="/static/assets/certs/zoroaster.jpeg"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/certs/zoroaster.jpeg" alt="Zoroaster" class="cert-img">
           </div>
@@ -241,11 +241,27 @@
         </a>
 
         <!-- Certificate 9 (Original) -->
-        <a href="/static/assets/images/certificate_.jpeg" target="_blank" class="cert-card">
+        <a href="/static/assets/images/certificate_.jpeg"  class="cert-card">
           <div class="cert-img-wrap">
             <img src="/static/assets/images/certificate_.jpeg" alt="Certificate of Appreciation - INS Vikrant" class="cert-img">
           </div>
           <div class="cert-caption">Certificate of Appreciation – INS Vikrant</div>
+        </a>
+
+        <!-- Certificate 10 -->
+        <a href="/static/assets/certs/hindustan_certificate.jpg" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="/static/assets/certs/hindustan_certificate.jpg" alt="Hindustan Shipyard Ltd" class="cert-img">
+          </div>
+          <div class="cert-caption">Certificate of Appreciation – Hindustan Shipyard Ltd</div>
+        </a>
+
+        <!-- Certificate 11 -->
+        <a href="/static/assets/certs/sujay_certificate.jpg" class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="/static/assets/certs/sujay_certificate.jpg" alt="ICGS Sujay" class="cert-img">
+          </div>
+          <div class="cert-caption">Certificate of Appreciation – ICGS Sujay</div>
         </a>
       </div>
     </div>
@@ -255,5 +271,41 @@
   {% include '_footer.html' %}
   
   <script src="/static/js/main.js"></script>
+
+  <!-- Modal for Certificates -->
+  <div id="certModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(8, 25, 60, 0.9); align-items:center; justify-content:center; flex-direction:column;">
+    <span onclick="document.getElementById('certModal').style.display='none'" style="position:absolute; top:20px; right:40px; color:white; font-size:40px; cursor:pointer; font-weight:bold;">&times;</span>
+    <img id="modalImg" style="max-width:90%; max-height:80vh; border:2px solid white; display:none; border-radius:4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <iframe id="modalPdf" style="width:80%; height:80vh; display:none; background:white; border-radius:4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
+    <div id="modalCaption" style="color:white; margin-top:20px; font-size:1.3rem; font-weight:600; text-align:center;"></div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.cert-card').forEach(card => {
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        const href = card.getAttribute('href');
+        const caption = card.querySelector('.cert-caption').innerText;
+        const modal = document.getElementById('certModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalPdf = document.getElementById('modalPdf');
+        const modalCaption = document.getElementById('modalCaption');
+        
+        modal.style.display = 'flex';
+        modalCaption.innerText = caption;
+        
+        if(href.toLowerCase().endsWith('.pdf')) {
+          modalImg.style.display = 'none';
+          modalPdf.style.display = 'block';
+          modalPdf.src = href;
+        } else {
+          modalPdf.style.display = 'none';
+          modalImg.style.display = 'block';
+          modalImg.src = href;
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
