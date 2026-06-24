@@ -448,7 +448,6 @@
           </div>
           
         </a>
-      </div>
         <a href="/static/assets/images/gallery/gallery_new_1.jpg" class="gallery-card">
           <div class="gallery-img-wrap">
             <img src="/static/assets/images/gallery/gallery_new_1.jpg" alt="Gallery Image">
@@ -499,6 +498,7 @@
             <img src="/static/assets/images/gallery/gallery_new_10.png" alt="Gallery Image">
           </div>
         </a>
+      </div>
 </div>
   {% include "_footer.html" %}
   <script src="/static/js/main.js"></script>
@@ -517,7 +517,7 @@
       card.addEventListener('click', e => {
         e.preventDefault();
         const href = card.getAttribute('href');
-        const caption = card.querySelector('h3').innerText;
+        const caption = card.querySelector('h3') ? card.querySelector('h3').innerText : '';
         const modal = document.getElementById('galleryModal');
         const modalImg = document.getElementById('modalImg');
         const modalCaption = document.getElementById('modalCaption');
