@@ -13,7 +13,8 @@
     .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; margin-bottom: 40px; }
     @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
     .content-image { height: 100%; }
-    .content-image img { width: 100%; height: 100%; object-fit: cover; min-height: 250px; border-radius: 4px; box-shadow: var(--shadow-sm, 0 4px 12px rgba(0,0,0,0.05)); }
+    .image-collage-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; height: 100%; }
+    .image-collage-2 img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow-sm, 0 4px 12px rgba(0,0,0,0.05)); }
     .tech-list { list-style: none; padding: 0; margin: 20px 0; }
     .tech-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: inherit; }
     .tech-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red, #C0182E); font-weight: bold; }
@@ -44,8 +45,9 @@
             <li>Onboard Foundation Machining</li><li>Precision Alignment</li><li>Weld Correction</li><li>Downtime Minimization</li><li>In Place Machining Services</li>
           </ul>
         </div>
-        <div class="content-image">
+        <div class="content-image image-collage-2">
           <img src="/static/assets/images/in-situ_machining.jpeg" alt="In-Situ Machining">
+          <img src="/static/assets/images/in-situ_machining_2.jpeg" alt="In-Situ Machining Details">
         </div>
       </div>
     </div>
