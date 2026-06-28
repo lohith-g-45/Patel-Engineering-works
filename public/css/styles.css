@@ -1060,8 +1060,8 @@ li {
 }
 
 @keyframes heroKenBurns {
-  0% { transform: scale(1); filter: brightness(0.6) contrast(1.1); }
-  100% { transform: scale(1.12); filter: brightness(0.5) contrast(1.2); }
+  0% { transform: scale(1); filter: none; }
+  100% { transform: scale(1.12); filter: none; }
 }
 
 .hero-overlay {
@@ -1070,8 +1070,7 @@ li {
   left: 0;
   right: 0;
   bottom: 0;
-  /* Dark overlay to make text pop without a box */
-  background: linear-gradient(135deg, rgba(8, 16, 36, 0.3) 0%, rgba(4, 10, 24, 0.2) 100%);
+  background: transparent;
   z-index: 1;
 }
 
@@ -1790,8 +1789,7 @@ li {
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 18% 20%, rgba(110, 166, 255, 0.2) 0%, rgba(110, 166, 255, 0) 42%), 
-              linear-gradient(118deg, rgba(8, 35, 88, 0.5) 0%, rgba(17, 56, 125, 0.38) 55%, rgba(8, 28, 74, 0.58) 100%);
+  background: transparent;
   z-index: 2;
 }
 
