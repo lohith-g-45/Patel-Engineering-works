@@ -5334,7 +5334,7 @@ img[data-expand-image] {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(31, 58, 122, 0.9) 0%, rgba(16, 26, 69, 0.75) 100%);
+  background: transparent;
   z-index: 1;
 }
 
