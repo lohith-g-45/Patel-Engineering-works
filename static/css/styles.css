@@ -1,4 +1,4 @@
-﻿/* Welding Techniques Horizontal Boxes with Arrow and Scroll Reveal */
+/* Welding Techniques Horizontal Boxes with Arrow and Scroll Reveal */
 .welding-techniques-list {
   display: flex;
   flex-direction: column;
@@ -1044,8 +1044,8 @@ li {
 }
 
 @keyframes heroKenBurns {
-  0% { transform: scale(1); filter: blur(4px) brightness(0.6) contrast(1.1); }
-  100% { transform: scale(1.12); filter: blur(4px) brightness(0.5) contrast(1.2); }
+  0% { transform: scale(1); filter: brightness(0.6) contrast(1.1); }
+  100% { transform: scale(1.12); filter: brightness(0.5) contrast(1.2); }
 }
 
 .hero-overlay {
