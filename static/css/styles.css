@@ -6644,27 +6644,10 @@ img[data-expand-image] {
 /* ================================================================
    NEW HERO BANNER STRUCTURE
    ================================================================ */
-.hero-banner-only {
+.hero-banner-only, .hero-banner-img {
   width: 100%;
-  height: 400px; /* Default height for subpages */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  background-color: #f8f9fa; /* Light background for any empty space */
-}
-
-.hero-banner-only.home-banner {
-  height: 500px; /* Slightly taller for the home page */
-}
-
-@media (max-width: 768px) {
-  .hero-banner-only {
-    height: 250px;
-  }
-  .hero-banner-only.home-banner {
-    height: 300px;
-  }
+  height: auto; /* Let the aspect ratio dictate the height natively */
+  display: block;
 }
 
 .page-title-section {
