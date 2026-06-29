@@ -6646,7 +6646,9 @@ img[data-expand-image] {
    ================================================================ */
 .hero-banner-only, .hero-banner-img {
   width: 100%;
-  height: auto; /* Let the aspect ratio dictate the height natively */
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
