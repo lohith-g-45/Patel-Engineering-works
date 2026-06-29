@@ -16,21 +16,22 @@
        ================================================================ -->
   {% include "_navbar.html" %}
 
-  <div style="display: grid; width: 100%;">
-    <img src="{{ url_for('static', filename='assets/images/home_hero_bg.jpg') }}" class="hero-banner-img" alt="Hero Banner" style="grid-area: 1 / 1; width: 100%; height: 100%; max-height: 75vh; object-fit: cover; display: block;">
-    <div style="grid-area: 1 / 1; place-self: center start; z-index: 1; text-align: left; width: 100%; padding: 2rem;">
-      <div class="container">
-        <div style="font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--primary-navy); margin-bottom: var(--spacing-16); font-family: var(--font-heading); text-shadow: 0px 0px 10px rgba(255,255,255,0.7);">Patel Engineering Works (Vizag)</div>
-        <h1 style="color: var(--primary-navy) !important; font-size: clamp(32px, 5vw, 56px); margin-bottom: var(--spacing-24); text-shadow: 0px 0px 15px rgba(255,255,255,0.6); max-width: 900px;">India's Trusted Partner in Shipbuilding &amp; Ship Repair</h1>
-        <p class="hero-sub-desktop" style="color: var(--primary-navy) !important; font-size: 20px !important; font-weight: 600; text-shadow: 0px 0px 10px rgba(255,255,255,0.7); max-width: 800px; margin-bottom: var(--spacing-32);">Two Decades of Delivering New Construction and Lifecycle Support to the Indian Navy, Coast Guard and the Nation’s Leading Shipyards — on Time, to Spec, Every Time.</p>
-        <p class="hero-sub-mobile" style="color: var(--primary-navy) !important; font-size: 18px !important; font-weight: 600; text-shadow: 0px 0px 10px rgba(255,255,255,0.7); margin-bottom: var(--spacing-32);">Shipbuilding &amp; Repair. Ontime, Every Time.</p>
-        <div class="hero-btn-group" style="display: flex; justify-content: flex-start; gap: var(--spacing-16);">
-          <a href="{{ url_for('divisions_overview') }}" class="btn-primary-new" style="box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Explore Capabilities</a>
-          <a href="{{ url_for('contact') }}" class="btn-outline-light-new" style="color: var(--primary-navy) !important; border-color: var(--primary-navy); background: rgba(255,255,255,0.5); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">Work With Us</a>
-        </div>
+  <!-- ================================================================
+       2. HERO SECTION
+       ================================================================ -->
+  <img src="{{ url_for('static', filename='assets/images/shipbuilding_coastal_hero.png') }}" class="hero-banner-img" alt="Hero Banner">
+  <section class="page-title-section">
+    <div class="container">
+      <div style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-navy); margin-bottom: var(--spacing-16); font-family: var(--font-heading);">Patel Engineering Works (Vizag)</div>
+      <h1 style="color: var(--primary-navy) !important;">India's Trusted Partner in Shipbuilding &amp; Ship Repair</h1>
+      <p class="hero-sub-desktop" style="color: var(--text-dark) !important;">Two Decades of Delivering New Construction and Lifecycle Support to the Indian Navy, Coast Guard and the Nation’s Leading Shipyards — on Time, to Spec, Every Time.</p>
+      <p class="hero-sub-mobile" style="color: var(--text-dark) !important;">Shipbuilding &amp; Repair. Ontime, Every Time.</p>
+      <div class="hero-btn-group">
+        <a href="{{ url_for('divisions_overview') }}" class="btn-primary-new">Explore Capabilities</a>
+        <a href="{{ url_for('contact') }}" class="btn-outline-light-new" style="color: var(--primary-navy) !important; border-color: var(--primary-navy);">Work With Us</a>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- ================================================================
        3. INTRO & STATS SECTION (White Background)
