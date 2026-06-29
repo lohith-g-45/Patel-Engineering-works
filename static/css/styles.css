@@ -6629,3 +6629,14 @@ img[data-expand-image] {
     font-size: 17px !important;
   }
 }
+
+/* Mobile Responsiveness for New Hero */
+@media (max-width: 768px) {
+  .hero-new {
+    min-height: 400px !important;
+    padding: var(--spacing-48) 0 !important;
+  }
+  .hero-new h1 {
+    font-size: 32px !important;
+  }
+}
