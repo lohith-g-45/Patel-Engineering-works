@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Patel Engineering Works</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lightweight.css') }}">
+</head>
+<body>
+  {% include "_navbar.html" %}
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Our Services</h1>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Structural Fabrication</h3>
+            <p>High-tensile steel and aluminum fabrication for marine vessels, conforming strictly to IACS classification standards.</p>
+          </div>
+          <div class="card">
+            <h3>Piping & Hydraulics</h3>
+            <p>End-to-end design, installation, and testing of complex high-pressure marine piping networks.</p>
+          </div>
+          <div class="card">
+            <h3>Electrical Outfitting</h3>
+            <p>Installation of advanced navigation, communication, and power distribution systems.</p>
+          </div>
+          <div class="card">
+            <h3>Propulsion Overhaul</h3>
+            <p>Specialized repair and alignment of marine shafts, propellers, and main engine components.</p>
+          </div>
+          <div class="card">
+            <h3>Surface Preparation</h3>
+            <p>Environmentally controlled blasting and marine-grade coating applications for anti-corrosion.</p>
+          </div>
+          <div class="card">
+            <h3>HVAC Systems</h3>
+            <p>Design and maintenance of specialized marine ventilation and climate control infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include "_footer.html" %}
+</body>
+</html>

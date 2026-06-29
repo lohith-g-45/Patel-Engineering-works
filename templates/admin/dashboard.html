@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Patel Engineering Works</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lightweight.css') }}">
+  <script>
+    const token = localStorage.getItem('adminToken');
+    if (!token) window.location.href = '/admin';
+    
+    async function fetchJobs() {
+      const res = await fetch('/api/admin/jobs', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.status === 401) window.location.href = '/admin';
+      const jobs = await res.json();
+      const tbody = document.getElementById('jobsTableBody');
+      tbody.innerHTML = '';
+      jobs.forEach(job => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${job.title}</td>
+          <td>${job.department}</td>
+          <td>
+            <span class="badge ${job.status === 'OPEN' ? 'badge-open' : 'badge-closed'}">${job.status}</span>
+          </td>
+          <td>
+            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;" onclick="toggleJob(${job.id})">Toggle Status</button>
+            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.875rem; border-color: var(--danger); color: var(--danger);" onclick="deleteJob(${job.id})">Delete</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function toggleJob(id) {
+      await fetch(`/api/admin/jobs/${id}/toggle`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      fetchJobs();
+    }
+
+    async function deleteJob(id) {
+      if(!confirm('Delete this job?')) return;
+      await fetch(`/api/admin/jobs/${id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      fetchJobs();
+    }
+
+    async function addJob(e) {
+      e.preventDefault();
+      const payload = {
+        title: document.getElementById('j_title').value,
+        department: document.getElementById('j_dept').value,
+        location: document.getElementById('j_loc').value,
+        type: document.getElementById('j_type').value,
+        description: document.getElementById('j_desc').value,
+      };
+      await fetch('/api/admin/jobs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+      document.getElementById('addJobForm').reset();
+      fetchJobs();
+    }
+
+    function logout() {
+      localStorage.removeItem('adminToken');
+      window.location.href = '/admin';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchJobs();
+      document.getElementById('addJobForm').addEventListener('submit', addJob);
+    });
+  </script>
+</head>
+<body class="admin-layout">
+  <aside class="admin-sidebar">
+    <h2 style="margin-bottom: 2rem;">PEW Admin</h2>
+    <ul style="list-style: none; padding: 0;">
+      <li style="margin-bottom: 1rem;"><a href="#" style="color: var(--primary-color); font-weight: 600;">Job Management</a></li>
+      <li><a href="#" onclick="logout()" style="color: var(--danger);">Logout</a></li>
+    </ul>
+    <div style="margin-top: 4rem;">
+      <a href="{{ url_for('home') }}" style="font-size: 0.875rem;">&larr; View Site</a>
+    </div>
+  </aside>
+
+  <main class="admin-content">
+    
+    <!-- HR Flow Visual (Demonstrates minimalist architecture) -->
+    <div class="hr-flow">
+      <div class="flow-step">
+        <div class="flow-icon">👤</div>
+        <strong>Candidate</strong><br>
+        <span style="font-size: 0.875rem; color: var(--text-secondary);">Browses Careers</span>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-icon">📝</div>
+        <strong>Submit Form</strong><br>
+        <span style="font-size: 0.875rem; color: var(--text-secondary);">Minimal API</span>
+      </div>
+      <div class="flow-arrow">&rarr;</div>
+      <div class="flow-step">
+        <div class="flow-icon">📧</div>
+        <strong>HR Email</strong><br>
+        <span style="font-size: 0.875rem; color: var(--text-secondary);">Instant Notification</span>
+      </div>
+    </div>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+      <h1 style="margin: 0;">Manage Job Openings</h1>
+    </div>
+
+    <div class="grid grid-2">
+      <!-- Add Job Form -->
+      <div class="card">
+        <h3 style="margin-bottom: 1.5rem;">Add New Job</h3>
+        <form id="addJobForm">
+          <div class="form-group">
+            <label class="form-label">Job Title</label>
+            <input type="text" id="j_title" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Department</label>
+            <input type="text" id="j_dept" class="form-control" required>
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Location</label>
+              <input type="text" id="j_loc" class="form-control" required>
+            </div>
+            <div class="form-group" style="flex: 1;">
+              <label class="form-label">Type</label>
+              <select id="j_type" class="form-control">
+                <option>Full-time</option>
+                <option>Contract</option>
+                <option>Part-time</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="j_desc" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Create Job Opening</button>
+        </form>
+      </div>
+
+      <!-- Job List Table -->
+      <div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="jobsTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

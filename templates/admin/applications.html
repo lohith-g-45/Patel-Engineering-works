@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Management | PEW Enterprise</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/enterprise.css') }}">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 3rem; text-align: center;">PEW Admin</div>
+      <nav>
+        <a href="{{ url_for('admin_dashboard') }}" class="sidebar-link">Dashboard</a>
+        <a href="{{ url_for('admin_applications') }}" class="sidebar-link active">Applications & Jobs</a>
+        <a href="#" class="sidebar-link">Content Management</a>
+        <a href="#" class="sidebar-link" onclick="logout()">Logout</a>
+      </nav>
+    </aside>
+    
+    <main class="main-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h1>Job Postings & Applications</h1>
+        <button class="btn-primary" onclick="alert('Demo: Add Job form opens here')">+ New Job Posting</button>
+      </div>
+      
+      <h3 class="mb-4">Active Jobs</h3>
+      <table class="data-table mb-4" id="jobsTable">
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Department</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+
+      <h3 class="mt-4 mb-4" style="margin-top: 4rem;">Recent Applicants</h3>
+      <table class="data-table" id="appsTable">
+        <thead>
+          <tr>
+            <th>Applicant Name</th>
+            <th>Job Applied</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Resume</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("adminToken");
+      window.location.href = "/admin";
+    }
+
+    async function toggleJob(id) {
+      const token = localStorage.getItem("adminToken");
+      await fetch(`/api/admin/jobs/${id}/toggle`, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      loadData();
+    }
+
+    async function loadData() {
+      const token = localStorage.getItem("adminToken");
+      if (!token) return logout();
+      
+      const headers = { 'Authorization': 'Bearer ' + token };
+      
+      try {
+        const [jobsRes, appsRes] = await Promise.all([
+          fetch('/api/admin/jobs', {headers}),
+          fetch('/api/admin/applicants', {headers})
+        ]);
+        
+        if (jobsRes.ok) {
+          const jobs = await jobsRes.json();
+          const tbody = document.querySelector('#jobsTable tbody');
+          tbody.innerHTML = jobs.map(j => `
+            <tr>
+              <td><strong>${j.title}</strong></td>
+              <td>${j.department}</td>
+              <td>${j.location}</td>
+              <td><span class="badge badge-${j.status.toLowerCase()}">${j.status}</span></td>
+              <td>
+                <button class="btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;" onclick="toggleJob(${j.id})">
+                  Toggle Status
+                </button>
+              </td>
+            </tr>
+          `).join('');
+        }
+        
+        if (appsRes.ok) {
+          const apps = await appsRes.json();
+          const tbody = document.querySelector('#appsTable tbody');
+          tbody.innerHTML = apps.map(a => `
+            <tr>
+              <td>
+                <strong>${a.name}</strong><br>
+                <small style="color: #697386;">${a.email}</small>
+              </td>
+              <td>${a.job_title}</td>
+              <td>${new Date(a.applied_at).toLocaleDateString()}</td>
+              <td><span class="badge badge-pending">${a.status}</span></td>
+              <td>
+                ${a.resume_path ? `<a href="${a.resume_path}" download class="btn-primary" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Download PDF</a>` : 'No Resume'}
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    window.onload = loadData;
+  </script>
+</body>
+</html>

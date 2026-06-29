@@ -5321,21 +5321,27 @@ img[data-expand-image] {
 .hero-new {
   position: relative;
   min-height: 740px;
-  background-size: cover;
-  background-position: center;
   display: flex;
   align-items: center;
   padding: var(--spacing-96) 0;
+  overflow: hidden;
 }
 
-.hero-new-overlay {
+.hero-new-bg {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: transparent;
-  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  animation: heroZoomInOut 20s infinite alternate linear;
+}
+
+@keyframes heroZoomInOut {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
 }
 
 .hero-new-content {

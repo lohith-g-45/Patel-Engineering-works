@@ -193,6 +193,10 @@ def register_routes(app: Flask) -> None:
     def about():
         return render_template("about.html")
 
+    @app.get("/services")
+    def services():
+        return render_template("services.html")
+
     @app.get("/about-certifications")
     def about_certifications():
         return render_template("about-certifications.html")
