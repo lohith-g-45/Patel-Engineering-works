@@ -1,1 +1,566 @@
-<!DOCTYPE html> <html lang="en"> <head>   <meta charset="UTF-8">   <meta name="viewport" content="width=device-width, initial-scale=1.0">   <title>Gallery | Patel Engineering Works</title>   <link rel="stylesheet" href="/static/css/styles.css">      <style>     body.media-page { background: #f8f9fa; color: #333; overflow-x: hidden; }                .gallery-container { padding: 4rem 0 6rem; max-width: 1300px; margin: 0 auto; width: 100%; }     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 0 20px; }     .gallery-card { background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; cursor: pointer; }     .gallery-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #ddd; }     .gallery-img-wrap { width: 100%; height: 260px; overflow: hidden; background: #f0f0f0; }     .gallery-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }     .gallery-card:hover .gallery-img-wrap img { transform: scale(1.08); } @media (max-width: 768px) {       </style> </head> <body class="media-page">   {% include "_navbar.html" %} <img src="{{ url_for('static', filename='assets/images/gallery_hero_bg.png') }}" class="hero-banner-img" alt="Hero Banner"> <section class="page-title-section">     <div class="container">         <h1 data-word-reveal data-word-reveal-start="120">Gallery</h1>         <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A Visual Showcase of Our Engineering Excellence and Facilities.</p>     </div> </section>  <div class="media-breadcrumb" aria-label="Breadcrumb">     <div class="container">         <p>Home / Media / Gallery</p>     </div> </div>  <div class="gallery-container">          <div class="gallery-grid">         <a href="/static/assets/images/new_hero_shipbuild.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/new_hero_shipbuild.png" alt="Strategic Shipbuilding">           </div>                    </a>         <a href="/static/assets/images/new_hero_repair.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/new_hero_repair.png" alt="Vessel Modernization">           </div>                    </a>         <a href="/static/assets/images/pressfit_2.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/pressfit_2.png" alt="Advanced Piping">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.42%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.42%20PM.jpeg" alt="Propulsion Overhaul">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%281%29.jpeg" alt="Dry Dock Services">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%282%29.jpeg" alt="Engine Calibration">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM.jpeg" alt="Welding Precision">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.44%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.44%20PM.jpeg" alt="Navigational Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM%20%281%29.jpeg" alt="Electrical Retrofits">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM.jpeg" alt="Pump Maintenance">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM%20%281%29.jpeg" alt="HVAC Servicing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM.jpeg" alt="Shaft Alignment">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM%20%281%29.jpeg" alt="Steel Renewal">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM.jpeg" alt="Surface Preparation">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM%20%281%29.jpeg" alt="Marine Coating">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM.jpeg" alt="Valve Rebuilding">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%281%29.jpeg" alt="Hydraulic Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%282%29.jpeg" alt="Deck Equipment">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM.jpeg" alt="Pipe Spooling">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%281%29.jpeg" alt="NDT Inspection">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%282%29.jpeg" alt="Generator Servicing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM.jpeg" alt="Boiler Refits">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%281%29.jpeg" alt="Outfitting Works">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%282%29.jpeg" alt="Rudder Maintenance">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%283%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%283%29.jpeg" alt="Cathodic Protection">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM.jpeg" alt="Anchor Chain Servicing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM%20%281%29.jpeg" alt="Propeller Polishing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM.jpeg" alt="Exhaust Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%281%29.jpeg" alt="Safety Equipment">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%282%29.jpeg" alt="Automation Upgrades">           </div>                    </a>          <!-- Newly Uploaded Images with Captions -->         <a href="{{ url_for('static', filename='assets/images/gallery/refit_ins_kalpeni.png') }}" class="gallery-card">           <div class="gallery-img-wrap">             <img src="{{ url_for('static', filename='assets/images/gallery/refit_ins_kalpeni.png') }}" alt="INS Kalpeni Refit">           </div>           <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Major Refit of INS Kalpeni including Underwater Inspections.</div>         </a>         <a href="{{ url_for('static', filename='assets/images/gallery/mou_grse.png') }}" class="gallery-card">           <div class="gallery-img-wrap">             <img src="{{ url_for('static', filename='assets/images/gallery/mou_grse.png') }}" alt="MoU with GRSE">           </div>           <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Signing of MoU with GRSE Ltd for Turnkey Ship Refits in Kolkata.</div>         </a>         <a href="{{ url_for('static', filename='assets/images/gallery/refit_ins_sujata.png') }}" class="gallery-card">           <div class="gallery-img-wrap">             <img src="{{ url_for('static', filename='assets/images/gallery/refit_ins_sujata.png') }}" alt="INS Sujata Refit">           </div>           <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Simultaneous Refit Completion of INS Sujata and Tug AVTAR.</div>         </a>         <a href="{{ url_for('static', filename='assets/images/gallery/installation_ins_car_nicobar.jpg') }}" class="gallery-card">           <div class="gallery-img-wrap">             <img src="{{ url_for('static', filename='assets/images/gallery/installation_ins_car_nicobar.jpg') }}" alt="INS Car Nicobar Engine">           </div>           <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Main Engine and Salvage Pump Installation Onboard INS Car Nicobar.</div>         </a>         <a href="{{ url_for('static', filename='assets/images/gallery/milestone_refits.jpg') }}" class="gallery-card">           <div class="gallery-img-wrap">             <img src="{{ url_for('static', filename='assets/images/gallery/milestone_refits.jpg') }}" alt="Milestone Refits">           </div>           <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Milestone Achievement: Major Refits of INS Car Nicobar and INS Kalpeni.</div>         </a>          <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%283%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%283%29.jpeg" alt="Tank Cleaning">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM.jpeg" alt="Mooring Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%281%29.jpeg" alt="Thruster Overhaul">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%282%29.jpeg" alt="Structural Integrity">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM.jpeg" alt="Maritime Engineering">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%281%29.jpeg" alt="Quality Assurance">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%282%29.jpeg" alt="Defense Contracting">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM.jpeg" alt="Ship Maintenance">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%281%29.jpeg" alt="Offshore Logistics">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%282%29.jpeg" alt="Strategic Shipbuilding">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM.jpeg" alt="Hull Fabrication">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%281%29.jpeg" alt="Vessel Modernization">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%282%29.jpeg" alt="Advanced Piping">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%283%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%283%29.jpeg" alt="Propulsion Overhaul">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM.jpeg" alt="Dry Dock Services">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%281%29.jpeg" alt="Engine Calibration">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%282%29.jpeg" alt="Welding Precision">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM.jpeg" alt="Navigational Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM%20%281%29.jpeg" alt="Electrical Retrofits">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM.jpeg" alt="Pump Maintenance">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%281%29.jpeg" alt="HVAC Servicing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%282%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%282%29.jpeg" alt="Shaft Alignment">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM.jpeg" alt="Steel Renewal">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM%20%281%29.jpeg" alt="Surface Preparation">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM.jpeg" alt="Marine Coating">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.47%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.47%20PM.jpeg" alt="Valve Rebuilding">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM%20%281%29.jpeg" alt="Hydraulic Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM.jpeg" alt="Deck Equipment">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.37%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.37%20PM.jpeg" alt="Pipe Spooling">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.38%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.38%20PM.jpeg" alt="NDT Inspection">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM%20%281%29.jpeg" alt="Generator Servicing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM.jpeg" alt="Boiler Refits">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM%20%281%29.jpeg" alt="Outfitting Works">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM.jpeg" alt="Rudder Maintenance">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM%20%281%29.jpeg" alt="Cathodic Protection">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM.jpeg" alt="Anchor Chain Servicing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM%20%281%29.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM%20%281%29.jpeg" alt="Propeller Polishing">           </div>                    </a>         <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM.jpeg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM.jpeg" alt="Exhaust Systems">           </div>                    </a>         <a href="/static/assets/images/gallery/gallery_new_1.jpg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_1.jpg" alt="Major Refit of INS Kalpeni including Underwater Inspections."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Major Refit of INS Kalpeni including Underwater Inspections.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_2.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_2.png" alt="With CO of INS Kalpeni (post refit)."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">With CO of INS Kalpeni (post refit).</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_3.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_3.png" alt="Installation of New Rotable Main Engine onboard INS Car Nicobar."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Installation of New Rotable Main Engine onboard INS Car Nicobar.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_4.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_4.png" alt="Installation of New Rotable Main Engine onboard INS Car Nicobar."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Installation of New Rotable Main Engine onboard INS Car Nicobar.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_5.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_5.png" alt="Installation of Main Engine post W6 routines."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Installation of Main Engine post W6 routines.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_6.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_6.png" alt="Installation of new salvage pump."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Installation of new salvage pump.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_7.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_7.png" alt="Signing of MoU with GRSE Ltd for Turnkey Ship Refits in Kolkata."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Signing of MoU with GRSE Ltd for Turnkey Ship Refits in Kolkata.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_8.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_8.png" alt="Signing of MoU with GRSE Ltd for Turnkey Ship Refits in Kolkata."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Signing of MoU with GRSE Ltd for Turnkey Ship Refits in Kolkata.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_9.jpg" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_9.jpg" alt="Simultaneous Refit Completion of INS Sujata and Tug AVTAR."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Simultaneous Refit Completion of INS Sujata and Tug AVTAR.</div>         </a>         <a href="/static/assets/images/gallery/gallery_new_10.png" class="gallery-card">           <div class="gallery-img-wrap">             <img src="/static/assets/images/gallery/gallery_new_10.png" alt="Simultaneous Refit Completion of INS Sujata and Tug AVTAR."></div><div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Simultaneous Refit Completion of INS Sujata and Tug AVTAR.</div>         </a>       </div> </div>   {% include "_footer.html" %}   <script src="/static/js/main.js"></script>          <!-- Modal for Gallery -->   <div id="galleryModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(8, 25, 60, 0.9); align-items:center; justify-content:center; flex-direction:column;">     <span onclick="document.getElementById('galleryModal').style.display='none'" style="position:absolute; top:20px; right:40px; color:white; font-size:40px; cursor:pointer; font-weight:bold;">&times;</span>     <img id="modalImg" style="max-width:90%; max-height:80vh; border:2px solid white; border-radius:4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">     <div id="modalCaption" style="color:white; margin-top:20px; font-size:1.3rem; font-weight:600; text-align:center;"></div>   </div>    <script>     document.querySelectorAll('.gallery-card').forEach(card => {       card.addEventListener('click', e => {         e.preventDefault();         const href = card.getAttribute('href');         const caption = card.querySelector('h3') ? card.querySelector('h3').innerText : '';         const modal = document.getElementById('galleryModal');         const modalImg = document.getElementById('modalImg');         const modalCaption = document.getElementById('modalCaption');                  modal.style.display = 'flex';         modalImg.src = href;         modalCaption.innerText = caption;       });     });   </script>  </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  
+  <style>
+    body.media-page { background: #f8f9fa; color: #333; overflow-x: hidden; }
+
+    
+    
+    .gallery-container { padding: 4rem 0 6rem; max-width: 1300px; margin: 0 auto; width: 100%; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 0 20px; }
+    .gallery-card { background: #fff; border: 1px solid #eaeaea; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; cursor: pointer; }
+    .gallery-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: #ddd; }
+    .gallery-img-wrap { width: 100%; height: 260px; overflow: hidden; background: #f0f0f0; }
+    .gallery-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .gallery-card:hover .gallery-img-wrap img { transform: scale(1.08); }
+@media (max-width: 768px) {
+      </style>
+</head>
+<body class="media-page">
+  {% include "_navbar.html" %}
+<img src="{{ url_for('static', filename='assets/images/gallery_hero_bg.png') }}" class="hero-banner-img" alt="Hero Banner">
+<section class="page-title-section">
+    <div class="container">
+        <h1 data-word-reveal data-word-reveal-start="120">Gallery</h1>
+        <p data-word-reveal data-word-reveal-start="500" class="section-subtitle">A Visual Showcase of Our Engineering Excellence and Facilities.</p>
+    </div>
+</section>
+
+<div class="media-breadcrumb" aria-label="Breadcrumb">
+    <div class="container">
+        <p>Home / Media / Gallery</p>
+    </div>
+</div>
+
+<div class="gallery-container">
+    
+    <div class="gallery-grid">
+        <a href="/static/assets/images/new_hero_shipbuild.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/new_hero_shipbuild.png" alt="Strategic Shipbuilding">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/new_hero_repair.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/new_hero_repair.png" alt="Vessel Modernization">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/pressfit_2.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/pressfit_2.png" alt="Advanced Piping">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.42%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.42%20PM.jpeg" alt="Propulsion Overhaul">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%281%29.jpeg" alt="Dry Dock Services">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM%20%282%29.jpeg" alt="Engine Calibration">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.43%20PM.jpeg" alt="Welding Precision">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.44%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.47.44%20PM.jpeg" alt="Navigational Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM%20%281%29.jpeg" alt="Electrical Retrofits">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.14%20PM.jpeg" alt="Pump Maintenance">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM%20%281%29.jpeg" alt="HVAC Servicing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.15%20PM.jpeg" alt="Shaft Alignment">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM%20%281%29.jpeg" alt="Steel Renewal">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-04-30%20at%201.48.16%20PM.jpeg" alt="Surface Preparation">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM%20%281%29.jpeg" alt="Marine Coating">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.49%20AM.jpeg" alt="Valve Rebuilding">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%281%29.jpeg" alt="Hydraulic Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM%20%282%29.jpeg" alt="Deck Equipment">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.50%20AM.jpeg" alt="Pipe Spooling">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%281%29.jpeg" alt="NDT Inspection">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM%20%282%29.jpeg" alt="Generator Servicing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.51%20AM.jpeg" alt="Boiler Refits">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%281%29.jpeg" alt="Outfitting Works">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%282%29.jpeg" alt="Rudder Maintenance">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%283%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM%20%283%29.jpeg" alt="Cathodic Protection">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.52%20AM.jpeg" alt="Anchor Chain Servicing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM%20%281%29.jpeg" alt="Propeller Polishing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.53%20AM.jpeg" alt="Exhaust Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%281%29.jpeg" alt="Safety Equipment">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%282%29.jpeg" alt="Automation Upgrades">
+          </div>
+          
+        </a>
+
+        <!-- Newly Uploaded Images with Captions -->
+        <a href="{{ url_for('static', filename='assets/images/gallery/refit_ins_kalpeni.png') }}" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="{{ url_for('static', filename='assets/images/gallery/refit_ins_kalpeni.png') }}" alt="INS Kalpeni Refit">
+          </div>
+          <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Major Refit of INS Kalpeni including Underwater Inspections.</div>
+        </a>
+        <a href="{{ url_for('static', filename='assets/images/gallery/mou_grse.png') }}" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="{{ url_for('static', filename='assets/images/gallery/mou_grse.png') }}" alt="MoU with GRSE">
+          </div>
+          <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Signing of MoU with GRSE Ltd for Turnkey Ship Refits in Kolkata.</div>
+        </a>
+        <a href="{{ url_for('static', filename='assets/images/gallery/refit_ins_sujata.png') }}" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="{{ url_for('static', filename='assets/images/gallery/refit_ins_sujata.png') }}" alt="INS Sujata Refit">
+          </div>
+          <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Simultaneous Refit Completion of INS Sujata and Tug AVTAR.</div>
+        </a>
+        <a href="{{ url_for('static', filename='assets/images/gallery/installation_ins_car_nicobar.jpg') }}" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="{{ url_for('static', filename='assets/images/gallery/installation_ins_car_nicobar.jpg') }}" alt="INS Car Nicobar Engine">
+          </div>
+          <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Main Engine and Salvage Pump Installation Onboard INS Car Nicobar.</div>
+        </a>
+        <a href="{{ url_for('static', filename='assets/images/gallery/milestone_refits.jpg') }}" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="{{ url_for('static', filename='assets/images/gallery/milestone_refits.jpg') }}" alt="Milestone Refits">
+          </div>
+          <div style="padding: 15px; text-align: center; color: var(--primary-navy); font-weight: 600; font-size: 15px;">Milestone Achievement: Major Refits of INS Car Nicobar and INS Kalpeni.</div>
+        </a>
+
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%283%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM%20%283%29.jpeg" alt="Tank Cleaning">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.54%20AM.jpeg" alt="Mooring Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%281%29.jpeg" alt="Thruster Overhaul">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM%20%282%29.jpeg" alt="Structural Integrity">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.55%20AM.jpeg" alt="Maritime Engineering">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%281%29.jpeg" alt="Quality Assurance">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM%20%282%29.jpeg" alt="Defense Contracting">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.56%20AM.jpeg" alt="Ship Maintenance">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%281%29.jpeg" alt="Offshore Logistics">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM%20%282%29.jpeg" alt="Strategic Shipbuilding">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.57%20AM.jpeg" alt="Hull Fabrication">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%281%29.jpeg" alt="Vessel Modernization">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%282%29.jpeg" alt="Advanced Piping">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%283%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM%20%283%29.jpeg" alt="Propulsion Overhaul">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.58%20AM.jpeg" alt="Dry Dock Services">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%281%29.jpeg" alt="Engine Calibration">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM%20%282%29.jpeg" alt="Welding Precision">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.04.59%20AM.jpeg" alt="Navigational Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM%20%281%29.jpeg" alt="Electrical Retrofits">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.00%20AM.jpeg" alt="Pump Maintenance">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%281%29.jpeg" alt="HVAC Servicing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%282%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM%20%282%29.jpeg" alt="Shaft Alignment">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-01%20at%2011.05.01%20AM.jpeg" alt="Steel Renewal">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM%20%281%29.jpeg" alt="Surface Preparation">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.41.49%20PM.jpeg" alt="Marine Coating">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.47%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.47%20PM.jpeg" alt="Valve Rebuilding">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM%20%281%29.jpeg" alt="Hydraulic Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%201.42.48%20PM.jpeg" alt="Deck Equipment">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.37%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.37%20PM.jpeg" alt="Pipe Spooling">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.38%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.38%20PM.jpeg" alt="NDT Inspection">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM%20%281%29.jpeg" alt="Generator Servicing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.39%20PM.jpeg" alt="Boiler Refits">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM%20%281%29.jpeg" alt="Outfitting Works">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.40%20PM.jpeg" alt="Rudder Maintenance">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM%20%281%29.jpeg" alt="Cathodic Protection">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.41%20PM.jpeg" alt="Anchor Chain Servicing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM%20%281%29.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM%20%281%29.jpeg" alt="Propeller Polishing">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM.jpeg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/WhatsApp%20Image%202026-05-03%20at%2012.09.42%20PM.jpeg" alt="Exhaust Systems">
+          </div>
+          
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_1.jpg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_1.jpg" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_2.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_2.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_3.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_3.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_4.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_4.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_5.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_5.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_6.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_6.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_7.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_7.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_8.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_8.png" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_9.jpg" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_9.jpg" alt="Gallery Image">
+          </div>
+        </a>
+        <a href="/static/assets/images/gallery/gallery_new_10.png" class="gallery-card">
+          <div class="gallery-img-wrap">
+            <img src="/static/assets/images/gallery/gallery_new_10.png" alt="Gallery Image">
+          </div>
+        </a>
+      </div>
+</div>
+  {% include "_footer.html" %}
+  <script src="/static/js/main.js"></script>
+  
+  
+
+  <!-- Modal for Gallery -->
+  <div id="galleryModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(8, 25, 60, 0.9); align-items:center; justify-content:center; flex-direction:column;">
+    <span onclick="document.getElementById('galleryModal').style.display='none'" style="position:absolute; top:20px; right:40px; color:white; font-size:40px; cursor:pointer; font-weight:bold;">&times;</span>
+    <img id="modalImg" style="max-width:90%; max-height:80vh; border:2px solid white; border-radius:4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <div id="modalCaption" style="color:white; margin-top:20px; font-size:1.3rem; font-weight:600; text-align:center;"></div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.gallery-card').forEach(card => {
+      card.addEventListener('click', e => {
+        e.preventDefault();
+        const href = card.getAttribute('href');
+        const caption = card.querySelector('h3') ? card.querySelector('h3').innerText : '';
+        const modal = document.getElementById('galleryModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+        
+        modal.style.display = 'flex';
+        modalImg.src = href;
+        modalCaption.innerText = caption;
+      });
+    });
+  </script>
+
+</body>
+</html>
