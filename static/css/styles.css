@@ -5336,12 +5336,6 @@ img[data-expand-image] {
   background-size: cover;
   background-position: center;
   z-index: 0;
-  animation: heroZoomInOut 20s infinite alternate linear;
-}
-
-@keyframes heroZoomInOut {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.15); }
 }
 
 .hero-new-content {
