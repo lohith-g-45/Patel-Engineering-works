@@ -102,10 +102,9 @@
     <aside class="sidebar">
       <div class="sidebar-header">Careers Admin</div>
       <nav class="sidebar-nav">
-        <div class="nav-item active" data-target="dashboard">Dashboard</div>
+        <div class="nav-item" data-target="dashboard">Dashboard</div>
         <div class="nav-item" data-target="jobs">Job Management</div>
         <div class="nav-item" data-target="applications">Applications</div>
-        <div class="nav-item" data-target="settings">Settings</div>
       </nav>
       <div class="sidebar-footer">
         <button class="logout-btn" id="logout-btn">Logout</button>
@@ -180,57 +179,6 @@
               <!-- Rendered via JS -->
             </tbody>
           </table>
-        </div>
-      </div>
-
-      <!-- Settings -->
-      <div id="settings" class="view">
-        <h1 style="color: var(--primary); margin-bottom: 2rem;">Settings</h1>
-        
-        <div class="settings-container" style="max-width: 700px;">
-          <!-- Email Section -->
-          <div class="settings-section" style="background: var(--surface); border-radius: var(--radius-lg); border: 1px solid rgba(18, 37, 74, 0.08); padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(18, 37, 74, 0.02);">
-            <div style="border-bottom: 1px solid rgba(18, 37, 74, 0.08); padding-bottom: 1.25rem; margin-bottom: 1.75rem;">
-              <h2 style="font-size: 1.25rem; margin: 0; color: var(--primary); font-weight: 700;">Email Settings</h2>
-              <p style="color: var(--text-light); font-size: 0.9rem; margin: 0.5rem 0 0 0;">Update the email address used to log into the admin portal.</p>
-            </div>
-            <div id="email-success" style="color: #065f46; background: #d1fae5; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none; font-weight: 500;">Email updated successfully.</div>
-            <form id="update-email-form">
-              <div style="margin-bottom: 1.5rem;">
-                <label>New Email Address</label>
-                <input type="email" id="settings-new-email" class="input-field" placeholder="admin@patelengineering.com" style="max-width: 450px;" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Save Email changes</button>
-            </form>
-          </div>
-
-          <!-- Password Section -->
-          <div class="settings-section" style="background: var(--surface); border-radius: var(--radius-lg); border: 1px solid rgba(18, 37, 74, 0.08); padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(18, 37, 74, 0.02);">
-            <div style="border-bottom: 1px solid rgba(18, 37, 74, 0.08); padding-bottom: 1.25rem; margin-bottom: 1.75rem;">
-              <h2 style="font-size: 1.25rem; margin: 0; color: var(--primary); font-weight: 700;">Change Password</h2>
-              <p style="color: var(--text-light); font-size: 0.9rem; margin: 0.5rem 0 0 0;">Update your password to keep your account secure.</p>
-            </div>
-            <div id="password-success" style="color: #065f46; background: #d1fae5; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none; font-weight: 500;">Password updated successfully.</div>
-            <div id="password-error" style="color: #991b1b; background: #fee2e2; padding: 0.75rem 1rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none; font-weight: 500;">Current password is incorrect.</div>
-            <form id="update-password-form">
-              <div style="margin-bottom: 1.5rem;">
-                <label>Current Password</label>
-                <input type="password" id="settings-current-pass" class="input-field" style="max-width: 450px;" required>
-              </div>
-              <div style="margin-bottom: 2rem;">
-                <label>New Password</label>
-                <input type="password" id="settings-new-pass" class="input-field" style="max-width: 450px;" required>
-              </div>
-              <button type="submit" class="btn btn-primary">Update Password</button>
-            </form>
-          </div>
-
-          <!-- Danger Zone Section -->
-          <div class="settings-section" style="background: #fffafa; border-radius: var(--radius-lg); border: 1px solid #fecaca; padding: 2.5rem; margin-bottom: 2rem;">
-            <h2 style="font-size: 1.25rem; margin: 0 0 0.5rem 0; color: #b91c1c; font-weight: 700;">Danger Zone</h2>
-            <p style="color: var(--text-light); font-size: 0.9rem; margin: 0 0 1.5rem 0;">End your current administrative session securely.</p>
-            <button class="btn" id="settings-logout-btn" style="background: rgba(239, 68, 68, 0.1); color: #b91c1c; border: 1px solid rgba(239, 68, 68, 0.2); font-weight: 600;">Log Out Securely</button>
-          </div>
         </div>
       </div>
 
