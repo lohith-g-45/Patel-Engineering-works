@@ -20,9 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const user = document.getElementById('login-email').value;
     const pass = document.getElementById('login-pass').value;
+    const storedEmail = localStorage.getItem('adminEmail') || 'lg8717429@gmail.com';
     const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     
-    if (user === 'lg8717429@gmail.com' && pass === storedPass) {
+    if (user === storedEmail && pass === storedPass) {
       localStorage.setItem('isCareersAdminAuthValidated', 'true');
       loginView.style.display = 'none';
       appView.style.display = 'flex';
@@ -262,11 +263,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   const profileAvatar = document.querySelector('.profile-avatar');
   const popupLogoutBtn = document.getElementById('popup-logout-btn');
 
-  // Load and Set Name
+  // Load and Set Profile Data
   let savedName = localStorage.getItem('adminName') || 'System Admin';
+  let savedEmail = localStorage.getItem('adminEmail') || 'lg8717429@gmail.com';
+  
   displayAdminName.textContent = savedName;
   adminNameInput.value = savedName;
   profileAvatar.textContent = savedName.charAt(0).toUpperCase();
+  
+  const displayAdminEmail = document.getElementById('display-admin-email');
+  const displaySidebarEmail = document.getElementById('display-sidebar-email');
+  if (displayAdminEmail) displayAdminEmail.textContent = savedEmail;
+  if (displaySidebarEmail) displaySidebarEmail.textContent = savedEmail;
 
   // Toggle Popup
   profileToggleBtn.addEventListener('click', (e) => {
@@ -304,34 +312,36 @@ document.addEventListener('DOMContentLoaded', async () => {
     profilePopup.style.display = 'none';
   });
 
-  // --- Password Reset Modal Logic ---
-  const passwordModal = document.getElementById('password-modal');
-  const openPasswordBtn = document.getElementById('open-password-btn');
-  const closePasswordModalBtn = document.getElementById('close-password-modal-btn');
-  const passwordResetForm = document.getElementById('password-reset-form');
+  // --- Account Update Modal Logic ---
+  const accountModal = document.getElementById('account-modal');
+  const openAccountBtn = document.getElementById('open-account-btn');
+  const closeAccountModalBtn = document.getElementById('close-account-modal-btn');
+  const accountResetForm = document.getElementById('account-reset-form');
 
-  openPasswordBtn.addEventListener('click', () => {
+  openAccountBtn.addEventListener('click', () => {
     profilePopup.style.display = 'none';
     profileToggleBtn.style.background = 'rgba(255,255,255,0.05)';
-    passwordModal.classList.add('active');
-    document.getElementById('password-modal-error').style.display = 'none';
-    document.getElementById('password-modal-success').style.display = 'none';
-    passwordResetForm.reset();
+    accountModal.classList.add('active');
+    document.getElementById('account-modal-error').style.display = 'none';
+    document.getElementById('account-modal-success').style.display = 'none';
+    accountResetForm.reset();
+    document.getElementById('modal-new-email').value = localStorage.getItem('adminEmail') || 'lg8717429@gmail.com';
   });
 
-  closePasswordModalBtn.addEventListener('click', () => {
-    passwordModal.classList.remove('active');
+  closeAccountModalBtn.addEventListener('click', () => {
+    accountModal.classList.remove('active');
   });
 
-  passwordResetForm.addEventListener('submit', (e) => {
+  accountResetForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const currentPass = document.getElementById('modal-current-pass').value;
+    const newEmail = document.getElementById('modal-new-email').value.trim();
     const newPass = document.getElementById('modal-new-pass').value;
     const confirmPass = document.getElementById('modal-confirm-pass').value;
     
     const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
-    const errorEl = document.getElementById('password-modal-error');
-    const successEl = document.getElementById('password-modal-success');
+    const errorEl = document.getElementById('account-modal-error');
+    const successEl = document.getElementById('account-modal-success');
     
     errorEl.style.display = 'none';
     successEl.style.display = 'none';
@@ -348,12 +358,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
+    // Save New Credentials
+    localStorage.setItem('adminEmail', newEmail);
     localStorage.setItem('adminPassword', newPass);
+    
+    // Update Profile UI
+    if (displayAdminEmail) displayAdminEmail.textContent = newEmail;
+    if (displaySidebarEmail) displaySidebarEmail.textContent = newEmail;
+
     successEl.style.display = 'block';
-    passwordResetForm.reset();
+    accountResetForm.reset();
     
     setTimeout(() => {
-      passwordModal.classList.remove('active');
+      accountModal.classList.remove('active');
     }, 2000);
   });
 
