@@ -1,9 +1,7 @@
-import { LocalStore } from './data/localStore.js';
-import { JobService } from './services/JobService.js';
-import { ApplicationService } from './services/ApplicationService.js';
-
+import { JobService } from '../services/JobService.js';
+import { ApplicationService } from '../services/ApplicationService.js';
+import { DashboardService } from '../services/DashboardService.js';
 document.addEventListener('DOMContentLoaded', async () => {
-  LocalStore.init();
 
   const loginView = document.getElementById('login-view');
   const appView = document.getElementById('app-view');
@@ -56,13 +54,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   // --- Data Loading Functions ---
 
   async function loadDashboard() {
-    const jobs = await JobService.getAllJobs();
-    const apps = await ApplicationService.getAllApplications();
-    
-    document.getElementById('stat-total-jobs').textContent = jobs.length;
-    document.getElementById('stat-open-jobs').textContent = jobs.filter(j => j.status === 'Open').length;
-    document.getElementById('stat-closed-jobs').textContent = jobs.filter(j => j.status === 'Closed').length;
-    document.getElementById('stat-total-apps').textContent = apps.length;
+    try {
+      const stats = await DashboardService.getDashboardStats();
+      
+      document.getElementById('stat-total-jobs').textContent = stats.totalJobs;
+      document.getElementById('stat-open-jobs').textContent = stats.openJobs;
+      document.getElementById('stat-closed-jobs').textContent = stats.closedJobs;
+      document.getElementById('stat-total-apps').textContent = stats.totalApplications;
+    } catch (error) {
+      console.error('Failed to load dashboard stats:', error);
+    }
   }
 
   async function loadJobs() {
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     jobs.forEach(job => {
-      const badgeClass = job.status === 'Open' ? 'badge-success' : 'badge-danger';
+      const badgeClass = job.status === 'OPEN' ? 'badge-success' : 'badge-danger';
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td style="font-weight: 500;">${job.title}</td>
@@ -96,8 +97,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelectorAll('.toggle-status-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const id = e.target.closest('button').getAttribute('data-id');
-        const job = await JobService.getJobById(id);
-        await JobService.updateJob(id, { status: job.status === 'Open' ? 'Closed' : 'Open' });
+        const job = await JobService.getJob(id);
+        await JobService.toggleJobStatus(id, job.status);
         loadJobs();
       });
     });
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelectorAll('.edit-job-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
         const id = e.target.closest('button').getAttribute('data-id');
-        const job = await JobService.getJobById(id);
+        const job = await JobService.getJob(id);
         openJobModal(job);
       });
     });
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   async function loadApplications() {
-    const apps = await ApplicationService.getAllApplications();
+    const apps = await ApplicationService.getApplications();
     const tbody = document.getElementById('apps-tbody');
     tbody.innerHTML = '';
     
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     // Reverse sort to show newest first
-    apps.sort((a, b) => b.id - a.id).forEach(app => {
+    apps.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).forEach(app => {
       const getBadge = (s) => {
         switch(s) {
           case 'Hired': return 'badge-success';
@@ -214,7 +215,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('job-loc').value = job ? job.location : '';
     document.getElementById('job-exp').value = job ? job.experience : '';
     document.getElementById('job-type').value = job ? job.employmentType : 'Full-time';
-    document.getElementById('job-status').value = job ? job.status : 'Open';
+    document.getElementById('job-status').value = job ? job.status : 'OPEN';
     document.getElementById('job-desc').value = job ? job.description : '';
     document.getElementById('job-reqs').value = job ? job.requirements : '';
     
