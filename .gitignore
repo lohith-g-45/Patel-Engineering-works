@@ -10,3 +10,10 @@ build/
 *.egg-info/
 .vscode/
 .idea/
+
+check_*.py
+crop_*.py
+make_*.py
+remove_*.py
+reorder_*.py
+restore_*.py

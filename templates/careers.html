@@ -293,6 +293,7 @@
         </div>
       </div>
 
+
       <!-- WHY JOIN PEW(V) -->
       <div style="border: 1px solid #ddd; padding: 2rem; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 12px; margin-bottom: 2.5rem;">
         <div style="background-color: var(--primary-navy, #12254a); color: #fff; padding: 12px 20px; font-weight: 700; font-size: 1.15rem; letter-spacing: 0.02em; text-transform: uppercase;">
@@ -315,9 +316,14 @@
         </div>
       </div>
 
-      <!-- APPLICATION FORM -->
-      <div class="career-form-card" id="form-panel">
-        <h2>Job Application</h2>
+      <!-- DYNAMIC JOBS CONTAINER -->
+      <div id="dynamic-jobs-container"></div>
+
+      <!-- APPLICATION FORM MODAL -->
+      <div id="application-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(18, 37, 74, 0.7); z-index: 9999; align-items: center; justify-content: center; padding: 1rem;">
+      <div class="career-form-card" id="form-panel" style="margin-top: 0; max-height: 90vh; overflow-y: auto; position: relative; width: 100%; max-width: 780px;">
+        <button id="close-modal-btn" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light);">&times;</button>
+        <h2 style="color: var(--primary-navy, #12254a);">Job Application</h2>
         <p class="form-intro">Fill in Your Details Below. We'll Generate a PDF Application for You to Email Directly to Our HR Team — No Sign Up Required.</p>
 
         <form id="career-form" novalidate>
@@ -431,11 +437,11 @@
             <textarea class="cf-textarea" id="cf-skills" placeholder="e.g. Cable laying, Marine electrical systems, ISO 9001, etc." rows="3"></textarea>
           </div>
 
-          <!-- Resume Note -->
+          <!-- Resume Upload -->
           <div class="cf-group">
-            <p class="cf-file-note" style="color: var(--primary-navy); font-weight: 600;">Note: You Will Be Asked to Attach Your Original Resume Separately in the Final Step After the Application PDF is Generated.</p>
+            <label class="cf-label" for="cf-resume">Upload Resume (PDF, DOCX) <span>*</span></label>
+            <input class="cf-input" type="file" id="cf-resume" accept=".pdf,.doc,.docx" required style="padding: 0.5rem;">
           </div>
-
           <!-- Checkboxes -->
           <div class="cf-group">
             <label style="display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;font-size:0.88rem;color:var(--text-light);line-height:1.5;">
@@ -444,8 +450,8 @@
             </label>
           </div>
 
-          <button type="button" class="cf-submit-btn" id="cf-submit-btn" onclick="handleGenerate()">
-            📄 Generate Application PDF
+          <button type="button" class="cf-submit-btn" id="cf-submit-btn">
+            Apply
           </button>
 
         </form>
@@ -454,49 +460,30 @@
       <!-- RESULT PANEL (shown after PDF generated) -->
       <div id="result-panel">
         <div class="result-icon">📄</div>
-        <h2>Application Ready!</h2>
-        <p>Your PDF Has Been Generated and Downloaded. Follow the Steps Below to Submit It.</p>
-
-        <div class="result-steps">
-          <div class="result-step">
-            <div class="step-num">1</div>
-            <div class="step-text"><strong>PDF Downloaded</strong> — Your application PDF has been saved to your device's Downloads folder.</div>
-          </div>
-          <div class="result-step">
-            <div class="step-num">2</div>
-            <div class="step-text"><strong>Click an email button below</strong> — It will open your mail app with the subject and your details pre-filled.</div>
-          </div>
-          <div class="result-step">
-            <div class="step-num">3</div>
-            <div class="step-text"><strong>Attach both files</strong> — Please attach both this generated application PDF and your original resume to the email, then click <strong>Send</strong>.</div>
-          </div>
-        </div>
+        <h2>Application Submitted!</h2>
+        <p style="font-size: 1.1rem; color: #555; text-align: center; margin-bottom: 2rem;">
+          Your application has been successfully saved. Our HR team will review your details and get back to you soon.
+        </p>
 
         <div class="result-actions">
-          <button class="btn-pdf-download" id="btn-redownload">
+          <button class="btn-pdf-download" id="btn-redownload" style="display:none;">
             ⬇️ Download PDF Again
           </button>
 
-          <div class="email-btns">
-            <button onclick="openEmail('info@patelenggworks.com')" class="btn-email btn-email-1">
-              ✉️ Send to HR (info)
-            </button>
-            <button onclick="openEmail('careers@patelenggworks.com')" class="btn-email btn-email-2">
-              ✉️ Send to Careers
-            </button>
-          </div>
-
-          <p class="email-note">💡 After Clicking an Email Button, Attach Both the Downloaded PDF and Your Resume from Your Device and Hit <strong>Send</strong>.</p>
-
-          <button class="btn-restart" id="btn-restart">← Submit Another Application</button>
+          <button class="btn-restart" id="btn-close-result" style="margin-top: 1rem; border-color: var(--primary-navy); color: var(--primary-navy);">Close Window</button>
         </div>
       </div>
+      
+      </div> <!-- End of modal overlay -->
 
     </div>
   </section>
 
   {% include "_footer.html" %}
   <script src="/static/js/main.js"></script>
+  
+  <!-- DYNAMIC CAREERS SCRIPT -->
+  <script type="module" src="/static/js/career/public.js"></script>
 
   <script>
     const { jsPDF } = window.jspdf;

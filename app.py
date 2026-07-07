@@ -260,6 +260,10 @@ def register_routes(app: Flask) -> None:
         article = Article.query.get_or_404(article_id)
         return render_template("media-article-detail.html", article=article)
 
+    @app.get("/admin-careers")
+    def admin_careers():
+        return render_template("admin-careers.html")
+
     # ==================== ADMIN AUTH ROUTES ====================
     @app.get("/admin")
     def admin_login_page():
