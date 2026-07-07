@@ -1,6 +1,9 @@
-import { JobService } from '../src/services/JobService.js';
-import { ApplicationService } from '../src/services/ApplicationService.js';
+import { LocalStore } from './data/localStore.js';
+import { JobService } from './services/JobService.js';
+import { ApplicationService } from './services/ApplicationService.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
+  LocalStore.init();
 
   const jobsContainer = document.getElementById('dynamic-jobs-container');
   const formPanel = document.getElementById('form-panel');
@@ -158,25 +161,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       try {
         const resumeInput = document.getElementById('cf-resume');
-        let resumeUrl = 'resume_attached.pdf'; // Fallback
-        
-        if (resumeInput.files.length > 0) {
-          const file = resumeInput.files[0];
-          try {
-             resumeUrl = await ApplicationService.uploadResume(file);
-          } catch (uploadErr) {
-             console.error('Failed to upload resume, falling back to name', uploadErr);
-             resumeUrl = file.name;
-          }
-        }
+        const resumeFileName = resumeInput.files.length > 0 ? resumeInput.files[0].name : 'resume_attached.pdf';
 
-        await ApplicationService.submitApplication({
+        await ApplicationService.createApplication({
           applicantName: val('cf-name'),
           email: val('cf-email'),
           phone: val('cf-phone'),
           jobRole: val('cf-position'),
-          resume: resumeUrl, 
-          coverLetter: val('cf-skills') // Reusing skills field as cover letter proxy
+          resume: resumeFileName, 
+          coverLetter: val('cf-skills') // Reusing skills field as cover letter proxy or we can use it
         });
         
         // Use existing result panel logic
