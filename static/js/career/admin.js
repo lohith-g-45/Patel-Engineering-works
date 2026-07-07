@@ -1,35 +1,33 @@
-import { LocalStore } from './data/localStore.js';
-import { JobService } from './services/JobService.js';
-import { ApplicationService } from './services/ApplicationService.js';
-
+import { AuthService } from '../src/services/AuthService.js';
+import { JobService } from '../src/services/JobService.js';
+import { ApplicationService } from '../src/services/ApplicationService.js';
+import { DashboardService } from '../src/services/DashboardService.js';
 document.addEventListener('DOMContentLoaded', async () => {
-  LocalStore.init();
-
   const loginView = document.getElementById('login-view');
   const appView = document.getElementById('app-view');
-  
-  // Auth Check
-  if (localStorage.getItem('isCareersAdminAuthValidated') === 'true') {
+
+  // Check Supabase Auth
+  const user = await AuthService.getCurrentAdmin();
+  if (user) {
     loginView.style.display = 'none';
     appView.style.display = 'flex';
     loadDashboard();
   }
 
   // Login Form
-  document.getElementById('login-form').addEventListener('submit', (e) => {
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const user = document.getElementById('login-email').value;
+    const email = document.getElementById('login-email').value;
     const pass = document.getElementById('login-pass').value;
-    const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     
-    if (user === 'jobs@patelengv.com' && pass === storedPass) {
-      localStorage.setItem('isCareersAdminAuthValidated', 'true');
+    try {
+      await AuthService.login(email, pass);
       loginView.style.display = 'none';
       appView.style.display = 'flex';
       loadDashboard();
-    } else {
+    } catch (error) {
       const err = document.getElementById('login-error');
-      err.textContent = 'Invalid username or password';
+      err.textContent = error.message || 'Invalid username or password';
       err.style.display = 'block';
     }
   });
@@ -56,13 +54,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   // --- Data Loading Functions ---
 
   async function loadDashboard() {
-    const jobs = await JobService.getAllJobs();
-    const apps = await ApplicationService.getAllApplications();
-    
-    document.getElementById('stat-total-jobs').textContent = jobs.length;
-    document.getElementById('stat-open-jobs').textContent = jobs.filter(j => j.status === 'Open').length;
-    document.getElementById('stat-closed-jobs').textContent = jobs.filter(j => j.status === 'Closed').length;
-    document.getElementById('stat-total-apps').textContent = apps.length;
+    try {
+      const stats = await DashboardService.getDashboardStats();
+      
+      document.getElementById('stat-total-jobs').textContent = stats.totalJobs;
+      document.getElementById('stat-open-jobs').textContent = stats.openJobs;
+      document.getElementById('stat-closed-jobs').textContent = stats.closedJobs;
+      document.getElementById('stat-total-apps').textContent = stats.totalApplications;
+    } catch (error) {
+      console.error('Failed to load dashboard stats:', error);
+    }
   }
 
   async function loadJobs() {
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     jobs.forEach(job => {
-      const badgeClass = job.status === 'Open' ? 'badge-success' : 'badge-danger';
+      const badgeClass = job.status === 'OPEN' ? 'badge-success' : 'badge-danger';
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td style="font-weight: 500;">${job.title}</td>
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       btn.addEventListener('click', async (e) => {
         const id = e.target.closest('button').getAttribute('data-id');
         const job = await JobService.getJobById(id);
-        await JobService.updateJob(id, { status: job.status === 'Open' ? 'Closed' : 'Open' });
+        await JobService.toggleJobStatus(id, job.status);
         loadJobs();
       });
     });
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   async function loadApplications() {
-    const apps = await ApplicationService.getAllApplications();
+    const apps = await ApplicationService.getApplications();
     const tbody = document.getElementById('apps-tbody');
     tbody.innerHTML = '';
     
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     // Reverse sort to show newest first
-    apps.sort((a, b) => b.id - a.id).forEach(app => {
+    apps.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).forEach(app => {
       const getBadge = (s) => {
         switch(s) {
           case 'Hired': return 'badge-success';
@@ -214,7 +215,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('job-loc').value = job ? job.location : '';
     document.getElementById('job-exp').value = job ? job.experience : '';
     document.getElementById('job-type').value = job ? job.employmentType : 'Full-time';
-    document.getElementById('job-status').value = job ? job.status : 'Open';
+    document.getElementById('job-status').value = job ? job.status : 'OPEN';
     document.getElementById('job-desc').value = job ? job.description : '';
     document.getElementById('job-reqs').value = job ? job.requirements : '';
     
@@ -297,8 +298,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   // Logout
-  popupLogoutBtn.addEventListener('click', () => {
-    localStorage.removeItem('isCareersAdminAuthValidated');
+  popupLogoutBtn.addEventListener('click', async () => {
+    await AuthService.logout();
     appView.style.display = 'none';
     loginView.style.display = 'flex';
     profilePopup.style.display = 'none';
@@ -323,24 +324,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     passwordModal.classList.remove('active');
   });
 
-  passwordResetForm.addEventListener('submit', (e) => {
+  passwordResetForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const currentPass = document.getElementById('modal-current-pass').value;
     const newPass = document.getElementById('modal-new-pass').value;
     const confirmPass = document.getElementById('modal-confirm-pass').value;
     
-    const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     const errorEl = document.getElementById('password-modal-error');
     const successEl = document.getElementById('password-modal-success');
     
     errorEl.style.display = 'none';
     successEl.style.display = 'none';
-
-    if (currentPass !== storedPass) {
-      errorEl.textContent = 'Current password is incorrect.';
-      errorEl.style.display = 'block';
-      return;
-    }
 
     if (newPass !== confirmPass) {
       errorEl.textContent = 'New passwords do not match.';
@@ -348,13 +341,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
-    localStorage.setItem('adminPassword', newPass);
-    successEl.style.display = 'block';
-    passwordResetForm.reset();
-    
-    setTimeout(() => {
-      passwordModal.classList.remove('active');
-    }, 2000);
+    try {
+      await AuthService.resetPassword(newPass);
+      successEl.style.display = 'block';
+      passwordResetForm.reset();
+      
+      setTimeout(() => {
+        passwordModal.classList.remove('active');
+      }, 2000);
+    } catch (error) {
+      errorEl.textContent = error.message || 'Failed to update password.';
+      errorEl.style.display = 'block';
+    }
   });
 
 });

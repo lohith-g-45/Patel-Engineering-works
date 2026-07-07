@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Apply for a career at Patel Engineering Works — Marine Engineering and Ship Building.">
   <title>Careers | Patel Engineering Works</title>
+  <script>
+    window.ENV = {
+      SUPABASE_URL: "{{ supabase_url }}",
+      SUPABASE_ANON_KEY: "{{ supabase_key }}"
+    };
+  </script>
   <link rel="stylesheet" href="/static/css/styles.css">
   <!-- jsPDF CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

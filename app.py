@@ -215,7 +215,11 @@ def register_routes(app: Flask) -> None:
 
     @app.get("/careers")
     def careers():
-        return render_template("careers.html")
+        return render_template(
+            "careers.html",
+            supabase_url=os.getenv("SUPABASE_URL", ""),
+            supabase_key=os.getenv("SUPABASE_ANON_KEY", "")
+        )
 
     @app.get("/contact")
     def contact():
@@ -262,7 +266,11 @@ def register_routes(app: Flask) -> None:
 
     @app.get("/admin-careers")
     def admin_careers():
-        return render_template("admin-careers.html")
+        return render_template(
+            "admin-careers.html",
+            supabase_url=os.getenv("SUPABASE_URL", ""),
+            supabase_key=os.getenv("SUPABASE_ANON_KEY", "")
+        )
 
     # ==================== ADMIN AUTH ROUTES ====================
     @app.get("/admin")
