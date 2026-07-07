@@ -253,4 +253,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (e.target === jobModal) closeJobModal();
   });
 
+  // --- Profile Popup & Logout Logic ---
+  const profileToggleBtn = document.getElementById('profile-toggle-btn');
+  const profilePopup = document.getElementById('profile-popup');
+  const adminNameInput = document.getElementById('admin-name-input');
+  const displayAdminName = document.getElementById('display-admin-name');
+  const profileAvatar = document.querySelector('.profile-avatar');
+  const popupLogoutBtn = document.getElementById('popup-logout-btn');
+
+  // Load and Set Name
+  let savedName = localStorage.getItem('adminName') || 'System Admin';
+  displayAdminName.textContent = savedName;
+  adminNameInput.value = savedName;
+  profileAvatar.textContent = savedName.charAt(0).toUpperCase();
+
+  // Toggle Popup
+  profileToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (profilePopup.style.display === 'none' || profilePopup.style.display === '') {
+      profilePopup.style.display = 'flex';
+      profileToggleBtn.style.background = 'rgba(255,255,255,0.1)';
+    } else {
+      profilePopup.style.display = 'none';
+      profileToggleBtn.style.background = 'rgba(255,255,255,0.05)';
+    }
+  });
+
+  // Close popup when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!profilePopup.contains(e.target) && !profileToggleBtn.contains(e.target)) {
+      profilePopup.style.display = 'none';
+      profileToggleBtn.style.background = 'rgba(255,255,255,0.05)';
+    }
+  });
+
+  // Handle Name Input
+  adminNameInput.addEventListener('input', (e) => {
+    const newName = e.target.value.trim() || 'System Admin';
+    localStorage.setItem('adminName', newName);
+    displayAdminName.textContent = newName;
+    profileAvatar.textContent = newName.charAt(0).toUpperCase();
+  });
+
+  // Logout
+  popupLogoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('isCareersAdminAuthValidated');
+    appView.style.display = 'none';
+    loginView.style.display = 'flex';
+    profilePopup.style.display = 'none';
+  });
+
 });
