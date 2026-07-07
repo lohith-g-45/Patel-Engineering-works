@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const pass = document.getElementById('login-pass').value;
     const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     
-    if (user === 'lg8717429@gmail.com' && pass === storedPass) {
+    if (user === 'jobs@patelengv.com' && pass === storedPass) {
       localStorage.setItem('isCareersAdminAuthValidated', 'true');
       loginView.style.display = 'none';
       appView.style.display = 'flex';
