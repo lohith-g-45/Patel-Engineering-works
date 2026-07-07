@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const loginView = document.getElementById('login-view');
   const appView = document.getElementById('app-view');
   
+  // Initialize Default Credentials if none exist
+  if (!localStorage.getItem('adminEmail')) {
+    localStorage.setItem('adminEmail', 'lg8717429@gmail.com');
+  }
+  if (!localStorage.getItem('adminPassword')) {
+    localStorage.setItem('adminPassword', 'abc@123');
+  }
+  
   // Auth Check
   if (localStorage.getItem('isCareersAdminAuthValidated') === 'true') {
     loginView.style.display = 'none';
@@ -20,7 +28,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const user = document.getElementById('login-email').value;
     const pass = document.getElementById('login-pass').value;
-    if (user === 'lg8717429@gmail.com' && pass === 'abc@123') {
+    
+    const storedEmail = localStorage.getItem('adminEmail');
+    const storedPass = localStorage.getItem('adminPassword');
+    
+    if (user === storedEmail && pass === storedPass) {
       localStorage.setItem('isCareersAdminAuthValidated', 'true');
       loginView.style.display = 'none';
       appView.style.display = 'flex';
@@ -253,4 +265,45 @@ document.addEventListener('DOMContentLoaded', async () => {
     jobModal.classList.remove('active');
     loadJobs();
   });
+  
+  // Close modal when clicking outside
+  jobModal.addEventListener('click', (e) => {
+    if (e.target === jobModal) closeJobModal();
+  });
+
+  // --- Settings Logic ---
+  document.getElementById('update-email-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newEmail = document.getElementById('settings-new-email').value;
+    localStorage.setItem('adminEmail', newEmail);
+    const success = document.getElementById('email-success');
+    success.style.display = 'block';
+    setTimeout(() => success.style.display = 'none', 3000);
+    document.getElementById('update-email-form').reset();
+  });
+
+  document.getElementById('update-password-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const currentPassInput = document.getElementById('settings-current-pass').value;
+    const newPassInput = document.getElementById('settings-new-pass').value;
+    
+    if (currentPassInput === localStorage.getItem('adminPassword')) {
+      localStorage.setItem('adminPassword', newPassInput);
+      document.getElementById('password-error').style.display = 'none';
+      const success = document.getElementById('password-success');
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 3000);
+      document.getElementById('update-password-form').reset();
+    } else {
+      document.getElementById('password-success').style.display = 'none';
+      document.getElementById('password-error').style.display = 'block';
+    }
+  });
+
+  document.getElementById('settings-logout-btn').addEventListener('click', () => {
+    localStorage.removeItem('isCareersAdminAuthValidated');
+    appView.style.display = 'none';
+    loginView.style.display = 'flex';
+  });
+
 });
