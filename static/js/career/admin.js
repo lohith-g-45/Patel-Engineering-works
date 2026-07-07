@@ -33,13 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Logout
-  document.getElementById('logout-btn').addEventListener('click', () => {
-    localStorage.removeItem('isCareersAdminAuthValidated');
-    appView.style.display = 'none';
-    loginView.style.display = 'flex';
-  });
-
   // Navigation
   const navItems = document.querySelectorAll('.nav-item');
   const views = document.querySelectorAll('.view');
