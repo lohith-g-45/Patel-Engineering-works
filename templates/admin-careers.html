@@ -113,14 +113,12 @@
             <label style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.25rem; display: block;">Admin Name</label>
             <input type="text" id="admin-name-input" class="input-field" placeholder="Enter your name" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">
           </div>
-          <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <label style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.25rem; display: block;">Email</label>
-              <div id="display-admin-email" style="font-size: 0.9rem; color: var(--primary); font-weight: 500; word-break: break-all;">lg8717429@gmail.com</div>
-            </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.25rem; display: block;">Email</label>
+            <div style="font-size: 0.9rem; color: var(--primary); font-weight: 500; word-break: break-all;">lg8717429@gmail.com</div>
           </div>
           <hr style="border: none; border-top: 1px solid rgba(18, 37, 74, 0.08); margin: 0.5rem 0;">
-          <button class="btn" id="open-account-btn" style="width: 100%; background: transparent; color: var(--primary); border: 1px solid var(--border); font-weight: 600;">Edit Account Credentials</button>
+          <button class="btn" id="open-password-btn" style="width: 100%; background: transparent; color: var(--primary); border: 1px solid var(--border); font-weight: 600;">Reset Password</button>
           <button class="btn" id="popup-logout-btn" style="width: 100%; background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca;">Log Out</button>
         </div>
 
@@ -130,7 +128,7 @@
           </div>
           <div class="profile-info" style="display: flex; flex-direction: column; overflow: hidden;">
             <span id="display-admin-name" style="color: white; font-weight: 600; font-size: 0.9rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">System Admin</span>
-            <span id="display-sidebar-email" style="color: var(--text-light); font-size: 0.75rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">lg8717429@gmail.com</span>
+            <span style="color: var(--text-light); font-size: 0.75rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">lg8717429@gmail.com</span>
           </div>
         </div>
       </div>
@@ -267,20 +265,16 @@
     </div>
   </div>
 
-  <!-- Account Update Modal -->
-  <div id="account-modal" class="modal-overlay">
+  <!-- Password Reset Modal -->
+  <div id="password-modal" class="modal-overlay">
     <div class="modal-content" style="max-width: 450px;">
-      <h2 style="margin-top: 0; color: var(--primary); margin-bottom: 1.5rem;">Update Account</h2>
-      <div id="account-modal-error" style="color: #991b1b; background: #fee2e2; padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none;"></div>
-      <div id="account-modal-success" style="color: #065f46; background: #d1fae5; padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none;">Account updated successfully!</div>
-      <form id="account-reset-form">
-        <div style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
-          <label>Current Password (Required for any changes)</label>
-          <input type="password" id="modal-current-pass" class="input-field" required>
-        </div>
+      <h2 style="margin-top: 0; color: var(--primary); margin-bottom: 1.5rem;">Reset Password</h2>
+      <div id="password-modal-error" style="color: #991b1b; background: #fee2e2; padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none;"></div>
+      <div id="password-modal-success" style="color: #065f46; background: #d1fae5; padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none;">Password updated successfully!</div>
+      <form id="password-reset-form">
         <div style="margin-bottom: 1rem;">
-          <label>New Email Address</label>
-          <input type="email" id="modal-new-email" class="input-field" required>
+          <label>Current Password</label>
+          <input type="password" id="modal-current-pass" class="input-field" required>
         </div>
         <div style="margin-bottom: 1rem;">
           <label>New Password</label>
@@ -291,8 +285,8 @@
           <input type="password" id="modal-confirm-pass" class="input-field" required>
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 1rem;">
-          <button type="button" class="btn btn-secondary" id="close-account-modal-btn">Cancel</button>
-          <button type="submit" class="btn btn-primary">Update Account</button>
+          <button type="button" class="btn btn-secondary" id="close-password-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Password</button>
         </div>
       </form>
     </div>
