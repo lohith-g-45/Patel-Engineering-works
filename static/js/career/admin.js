@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.preventDefault();
     const user = document.getElementById('login-email').value;
     const pass = document.getElementById('login-pass').value;
+    const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     
-    if (user === 'lg8717429@gmail.com' && pass === 'abc@123') {
+    if (user === 'lg8717429@gmail.com' && pass === storedPass) {
       localStorage.setItem('isCareersAdminAuthValidated', 'true');
       loginView.style.display = 'none';
       appView.style.display = 'flex';
@@ -301,6 +302,59 @@ document.addEventListener('DOMContentLoaded', async () => {
     appView.style.display = 'none';
     loginView.style.display = 'flex';
     profilePopup.style.display = 'none';
+  });
+
+  // --- Password Reset Modal Logic ---
+  const passwordModal = document.getElementById('password-modal');
+  const openPasswordBtn = document.getElementById('open-password-btn');
+  const closePasswordModalBtn = document.getElementById('close-password-modal-btn');
+  const passwordResetForm = document.getElementById('password-reset-form');
+
+  openPasswordBtn.addEventListener('click', () => {
+    profilePopup.style.display = 'none';
+    profileToggleBtn.style.background = 'rgba(255,255,255,0.05)';
+    passwordModal.classList.add('active');
+    document.getElementById('password-modal-error').style.display = 'none';
+    document.getElementById('password-modal-success').style.display = 'none';
+    passwordResetForm.reset();
+  });
+
+  closePasswordModalBtn.addEventListener('click', () => {
+    passwordModal.classList.remove('active');
+  });
+
+  passwordResetForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const currentPass = document.getElementById('modal-current-pass').value;
+    const newPass = document.getElementById('modal-new-pass').value;
+    const confirmPass = document.getElementById('modal-confirm-pass').value;
+    
+    const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
+    const errorEl = document.getElementById('password-modal-error');
+    const successEl = document.getElementById('password-modal-success');
+    
+    errorEl.style.display = 'none';
+    successEl.style.display = 'none';
+
+    if (currentPass !== storedPass) {
+      errorEl.textContent = 'Current password is incorrect.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    if (newPass !== confirmPass) {
+      errorEl.textContent = 'New passwords do not match.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    localStorage.setItem('adminPassword', newPass);
+    successEl.style.display = 'block';
+    passwordResetForm.reset();
+    
+    setTimeout(() => {
+      passwordModal.classList.remove('active');
+    }, 2000);
   });
 
 });
