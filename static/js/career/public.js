@@ -4,8 +4,7 @@ import { LoadingUtils } from '../utils/loading.js';
 import { NotificationUtils } from '../utils/notifications.js';
 import { ValidationUtils } from '../utils/validation.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
-
+async function initPublicApp() {
   const jobsContainer = document.getElementById('dynamic-jobs-container');
   const formPanel = document.getElementById('form-panel');
   const careerForm = document.getElementById('career-form');
@@ -232,4 +231,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPublicApp);
+} else {
+    initPublicApp();
+}

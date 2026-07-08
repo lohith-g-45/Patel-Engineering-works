@@ -5,8 +5,7 @@ import { LoadingUtils } from '../utils/loading.js';
 import { NotificationUtils } from '../utils/notifications.js';
 import { ValidationUtils } from '../utils/validation.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
-
+async function initApp() {
   const loginView = document.getElementById('login-view');
   const appView = document.getElementById('app-view');
   
@@ -452,4 +451,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 2000);
   });
 
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
