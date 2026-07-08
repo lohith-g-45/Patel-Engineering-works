@@ -43,10 +43,6 @@ async function initPublicApp() {
     const jobs = response.data;
     jobsContainer.innerHTML = ''; // clear loading state
     emptyState.style.display = 'none';
-    jobsContainer.style.display = 'none';
-    emptyState.style.display = 'block';
-  } else {
-    emptyState.style.display = 'none';
     jobsContainer.style.display = 'grid';
     jobsContainer.style.gridTemplateColumns = '1fr 1fr';
     jobsContainer.style.gap = '2rem';
