@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Login Form
   document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const user = document.getElementById('login-email').value;
-    const pass = document.getElementById('login-pass').value;
+    const user = document.getElementById('login-email').value.trim();
+    const pass = document.getElementById('login-pass').value.trim();
     const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     
     if (user === 'jobs@patelengv.com' && pass === storedPass) {
@@ -59,8 +59,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function loadDashboard() {
     try {
-      const stats = await DashboardService.getDashboardStats(); // Actually wait, getDashboardStats doesn't exist anymore, I refactored DashboardService to use individual methods! Wait, did I? No, I only provided the individual methods in the prompt... ah, wait, my `DashboardService.js` had `getTotalJobs`, `getOpenJobs`, `getClosedJobs`, `getTotalApplications`, `getRecentApplications`. Let me check my `DashboardService.js` generation...
-      // Let's rewrite `loadDashboard` to use the individual methods.
       const [totalJobs, openJobs, closedJobs, totalApps] = await Promise.all([
           DashboardService.getTotalJobs(),
           DashboardService.getOpenJobs(),

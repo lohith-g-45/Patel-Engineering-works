@@ -7,4 +7,7 @@ if (!supabaseUrl || !supabaseAnonKey) {
     console.error('Supabase credentials are missing. Please ensure window.SUPABASE_URL and window.SUPABASE_ANON_KEY are set.');
 }
 
-export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+// Ensure createClient is only called if we have valid strings to prevent throwing module-level errors
+export const supabase = (supabaseUrl && supabaseAnonKey) 
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
