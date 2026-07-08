@@ -482,7 +482,10 @@
   {% include "_footer.html" %}
   <script src="/static/js/main.js"></script>
   
-  <!-- DYNAMIC CAREERS SCRIPT -->
+  <!-- DYNAMIC CAREERS SCRIPT -->  <script>
+    window.SUPABASE_URL = "{{ SUPABASE_URL }}";
+    window.SUPABASE_ANON_KEY = "{{ SUPABASE_ANON_KEY }}";
+  </script>
   <script type="module" src="/static/js/career/public.js"></script>
 
   <script>

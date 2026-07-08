@@ -9,10 +9,10 @@ export const JobService = {
                 .order('created_at', { ascending: false });
                 
             if (error) throw error;
-            return data || [];
+            return { success: true, data: data || [] };
         } catch (error) {
             console.error('JobService.getAllJobs error:', error);
-            throw new Error('Failed to fetch jobs.');
+            return { success: false, message: 'Failed to fetch jobs.', error };
         }
     },
 
@@ -25,10 +25,10 @@ export const JobService = {
                 .order('created_at', { ascending: false });
                 
             if (error) throw error;
-            return data || [];
+            return { success: true, data: data || [] };
         } catch (error) {
             console.error('JobService.getOpenJobs error:', error);
-            throw new Error('Failed to fetch open jobs.');
+            return { success: false, message: 'Failed to fetch open jobs.', error };
         }
     },
 
@@ -41,10 +41,10 @@ export const JobService = {
                 .single();
                 
             if (error) throw error;
-            return data;
+            return { success: true, data };
         } catch (error) {
             console.error('JobService.getJob error:', error);
-            throw new Error('Failed to fetch job details.');
+            return { success: false, message: 'Failed to fetch job details.', error };
         }
     },
 
@@ -52,15 +52,24 @@ export const JobService = {
         try {
             const { data, error } = await supabase
                 .from('jobs')
-                .insert([jobData])
+                .insert([{
+                    title: jobData.title,
+                    department: jobData.department,
+                    location: jobData.location,
+                    experience: jobData.experience,
+                    employment_type: jobData.employment_type,
+                    description: jobData.description,
+                    requirements: jobData.requirements,
+                    status: jobData.status
+                }])
                 .select()
                 .single();
                 
             if (error) throw error;
-            return data;
+            return { success: true, data };
         } catch (error) {
             console.error('JobService.createJob error:', error);
-            throw new Error('Failed to create job.');
+            return { success: false, message: 'Failed to create job.', error };
         }
     },
 
@@ -68,16 +77,25 @@ export const JobService = {
         try {
             const { data, error } = await supabase
                 .from('jobs')
-                .update(jobData)
+                .update({
+                    title: jobData.title,
+                    department: jobData.department,
+                    location: jobData.location,
+                    experience: jobData.experience,
+                    employment_type: jobData.employment_type,
+                    description: jobData.description,
+                    requirements: jobData.requirements,
+                    status: jobData.status
+                })
                 .eq('id', id)
                 .select()
                 .single();
                 
             if (error) throw error;
-            return data;
+            return { success: true, data };
         } catch (error) {
             console.error('JobService.updateJob error:', error);
-            throw new Error('Failed to update job.');
+            return { success: false, message: 'Failed to update job.', error };
         }
     },
 
@@ -89,9 +107,10 @@ export const JobService = {
                 .eq('id', id);
                 
             if (error) throw error;
+            return { success: true };
         } catch (error) {
             console.error('JobService.deleteJob error:', error);
-            throw new Error('Failed to delete job.');
+            return { success: false, message: 'Failed to delete job.', error };
         }
     },
 

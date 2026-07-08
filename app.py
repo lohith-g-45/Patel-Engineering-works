@@ -59,6 +59,14 @@ def create_app() -> Flask:
             print("âœ… Initial admin created: username='admin', password='admin123'")
     
     register_routes(app)
+
+    @app.context_processor
+    def inject_supabase_vars():
+        return {
+            "SUPABASE_URL": os.getenv("SUPABASE_URL", ""),
+            "SUPABASE_ANON_KEY": os.getenv("SUPABASE_ANON_KEY", "")
+        }
+
     return app
 
 

@@ -1,5 +1,9 @@
 import { JobService } from '../services/JobService.js';
 import { ApplicationService } from '../services/ApplicationService.js';
+import { LoadingUtils } from '../utils/loading.js';
+import { NotificationUtils } from '../utils/notifications.js';
+import { ValidationUtils } from '../utils/validation.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
 
   const jobsContainer = document.getElementById('dynamic-jobs-container');
@@ -28,10 +32,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Load Open Jobs
-  const jobs = await JobService.getOpenJobs();
+  LoadingUtils.showLoading('dynamic-jobs-container');
+  const response = await JobService.getOpenJobs();
   const emptyState = document.getElementById('empty-jobs-state');
 
-  if (jobs.length === 0) {
+  if (!response.success || response.data.length === 0) {
+    if (!response.success) NotificationUtils.error(response.message);
+    jobsContainer.style.display = 'none';
+    emptyState.style.display = 'block';
+  } else {
+    const jobs = response.data;
+    jobsContainer.innerHTML = ''; // clear loading state
+    emptyState.style.display = 'none';
     jobsContainer.style.display = 'none';
     emptyState.style.display = 'block';
   } else {
@@ -47,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     jobs.forEach(job => {
       // Add to select dropdown
       const opt = document.createElement('option');
-      opt.value = job.title;
+      opt.value = job.id;
       opt.textContent = job.title;
       positionSelect.appendChild(opt);
 
@@ -76,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ${job.description}
           </p>
         </div>
-        <button class="apply-btn" data-title="${job.title}" style="width: 100%; padding: 0.75rem; background-color: var(--primary-navy, #12254a); color: #fff; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: auto; font-family: var(--font-primary);">Apply Now</button>
+        <button class="apply-btn" data-id="${job.id}" style="width: 100%; padding: 0.75rem; background-color: var(--primary-navy, #12254a); color: #fff; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: auto; font-family: var(--font-primary);">Apply Now</button>
       `;
       jobsContainer.appendChild(card);
     });
@@ -84,8 +96,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Handle Apply Now clicks
     document.querySelectorAll('.apply-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const title = e.target.getAttribute('data-title');
-        positionSelect.value = title;
+        const id = e.target.getAttribute('data-id');
+        positionSelect.value = id;
         // Open modal instead of scrolling
         document.getElementById('application-modal-overlay').style.display = 'flex';
       });
@@ -129,7 +141,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       const val = (id) => document.getElementById(id) ? document.getElementById(id).value.trim() : '';
       
-      // Basic validation
+      const email = val('cf-email');
+      const phone = val('cf-phone');
+      const terms = document.getElementById('cf-terms');
+      
+      // Basic empty validation
       const requiredIds = ['cf-name', 'cf-phone', 'cf-email', 'cf-position', 'cf-exp', 'cf-qual', 'cf-resume'];
       let valid = true;
       requiredIds.forEach(id => {
@@ -142,14 +158,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       });
       
-      const terms = document.getElementById('cf-terms');
-      if (terms && !terms.checked) {
-        alert('Please agree to the Terms & Conditions to proceed.');
+      if (!valid) {
+        NotificationUtils.error('Please fill in all required fields.');
         return;
       }
       
-      if (!valid) {
-        alert('Please fill in all required fields (marked with *).');
+      if (terms && !terms.checked) {
+        NotificationUtils.warning('Please agree to the Terms & Conditions.');
+        return;
+      }
+
+      if (!ValidationUtils.isValidEmail(email)) {
+        NotificationUtils.error('Invalid email format.');
+        return;
+      }
+
+      if (!ValidationUtils.isValidPhone(phone)) {
+        NotificationUtils.error('Invalid phone format.');
+        return;
+      }
+      
+      const resumeInput = document.getElementById('cf-resume');
+      if (!resumeInput.files.length) {
+        NotificationUtils.error('Resume is required.');
+        return;
+      }
+
+      const file = resumeInput.files[0];
+      const resumeValidation = ValidationUtils.isValidResumeFile(file);
+      if (!resumeValidation.valid) {
+        NotificationUtils.error(resumeValidation.message);
         return;
       }
       
@@ -157,36 +195,38 @@ document.addEventListener('DOMContentLoaded', async () => {
       submitBtn.disabled = true;
       
       try {
-        const resumeInput = document.getElementById('cf-resume');
-        let resumeUrl = 'resume_attached.pdf'; // Fallback
-        
-        if (resumeInput.files.length > 0) {
-          const file = resumeInput.files[0];
-          try {
-             resumeUrl = await ApplicationService.uploadResume(file);
-          } catch (uploadErr) {
-             console.error('Failed to upload resume, falling back to name', uploadErr);
-             resumeUrl = file.name;
-          }
+        const uploadRes = await ApplicationService.uploadResume(file);
+        if (!uploadRes.success) {
+            NotificationUtils.error(uploadRes.message);
+            submitBtn.textContent = 'Apply';
+            submitBtn.disabled = false;
+            return;
         }
+        
+        const resumeUrl = uploadRes.data;
 
-        await ApplicationService.submitApplication({
+        const res = await ApplicationService.submitApplication({
           applicantName: val('cf-name'),
           email: val('cf-email'),
           phone: val('cf-phone'),
-          jobRole: val('cf-position'),
+          job_id: val('cf-position'),
           resume: resumeUrl, 
-          coverLetter: val('cf-skills') // Reusing skills field as cover letter proxy
+          coverLetter: val('cf-skills')
         });
         
-        // Use existing result panel logic
-        formPanel.style.display = 'none';
-        resultPanel.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
+        if (res.success) {
+            NotificationUtils.success('Application submitted successfully!');
+            formPanel.style.display = 'none';
+            resultPanel.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            NotificationUtils.error(res.message);
+            submitBtn.textContent = 'Apply';
+            submitBtn.disabled = false;
+        }
       } catch (err) {
         console.error(err);
-        alert('Failed to submit application.');
+        NotificationUtils.error('Failed to submit application.');
         submitBtn.textContent = 'Apply';
         submitBtn.disabled = false;
       }
