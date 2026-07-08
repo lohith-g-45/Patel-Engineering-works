@@ -714,7 +714,7 @@
     }
 
     // Re-download button
-    btnRedownload.addEventListener('click', function () {
+    btnRedownload?.addEventListener('click', function () {
       if (lastPdfDoc) {
         const filename = 'PEW_Application_' + lastApplicantName.replace(/\s+/g, '_') + '.pdf';
         lastPdfDoc.save(filename);
@@ -722,7 +722,7 @@
     });
 
     // Restart
-    btnRestart.addEventListener('click', function () {
+    btnRestart?.addEventListener('click', function () {
       form.reset();
       document.querySelectorAll('.cf-input, .cf-select, .cf-textarea').forEach(el => el.style.borderColor = '');
       document.getElementById('cf-submit-btn').textContent = '📄 Generate Application PDF';
