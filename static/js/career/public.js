@@ -44,7 +44,7 @@ async function initPublicApp() {
     jobsContainer.innerHTML = ''; // clear loading state
     emptyState.style.display = 'none';
     jobsContainer.style.display = 'grid';
-    jobsContainer.style.gridTemplateColumns = '1fr 1fr';
+    jobsContainer.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
     jobsContainer.style.gap = '2rem';
     jobsContainer.style.marginBottom = '2.5rem';
     
