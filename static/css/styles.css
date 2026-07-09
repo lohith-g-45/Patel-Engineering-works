@@ -6646,7 +6646,7 @@ img[data-expand-image] {
    ================================================================ */
 .hero-banner-only, .hero-banner-img {
   width: 100%;
-  max-height: 75vh;
+  max-height: 50vh;
   object-fit: cover;
   object-position: center;
   display: block;
