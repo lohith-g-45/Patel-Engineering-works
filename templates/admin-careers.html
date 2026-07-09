@@ -79,15 +79,22 @@
     #login-view { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-color); }
     #app-view { display: none; }
     
+    .mobile-header { display: none; }
+    #sidebar-backdrop { display: none; }
+
     /* Responsive Mobile Styles */
     @media (max-width: 768px) {
+      .mobile-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); }
+      #hamburger-btn { background: none; border: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; padding: 0.25rem; margin-left: -0.25rem; line-height: 1; }
+      
       .admin-layout { flex-direction: column; }
-      .sidebar { width: 100%; height: auto; }
-      .sidebar-header { text-align: center; padding: 1.5rem; }
-      .sidebar-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; padding: 0.5rem 0; gap: 0.5rem; }
-      .nav-item { padding: 0.5rem 1rem; border-left: none; border-bottom: 3px solid transparent; font-size: 0.9rem; }
-      .nav-item.active { border-left: none; border-bottom: 3px solid var(--primary-light); background: transparent; }
-      .main-content { padding: 1.5rem 1rem; }
+      .sidebar { position: fixed; top: 0; left: -280px; width: 260px; height: 100vh; z-index: 1000; transition: left 0.3s ease; }
+      .sidebar.open { left: 0; }
+      
+      #sidebar-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s ease; }
+      #sidebar-backdrop.show { display: block; opacity: 1; }
+      
+      .main-content { padding: 1.5rem 1rem; width: 100%; box-sizing: border-box; }
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .card { padding: 1.25rem; overflow-x: auto; }
       #login-view .card { padding: 1.5rem; width: 90%; }
@@ -117,7 +124,12 @@
 
   <!-- Main App -->
   <div id="app-view" class="admin-layout">
-    <aside class="sidebar">
+    <div id="sidebar-backdrop"></div>
+    <div class="mobile-header" id="mobile-header">
+      <div style="font-weight: 700; color: var(--primary); font-size: 1.2rem;">Admin Portal</div>
+      <button id="hamburger-btn">☰</button>
+    </div>
+    <aside class="sidebar" id="admin-sidebar">
       <div class="sidebar-header">Careers Admin</div>
       <nav class="sidebar-nav">
         <div class="nav-item" data-target="dashboard">Dashboard</div>

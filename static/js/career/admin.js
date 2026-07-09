@@ -9,6 +9,14 @@ async function initApp() {
   const loginView = document.getElementById('login-view');
   const appView = document.getElementById('app-view');
   
+  // Process Logout Request from Navbar
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('logout') === 'true') {
+    localStorage.removeItem('isCareersAdminAuthValidated');
+    // Clean up the URL to hide the logout parameter
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
   // Auth Check
   if (localStorage.getItem('isCareersAdminAuthValidated') === 'true') {
     loginView.style.display = 'none';
@@ -53,6 +61,33 @@ async function initApp() {
       if (targetId === 'applications') loadApplications();
     });
   });
+
+  // Mobile Hamburger Menu
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const sidebar = document.getElementById('admin-sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+
+  if (hamburgerBtn && sidebar && backdrop) {
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      backdrop.classList.add('show');
+    });
+
+    backdrop.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('show');
+    });
+
+    // Close sidebar on mobile when a nav item is clicked
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('open');
+          backdrop.classList.remove('show');
+        }
+      });
+    });
+  }
 
   // --- Data Loading Functions ---
 
