@@ -17,13 +17,6 @@ async function initApp() {
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 
-  // Auth Check
-  if (localStorage.getItem('isCareersAdminAuthValidated') === 'true') {
-    loginView.style.display = 'none';
-    appView.style.display = 'flex';
-    loadDashboard();
-  }
-
   // Login Form
   document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();
