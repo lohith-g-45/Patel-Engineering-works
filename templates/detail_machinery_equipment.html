@@ -5,59 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Machinery & Equipment Installation | Patel Engineering Works</title>
   <link rel="stylesheet" href="/static/css/styles.css">
-  <style>
-    /* Structural Layout Only - Inherit Typography from styles.css */
-    .page-header { padding: 60px 0 40px; border-bottom: 1px solid var(--border-color, #eee); background-color: #123A7A; color: #ffffff; }
-    .page-header h1 { margin: 0; color: #ffffff !important; }
-    .content-section { padding: 60px 0; }
-    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; margin-bottom: 40px; }
-    @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
-    .content-image { height: 100%; }
-    .image-collage-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; height: 100%; }
-    .image-collage-2 img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow-sm, 0 4px 12px rgba(0,0,0,0.05)); }
-    .tech-list { list-style: none; padding: 0; margin: 20px 0; }
-    .tech-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: inherit; }
-    .tech-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red, #C0182E); font-weight: bold; }
-    .cta-section { background: var(--bg-light, #f8f9fa); padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color, #eee); }
-    .btn-navy { display: inline-block; background-color: var(--primary-navy, #123A7A); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
-    .btn-navy:hover { background-color: #0c2652; color: #ffffff; }
-    .btn-red { display: inline-block; background-color: var(--accent-red, #C0182E); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
-    .btn-red:hover { background-color: #a01325; color: #ffffff; }
-  
-</style>
 </head>
 <body>
 
   {% include "_navbar.html" %}
 
-  <div class="page-header">
-    <div class="container" style="max-width: 1200px;">
+  <section class="capability-hero">
+    <div class="container">
+      <span class="capability-eyebrow">Shipbuilding capability</span>
       <h1>Machinery & Equipment Installation</h1>
+      <p>Alignment, mounting and commissioning of engines, gearboxes, shafting, pumps and deck equipment — including main engines and schottel and voith propulsion systems.</p>
     </div>
-  </div>
+  </section>
 
-  <section class="content-section">
-    <div class="container" style="max-width: 1200px;">
-      <div class="content-grid">
-        <div class="content-text">
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dark, #333);">Alignment, mounting and commissioning of engines, gearboxes, shafting, pumps and deck equipment — including main engines and schottel and voith propulsion systems.</p>
-          <ul class="tech-list" style="margin-top: 15px;">
-            <li>Engine & gearbox alignment</li><li>Shafting & pump mounting</li><li>Deck equipment installation</li><li>Main engine commissioning</li><li>Propulsion system integration</li>
-          </ul>
+  <section class="capability-content">
+    <div class="container">
+      <div class="capability-intro-grid capability-intro-grid-image-only">
+        <div class="capability-image-frame">
+          <img src="/static/assets/images/machinery_and_equipment_installation.jpeg" alt="Machinery & Equipment Installation">
         </div>
-        <div class="content-image image-collage-2">
-          <img src="/static/assets/images/machinery_and_equipment_installation.jpeg" alt="Machinery & Equipment Installation 1">
+      </div>
+
+      <h2 class="capability-scope-heading">Scope of work</h2>
+      <div class="capability-scope-grid">
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">01</span>
+            <span>Engine & gearbox alignment</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">02</span>
+            <span>Shafting & pump mounting</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">03</span>
+            <span>Deck equipment installation</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">04</span>
+            <span>Main engine commissioning</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">05</span>
+            <span>Propulsion system integration</span>
+          </div>
+      </div>
+
+      <div class="capability-gallery">
           <img src="/static/assets/images/machinery_install_1.jpeg" alt="Machinery & Equipment Installation 2">
-        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section">
-    <div class="container" style="max-width: 1200px;">
-      <h3 style="margin-bottom: 30px;">Need Support for Your Next Shipbuilding Project?</h3>
-      <a href="{{ url_for('contact') }}" class="btn-red">Contact Us</a>
-      <a href="{{ url_for('divisions_overview') }}" class="btn-navy">Explore Other Capabilities</a>
+  <section class="capability-related">
+    <div class="container">
+      <h3>Related shipbuilding capabilities</h3>
+      <div class="capability-related-links">
+          <a href="{{ url_for('ship_building_hull') }}">Hull & superstructure</a>
+          <a href="{{ url_for('ship_building_piping') }}">Piping & plumbing</a>
+          <a href="{{ url_for('ship_building_electrical') }}">Electrical outfitting</a>
+          <a href="{{ url_for('ship_building_insitu') }}">In situ machining</a>
+          <a href="{{ url_for('ship_building_accommodation') }}">Accommodation & habitability</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="capability-cta">
+    <div class="container">
+      <h3>Need Support for Your Next Shipbuilding Project?</h3>
+      <div class="hero-buttons">
+        <a href="{{ url_for('contact') }}" class="btn-accent-new">Contact Us</a>
+        <a href="{{ url_for('divisions_overview') }}" class="btn-secondary-new">Explore Other Capabilities</a>
+      </div>
     </div>
   </section>
 
@@ -66,4 +84,3 @@
   <script src="/static/js/main.js"></script>
 </body>
 </html>
-

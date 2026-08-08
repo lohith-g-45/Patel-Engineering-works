@@ -4,153 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Core Values — Patel Engineering Works</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/styles.css">
   <style>
-    /* STRICT GLOBAL DESIGN TOKENS */
-    :root {
-      --color-navy: #1F3A7A;
-      --color-red: #C0182E;
-      --color-ink: #1A1A1A;
-      --color-slate: #5F6B7A;
-      --color-mist: #F4F5F7;
-      --color-white: #FFFFFF;
-      --color-border: #E2E5EA;
-      
-      --font-heading: 'Poppins', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
+    /* Values cards - namespaced so they don't collide with the shared
+       global .card component (a different, glassmorphism style used
+       elsewhere on the site). */
 
-    body {
-      font-family: var(--font-body);
-      color: var(--color-ink);
-      background-color: var(--color-white);
-      line-height: 1.7;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section {
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .section-alternate {
-      background-color: var(--color-mist);
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-heading);
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: none;
-    }
-
-    h1 {
-      font-size: 48px;
-      color: var(--color-navy);
-    }
-
-    h2 {
-      font-size: 32px;
-      color: var(--color-navy);
-    }
-
-    h3 {
-      font-size: 22px;
-      color: var(--color-ink);
-    }
-
-    p {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--color-ink);
-      margin: 0 0 16px 0;
-      text-align: left;
-      max-width: 75ch;
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      background-image: url('/static/assets/images/core_values_bg.jpeg');
-      background-size: cover;
-      background-position: center;
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(31, 58, 122, 0.4);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center !important;
-    }
-
-    .hero h1 {
-      color: var(--color-white);
-      text-align: center !important;
-    }
-
-    .hero p {
-      color: var(--color-white);
-      font-size: 22px;
-      margin-bottom: 0;
-      text-align: center !important;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Cards */
-    .card-grid {
+    .value-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 32px;
     }
 
     @media (min-width: 768px) {
-      .card-grid {
+      .value-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
-    .card {
-      background-color: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 10px;
-      padding: 32px;
+    .value-card {
+      background-color: var(--neutral-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-32);
       display: flex;
       flex-direction: column;
       align-items: stretch;
     }
 
-    .card h3 {
-      color: var(--color-red); /* Using red as requested for highlights/accents and because the screenshot shows the headers in red text */
+    .value-card h3 {
+      color: var(--accent-red);
     }
 
-    .card h3.navy-title {
-      color: var(--color-navy);
+    .value-card h3.navy-title {
+      color: var(--primary-navy);
     }
 
-    .card p {
+    .value-card p {
       margin-bottom: 0;
     }
-
   </style>
 </head>
 <body>
@@ -159,31 +51,31 @@
   {% include "_navbar.html" %}
 
   <!-- HERO SECTION -->
-  <img src="/static/assets/images/core_values_bg.jpeg" class="hero-banner-img" alt="Hero Banner">
-  <section class="page-title-section">
-    <div class="container">
+  <section class="hero page-hero" style="--hero-image: url('/static/assets/images/core_values_bg.jpeg');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
       <h1>Core Values</h1>
       <p class="section-subtitle">Principles that guide every project, partnership and decision.</p>
     </div>
   </section>
 
   <!-- CORE VALUES TEXT -->
-  <section class="section section-alternate">
+  <section class="section section-light">
     <div class="container">
-      <div class="card-grid">
-        <div class="card">
+      <div class="value-grid">
+        <div class="value-card">
           <h3>A Partner, Not a Vendor</h3>
           <p>Clients turn to us for a "can do", problem solving attitude. Where others see obstacles, we deliver solutions — which is why we're seen as a long term partner rather than just another supplier.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3>Quality, on Time, Affordable</h3>
           <p>Our guiding motto — "quality work, completed on time and at an affordable price" — shapes every decision, from bidding to final trials.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3>Safety & Compliance, Always</h3>
           <p>Every project runs under strict QA/QC in full compliance with class, OEM and naval standards, with traceable inspection at every stage and the option of third party or class witnessed sign off.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3>Investing in Our People</h3>
           <p>A trained, diversified and well supported workforce is the foundation of everything we build. We invest continuously in our teams, our equipment and emerging technologies like robotics.</p>
         </div>
@@ -195,24 +87,24 @@
   <section class="section">
     <div class="container">
       <h2>Why Choose Patel Engineering Works</h2>
-      <div class="card-grid">
-        <div class="card">
+      <div class="value-grid">
+        <div class="value-card">
           <h3 class="navy-title">Certified Excellence</h3>
           <p>Class qualified welders and skilled tradesmen ensuring top quality workmanship.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3 class="navy-title">Expert Engineers</h3>
           <p>Experienced professionals driving every project to success.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3 class="navy-title">Trusted by Government</h3>
           <p>Approved contractor for leading Defence, PSU and DPSU organisations.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3 class="navy-title">End to End Solutions</h3>
           <p>From shipbuilding to complex repairs, delivered as one capability.</p>
         </div>
-        <div class="card">
+        <div class="value-card">
           <h3 class="navy-title">Global Expertise</h3>
           <p>Partnering with international clients such as Colombo dockyard, Sri Lanka.</p>
         </div>

@@ -201,6 +201,10 @@
   /* Color Palette - Strict Brand Colors */
   --primary-navy: #1F3A7A;
   --accent-red: #C0182E;
+  /* Aliases so existing component CSS that referenced undefined tokens
+     resolves to the approved palette instead of silently failing. */
+  --accent-blue: #1F3A7A;
+  --accent-red-dark: #A01224;
   --text-dark: #1A1A1A;
   --text-light: #5F6B7A;
   --neutral-white: #FFFFFF;
@@ -211,6 +215,16 @@
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Inter', sans-serif;
   --font-heading: 'Poppins', sans-serif;
+
+  /* Font size scale (desktop base; scaled down in the responsive
+     breakpoints below). Added because many components reference these
+     tokens without a base value ever being defined, which silently
+     dropped their text to the browser default at desktop widths. */
+  --font-size-base: 1rem;      /* 16px - body */
+  --font-size-lg: 1.125rem;    /* 18px - lead/subtitle text */
+  --font-size-2xl: 1.75rem;    /* 28px - H2 lower bound */
+  --font-size-3xl: 2.25rem;    /* 36px */
+  --font-size-4xl: 2.75rem;    /* 44px - H1 */
 
   /* Strict Spacing System */
   --spacing-8: 8px;
@@ -634,6 +648,18 @@ li {
   color: var(--primary-navy);
   font-size: var(--font-size-xl);
   cursor: pointer;
+}
+
+/* Tablet: tighten the desktop nav so all 8 items + dropdown arrows fit
+   without clipping off the right edge (was overflowing ~769-913px). */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-menu {
+    gap: 10px;
+  }
+
+  .navbar-menu a {
+    font-size: 14px; /* Buttons/labels: 14-15px range */
+  }
 }
 
 /* Mobile Menu */
@@ -1634,6 +1660,18 @@ li {
   color: var(--neutral-light-grey);
 }
 
+/* Multi-line contact entries (addresses) don't suit the label/value flex
+   row above - stack them instead, at the same readable size as the rest
+   of the footer text (not shrunk on mobile). */
+.footer-contact .footer-contact-item {
+  display: block;
+  margin-bottom: var(--spacing-16);
+}
+
+.footer-contact .footer-contact-item:last-child {
+  margin-bottom: 0;
+}
+
 .footer-contact a {
   display: inline;
   margin-bottom: 0;
@@ -1755,8 +1793,15 @@ li {
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: transparent;
+  /* Navy overlay so hero text keeps consistent contrast over any photo. */
+  background: rgba(31, 58, 122, 0.6);
   z-index: 2;
+}
+
+@media (min-width: 769px) {
+  .index-hero {
+    min-height: 560px !important;
+  }
 }
 
 
@@ -1790,6 +1835,204 @@ li {
   padding: 1.2rem 0 !important;
   background: linear-gradient(180deg, #f6f8fd 0%, #ffffff 100%);
   border-bottom: 1px solid var(--border-color);
+}
+
+/* ================================================================
+   CAPABILITY DETAIL PAGE TEMPLATE
+   Shared by all shipbuilding + ship repair sub-pages so every one of
+   them uses the same hero, text width, scope-card style and CTA.
+   ================================================================ */
+/* Compact title bar - solid navy, no photo. Small and text-only so it
+   doesn't compete with the real photo in the intro grid below. */
+.capability-hero {
+  background-color: var(--primary-navy);
+  padding: var(--spacing-48) 0 var(--spacing-32) 0;
+}
+
+.capability-eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--neutral-white);
+  opacity: 0.75;
+  margin-bottom: var(--spacing-8);
+}
+
+.capability-hero h1 {
+  color: var(--neutral-white);
+  margin-bottom: var(--spacing-8);
+  font-size: 34px;
+}
+
+.capability-hero p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  max-width: 640px;
+  margin-bottom: 0;
+}
+
+.capability-content {
+  padding: var(--spacing-64) 0;
+}
+
+/* Text beside one contained, fixed-ratio image - replaces the old
+   full-bleed hero photo, which read as oversized for a spec page. */
+.capability-intro-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: var(--spacing-48);
+  align-items: center;
+  margin-bottom: var(--spacing-64);
+}
+
+@media (max-width: 860px) {
+  .capability-intro-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-32);
+  }
+}
+
+.capability-text p {
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+/* When the intro sentence already said everything the source paragraph
+   says, don't repeat it - just show the image, contained and centered,
+   instead of stretching it across the full grid. */
+.capability-intro-grid-image-only {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.capability-intro-grid-image-only .capability-image-frame {
+  width: 100%;
+  max-width: 480px;
+}
+
+.capability-image-frame {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.capability-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.capability-scope-heading {
+  font-size: 22px;
+  margin-bottom: var(--spacing-24);
+}
+
+.capability-scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-16);
+}
+
+@media (max-width: 700px) {
+  .capability-scope-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.capability-scope-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-16);
+  background-color: var(--neutral-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-16) var(--spacing-24);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.capability-scope-item:hover {
+  border-color: var(--primary-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.capability-scope-index {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-red);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.capability-scope-item span:last-child {
+  font-size: 15px;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* Extra supporting images on pages that supplied more than one photo -
+   small, contained thumbnails, not full-width blocks. */
+.capability-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-32);
+}
+
+.capability-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.capability-related {
+  padding: var(--spacing-48) 0;
+  background-color: var(--neutral-light-grey);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.capability-related h3 {
+  font-size: 18px;
+  margin-bottom: var(--spacing-16);
+}
+
+.capability-related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-16);
+}
+
+.capability-related-links a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-navy);
+  background-color: var(--neutral-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+.capability-related-links a:hover {
+  color: var(--accent-red);
+  border-color: var(--accent-red);
+}
+
+.capability-cta {
+  background-color: var(--neutral-white);
+  padding: var(--spacing-64) 0;
+  text-align: center;
+}
+
+.capability-cta h3 {
+  margin-bottom: var(--spacing-24);
 }
 
 .page-shell {
@@ -3820,7 +4063,7 @@ img[data-expand-image] {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-size: clamp(1.28rem, 0.45vw + 1.08rem, 1.5rem);
-  text-align: justify;
+  text-align: left;
 }
 
 .about-list-item p {
@@ -5561,6 +5804,53 @@ img[data-expand-image] {
   color: var(--primary-navy);
 }
 
+/* Client logo grid - equal containers, consistent visual height */
+.client-logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-32);
+  align-items: center;
+  justify-items: center;
+}
+
+.client-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 160px;
+}
+
+.client-logo-item img {
+  height: 60px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: var(--spacing-16);
+  display: block;
+}
+
+.client-logo-item span {
+  color: var(--primary-navy);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+  .client-logo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-24) var(--spacing-16);
+  }
+}
+
 /* Why Choose Us Section - 5 Cards Grid */
 .why-grid-new {
   display: grid;
@@ -5712,14 +6002,19 @@ img[data-expand-image] {
     font-size: 36px;
   }
   
-  .stats-grid-new,
   .deliver-grid-new,
   .why-grid-new,
   .projects-grid-new {
     grid-template-columns: 1fr;
     gap: var(--spacing-24);
   }
-  
+
+  /* Brief requires stats in a two-by-two grid on mobile, not stacked. */
+  .stats-grid-new {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-16);
+  }
+
   .project-img-new {
     height: 220px;
   }

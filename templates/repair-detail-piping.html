@@ -5,57 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Piping, Valves & Pumps - Ship Repair | Patel Engineering Works</title>
   <link rel="stylesheet" href="/static/css/styles.css">
-  <style>
-    /* Structural Layout Only - Inherit Typography from styles.css */
-    .page-header { padding: 60px 0 40px; border-bottom: 1px solid var(--border-color, #eee); background-color: #123A7A; color: #ffffff; }
-    .page-header h1 { margin: 0; color: #ffffff !important; }
-    .content-section { padding: 60px 0; }
-    .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; margin-bottom: 40px; }
-    @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
-    .content-image { height: 100%; }
-    .content-image img { width: 100%; height: 100%; object-fit: cover; min-height: 250px; border-radius: 4px; box-shadow: var(--shadow-sm, 0 4px 12px rgba(0,0,0,0.05)); }
-    .tech-list { list-style: none; padding: 0; margin: 20px 0; }
-    .tech-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: inherit; }
-    .tech-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-red, #C0182E); font-weight: bold; }
-    .cta-section { background: var(--bg-light, #f8f9fa); padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color, #eee); }
-    .btn-navy { display: inline-block; background-color: var(--primary-navy, #123A7A); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
-    .btn-navy:hover { background-color: #0c2652; color: #ffffff; }
-    .btn-red { display: inline-block; background-color: var(--accent-red, #C0182E); color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: background-color 0.3s; margin: 0 10px; }
-    .btn-red:hover { background-color: #a01325; color: #ffffff; }
-  
-</style>
 </head>
 <body>
 
   {% include "_navbar.html" %}
 
-  <div class="page-header">
-    <div class="container" style="max-width: 1200px;">
+  <section class="capability-hero">
+    <div class="container">
+      <span class="capability-eyebrow">Ship repair capability</span>
       <h1>Piping, Valves & Pumps</h1>
+      <p>Repair and overhaul of onboard piping and auxiliary equipment — air, fuel, bilge, ballast, fire fighting, seawater, freshwater, sewage, chilled water and exhaust — across all common metallurgies.</p>
     </div>
-  </div>
+  </section>
 
-  <section class="content-section">
-    <div class="container" style="max-width: 1200px;">
-      <div class="content-grid">
-        <div class="content-text">
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dark, #333);">Repair and overhaul of onboard piping and auxiliary equipment — air, fuel, bilge, ballast, fire fighting, seawater, freshwater, sewage, chilled water and exhaust — across all common metallurgies. Valves reconditioned or replaced and pressure tested; pumps and compressors rebuilt with new internals under approved quality assurance plans with full traceability.</p>
-          <ul class="tech-list" style="margin-top: 15px;">
-            <li>Comprehensive auxiliary piping overhaul</li><li>Multi metallurgy system repairs</li><li>Valve reconditioning & pressure testing</li><li>Pump & compressor internal rebuilding</li><li>QA approved full traceability</li>
-          </ul>
+  <section class="capability-content">
+    <div class="container">
+      <div class="capability-intro-grid">
+        <div class="capability-text">
+          <p>Repair and overhaul of onboard piping and auxiliary equipment — air, fuel, bilge, ballast, fire fighting, seawater, freshwater, sewage, chilled water and exhaust — across all common metallurgies. Valves reconditioned or replaced and pressure tested; pumps and compressors rebuilt with new internals under approved quality assurance plans with full traceability.</p>
         </div>
-        <div class="content-image">
+        <div class="capability-image-frame">
           <img src="/static/assets/images/piping_plumbing_2.jpeg" alt="Piping, Valves & Pumps">
         </div>
+      </div>
+
+      <h2 class="capability-scope-heading">Scope of work</h2>
+      <div class="capability-scope-grid">
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">01</span>
+            <span>Comprehensive auxiliary piping overhaul</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">02</span>
+            <span>Multi metallurgy system repairs</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">03</span>
+            <span>Valve reconditioning & pressure testing</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">04</span>
+            <span>Pump & compressor internal rebuilding</span>
+          </div>
+          <div class="capability-scope-item">
+            <span class="capability-scope-index">05</span>
+            <span>QA approved full traceability</span>
+          </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section">
-    <div class="container" style="max-width: 1200px;">
-      <h3 style="margin-bottom: 30px;">Need Support for Your Next Repair Project?</h3>
-      <a href="{{ url_for('contact') }}" class="btn-red">Contact Us</a>
-      <a href="{{ url_for('divisions_overview') }}" class="btn-navy">Explore Other Capabilities</a>
+  <section class="capability-related">
+    <div class="container">
+      <h3>Related repair capabilities</h3>
+      <div class="capability-related-links">
+          <a href="{{ url_for('ship_repair_steel') }}">Steel renewal & structural</a>
+          <a href="{{ url_for('ship_repair_hydraulics') }}">Hydraulic systems & controls</a>
+          <a href="{{ url_for('ship_repair_propulsion') }}">Propulsion & shafting</a>
+          <a href="{{ url_for('ship_repair_boilers') }}">Boilers & steam turbines</a>
+          <a href="{{ url_for('ship_repair_hvac') }}">HVAC & refrigeration</a>
+          <a href="{{ url_for('ship_repair_surface_prep') }}">Surface preparation</a>
+          <a href="{{ url_for('ship_repair_painting') }}">Painting & coating</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="capability-cta">
+    <div class="container">
+      <h3>Need Support for Your Next Repair Project?</h3>
+      <div class="hero-buttons">
+        <a href="{{ url_for('contact') }}" class="btn-accent-new">Contact Us</a>
+        <a href="{{ url_for('divisions_overview') }}" class="btn-secondary-new">Explore Other Capabilities</a>
+      </div>
     </div>
   </section>
 
@@ -64,4 +85,3 @@
   <script src="/static/js/main.js"></script>
 </body>
 </html>
-

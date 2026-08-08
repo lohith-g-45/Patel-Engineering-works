@@ -19,16 +19,14 @@
   <!-- ================================================================
        2. HERO SECTION
        ================================================================ -->
-  <img src="{{ url_for('static', filename='assets/images/shipbuilding_coastal_hero.png') }}" class="hero-banner-img" alt="Hero Banner">
-  <section class="page-title-section">
-    <div class="container">
-      <div style="font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-navy); margin-bottom: var(--spacing-16); font-family: var(--font-heading);">Patel Engineering Works (Vizag)</div>
-      <h1 class="intro-heading-new" style="color: var(--primary-navy) !important; margin-bottom: 0 !important;">India's Trusted Partner in Shipbuilding &amp; Ship Repair</h1>
-      <p class="hero-sub-desktop" style="color: var(--text-dark) !important;">Two decades of delivering new construction and lifecycle support to the Indian Navy, Coast Guard and the nation’s leading shipyards — on time, to spec, every time.</p>
-      <p class="hero-sub-mobile" style="color: var(--text-dark) !important;">Shipbuilding &amp; repair. Ontime, every time.</p>
-      <div class="hero-btn-group">
+  <section class="hero page-hero index-hero" style="--hero-image: url('{{ url_for('static', filename='assets/images/shipbuilding_coastal_hero.png') }}');">
+    <div class="page-hero-overlay"></div>
+    <div class="hero-content page-hero-content">
+      <h1>India's Trusted Partner in Shipbuilding &amp; Ship repair.</h1>
+      <p class="section-subtitle">Two decades of delivering new construction and lifecycle support to the Indian Navy, Coast Guard and the nation's leading shipyards — on time, to spec, every time.</p>
+      <div class="hero-buttons" style="margin-top: var(--spacing-32);">
         <a href="{{ url_for('divisions_overview') }}" class="btn-primary-new">Explore Capabilities</a>
-        <a href="{{ url_for('contact') }}" class="btn-outline-light-new" style="color: var(--primary-navy) !important; border-color: var(--primary-navy);">Work With Us</a>
+        <a href="{{ url_for('contact') }}" class="btn-outline-light-new">Work With Us</a>
       </div>
     </div>
   </section>
@@ -106,45 +104,38 @@
       <div class="text-center" style="margin-bottom: var(--spacing-48);">
         <h2>Trusted by India’s Navy, Coast Guard &amp; Leading Shipyards</h2>
       </div>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; align-items: flex-end;">
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/indian navy.png') }}" alt="Indian Navy" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Indian Navy</p>
+      <div class="client-logo-grid">
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/indian navy.png') }}" alt="Indian Navy">
+          <span>Indian Navy</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Indian Coast Guard (ICG).png') }}" alt="Indian Coast Guard" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Indian Coast Guard</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Indian Coast Guard (ICG).png') }}" alt="Indian Coast Guard">
+          <span>Indian Coast Guard</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Garden Reach Shipbuilders and Engineers (GRSE).png') }}" alt="GRSE" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">GRSE</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Garden Reach Shipbuilders and Engineers (GRSE).png') }}" alt="GRSE">
+          <span>GRSE</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Hindustan Shipyard Limited (HSL).png') }}" alt="Hindustan Shipyard" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Hindustan Shipyard</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Hindustan Shipyard Limited (HSL).png') }}" alt="Hindustan Shipyard">
+          <span>Hindustan Shipyard</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Goa Shipyard Limited (GSL).png') }}" alt="Goa Shipyard" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Goa Shipyard</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Goa Shipyard Limited (GSL).png') }}" alt="Goa Shipyard">
+          <span>Goa Shipyard</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Cochin Shipyard Limited (CSL).png') }}" alt="Cochin Shipyard" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Cochin Shipyard</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Cochin Shipyard Limited (CSL).png') }}" alt="Cochin Shipyard">
+          <span>Cochin Shipyard</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Mazagon Dock Shipbuilders Limited (MDSL) .png') }}" alt="Mazagon Dock" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Mazagon Dock</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Mazagon Dock Shipbuilders Limited (MDSL) .png') }}" alt="Mazagon Dock">
+          <span>Mazagon Dock</span>
         </div>
-        
-        <div style="display: flex; flex-direction: column; align-items: center; width: 160px; text-align: center;">
-          <img src="{{ url_for('static', filename='assets/images/clients/Colombo Dockyard PLC.png') }}" alt="Colombo Dockyard" style="height: 60px; object-fit: contain; margin-bottom: 15px; display: block;">
-          <p style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600; margin: 0; font-size: 0.95rem;">Colombo dockyard</p>
+        <div class="client-logo-item">
+          <img src="{{ url_for('static', filename='assets/images/clients/Colombo Dockyard PLC.png') }}" alt="Colombo Dockyard">
+          <span>Colombo Dockyard</span>
         </div>
       </div>
     </div>

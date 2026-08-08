@@ -23,9 +23,9 @@
 </head>
 <body class="media-page">
   {% include "_navbar.html" %}
-<img alt="Hero Banner" class="hero-banner-img" src="{{ url_for('static', filename='assets/images/gallery_hero_bg.png') }}"/>
-<section class="page-title-section">
-<div class="container">
+<section class="hero page-hero" style="--hero-image: url('{{ url_for('static', filename='assets/images/gallery_hero_bg.png') }}');">
+<div class="page-hero-overlay"></div>
+<div class="hero-content page-hero-content">
 <h1 data-word-reveal="" data-word-reveal-start="120">Gallery</h1>
 <p class="section-subtitle" data-word-reveal="" data-word-reveal-start="500">A visual showcase of our Engineering excellence and facilities.</p>
 </div>

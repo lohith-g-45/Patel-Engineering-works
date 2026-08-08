@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ 'Edit Article' if article_id else 'Add Article' }} | Patel Engineering Works</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    body {
+      background-color: var(--neutral-light-grey);
+      min-height: 100vh;
+    }
+    .editor-shell {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: var(--spacing-2xl) var(--spacing-md);
+    }
+    .editor-back-link {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .editor-back-link:hover {
+      color: var(--accent-red);
+    }
+    .admin-topbar h1 {
+      margin: var(--spacing-8) 0 0;
+      font-size: var(--font-size-2xl);
+    }
+    .admin-card {
+      background-color: #ffffff;
+      padding: var(--spacing-lg);
+    }
+    .admin-alert {
+      display: none;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-lg);
+      font-size: 0.9rem;
+    }
+    .admin-alert-error {
+      background: #fdecea;
+      border: 1px solid #f3b4ac;
+      color: #a4231a;
+    }
+    .admin-alert-success {
+      background: #e8f5e9;
+      border: 1px solid #a8d5ab;
+      color: #256029;
+    }
+    .admin-image-grid {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-sm);
+    }
+    .admin-image-grid img {
+      width: 110px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+    .admin-hint {
+      display: block;
+      margin-top: var(--spacing-xs);
+      color: var(--text-light);
+      font-size: 0.82rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-dark);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent-red);
+      color: var(--accent-red);
+      transform: translateY(-2px);
+    }
+    .btn-delete {
+      background-color: var(--accent-red);
+      color: var(--neutral-white);
+      border: none;
+    }
+    .btn-delete:hover {
+      background-color: #a01324;
+      transform: translateY(-2px);
+    }
+    .editor-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-lg);
+    }
+    .editor-actions .btn {
+      padding: 0.75rem 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="editor-shell">
+    <div class="admin-topbar">
+      <div>
+        <a class="editor-back-link" href="{{ url_for('admin_dashboard') }}">&larr; Back to Dashboard</a>
+        <h1>{{ 'Edit Article' if article_id else 'Add New Article' }}</h1>
+      </div>
+      <button type="button" class="btn btn-outline" id="logoutBtn">Logout</button>
+    </div>
+
+    <div class="card admin-card">
+      <div class="admin-alert admin-alert-error" id="errorBox"></div>
+      <div class="admin-alert admin-alert-success" id="successBox"></div>
+
+      <form class="admin-form" id="articleForm">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" maxlength="200" placeholder="Article title" required>
+        </div>
+
+        <div>
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="news">News</option>
+            <option value="blog">Blog</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="content">Content</label>
+          <textarea id="content" name="content" rows="12" placeholder="Write the article content..." required></textarea>
+        </div>
+
+        <div id="existingImagesWrap" style="display: none;">
+          <label>Current Images</label>
+          <div class="admin-image-grid" id="existingImages"></div>
+          <span class="admin-hint">Uploading a new image below will replace these.</span>
+        </div>
+
+        <div>
+          <label for="imageFiles">Upload Images (up to 3)</label>
+          <input type="file" id="imageFiles" name="image_files" accept="image/png,image/jpeg,image/gif,image/webp" multiple>
+        </div>
+
+        <div>
+          <label for="imageUrl">Or Image URL (optional)</label>
+          <input type="url" id="imageUrl" name="image_url" placeholder="https://example.com/image.jpg">
+        </div>
+
+        <div class="editor-actions">
+          <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline">Cancel</a>
+          {% if article_id %}
+          <button type="button" class="btn btn-delete" id="deleteBtn">Delete Article</button>
+          {% endif %}
+          <button type="submit" class="btn btn-primary" id="saveBtn">{{ 'Update Article' if article_id else 'Save Article' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const ARTICLE_ID = {{ article_id | tojson }};
+    const token = localStorage.getItem('adminToken');
+    if (!token) window.location.href = '/admin';
+
+    const form = document.getElementById('articleForm');
+    const errorBox = document.getElementById('errorBox');
+    const successBox = document.getElementById('successBox');
+    const saveBtn = document.getElementById('saveBtn');
+    const deleteBtn = document.getElementById('deleteBtn');
+    const existingImagesWrap = document.getElementById('existingImagesWrap');
+    const existingImagesEl = document.getElementById('existingImages');
+
+    function showError(message) {
+      errorBox.textContent = message;
+      errorBox.style.display = 'block';
+      successBox.style.display = 'none';
+    }
+
+    function showSuccess(message) {
+      successBox.textContent = message;
+      successBox.style.display = 'block';
+      errorBox.style.display = 'none';
+    }
+
+    async function loadArticle() {
+      if (!ARTICLE_ID) return;
+      try {
+        const res = await fetch(`/api/articles/${ARTICLE_ID}`);
+        if (!res.ok) throw new Error('Article not found');
+        const article = await res.json();
+        document.getElementById('title').value = article.title || '';
+        document.getElementById('category').value = String(article.category || 'news').toLowerCase();
+        document.getElementById('content').value = article.content || '';
+
+        const images = (article.image_urls && article.image_urls.length)
+          ? article.image_urls
+          : (article.image_url ? [article.image_url] : []);
+        if (images.length) {
+          existingImagesEl.innerHTML = images.map((src) => `<img src="${src}" alt="Article image">`).join('');
+          existingImagesWrap.style.display = 'block';
+        }
+      } catch (error) {
+        showError('Could not load article. It may have been deleted.');
+      }
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      errorBox.style.display = 'none';
+      successBox.style.display = 'none';
+
+      const title = document.getElementById('title').value.trim();
+      const category = document.getElementById('category').value;
+      const content = document.getElementById('content').value.trim();
+      const imageUrl = document.getElementById('imageUrl').value.trim();
+      const imageFiles = document.getElementById('imageFiles').files;
+
+      if (!title || !content) {
+        showError('Title and content are required.');
+        return;
+      }
+
+      const payload = new FormData();
+      payload.set('title', title);
+      payload.set('category', category);
+      payload.set('content', content);
+      if (imageUrl) payload.set('image_url', imageUrl);
+      Array.from(imageFiles).slice(0, 3).forEach((file) => payload.append('image_files', file));
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = ARTICLE_ID ? 'Updating...' : 'Saving...';
+
+      try {
+        const endpoint = ARTICLE_ID ? `/api/articles/${ARTICLE_ID}` : '/api/articles';
+        const method = ARTICLE_ID ? 'PUT' : 'POST';
+        const res = await fetch(endpoint, {
+          method,
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: payload
+        });
+
+        if (res.status === 401) {
+          window.location.href = '/admin';
+          return;
+        }
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to save article');
+
+        showSuccess(ARTICLE_ID ? 'Article updated successfully.' : 'Article created successfully.');
+        setTimeout(() => { window.location.href = '/admin/dashboard'; }, 900);
+      } catch (error) {
+        showError(error.message);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = ARTICLE_ID ? 'Update Article' : 'Save Article';
+      }
+    });
+
+    if (deleteBtn) {
+      deleteBtn.addEventListener('click', async () => {
+        if (!confirm('Delete this article? This action cannot be undone.')) return;
+        try {
+          const res = await fetch(`/api/articles/${ARTICLE_ID}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          if (res.status === 401) {
+            window.location.href = '/admin';
+            return;
+          }
+          if (!res.ok) throw new Error('Failed to delete article');
+          window.location.href = '/admin/dashboard';
+        } catch (error) {
+          showError(error.message);
+        }
+      });
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('adminToken');
+      window.location.href = '/admin';
+    });
+
+    loadArticle();
+  </script>
+</body>
+</html>

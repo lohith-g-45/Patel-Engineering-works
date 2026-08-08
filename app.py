@@ -325,12 +325,12 @@ def register_routes(app: Flask) -> None:
     @app.get("/admin/add")
     def admin_add_article():
         """Render article editor for creating new article"""
-        return render_template("admin/editor.html")
-    
+        return render_template("admin/editor.html", article_id=None)
+
     @app.get("/admin/edit/<int:article_id>")
     def admin_edit_article(article_id):
         """Render article editor for editing article"""
-        return render_template("admin/editor.html")
+        return render_template("admin/editor.html", article_id=article_id)
 
     @app.get("/api/admin/history")
     @token_required

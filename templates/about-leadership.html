@@ -4,117 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leadership — Patel Engineering Works</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/styles.css">
   <style>
-    /* STRICT GLOBAL DESIGN TOKENS */
-    :root {
-      --color-navy: #1F3A7A;
-      --color-red: #C0182E;
-      --color-ink: #1A1A1A;
-      --color-slate: #5F6B7A;
-      --color-mist: #F4F5F7;
-      --color-white: #FFFFFF;
-      --color-border: #E2E5EA;
-      
-      --font-heading: 'Poppins', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--color-ink);
-      background-color: var(--color-white);
-      line-height: 1.7;
-      margin: 0;
-      padding: 0;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section {
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .section-alternate {
-      background-color: var(--color-mist);
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-heading);
-      font-weight: 600;
-      margin: 0 0 16px 0;
-      text-transform: none;
-    }
-
-    h1 {
-      font-size: 48px;
-      color: var(--color-navy);
-    }
-
-    h2 {
-      font-size: 32px;
-      color: var(--color-navy);
-    }
-
-    h3 {
-      font-size: 22px;
-      color: var(--color-ink);
-    }
-
-    p {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--color-ink);
-      margin: 0 0 16px 0;
-      text-align: left;
-      max-width: 75ch;
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      background-image: url('/static/assets/images/leadership_bg.jpeg');
-      background-size: cover;
-      background-position: center;
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(31, 58, 122, 0.4);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center !important;
-    }
-
-    .hero h1 {
-      color: var(--color-white);
-      text-align: center !important;
-    }
-
-    .hero p {
-      color: var(--color-white);
-      font-size: 22px;
-      margin-bottom: 0;
-      text-align: center !important;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    /* Leadership-card layout - page-specific. Colors, type, section
+       spacing, hero and container all come from the shared global
+       stylesheet. */
 
     /* Intro Block */
     .intro-block {
@@ -141,9 +35,9 @@
     }
 
     .leadership-card {
-      background-color: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 10px;
+      background-color: var(--neutral-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -173,24 +67,20 @@
     .title-block {
       min-height: 110px; /* Strict fixed height to perfectly align underlines and descriptions */
       margin-bottom: 16px;
-      border-bottom: 2px solid var(--color-red);
+      border-bottom: 2px solid var(--accent-red);
       padding-bottom: 16px;
     }
 
     .title-block h3 {
-      color: var(--color-navy);
+      color: var(--primary-navy);
       margin-bottom: 8px;
     }
 
     .title-block span {
       display: block;
-      color: var(--color-slate);
+      color: var(--text-light);
       font-size: 14px;
       font-weight: 400;
-    }
-
-    .leadership-bio p {
-      margin-bottom: 8px;
     }
 
     ul.leadership-list {
@@ -204,15 +94,49 @@
       padding-left: 16px;
       margin-bottom: 8px;
       font-size: 14px; /* Slightly smaller for the list inside the card */
-      color: var(--color-ink);
+      color: var(--text-dark);
     }
-    
+
     ul.leadership-list li::before {
       content: '•';
       position: absolute;
       left: 0;
-      color: var(--color-navy);
+      color: var(--primary-navy);
       font-weight: bold;
+    }
+
+    /* Every card previews the same fixed amount of bio copy, so all
+       three cards are genuinely the same size regardless of how long
+       each person's full bio is - not stretched, no empty space. */
+    .leadership-bio-preview {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+      margin-bottom: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      height: calc(1rem * 1.6 * 4);
+    }
+
+    .bio-toggle {
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border-color);
+      padding: 0;
+      margin-top: auto;
+      padding-top: var(--spacing-16);
+      text-align: left;
+      color: var(--accent-red);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: var(--font-primary);
+      cursor: pointer;
+    }
+
+    .bio-toggle:hover {
+      color: var(--primary-navy);
     }
 
     /* Philosophy section */
@@ -242,12 +166,12 @@
       content: '—';
       position: absolute;
       left: 0;
-      color: var(--color-red);
+      color: var(--accent-red);
       font-weight: bold;
     }
 
     .philosophy-list strong {
-      color: var(--color-navy);
+      color: var(--primary-navy);
     }
 
   </style>
@@ -290,17 +214,20 @@
               <h3 style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600;">Mr Kiran Sanghvi</h3>
               <span style="color: var(--primary-navy); font-weight: 500;">Founder and Chief Executive Officer</span>
             </div>
-            <div class="leadership-bio">
-              <p>At the helm of our strategic leadership is Mr Kiran Sanghvi, who serves as both mentor and strategist for the firm. With a diploma in electrical Engineering and over 40 years of hands on experience in the maritime industry, he has worked with some of the most prestigious names in the field:</p>
-              <ul class="leadership-list">
-                <li>MAN b&amp;w — engines &amp; propulsion systems</li>
-                <li>Norwinch — low pressure hydraulic windlasses, mooring winches &amp; steering gear</li>
-                <li>Hatlappa — high pressure hydraulic windlasses, mooring winches, steering gear &amp; compressors</li>
-                <li>Ascargo, spain — hatch covers, bow doors &amp; ramp doors</li>
-              </ul>
-              <p>His technical expertise, paired with a genuine passion for innovation, has been instrumental in driving the company's growth and its reputation for excellence.</p>
-            </div>
+            <p class="leadership-bio-preview">At the helm of our strategic leadership is Mr Kiran Sanghvi, who serves as both mentor and strategist for the firm. With a diploma in electrical Engineering and over 40 years of hands on experience in the maritime industry, he has worked with some of the most prestigious names in the field:</p>
+            <button type="button" class="bio-toggle detail-trigger" data-modal-title="Mr Kiran Sanghvi">Read full bio &rarr;</button>
           </div>
+          <template data-detail-body>
+            <p style="color: var(--primary-navy); font-weight: 500; margin-bottom: var(--spacing-16);">Founder and Chief Executive Officer</p>
+            <p>At the helm of our strategic leadership is Mr Kiran Sanghvi, who serves as both mentor and strategist for the firm. With a diploma in electrical Engineering and over 40 years of hands on experience in the maritime industry, he has worked with some of the most prestigious names in the field:</p>
+            <ul class="leadership-list">
+              <li>MAN b&amp;w — engines &amp; propulsion systems</li>
+              <li>Norwinch — low pressure hydraulic windlasses, mooring winches &amp; steering gear</li>
+              <li>Hatlappa — high pressure hydraulic windlasses, mooring winches, steering gear &amp; compressors</li>
+              <li>Ascargo, spain — hatch covers, bow doors &amp; ramp doors</li>
+            </ul>
+            <p>His technical expertise, paired with a genuine passion for innovation, has been instrumental in driving the company's growth and its reputation for excellence.</p>
+          </template>
         </div>
 
         <!-- Profile 2 -->
@@ -313,10 +240,13 @@
               <h3 style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600;">Mr Rashesh Sanghvi</h3>
               <span style="color: var(--primary-navy); font-weight: 500;">Director Strategy and Client Leadership</span>
             </div>
-            <div class="leadership-bio">
-              <p>With over 25 years of experience, Mr Rashesh Sanghvi has helped shape the company's strategic direction. His strengths lie in client relationship management, project oversight and resolving HR and logistical challenges, ensuring smooth execution and strong, lasting client partnerships.</p>
-            </div>
+            <p class="leadership-bio-preview">With over 25 years of experience, Mr Rashesh Sanghvi has helped shape the company's strategic direction. His strengths lie in client relationship management, project oversight and resolving HR and logistical challenges, ensuring smooth execution and strong, lasting client partnerships.</p>
+            <button type="button" class="bio-toggle detail-trigger" data-modal-title="Mr Rashesh Sanghvi">Read full bio &rarr;</button>
           </div>
+          <template data-detail-body>
+            <p style="color: var(--primary-navy); font-weight: 500; margin-bottom: var(--spacing-16);">Director Strategy and Client Leadership</p>
+            <p>With over 25 years of experience, Mr Rashesh Sanghvi has helped shape the company's strategic direction. His strengths lie in client relationship management, project oversight and resolving HR and logistical challenges, ensuring smooth execution and strong, lasting client partnerships.</p>
+          </template>
         </div>
 
         <!-- Profile 3 -->
@@ -329,10 +259,13 @@
               <h3 style="color: var(--primary-navy); font-family: var(--font-heading); font-weight: 600;">Mr Chirag Sanghvi</h3>
               <span style="color: var(--primary-navy); font-weight: 500;">Partner Business Development and Projects</span>
             </div>
-            <div class="leadership-bio">
-              <p>Bringing 15 years of industry experience, Mr Chirag Sanghvi leads business development, project management and costing &amp; bidding. His approach to project strategy and growth has been pivotal in securing major contracts and expanding the firm's presence across the Marine industry.</p>
-            </div>
+            <p class="leadership-bio-preview">Bringing 15 years of industry experience, Mr Chirag Sanghvi leads business development, project management and costing &amp; bidding. His approach to project strategy and growth has been pivotal in securing major contracts and expanding the firm's presence across the Marine industry.</p>
+            <button type="button" class="bio-toggle detail-trigger" data-modal-title="Mr Chirag Sanghvi">Read full bio &rarr;</button>
           </div>
+          <template data-detail-body>
+            <p style="color: var(--primary-navy); font-weight: 500; margin-bottom: var(--spacing-16);">Partner Business Development and Projects</p>
+            <p>Bringing 15 years of industry experience, Mr Chirag Sanghvi leads business development, project management and costing &amp; bidding. His approach to project strategy and growth has been pivotal in securing major contracts and expanding the firm's presence across the Marine industry.</p>
+          </template>
         </div>
 
       </div>
@@ -350,6 +283,17 @@
 
     </div>
   </section>
+
+  <!-- SHARED BIO DETAIL MODAL -->
+  <div class="modal-overlay detail-modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2></h2>
+        <button type="button" class="btn-close-modal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body"></div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   {% include '_footer.html' %}

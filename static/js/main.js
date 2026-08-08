@@ -25,7 +25,66 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeScrollReveal();
   initializeAccordions();
   initializeJobFilters();
+  initializeDetailModals();
 });
+
+/**
+ * Detail Modals - cards preview a fixed, uniform amount of copy (see the
+ * line-clamp CSS on their preview text) so every card in a grid is
+ * genuinely the same size, never stretched and never padded with empty
+ * space. Full detail is always one click away in a shared modal, driven
+ * by each card's own <template data-detail-body> - nothing is deleted,
+ * it just isn't inline in the card itself.
+ */
+function initializeDetailModals() {
+  const overlay = document.querySelector('.detail-modal-overlay');
+  const triggers = document.querySelectorAll('.detail-trigger');
+  if (!overlay || !triggers.length) {
+    return;
+  }
+
+  const titleEl = overlay.querySelector('.modal-header h2');
+  const bodyEl = overlay.querySelector('.modal-body');
+  const closeBtn = overlay.querySelector('.btn-close-modal');
+
+  function openModal(trigger) {
+    const card = trigger.closest('.proj-card, .leadership-card');
+    const template = card ? card.querySelector('template[data-detail-body]') : null;
+    if (!template) {
+      return;
+    }
+    titleEl.textContent = trigger.getAttribute('data-modal-title') || '';
+    bodyEl.innerHTML = '';
+    bodyEl.appendChild(template.content.cloneNode(true));
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function() {
+      openModal(trigger);
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      closeModal();
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
 
 /* ================================================================
    1. NAVBAR FUNCTIONALITY
