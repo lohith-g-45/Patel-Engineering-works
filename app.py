@@ -613,6 +613,21 @@ def register_routes(app: Flask) -> None:
         db.session.commit()
         return jsonify({"message": "Job deleted"}), 200
 
+    @app.put("/api/admin/password")
+    @token_required
+    def update_admin_password():
+        data = request.get_json()
+        current_pass = data.get("current_password")
+        new_pass = data.get("new_password")
+        
+        admin = AdminUser.query.get(request.admin_id)
+        if not admin or not admin.check_password(current_pass):
+            return jsonify({"success": False, "message": "Current password is incorrect"}), 400
+            
+        admin.set_password(new_pass)
+        db.session.commit()
+        return jsonify({"success": True, "message": "Password updated successfully"})
+
 
 app = create_app()
 

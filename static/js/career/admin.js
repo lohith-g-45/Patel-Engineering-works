@@ -470,24 +470,17 @@ async function initApp() {
     passwordModal.classList.remove('active');
   });
 
-  passwordResetForm.addEventListener('submit', (e) => {
+  passwordResetForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const currentPass = document.getElementById('modal-current-pass').value;
     const newPass = document.getElementById('modal-new-pass').value;
     const confirmPass = document.getElementById('modal-confirm-pass').value;
     
-    const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
     const errorEl = document.getElementById('password-modal-error');
     const successEl = document.getElementById('password-modal-success');
     
     errorEl.style.display = 'none';
     successEl.style.display = 'none';
-
-    if (currentPass !== storedPass) {
-      errorEl.textContent = 'Current password is incorrect.';
-      errorEl.style.display = 'block';
-      return;
-    }
 
     if (newPass !== confirmPass) {
       errorEl.textContent = 'New passwords do not match.';
@@ -495,9 +488,35 @@ async function initApp() {
       return;
     }
 
-    localStorage.setItem('adminPassword', newPass);
-    successEl.style.display = 'block';
-    passwordResetForm.reset();
+    try {
+      const token = localStorage.getItem('adminToken');
+      const res = await fetch('/api/admin/password', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          current_password: currentPass,
+          new_password: newPass
+        })
+      });
+
+      const data = await res.json();
+      
+      if (!res.ok) {
+        errorEl.textContent = data.message || 'Failed to update password.';
+        errorEl.style.display = 'block';
+      } else {
+        successEl.textContent = 'Password updated successfully!';
+        successEl.style.display = 'block';
+        passwordResetForm.reset();
+      }
+    } catch (err) {
+      console.error(err);
+      errorEl.textContent = 'Network error occurred.';
+      errorEl.style.display = 'block';
+    }
     
     setTimeout(() => {
       passwordModal.classList.remove('active');
