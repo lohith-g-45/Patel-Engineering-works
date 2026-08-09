@@ -58,12 +58,12 @@ def create_app() -> Flask:
                 db.session.execute(text("ALTER TABLE content_history ADD COLUMN category VARCHAR(30)"))
                 db.session.commit()
         # Create initial admin if doesn't exist
-        if not AdminUser.query.filter_by(username="admin").first():
-            admin = AdminUser(username="admin")
-            admin.set_password("admin123")  # Change this password!
+        if not AdminUser.query.filter_by(username="jobs@patelengv.com").first():
+            admin = AdminUser(username="jobs@patelengv.com")
+            admin.set_password("Pew_vizag@123")
             db.session.add(admin)
             db.session.commit()
-            print("âœ… Initial admin created: username='admin', password='admin123'")
+            print("✅ Initial admin created: username='jobs@patelengv.com'")
     
     register_routes(app)
 
