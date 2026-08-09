@@ -139,7 +139,7 @@
         <div class="contact-form-card">
           <h2 style="font-size: 1.4rem; margin-bottom: var(--spacing-8);">Send an enquiry</h2>
           <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: var(--spacing-24);">Fill in your details and we'll open your email client with a message ready to send to our team.</p>
-          <form id="enquiry-form" novalidate>
+          <form id="enquiry-form">
             <div class="cf-row">
               <div class="cf-group">
                 <label class="cf-label" for="ef-name">Full Name *</label>
@@ -183,7 +183,7 @@
         'Email: ' + email + '\n\n' +
         message
       );
-      window.location.href = 'mailto:info@patelengv.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:jobs@patelengv.com?subject=' + subject + '&body=' + body;
     });
   </script>
 </body>
