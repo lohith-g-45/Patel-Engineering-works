@@ -3,179 +3,315 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | Patel Engineering Works</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <script>
-    const token = localStorage.getItem('adminToken');
-    if (!token) window.location.href = '/admin';
+  <title>Careers Admin | Patel Engineering Works</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Admin Styles */
+    :root {
+      --primary: #12254a;
+      --primary-light: #2a5bd7;
+      --secondary: #e1565a;
+      --bg-color: #f3f7ff;
+      --surface: #ffffff;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg-color); color: var(--text-dark); margin: 0; padding: 0; }
+    .admin-layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 260px; background: var(--primary); display: flex; flex-direction: column; color: #fff; }
+    .sidebar-header { padding: 2rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1); color: #fff; font-size: 1.4rem; font-weight: 800; letter-spacing: 0.5px; }
+    .sidebar-nav { flex: 1; padding: 1.5rem 0; display: flex; flex-direction: column; }
+    .nav-item { padding: 1rem 2rem; color: #cbd5e1; cursor: pointer; font-weight: 500; transition: all 0.2s; border-left: 3px solid transparent; }
+    .nav-item.active { background: rgba(255,255,255,0.08); color: #fff; font-weight: 600; border-left: 3px solid var(--primary-light); }
+    .nav-item:hover:not(.active) { background: rgba(255,255,255,0.05); color: #fff; }
+    .sidebar-footer { padding: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .logout-btn { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md); font-weight: 600; cursor: pointer; padding: 0.85rem; width: 100%; text-align: center; transition: all 0.2s; }
+    .logout-btn:hover { background: rgba(239, 68, 68, 0.2); color: #fff; }
     
-    async function fetchJobs() {
-      const res = await fetch('/api/admin/jobs', {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      if (res.status === 401) window.location.href = '/admin';
-      const jobs = await res.json();
-      const tbody = document.getElementById('jobsTableBody');
-      tbody.innerHTML = '';
-      jobs.forEach(job => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${job.title}</td>
-          <td>${job.department}</td>
-          <td>
-            <span class="badge ${job.status === 'OPEN' ? 'badge-open' : 'badge-closed'}">${job.status}</span>
-          </td>
-          <td>
-            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.875rem;" onclick="toggleJob(${job.id})">Toggle Status</button>
-            <button class="btn btn-outline" style="padding: 0.25rem 0.5rem; font-size: 0.875rem; border-color: var(--danger); color: var(--danger);" onclick="deleteJob(${job.id})">Delete</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
+    .main-content { flex: 1; padding: 2.5rem 3rem; overflow-y: auto; background: #f8fafc; }
+    .view { display: none; animation: fadeIn 0.3s ease-out; }
+    .view.active { display: block; }
+    
+    .card { background: var(--surface); border-radius: var(--radius-lg); box-shadow: 0 4px 20px rgba(18, 37, 74, 0.05); padding: 1.8rem; border: 1px solid rgba(18, 37, 74, 0.05); margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(18, 37, 74, 0.08); }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+    
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    th { color: var(--text-light); font-weight: 500; font-size: 0.9rem; }
+    
+    .badge { padding: 0.35rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+    .badge-success { background: #d1fae5; color: #065f46; }
+    .badge-danger { background: #fee2e2; color: #991b1b; }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+    .badge-neutral { background: #f3f4f6; color: #374151; }
+    
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; border: none; font-size: 0.95rem; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { background: var(--surface); color: var(--text-dark); border: 1px solid var(--border); }
+    .btn-action { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 0.4rem 0.75rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-left: 0.25rem; font-family: inherit; }
+    .btn-action:hover { background: #e2e8f0; color: #1e293b; }
+    .btn-action.delete { color: #ef4444; background: #fef2f2; border-color: #fee2e2; }
+    .btn-action.delete:hover { background: #fee2e2; color: #dc2626; }
+    
+    .input-field { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-md); font-family: inherit; font-size: 0.95rem; background: #f9fafb; margin-bottom: 1rem; box-sizing: border-box; }
+    .input-field:focus { outline: none; border-color: var(--primary-light); background: #fff; }
+    
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; }
+    
+    /* Modals */
+    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(18, 37, 74, 0.5); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+    .modal-overlay.active { display: flex; }
+    .modal-content { background: #fff; border-radius: var(--radius-lg); width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; }
+    
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Login */
+    #login-view { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-color); }
+    #app-view { display: flex; }
+    
+    .mobile-header { display: none; }
+    #sidebar-backdrop { display: none; }
 
-    async function toggleJob(id) {
-      await fetch(`/api/admin/jobs/${id}/toggle`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      fetchJobs();
+    /* Responsive Mobile Styles */
+    @media (max-width: 768px) {
+      .mobile-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; background: var(--surface); border-bottom: 1px solid var(--border); }
+      #hamburger-btn { background: none; border: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; padding: 0.25rem; margin-left: -0.25rem; line-height: 1; }
+      
+      .admin-layout { flex-direction: column; }
+      .sidebar { position: fixed; top: 0; left: -280px; width: 260px; height: 100vh; z-index: 1000; transition: left 0.3s ease; }
+      .sidebar.open { left: 0; }
+      
+      #sidebar-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 999; display: none; opacity: 0; transition: opacity 0.3s ease; }
+      #sidebar-backdrop.show { display: block; opacity: 1; }
+      
+      .main-content { padding: 1.5rem 1rem; width: 100%; box-sizing: border-box; }
+      .main-content h1 { font-size: 1.35rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .card { padding: 1.25rem; overflow-x: auto; }
+      table { min-width: 650px; }
+      #login-view .card { padding: 1.5rem; width: 90%; }
+      .modal-content { padding: 1.5rem; margin: 1rem; }
     }
-
-    async function deleteJob(id) {
-      if(!confirm('Delete this job?')) return;
-      await fetch(`/api/admin/jobs/${id}`, {
-        method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      fetchJobs();
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
     }
-
-    async function addJob(e) {
-      e.preventDefault();
-      const payload = {
-        title: document.getElementById('j_title').value,
-        department: document.getElementById('j_dept').value,
-        location: document.getElementById('j_loc').value,
-        type: document.getElementById('j_type').value,
-        description: document.getElementById('j_desc').value,
-      };
-      await fetch('/api/admin/jobs', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(payload)
-      });
-      document.getElementById('addJobForm').reset();
-      fetchJobs();
-    }
-
-    function logout() {
-      localStorage.removeItem('adminToken');
-      window.location.href = '/admin';
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchJobs();
-      document.getElementById('addJobForm').addEventListener('submit', addJob);
-    });
-  </script>
+  </style>
 </head>
-<body class="admin-layout">
-  <aside class="admin-sidebar">
-    <h2 style="margin-bottom: 2rem;">PEW Admin</h2>
-    <ul style="list-style: none; padding: 0;">
-      <li style="margin-bottom: 1rem;"><a href="#" style="color: var(--primary-color); font-weight: 600;">Job management</a></li>
-      <li><a href="#" onclick="logout()" style="color: var(--danger);">Logout</a></li>
-    </ul>
-    <div style="margin-top: 4rem;">
-      <a href="{{ url_for('home') }}" style="font-size: 0.875rem;">&larr; View Site</a>
-    </div>
-  </aside>
+<body>
 
-  <main class="admin-content">
-    
-    <!-- HR Flow Visual (Demonstrates minimalist architecture) -->
-    <div class="hr-flow">
-      <div class="flow-step">
-        <div class="flow-icon">👤</div>
-        <strong>Candidate</strong><br>
-        <span style="font-size: 0.875rem; color: var(--text-secondary);">Browses Careers</span>
-      </div>
-      <div class="flow-arrow">&rarr;</div>
-      <div class="flow-step">
-        <div class="flow-icon">📝</div>
-        <strong>Submit Form</strong><br>
-        <span style="font-size: 0.875rem; color: var(--text-secondary);">Minimal API</span>
-      </div>
-      <div class="flow-arrow">&rarr;</div>
-      <div class="flow-step">
-        <div class="flow-icon">📧</div>
-        <strong>HR Email</strong><br>
-        <span style="font-size: 0.875rem; color: var(--text-secondary);">Instant Notification</span>
-      </div>
+  <!-- Main App -->
+  <div id="app-view" class="admin-layout">
+    <div id="sidebar-backdrop"></div>
+    <div class="mobile-header" id="mobile-header">
+      <div style="font-weight: 700; color: var(--primary); font-size: 1.2rem;">Admin Portal</div>
+      <button id="hamburger-btn">☰</button>
     </div>
-    
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-      <h1 style="margin: 0;">Manage Job Openings</h1>
-    </div>
+    <aside class="sidebar" id="admin-sidebar">
+      <div class="sidebar-header">Careers Admin</div>
+      <nav class="sidebar-nav">
+        <div class="nav-item" data-target="dashboard">Dashboard</div>
+        <div class="nav-item" data-target="jobs">Job Management</div>
+        <div class="nav-item" data-target="applications">Applications</div>
+      </nav>
+      <div class="sidebar-footer" style="position: relative;">
+        <!-- Profile Popup -->
+        <div id="profile-popup" style="display: none; position: absolute; bottom: 100%; left: 0; width: 100%; background: var(--surface); border: 1px solid rgba(18, 37, 74, 0.08); border-radius: var(--radius-md); box-shadow: 0 -4px 20px rgba(0,0,0,0.1); margin-bottom: 0.5rem; padding: 1rem; z-index: 100; flex-direction: column; gap: 1rem;">
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.25rem; display: block;">Admin Name</label>
+            <input type="text" id="admin-name-input" class="input-field" placeholder="Enter your name" style="width: 100%; padding: 0.5rem; font-size: 0.9rem;">
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.25rem; display: block;">Email</label>
+            <div style="font-size: 0.9rem; color: var(--primary); font-weight: 500; word-break: break-all;">jobs@patelengv.com</div>
+          </div>
+          <hr style="border: none; border-top: 1px solid rgba(18, 37, 74, 0.08); margin: 0.5rem 0;">
+          <button class="btn" id="open-password-btn" style="width: 100%; background: transparent; color: var(--primary); border: 1px solid var(--border); font-weight: 600;">Reset Password</button>
+          <button class="btn" id="popup-logout-btn" style="width: 100%; background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca;">Log Out</button>
+        </div>
 
-    <div class="grid grid-2">
-      <!-- Add Job Form -->
-      <div class="card">
-        <h3 style="margin-bottom: 1.5rem;">Add New Job</h3>
-        <form id="addJobForm">
-          <div class="form-group">
-            <label class="form-label">Job Title</label>
-            <input type="text" id="j_title" class="form-control" required>
+        <div class="admin-profile" id="profile-toggle-btn" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px; cursor: pointer; transition: background 0.2s;">
+          <div class="profile-avatar" style="width: 36px; height: 36px; background: var(--primary-light); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; font-size: 1rem;">
+            A
           </div>
-          <div class="form-group">
-            <label class="form-label">Department</label>
-            <input type="text" id="j_dept" class="form-control" required>
+          <div class="profile-info" style="display: flex; flex-direction: column; overflow: hidden;">
+            <span id="display-admin-name" style="color: white; font-weight: 600; font-size: 0.9rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">System Admin</span>
+            <span style="color: var(--text-light); font-size: 0.75rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">jobs@patelengv.com</span>
           </div>
-          <div style="display: flex; gap: 1rem;">
-            <div class="form-group" style="flex: 1;">
-              <label class="form-label">Location</label>
-              <input type="text" id="j_loc" class="form-control" required>
-            </div>
-            <div class="form-group" style="flex: 1;">
-              <label class="form-label">Type</label>
-              <select id="j_type" class="form-control">
-                <option>Full-time</option>
-                <option>Contract</option>
-                <option>Part-time</option>
-              </select>
-            </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      
+      <!-- Dashboard -->
+      <div id="dashboard" class="view active">
+        <h1 style="color: var(--primary); margin-bottom: 2rem;">Dashboard</h1>
+        <div class="stats-grid">
+          <div class="card">
+            <div style="color: var(--text-light); font-size: 0.95rem; font-weight: 600;">Total Jobs</div>
+            <div id="stat-total-jobs" style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-top: 0.5rem;">0</div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Description</label>
-            <textarea id="j_desc" class="form-control" required></textarea>
+          <div class="card">
+            <div style="color: var(--text-light); font-size: 0.95rem; font-weight: 600;">Open Jobs</div>
+            <div id="stat-open-jobs" style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-top: 0.5rem;">0</div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Create Job Opening</button>
-        </form>
+          <div class="card">
+            <div style="color: var(--text-light); font-size: 0.95rem; font-weight: 600;">Closed Jobs</div>
+            <div id="stat-closed-jobs" style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-top: 0.5rem;">0</div>
+          </div>
+          <div class="card">
+            <div style="color: var(--text-light); font-size: 0.95rem; font-weight: 600;">Applications</div>
+            <div id="stat-total-apps" style="font-size: 2.5rem; color: var(--primary); font-weight: 800; margin-top: 0.5rem;">0</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Job List Table -->
-      <div>
-        <div class="table-wrapper">
+      <!-- Job Management -->
+      <div id="jobs" class="view">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+          <h1 style="color: var(--primary); margin: 0;">Job Management</h1>
+          <button class="btn btn-primary" id="btn-add-job">Add New Job</button>
+        </div>
+        <div class="card">
           <table>
             <thead>
               <tr>
-                <th>Title</th>
+                <th>Job Title</th>
                 <th>Department</th>
+                <th>Location</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th style="text-align: right;">Actions</th>
               </tr>
             </thead>
-            <tbody id="jobsTableBody">
+            <tbody id="jobs-tbody">
               <!-- Rendered via JS -->
             </tbody>
           </table>
         </div>
       </div>
+
+      <!-- Applications Management -->
+      <div id="applications" class="view">
+        <h1 style="color: var(--primary); margin-bottom: 2rem;">Applications</h1>
+        <div class="card">
+          <table>
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Job Role</th>
+                <th>Applied Date</th>
+                <th>Resume</th>
+                <th>Status</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="apps-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Job Modal -->
+  <div id="job-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2 id="modal-title" style="margin-top: 0; color: var(--primary); margin-bottom: 1.5rem;">Add New Job</h2>
+      <form id="job-form">
+        <input type="hidden" id="job-id">
+        <div style="margin-bottom: 1rem;">
+          <label>Job Title</label>
+          <input type="text" id="job-title" class="input-field" required>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label>Department</label>
+            <input type="text" id="job-dept" class="input-field" required>
+          </div>
+          <div>
+            <label>Location</label>
+            <input type="text" id="job-loc" class="input-field" required>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label>Experience</label>
+            <input type="text" id="job-exp" class="input-field" required>
+          </div>
+          <div>
+            <label>Type</label>
+            <select id="job-type" class="input-field" required>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+            </select>
+          </div>
+          <div>
+            <label>Status</label>
+            <select id="job-status" class="input-field" required>
+              <option value="OPEN">OPEN</option>
+              <option value="CLOSED">CLOSED</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label>Description</label>
+          <textarea id="job-desc" class="input-field" rows="4" required></textarea>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <label>Requirements</label>
+          <textarea id="job-reqs" class="input-field" rows="4" required></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-job">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Job</button>
+        </div>
+      </form>
     </div>
-  </main>
+  </div>
+
+  <!-- Password Reset Modal -->
+  <div id="password-modal" class="modal-overlay">
+    <div class="modal-content" style="max-width: 450px;">
+      <h2 style="margin-top: 0; color: var(--primary); margin-bottom: 1.5rem;">Reset Password</h2>
+      <div id="password-modal-error" style="color: #991b1b; background: #fee2e2; padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none;"></div>
+      <div id="password-modal-success" style="color: #065f46; background: #d1fae5; padding: 0.75rem; border-radius: var(--radius-md); font-size: 0.9rem; margin-bottom: 1.5rem; display: none;">Password updated successfully!</div>
+      <form id="password-reset-form">
+        <div style="margin-bottom: 1rem;">
+          <label>Current Password</label>
+          <input type="password" id="modal-current-pass" class="input-field" required>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label>New Password</label>
+          <input type="password" id="modal-new-pass" class="input-field" required>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <label>Confirm New Password</label>
+          <input type="password" id="modal-confirm-pass" class="input-field" required>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+          <button type="button" class="btn btn-secondary" id="close-password-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    window.SUPABASE_URL = "{{ SUPABASE_URL }}";
+    window.SUPABASE_ANON_KEY = "{{ SUPABASE_ANON_KEY }}";
+  </script>
+  <script type="module" src="/static/js/career/admin.js?v=3"></script>
 </body>
 </html>

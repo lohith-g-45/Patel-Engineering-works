@@ -4,10 +4,17 @@ import json
 from functools import wraps
 from datetime import datetime, timedelta, timezone
 from flask import Flask, redirect, render_template, request, jsonify, current_app, url_for
+from dotenv import load_dotenv
+
+load_dotenv()
 from sqlalchemy import inspect, text
 import jwt
 from werkzeug.utils import secure_filename
-from models import db, AdminUser, Article, ContentHistory
+from models import db, AdminUser, Article, ContentHistory, Job
+import mimetypes
+
+mimetypes.add_type('application/javascript', '.js')
+mimetypes.add_type('text/css', '.css')
 
 # Build timestamp: 2026-06-15 12:30 UTC - FORCE RENDER RESTART NOW
 
@@ -66,6 +73,13 @@ def create_app() -> Flask:
             "SUPABASE_URL": os.getenv("SUPABASE_URL", ""),
             "SUPABASE_ANON_KEY": os.getenv("SUPABASE_ANON_KEY", "")
         }
+
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+        return response
 
     return app
 
@@ -521,6 +535,83 @@ def register_routes(app: Flask) -> None:
         db.session.commit()
         
         return jsonify({"message": "Article deleted"}), 200
+
+    # ==================== ADMIN API ROUTES - JOBS ====================
+    @app.get("/api/jobs")
+    def get_public_jobs():
+        """Get all open jobs (public endpoint)"""
+        jobs = Job.query.filter(Job.status.in_(['Open', 'OPEN'])).order_by(Job.created_at.desc()).all()
+        return jsonify([j.to_dict() for j in jobs]), 200
+
+    @app.get("/api/admin/jobs")
+    def get_admin_jobs():
+        """Get all jobs"""
+        jobs = Job.query.order_by(Job.created_at.desc()).all()
+        return jsonify([j.to_dict() for j in jobs]), 200
+
+    @app.post("/api/admin/jobs")
+    @token_required
+    def create_job():
+        """Create new job"""
+        data = request.get_json()
+        if not data or not all(k in data for k in ["title", "department", "description"]):
+            return jsonify({"error": "Missing required fields"}), 400
+        
+        job = Job(
+            title=data.get("title"),
+            department=data.get("department"),
+            location=data.get("location", "Vizag"),
+            employment_type=data.get("type", data.get("employmentType", "Full-time")),
+            experience=data.get("experience"),
+            salary=data.get("salary"),
+            description=data.get("description"),
+            requirements=data.get("requirements"),
+            status=data.get("status", "Open")
+        )
+        db.session.add(job)
+        db.session.commit()
+        return jsonify(job.to_dict()), 201
+
+    @app.put("/api/admin/jobs/<int:job_id>")
+    @token_required
+    def update_job(job_id):
+        """Update job"""
+        job = Job.query.get_or_404(job_id)
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "Missing update payload"}), 400
+            
+        if "title" in data: job.title = data["title"]
+        if "department" in data: job.department = data["department"]
+        if "location" in data: job.location = data["location"]
+        if "type" in data: job.employment_type = data["type"]
+        if "employmentType" in data: job.employment_type = data["employmentType"]
+        if "experience" in data: job.experience = data["experience"]
+        if "salary" in data: job.salary = data["salary"]
+        if "description" in data: job.description = data["description"]
+        if "requirements" in data: job.requirements = data["requirements"]
+        if "status" in data: job.status = data["status"]
+            
+        db.session.commit()
+        return jsonify(job.to_dict()), 200
+
+    @app.post("/api/admin/jobs/<int:job_id>/toggle")
+    @token_required
+    def toggle_job(job_id):
+        """Toggle job status"""
+        job = Job.query.get_or_404(job_id)
+        job.status = "Closed" if job.status in ["Open", "OPEN"] else "Open"
+        db.session.commit()
+        return jsonify(job.to_dict()), 200
+
+    @app.delete("/api/admin/jobs/<int:job_id>")
+    @token_required
+    def delete_job(job_id):
+        """Delete job"""
+        job = Job.query.get_or_404(job_id)
+        db.session.delete(job)
+        db.session.commit()
+        return jsonify({"message": "Job deleted"}), 200
 
 
 app = create_app()

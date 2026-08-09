@@ -18,23 +18,35 @@ async function initApp() {
   }
 
   // Login Form
-  document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const user = document.getElementById('login-email').value.trim();
-    const pass = document.getElementById('login-pass').value.trim();
-    const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
-    
-    if (user === 'jobs@patelengv.com' && pass === storedPass) {
-      localStorage.setItem('isCareersAdminAuthValidated', 'true');
-      loginView.style.display = 'none';
+  const loginForm = document.getElementById('login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const user = document.getElementById('login-email').value.trim();
+      const pass = document.getElementById('login-pass').value.trim();
+      const storedPass = localStorage.getItem('adminPassword') || 'abc@123';
+      
+      if (user === 'jobs@patelengv.com' && pass === storedPass) {
+        localStorage.setItem('isCareersAdminAuthValidated', 'true');
+        loginView.style.display = 'none';
+        appView.style.display = 'flex';
+        loadDashboard();
+      } else {
+        const err = document.getElementById('login-error');
+        err.textContent = 'Invalid username or password';
+        err.style.display = 'block';
+      }
+    });
+  } else {
+    // If there is no login form, we are already on the secure dashboard
+    if (appView) {
       appView.style.display = 'flex';
+      // Auto-highlight dashboard nav
+      const dashboardNav = document.querySelector('.nav-item[data-target="dashboard"]');
+      if (dashboardNav) dashboardNav.classList.add('active');
       loadDashboard();
-    } else {
-      const err = document.getElementById('login-error');
-      err.textContent = 'Invalid username or password';
-      err.style.display = 'block';
     }
-  });
+  }
 
   // Navigation
   const navItems = document.querySelectorAll('.nav-item');
@@ -419,11 +431,24 @@ async function initApp() {
   });
 
   // Logout
-  popupLogoutBtn.addEventListener('click', () => {
+  popupLogoutBtn.addEventListener('click', async () => {
     localStorage.removeItem('isCareersAdminAuthValidated');
-    appView.style.display = 'none';
-    loginView.style.display = 'flex';
-    profilePopup.style.display = 'none';
+    localStorage.removeItem('adminToken');
+    
+    if (loginView) {
+      appView.style.display = 'none';
+      loginView.style.display = 'flex';
+      profilePopup.style.display = 'none';
+    } else {
+      try {
+        const token = localStorage.getItem('adminToken');
+        await fetch('/api/auth/logout', { 
+            method: 'POST',
+            headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+        });
+      } catch(e) {}
+      window.location.href = '/admin';
+    }
   });
 
   // --- Password Reset Modal Logic ---

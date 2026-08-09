@@ -99,3 +99,32 @@ class ContentHistory(db.Model):
             "admin_username": self.admin_username,
             "created_at": self.created_at.isoformat(),
         }
+
+class Job(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    department = db.Column(db.String(100), nullable=False)
+    location = db.Column(db.String(100), nullable=False)
+    employment_type = db.Column(db.String(50), nullable=False, default="Full-time")
+    experience = db.Column(db.String(100), nullable=True)
+    salary = db.Column(db.String(100), nullable=True)
+    description = db.Column(db.Text, nullable=False)
+    requirements = db.Column(db.Text, nullable=True)
+    status = db.Column(db.String(20), nullable=False, default="OPEN")
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def to_dict(self) -> dict:
+        return {
+            "id": self.id,
+            "title": self.title,
+            "department": self.department,
+            "location": self.location,
+            "type": self.employment_type,
+            "employmentType": self.employment_type,
+            "experience": self.experience,
+            "salary": self.salary,
+            "description": self.description,
+            "requirements": self.requirements,
+            "status": self.status,
+            "created_at": self.created_at.isoformat(),
+        }

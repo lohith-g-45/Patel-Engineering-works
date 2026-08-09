@@ -3,65 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Login | Patel Engineering Works</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Careers Admin | Patel Engineering Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: var(--bg-color);
+    :root {
+      --primary: #12254a;
+      --primary-light: #2a5bd7;
+      --secondary: #e1565a;
+      --bg-color: #f3f7ff;
+      --surface: #ffffff;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius-md: 12px;
+      --radius-lg: 16px;
     }
-    .login-card {
-      background: var(--surface-color);
-      padding: 3rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-color);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--bg-color); 
+      color: var(--text-dark); 
+      margin: 0; 
+      padding: 0; 
+    }
+    #login-view { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      background: var(--bg-color); 
+    }
+    .card { 
+      background: var(--surface); 
+      border-radius: var(--radius-lg); 
+      box-shadow: 0 4px 20px rgba(18, 37, 74, 0.05); 
+      border: 1px solid rgba(18, 37, 74, 0.05); 
+    }
+    .input-field { 
+      width: 100%; 
+      padding: 0.75rem 1rem; 
+      border: 1.5px solid var(--border); 
+      border-radius: var(--radius-md); 
+      font-family: inherit; 
+      font-size: 0.95rem; 
+      background: #f9fafb; 
+      margin-bottom: 1rem; 
+      box-sizing: border-box; 
+    }
+    .input-field:focus { 
+      outline: none; 
+      border-color: var(--primary-light); 
+      background: #fff; 
+    }
+    label { 
+      display: block; 
+      margin-bottom: 0.5rem; 
+      font-weight: 600; 
+      font-size: 0.9rem; 
+    }
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 0.5rem; 
+      padding: 0.75rem 1.5rem; 
+      border-radius: var(--radius-md); 
+      font-weight: 600; 
+      cursor: pointer; 
+      border: none; 
+      font-size: 0.95rem; 
+      transition: opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .btn-primary { 
+      background: var(--primary); 
+      color: #fff; 
     }
   </style>
 </head>
 <body>
-  <div class="login-card shadow-lg">
-    <h1 style="margin-bottom: 2rem;">Admin Login</h1>
-    <form id="loginForm">
-      <div class="form-group" style="text-align: left;">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" id="username" class="form-control" required>
-      </div>
-      <div class="form-group" style="text-align: left;">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" class="form-control" required>
-      </div>
-      <div id="errorMsg" style="color: var(--danger); margin-bottom: 1rem; display: none;"></div>
-      <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
-    </form>
-    <a href="{{ url_for('home') }}" style="display: block; margin-top: 1.5rem; font-size: 0.875rem;">&larr; Back to Website</a>
+  <div id="login-view">
+    <div class="card" style="width: 100%; max-width: 400px; padding: 2.5rem;">
+      <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem; font-size: 1.8rem; font-weight: 700;">Careers Admin Login</h2>
+      <div id="login-error" style="color: white; background: var(--danger); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 1rem; display: none; font-size: 0.9rem; text-align: center;"></div>
+      <form id="login-form">
+        <label>Email Address</label>
+        <input type="text" id="username" class="input-field" placeholder="lg8717429@gmail.com" required>
+        <label>Password</label>
+        <input type="password" id="password" class="input-field" required>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; padding: 1rem;">Login</button>
+      </form>
+    </div>
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
       
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-      
-      const data = await res.json();
-      if (res.ok) {
-        localStorage.setItem('adminToken', data.token);
-        window.location.href = '/admin/dashboard';
-      } else {
-        const err = document.getElementById('errorMsg');
-        err.textContent = data.error || 'Login failed';
-        err.style.display = 'block';
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        
+        const data = await res.json();
+        if (res.ok) {
+          localStorage.setItem('adminToken', data.token);
+          window.location.href = '/admin/dashboard';
+        } else {
+          const err = document.getElementById('login-error');
+          err.textContent = data.error || 'Login failed';
+          err.style.display = 'block';
+        }
+      } catch (err) {
+        const errorEl = document.getElementById('login-error');
+        errorEl.textContent = 'Connection error';
+        errorEl.style.display = 'block';
       }
     });
   </script>
